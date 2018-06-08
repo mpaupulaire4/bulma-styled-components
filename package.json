@@ -1,0 +1,22 @@
+{
+  "name": "bulma-styled-components",
+  "version": "1.0.0",
+  "description": "A Styled Components implementation of bulma.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No Tests\" && exit 1"
+  },
+  "keywords": [
+    "bulma",
+    "styled-components",
+    "styled",
+    "components",
+    "react",
+    "style"
+  ],
+  "author": "Michel Paupulaire",
+  "license": "MIT",
+  "dependencies": {
+    "polished": "^1.9.2"
+  }
+}
