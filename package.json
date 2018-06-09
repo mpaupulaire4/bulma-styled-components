@@ -4,6 +4,7 @@
   "description": "A Styled Components implementation of bulma.",
   "main": "index.js",
   "scripts": {
+    "lint:css": "stylelint './src/**/*.js'",
     "test": "echo \"No Tests\" && exit 1"
   },
   "keywords": [
@@ -24,5 +25,11 @@
   },
   "peerDependencies": {
     "styled-components": "^3.3.2"
+  },
+  "devDependencies": {
+    "stylelint": "^9.2.1",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.3.1"
   }
 }
