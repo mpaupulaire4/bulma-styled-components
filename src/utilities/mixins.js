@@ -357,7 +357,7 @@ export function overlay(offset = 0) {
       left: ${offset};
       right: ${offset};
       top: ${offset};
-    `
+    ` /* eslint-disable-line */
   }
   return css`
     bottom: 0;
@@ -366,6 +366,6 @@ export function overlay(offset = 0) {
     right: 0;
     top: 0;
     ${extra}
-  `
+  ` /* eslint-disable-line */
 }
 
