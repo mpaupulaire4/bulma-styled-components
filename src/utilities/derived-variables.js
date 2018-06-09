@@ -8,7 +8,7 @@ function setDefault(obj, key, deflt) {
 }
 
 
-export default function getVariables(overrides) {
+export default function getVariables(overrides = {}) {
   const derived = {
     ...initialVars,
     ...overrides,
