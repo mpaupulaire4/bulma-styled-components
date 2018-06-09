@@ -4,83 +4,83 @@ import { findColorInvert } from './functions'
 export function getVariables(overrides) {
     const derived = {...initialVars, ...overrides}
 
-    derived['primary'] = derived['primary'] ||  derived['turquoise']
-    derived['info'] = derived['info'] || derived['cyan']
-    derived['success'] = derived['success'] || derived['green']
-    derived['warning'] = derived['warning'] || derived['yellow']
-    derived['danger'] = derived['danger'] || derived['red']
+    setDefault(derived, 'primary', derived['turquoise'])
+    setDefault(derived, 'info', derived['cyan'])
+    setDefault(derived, 'success', derived['green'])
+    setDefault(derived, 'warning', derived['yellow'])
+    setDefault(derived, 'danger', derived['red'])
 
-    derived['light'] = derived['light'] || derived['white-ter']
-    derived['dark'] = derived['dark'] || derived['grey-darker']
+    setDefault(derived, 'light', derived['white-ter'])
+    setDefault(derived, 'dark', derived['grey-darker'])
 
     // Invert colors
 
-    derived['orange-invert'] = derived['orange-invert'] || findColorInvert(derived['orange'])
-    derived['yellow-invert'] = derived['yellow-invert'] || findColorInvert(derived['yellow'])
-    derived['green-invert'] = derived['green-invert'] || findColorInvert(derived['green'])
-    derived['turquoise-invert'] = derived['turquoise-invert'] || findColorInvert(derived['turquoise'])
-    derived['cyan-invert'] = derived['cyan-invert'] || findColorInvert(derived['cyan'])
-    derived['blue-invert'] = derived['blue-invert'] || findColorInvert(derived['blue'])
-    derived['purple-invert'] = derived['purple-invert'] || findColorInvert(derived['purple'])
-    derived['red-invert'] = derived['red-invert'] || findColorInvert(derived['red'])
+    setDefault(derived, 'orange-invert', findColorInvert(derived['orange']))
+    setDefault(derived, 'yellow-invert', findColorInvert(derived['yellow']))
+    setDefault(derived, 'green-invert', findColorInvert(derived['green']))
+    setDefault(derived, 'turquoise-invert', findColorInvert(derived['turquoise']))
+    setDefault(derived, 'cyan-invert', findColorInvert(derived['cyan']))
+    setDefault(derived, 'blue-invert', findColorInvert(derived['blue']))
+    setDefault(derived, 'purple-invert', findColorInvert(derived['purple']))
+    setDefault(derived, 'red-invert', findColorInvert(derived['red']))
 
-    derived['primary-invert'] = derived['primary-invert'] || derived['turquoise-invert']
-    derived['info-invert'] = derived['info-invert'] || derived['cyan-invert']
-    derived['success-invert'] = derived['success-invert'] || derived['green-invert']
-    derived['warning-invert'] = derived['warning-invert'] || derived['yellow-invert']
-    derived['danger-invert'] = derived['danger-invert'] || derived['red-invert']
-    derived['light-invert'] = derived['light-invert'] || derived['dark']
-    derived['dark-invert'] = derived['dark-invert'] || derived['light']
+    setDefault(derived, 'primary-invert', derived['turquoise-invert'])
+    setDefault(derived, 'info-invert', derived['cyan-invert'])
+    setDefault(derived, 'success-invert', derived['green-invert'])
+    setDefault(derived, 'warning-invert', derived['yellow-invert'])
+    setDefault(derived, 'danger-invert', derived['red-invert'])
+    setDefault(derived, 'light-invert', derived['dark'])
+    setDefault(derived, 'dark-invert', derived['light'])
 
     // General colors
 
-    derived['background'] = derived['background'] || derived['white-ter']
+    setDefault(derived, 'background', derived['white-ter'])
 
-    derived['border'] = derived['border'] || derived['grey-lighter']
-    derived['border-hover'] = derived['border-hover'] || derived['grey-light']
+    setDefault(derived, 'border', derived['grey-lighter'])
+    setDefault(derived, 'border-hover', derived['grey-light'])
 
     // Text colors
 
-    derived['text'] = derived['text'] || derived['grey-dark']
-    derived['text-invert'] = derived['text-invert'] || findColorInvert(derived['text'])
-    derived['text-light'] = derived['text-light'] || derived['grey']
-    derived['text-strong'] = derived['text-strong'] || derived['grey-darker']
+    setDefault(derived, 'text', derived['grey-dark'])
+    setDefault(derived, 'text-invert', findColorInvert(derived['text']))
+    setDefault(derived, 'text-light', derived['grey'])
+    setDefault(derived, 'text-strong', derived['grey-darker'])
 
     // Code colors
 
-    derived['code'] = derived['code'] || derived['red']
-    derived['code-background'] = derived['code-background'] || derived['background']
+    setDefault(derived, 'code', derived['red'])
+    setDefault(derived, 'code-background', derived['background'])
 
-    derived['pre'] = derived['pre'] || derived['text']
-    derived['pre-background'] = derived['pre-background'] || derived['background']
+    setDefault(derived, 'pre', derived['text'])
+    setDefault(derived, 'pre-background', derived['background'])
 
     // Link colors
 
-    derived['link'] = derived['link'] || derived['blue']
-    derived['link-invert'] = derived['link-invert'] || derived['blue-invert']
-    derived['link-visited'] = derived['link-visited'] || derived['purple']
+    setDefault(derived, 'link', derived['blue'])
+    setDefault(derived, 'link-invert', derived['blue-invert'])
+    setDefault(derived, 'link-visited', derived['purple'])
 
-    derived['link-hover'] = derived['link-hover'] || derived['grey-darker']
-    derived['link-hover-border'] = derived['link-hover-border'] || derived['grey-light']
+    setDefault(derived, 'link-hover', derived['grey-darker'])
+    setDefault(derived, 'link-hover-border', derived['grey-light'])
 
-    derived['link-focus'] = derived['link-focus'] || derived['grey-darker']
-    derived['link-focus-border'] = derived['link-focus-border'] || derived['blue']
+    setDefault(derived, 'link-focus', derived['grey-darker'])
+    setDefault(derived, 'link-focus-border', derived['blue'])
 
-    derived['link-active'] = derived['link-active'] || derived['grey-darker']
-    derived['link-active-border'] = derived['link-active-border'] || derived['grey-dark']
+    setDefault(derived, 'link-active', derived['grey-darker'])
+    setDefault(derived, 'link-active-border', derived['grey-dark'])
 
     // Typography
 
-    derived['family-primary'] = derived['family-primary'] || derived['family-sans-serif']
-    derived['family-code'] = derived['family-code'] || derived['family-monospace']
+    setDefault(derived, 'family-primary', derived['family-sans-serif'])
+    setDefault(derived, 'family-code', derived['family-monospace'])
 
-    derived['size-small'] = derived['size-small'] || derived['size-7']
-    derived['size-normal'] = derived['size-normal'] || derived['size-6']
-    derived['size-medium'] = derived['size-medium'] || derived['size-5']
-    derived['size-large'] = derived['size-large'] || derived['size-4']
+    setDefault(derived, 'size-small', derived['size-7'])
+    setDefault(derived, 'size-normal', derived['size-6'])
+    setDefault(derived, 'size-medium', derived['size-5'])
+    setDefault(derived, 'size-large', derived['size-4'])
 
     // Lists and maps
-    derived['colors'] = derived['colors'] || {
+    setDefault(derived, 'colors', {
       "white": [derived['white'], derived['black']],
       "black": [derived['black'], derived['white']],
       "light": [derived['light'], derived['light-invert']],
@@ -92,9 +92,9 @@ export function getVariables(overrides) {
       "warning": [derived['warning'], derived['warning-invert']],
       "danger": [derived['danger'], derived['danger-invert']],
       ...derived['custom-colors']
-    },
+    })
 
-    derived['shades'] = derived['shades'] || {
+    setDefault(derived, 'shades', {
       "black-bis": derived['black-bis'],
       "black-ter": derived['black-ter'],
       "grey-darker": derived['grey-darker'],
@@ -105,9 +105,9 @@ export function getVariables(overrides) {
       "white-ter": derived['white-ter'],
       "white-bis": derived['white-bis'],
       ...derived['custom-shades']
-    },
+    })
 
-    derived['sizes'] = derived['sizes'] || [
+    setDefault(derived, 'sizes', [
       derived['size-1'],
       derived['size-2'],
       derived['size-3'],
@@ -115,14 +115,18 @@ export function getVariables(overrides) {
       derived['size-5'],
       derived['size-6'],
       derived['size-7'],
-    ]
+    ])
 
         // 960px container + 4rem
-    derived['desktop'] = derived['desktop'] || `calc(960px + (2 * ${derived['gap']}))`
+    setDefault(derived, 'desktop', `calc(960px + (2 * ${derived['gap']}))`)
     // 1152px container + 4rem
-    derived['widescreen'] = derived['widescreen'] || `calc(1152px + (2 * ${derived['gap']}))`
+    setDefault(derived, 'widescreen', `calc(1152px + (2 * ${derived['gap']}))`)
     // 1344px container + 4rem
-    derived['fullhd'] = derived['fullhd'] || `calc(1344px + (2 * ${derived['gap']}))`
+    setDefault(derived, 'fullhd', `calc(1344px + (2 * ${derived['gap']}))`)
 
+    return Object.freeze(derived);
 }
 
+function setDefault(obj, key, deflt) {
+  obj[key] = obj[key] || deflt
+}
