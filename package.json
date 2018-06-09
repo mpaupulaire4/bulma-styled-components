@@ -14,9 +14,15 @@
     "react",
     "style"
   ],
-  "author": "Michel Paupulaire",
+  "author": {
+    "name": "Michel Paupulaire",
+    "url": "https://github.com/mpaupulaire4"
+  },
   "license": "MIT",
   "dependencies": {
     "polished": "^1.9.2"
+  },
+  "peerDependencies": {
+    "styled-components": "^3.3.2"
   }
 }
