@@ -69,4 +69,7 @@ export default Object.freeze({
   // Flags
 
   'variable-columns': true,
+
+  // Control
+  'control-border-width': '1px',
 })

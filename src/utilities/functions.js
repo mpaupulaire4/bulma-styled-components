@@ -45,3 +45,7 @@ export function mergeColorMaps(bulmaColors = {}, customColors = {}) {
   }
   return bulmaColors
 }
+
+export function fromTheme(key) {
+  return props => props.theme[key]
+}

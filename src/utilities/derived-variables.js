@@ -134,5 +134,13 @@ export default function getVariables(overrides = {}) {
   // 1344px container + 4rem
   setDefault(derived, 'fullhd', `calc(1344px + (2 * ${derived['gap']}))`)
 
+  setDefault(derived, 'control-radius', derived['radius'])
+
+  setDefault(derived, 'control-radius-small', derived['radius-small'])
+
+  setDefault(derived, 'control-padding-vertical', `calc(0.375em - ${derived['control-border-width']})`)
+
+  setDefault(derived, 'control-padding-horizontal', `calc(0.625em - ${derived['control-border-width']})`)
+
   return Object.freeze(derived)
 }

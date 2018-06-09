@@ -1,10 +1,7 @@
 import { css } from 'styled-components'
 import { clearFix as ClearFix } from 'polished'
 import { spinAround } from './animations'
-
-function fromTheme(key) {
-  return props => props.theme[key]
-}
+import { fromTheme } from './functions'
 
 export const clearFix = css`
   ${ClearFix()}
@@ -295,6 +292,7 @@ export const Delete = css`
   &:active {
     background-color: rgba( ${fromTheme('black')}, 0.4);
   }
+  /* Sizes */
   ${(props) => {
     if (props['is-small']) {
       return `
