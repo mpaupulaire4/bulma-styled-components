@@ -1,5 +1,7 @@
+/* eslint-disable dot-notation, quote-props, key-spacing */
+
 export default Object.freeze({
-    // Colors
+  // Colors
 
   'black':        'hsl(0, 0%, 4%)',
   'black-bis':    'hsl(0, 0%, 7%)',
