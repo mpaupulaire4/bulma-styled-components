@@ -32,6 +32,7 @@
         "semi": [
             "error",
             "never"
-        ]
+        ],
+        "dot-notation": 0
     }
 }
