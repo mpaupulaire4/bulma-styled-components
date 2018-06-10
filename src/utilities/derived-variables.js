@@ -142,5 +142,14 @@ export default function getVariables(overrides = {}) {
 
   setDefault(derived, 'control-padding-horizontal', `calc(0.625em - ${derived['control-border-width']})`)
 
+  setDefault(derived, 'body-background-color', derived['white'])
+  setDefault(derived, 'body-family', derived['family-primary'])
+  setDefault(derived, 'body-color', derived['text'])
+  setDefault(derived, 'body-weight', derived['weight-normal'])
+  setDefault(derived, 'code-family', derived['family-code'])
+  setDefault(derived, 'hr-background-color', derived['background'])
+  setDefault(derived, 'strong-color', derived['text-strong'])
+  setDefault(derived, 'strong-weight', derived['weight-bold'])
+
   return Object.freeze(derived)
 }

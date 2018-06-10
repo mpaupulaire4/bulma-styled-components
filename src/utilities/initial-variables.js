@@ -72,4 +72,16 @@ export default Object.freeze({
 
   // Control
   'control-border-width': '1px',
+
+  // Generic
+  'body-size': '16px ',
+  'body-rendering': 'optimizeLegibility',
+  'body-line-height': '1.5',
+
+  'code-padding': '0.25em 0.5em 0.25em',
+  'code-weight': 'normal',
+  'code-size': '0.875em',
+
+  'hr-height': '2px',
+  'hr-margin': '1.5rem 0',
 })

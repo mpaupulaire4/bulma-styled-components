@@ -33,6 +33,7 @@
             "error",
             "never"
         ],
-        "dot-notation": 0
+        "dot-notation": 0,
+        "no-underscore-dangle": 0
     }
 }
