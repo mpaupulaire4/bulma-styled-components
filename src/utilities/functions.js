@@ -1,7 +1,7 @@
 import { getLuminance } from 'polished'
 
 
-function findColorInvert($color) {
+export function findColorInvert($color) {
   if (getLuminance($color) > 0.55) return 'rgba(#000, 0.7)'
   return '#fff'
 }

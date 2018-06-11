@@ -1,6 +1,6 @@
 {
     "parser": "babel-eslint",
-    "extends": "airbnb-base",
+    "extends": "airbnb",
     "env": {
         "browser": true,
         "es6": true,
@@ -34,6 +34,7 @@
             "never"
         ],
         "dot-notation": 0,
-        "no-underscore-dangle": 0
+        "no-underscore-dangle": 0,
+        "react/jsx-filename-extension": 0
     }
 }
