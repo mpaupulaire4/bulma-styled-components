@@ -8,7 +8,7 @@ import box from '../box'
 storiesOf('Box', module)
   .add('Default', () => {
     const Box = styled.div`
-      ${box}
+      ${box([])}
     `
     return (
       <Box >
@@ -18,7 +18,7 @@ storiesOf('Box', module)
   })
   .add('As link', () => {
     const Box = styled.a`
-      ${box}
+      ${box()}
     `
     return (
       <Box is-a-tag href="">

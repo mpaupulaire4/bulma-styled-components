@@ -13,27 +13,29 @@ Vars.addDerivedDefault(vars => ({
   'box-link-active-shadow': `inset 0 1px 2px rgba(${vars['black']}, 0.2), 0 0 0 1px ${vars['link']}`,
 }))
 
-
-export default css`
-  ${block}
-  background-color: ${fromTheme('box-background-color')};
-  border-radius: ${fromTheme('box-radius')};
-  box-shadow: ${fromTheme('box-shadow')};
-  color: ${fromTheme('box-color')};
-  display: block;
-  padding: ${fromTheme('box-padding')};
-  ${(props) => {
-    if (props['is-a-tag']) {
-      return css`
-        &:hover,
-        &:focus {
-          box-shadow: ${fromTheme('box-link-hover-shadow')};
-        }
-        &:active {
-          box-shadow: ${fromTheme('box-link-active-shadow')};
-        }
-      ` /* eslint-disable-line indent */
+const classes = Object.freeze({
+  'is-a-tag': css`
+    &:hover,
+    &:focus {
+      box-shadow: ${fromTheme('box-link-hover-shadow')};
     }
-    return ''
-  }}
-`
+    &:active {
+      box-shadow: ${fromTheme('box-link-active-shadow')};
+    }
+  `,
+})
+
+export default (bulma_classes = [], more = '') => {
+  const extra = bulma_classes.reduce((acc, clas) => `${acc} ${classes[clas] || ''}`, '')
+  return css`
+    ${block}
+    background-color: ${fromTheme('box-background-color')};
+    border-radius: ${fromTheme('box-radius')};
+    box-shadow: ${fromTheme('box-shadow')};
+    color: ${fromTheme('box-color')};
+    display: block;
+    padding: ${fromTheme('box-padding')};
+    ${more}
+    ${extra}
+  `
+}
