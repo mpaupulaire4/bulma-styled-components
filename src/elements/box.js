@@ -27,7 +27,7 @@ const classes = Object.freeze({
 })
 
 export default (bulma_classes = [], more = '') => {
-  const extra = bulma_classes.reduce((acc, clas) => css`${acc} ${classes[clas] || ''}`, '')
+  const extra = bulma_classes.reduce((acc, clas) => css`${acc}${classes[clas] || ''}`, '')
   return css`
     ${block}
     background-color: ${fromTheme('box-background-color')};

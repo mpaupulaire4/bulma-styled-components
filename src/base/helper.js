@@ -1,251 +1,264 @@
-// // Float
+import { css } from 'styled-components'
+import { clearFix } from 'polished'
+import {
+  overlay,
+  mobile,
+  tablet,
+  touch,
+  desktop,
+  widescreen,
+  fullhd,
+  tablet_only,
+  widescreen_only,
+  desktop_only,
+} from '../utilities/mixins'
+import { fromTheme } from '../utilities/functions'
 
-// .is-clearfix
-//   +clearfix
+const helpers = {
+  // Float
+  'is-clearfix': clearFix(),
+  'is-pulled-left': 'float: left !important;',
+  'is-pulled-right': 'float: right !important;',
+  // Overflow
+  'is-clipped': 'overflow: hidden !important;',
 
-// .is-pulled-left
-//   float: left !important
+  // Overlay
 
-// .is-pulled-right
-//   float: right !important
+  'is-overlay': overlay(),
+}
 
-// // Overflow
 
-// .is-clipped
-//   overflow: hidden !important
+// Typography
 
-// // Overlay
+for (let x = 1; x < 8; x++) {
+  helpers[`is-size-${x}`] = css`
+    font-size: ${props => props.theme.sizes[index]};
+  `
+}
 
-// .is-overlay
-//   +overlay
+function responsiveType(target, tag) {
+  for (let x = 1; x < 8; x++) {
+    helpers[`is-size-${x}-${target}`] = tag(css`
+      font-size: ${props => props.theme.sizes[index]};
+    `)
+  }
+}
 
-// // Typography
+// Typography
+responsiveType('mobile', mobile)
+responsiveType('tablet', tablet)
+responsiveType('touch', touch)
+responsiveType('desktop', desktop)
+responsiveType('widescreen', widescreen)
+responsiveType('fullhd', fullhd)
 
-// =typography-size($target:'')
-//   @each $size in $sizes
-//     $i: index($sizes, $size)
-//     .is-size-#{$i}#{if($target == '', '', '-' + $target)}
-//       font-size: $size !important
+const alignments = {
+  'centered': 'center',
+  'justified': 'justify',
+  'left': 'left',
+  'right': 'right'
+}
 
-// +typography-size()
+Object.entries(alignments).forEach((entry) => {
+  helpers[`has-text-${entry[0]}`] = css`
+    text-align: ${entry[1]} !important;
+  `
+})
 
-// +mobile
-//   +typography-size('mobile')
+Object.entries(alignments).forEach((entry) => {
+  helpers[`has-text-${entry[0]}-mobile`] = mobile(css`
+    text-align: ${entry[1]} !important;
+  `)
+  helpers[`has-text-${entry[0]}-tablet`] = tablet(css`
+    text-align: ${entry[1]} !important;
+  `)
+  helpers[`has-text-${entry[0]}-tablet-only`] = tablet_only(css`
+    text-align: ${entry[1]} !important;
+  `)
+  helpers[`has-text-${entry[0]}-touch`] = touch(css`
+    text-align: ${entry[1]} !important;
+  `)
+  helpers[`has-text-${entry[0]}-desktop`] = desktop(css`
+    text-align: ${entry[1]} !important;
+  `)
+  helpers[`has-text-${entry[0]}-desktop-only`] = desktop_only(css`
+    text-align: ${entry[1]} !important;
+  `)
+  helpers[`has-text-${entry[0]}-widescreen`] = widescreen(css`
+    text-align: ${entry[1]} !important;
+  `)
+  helpers[`has-text-${entry[0]}-widescreen-only`] = widescreen_only(css`
+    text-align: ${entry[1]} !important;
+  `)
+  helpers[`has-text-${entry[0]}-fullhd`] = fullhd(css`
+    text-align: ${entry[1]} !important;
+  `)
+})
 
-// +tablet
-//   +typography-size('tablet')
+.is-capitalized
+  text-transform: capitalize !important
 
-// +touch
-//   +typography-size('touch')
+.is-lowercase
+  text-transform: lowercase !important
 
-// +desktop
-//   +typography-size('desktop')
+.is-uppercase
+  text-transform: uppercase !important
 
-// +widescreen
-//   +typography-size('widescreen')
+.is-italic
+  font-style: italic !important
 
-// +fullhd
-//   +typography-size('fullhd')
+@each $name, $pair in $colors
+  $color: nth($pair, 1)
+  .has-text-#{$name}
+    color: $color !important
+  a.has-text-#{$name}
+    &:hover,
+    &:focus
+      color: darken($color, 10%) !important
+  .has-background-#{$name}
+    background-color: $color !important
 
-// $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'right': 'right')
+@each $name, $shade in $shades
+  .has-text-#{$name}
+    color: $shade !important
+  .has-background-#{$name}
+    background-color: $shade !important
 
-// @each $alignment, $text-align in $alignments
-//   .has-text-#{$alignment}
-//     text-align: #{$text-align} !important
+.has-text-weight-light
+  font-weight: $weight-light !important
+.has-text-weight-normal
+  font-weight: $weight-normal !important
+.has-text-weight-semibold
+  font-weight: $weight-semibold !important
+.has-text-weight-bold
+  font-weight: $weight-bold !important
 
-// @each $alignment, $text-align in $alignments
-//   +mobile
-//     .has-text-#{$alignment}-mobile
-//       text-align: #{$text-align} !important
-//   +tablet
-//     .has-text-#{$alignment}-tablet
-//       text-align: #{$text-align} !important
-//   +tablet-only
-//     .has-text-#{$alignment}-tablet-only
-//       text-align: #{$text-align} !important
-//   +touch
-//     .has-text-#{$alignment}-touch
-//       text-align: #{$text-align} !important
-//   +desktop
-//     .has-text-#{$alignment}-desktop
-//       text-align: #{$text-align} !important
-//   +desktop-only
-//     .has-text-#{$alignment}-desktop-only
-//       text-align: #{$text-align} !important
-//   +widescreen
-//     .has-text-#{$alignment}-widescreen
-//       text-align: #{$text-align} !important
-//   +widescreen-only
-//     .has-text-#{$alignment}-widescreen-only
-//       text-align: #{$text-align} !important
-//   +fullhd
-//     .has-text-#{$alignment}-fullhd
-//       text-align: #{$text-align} !important
+// Visibility
 
-// .is-capitalized
-//   text-transform: capitalize !important
+$displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
 
-// .is-lowercase
-//   text-transform: lowercase !important
+@each $display in $displays
+  .is-#{$display}
+    display: #{$display} !important
+  +mobile
+    .is-#{$display}-mobile
+      display: #{$display} !important
+  +tablet
+    .is-#{$display}-tablet
+      display: #{$display} !important
+  +tablet-only
+    .is-#{$display}-tablet-only
+      display: #{$display} !important
+  +touch
+    .is-#{$display}-touch
+      display: #{$display} !important
+  +desktop
+    .is-#{$display}-desktop
+      display: #{$display} !important
+  +desktop-only
+    .is-#{$display}-desktop-only
+      display: #{$display} !important
+  +widescreen
+    .is-#{$display}-widescreen
+      display: #{$display} !important
+  +widescreen-only
+    .is-#{$display}-widescreen-only
+      display: #{$display} !important
+  +fullhd
+    .is-#{$display}-fullhd
+      display: #{$display} !important
 
-// .is-uppercase
-//   text-transform: uppercase !important
+.is-hidden
+  display: none !important
 
-// .is-italic
-//   font-style: italic !important
++mobile
+  .is-hidden-mobile
+    display: none !important
 
-// @each $name, $pair in $colors
-//   $color: nth($pair, 1)
-//   .has-text-#{$name}
-//     color: $color !important
-//   a.has-text-#{$name}
-//     &:hover,
-//     &:focus
-//       color: darken($color, 10%) !important
-//   .has-background-#{$name}
-//     background-color: $color !important
++tablet
+  .is-hidden-tablet
+    display: none !important
 
-// @each $name, $shade in $shades
-//   .has-text-#{$name}
-//     color: $shade !important
-//   .has-background-#{$name}
-//     background-color: $shade !important
++tablet-only
+  .is-hidden-tablet-only
+    display: none !important
 
-// .has-text-weight-light
-//   font-weight: $weight-light !important
-// .has-text-weight-normal
-//   font-weight: $weight-normal !important
-// .has-text-weight-semibold
-//   font-weight: $weight-semibold !important
-// .has-text-weight-bold
-//   font-weight: $weight-bold !important
++touch
+  .is-hidden-touch
+    display: none !important
 
-// // Visibility
++desktop
+  .is-hidden-desktop
+    display: none !important
 
-// $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
++desktop-only
+  .is-hidden-desktop-only
+    display: none !important
 
-// @each $display in $displays
-//   .is-#{$display}
-//     display: #{$display} !important
-//   +mobile
-//     .is-#{$display}-mobile
-//       display: #{$display} !important
-//   +tablet
-//     .is-#{$display}-tablet
-//       display: #{$display} !important
-//   +tablet-only
-//     .is-#{$display}-tablet-only
-//       display: #{$display} !important
-//   +touch
-//     .is-#{$display}-touch
-//       display: #{$display} !important
-//   +desktop
-//     .is-#{$display}-desktop
-//       display: #{$display} !important
-//   +desktop-only
-//     .is-#{$display}-desktop-only
-//       display: #{$display} !important
-//   +widescreen
-//     .is-#{$display}-widescreen
-//       display: #{$display} !important
-//   +widescreen-only
-//     .is-#{$display}-widescreen-only
-//       display: #{$display} !important
-//   +fullhd
-//     .is-#{$display}-fullhd
-//       display: #{$display} !important
++widescreen
+  .is-hidden-widescreen
+    display: none !important
 
-// .is-hidden
-//   display: none !important
++widescreen-only
+  .is-hidden-widescreen-only
+    display: none !important
 
-// +mobile
-//   .is-hidden-mobile
-//     display: none !important
++fullhd
+  .is-hidden-fullhd
+    display: none !important
 
-// +tablet
-//   .is-hidden-tablet
-//     display: none !important
+.is-invisible
+  visibility: hidden !important
 
-// +tablet-only
-//   .is-hidden-tablet-only
-//     display: none !important
++mobile
+  .is-invisible-mobile
+    visibility: hidden !important
 
-// +touch
-//   .is-hidden-touch
-//     display: none !important
++tablet
+  .is-invisible-tablet
+    visibility: hidden !important
 
-// +desktop
-//   .is-hidden-desktop
-//     display: none !important
++tablet-only
+  .is-invisible-tablet-only
+    visibility: hidden !important
 
-// +desktop-only
-//   .is-hidden-desktop-only
-//     display: none !important
++touch
+  .is-invisible-touch
+    visibility: hidden !important
 
-// +widescreen
-//   .is-hidden-widescreen
-//     display: none !important
++desktop
+  .is-invisible-desktop
+    visibility: hidden !important
 
-// +widescreen-only
-//   .is-hidden-widescreen-only
-//     display: none !important
++desktop-only
+  .is-invisible-desktop-only
+    visibility: hidden !important
 
-// +fullhd
-//   .is-hidden-fullhd
-//     display: none !important
++widescreen
+  .is-invisible-widescreen
+    visibility: hidden !important
 
-// .is-invisible
-//   visibility: hidden !important
++widescreen-only
+  .is-invisible-widescreen-only
+    visibility: hidden !important
 
-// +mobile
-//   .is-invisible-mobile
-//     visibility: hidden !important
++fullhd
+  .is-invisible-fullhd
+    visibility: hidden !important
 
-// +tablet
-//   .is-invisible-tablet
-//     visibility: hidden !important
+// Other
 
-// +tablet-only
-//   .is-invisible-tablet-only
-//     visibility: hidden !important
+.is-marginless
+  margin: 0 !important
 
-// +touch
-//   .is-invisible-touch
-//     visibility: hidden !important
+.is-paddingless
+  padding: 0 !important
 
-// +desktop
-//   .is-invisible-desktop
-//     visibility: hidden !important
+.is-radiusless
+  border-radius: 0 !important
 
-// +desktop-only
-//   .is-invisible-desktop-only
-//     visibility: hidden !important
+.is-shadowless
+  box-shadow: none !important
 
-// +widescreen
-//   .is-invisible-widescreen
-//     visibility: hidden !important
-
-// +widescreen-only
-//   .is-invisible-widescreen-only
-//     visibility: hidden !important
-
-// +fullhd
-//   .is-invisible-fullhd
-//     visibility: hidden !important
-
-// // Other
-
-// .is-marginless
-//   margin: 0 !important
-
-// .is-paddingless
-//   padding: 0 !important
-
-// .is-radiusless
-//   border-radius: 0 !important
-
-// .is-shadowless
-//   box-shadow: none !important
-
-// .is-unselectable
-//   +unselectable
+.is-unselectable
+  +unselectable

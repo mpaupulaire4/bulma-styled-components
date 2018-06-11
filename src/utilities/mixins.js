@@ -1,15 +1,11 @@
 import { css } from 'styled-components'
-import { clearFix as ClearFix, rgba } from 'polished'
+import { rgba } from 'polished'
 import { spinAround } from './animations'
 import { fromTheme } from './functions'
 
 function fromThemeToRGBA(key, opacity = 1) {
   return props => rgba(props.theme[key], opacity)
 }
-
-export const clearFix = css`
-  ${ClearFix()}
-`
 
 export function center(width, height = 0) {
   if (height) {
