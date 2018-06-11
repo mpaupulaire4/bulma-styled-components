@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import { rgba } from 'polished'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
 import { fromTheme } from '../utilities/functions'
@@ -7,10 +8,10 @@ Vars.addDerivedDefault(vars => ({
   'box-color': vars['text'],
   'box-background-color': vars['white'],
   'box-radius': vars['radius-large'],
-  'box-shadow': `0 2px 3px rgba(${vars['black']}, 0.1), 0 0 0 1px rgba(${vars['black']}, 0.1)`,
+  'box-shadow': `0 2px 3px ${rgba(vars['black'], 0.1)}, 0 0 0 1px ${rgba(vars['black'], 0.1)}`,
   'box-padding': '1.25rem',
-  'box-link-hover-shadow': `0 2px 3px rgba(${vars['black']}, 0.1), 0 0 0 1px ${vars['link']}`,
-  'box-link-active-shadow': `inset 0 1px 2px rgba(${vars['black']}, 0.2), 0 0 0 1px ${vars['link']}`,
+  'box-link-hover-shadow': `0 2px 3px ${rgba(vars['black'], 0.1)}, 0 0 0 1px ${vars['link']}`,
+  'box-link-active-shadow': `inset 0 1px 2px ${rgba(vars['black'], 0.2)}, 0 0 0 1px ${vars['link']}`,
 }))
 
 const classes = Object.freeze({
@@ -26,7 +27,7 @@ const classes = Object.freeze({
 })
 
 export default (bulma_classes = [], more = '') => {
-  const extra = bulma_classes.reduce((acc, clas) => `${acc} ${classes[clas] || ''}`, '')
+  const extra = bulma_classes.reduce((acc, clas) => css`${acc} ${classes[clas] || ''}`, '')
   return css`
     ${block}
     background-color: ${fromTheme('box-background-color')};

@@ -18,10 +18,10 @@ storiesOf('Box', module)
   })
   .add('As link', () => {
     const Box = styled.a`
-      ${box()}
+      ${box(['is-a-tag'])}
     `
     return (
-      <Box is-a-tag href="">
+      <Box href="">
         hey hey
       </Box>
     )

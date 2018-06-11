@@ -1,30 +1,31 @@
+import { hsl } from 'polished'
 /* eslint-disable dot-notation, quote-props, key-spacing */
 
 export default Object.freeze({
   // Colors
 
-  'black':        'hsl(0, 0%, 4%)',
-  'black-bis':    'hsl(0, 0%, 7%)',
-  'black-ter':    'hsl(0, 0%, 14%)',
+  'black':        hsl(0, 0, 0.04),
+  'black-bis':    hsl(0, 0, 0.07),
+  'black-ter':    hsl(0, 0, 0.14),
 
-  'grey-darker':  'hsl(0, 0%, 21%)',
-  'grey-dark':    'hsl(0, 0%, 29%)',
-  'grey':         'hsl(0, 0%, 48%)',
-  'grey-light':   'hsl(0, 0%, 71%)',
-  'grey-lighter': 'hsl(0, 0%, 86%)',
+  'grey-darker':  hsl(0, 0, 0.21),
+  'grey-dark':    hsl(0, 0, 0.29),
+  'grey':         hsl(0, 0, 0.48),
+  'grey-light':   hsl(0, 0, 0.71),
+  'grey-lighter': hsl(0, 0, 0.86),
 
-  'white-ter':    'hsl(0, 0%, 96%)',
-  'white-bis':    'hsl(0, 0%, 98%)',
-  'white':        'hsl(0, 0%, 100%)',
+  'white-ter':    hsl(0, 0, 0.96),
+  'white-bis':    hsl(0, 0, 0.98),
+  'white':        hsl(0, 0, 1),
 
-  'orange':       'hsl(14,  100%, 53%)',
-  'yellow':       'hsl(48,  100%, 67%)',
-  'green':        'hsl(141, 71%,  48%)',
-  'turquoise':    'hsl(171, 100%, 41%)',
-  'cyan':         'hsl(204, 86%,  53%)',
-  'blue':         'hsl(217, 71%,  53%)',
-  'purple':       'hsl(271, 100%, 71%)',
-  'red':          'hsl(348, 100%, 61%)',
+  'orange':       hsl(14, 1, 0.53),
+  'yellow':       hsl(48, 1, 0.67),
+  'green':        hsl(141, 0.71, 0.48),
+  'turquoise':    hsl(171, 1, 0.41),
+  'cyan':         hsl(204, 0.86, 0.53),
+  'blue':         hsl(217, 0.71, 0.53),
+  'purple':       hsl(271, 1, 0.71),
+  'red':          hsl(348, 1, 0.61),
 
   // Typography
 

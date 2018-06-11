@@ -1,7 +1,11 @@
 import { css } from 'styled-components'
-import { clearFix as ClearFix } from 'polished'
+import { clearFix as ClearFix, rgba } from 'polished'
 import { spinAround } from './animations'
 import { fromTheme } from './functions'
+
+function fromThemeToRGBA(key, opacity = 1) {
+  return props => rgba(props.theme[key], opacity)
+}
 
 export const clearFix = css`
   ${ClearFix()}
@@ -66,7 +70,7 @@ export function hamburger(dimensions) {
       }
     }
     &:hover {
-      background-color: rgba(black, 0.05);
+      background-color: ${rgba('black', 0.05)};
     }
   `
 }
@@ -248,7 +252,7 @@ export const block = css`
 export const Delete = css`
   ${unselectable}
   appearance: none;
-  background-color: rgba( ${fromTheme('black')} , 0.2);
+  background-color: ${fromThemeToRGBA('black', 0.2)};
   border: none;
   border-radius: ${fromTheme('radius-rounded')};
   cursor: pointer;
@@ -287,10 +291,10 @@ export const Delete = css`
   }
   &:hover,
   &:focus {
-    background-color: rgba( ${fromTheme('black')}, 0.3);
+    background-color: ${fromThemeToRGBA('black', 0.3)};
   }
   &:active {
-    background-color: rgba( ${fromTheme('black')}, 0.4);
+    background-color: ${fromThemeToRGBA('black', 0.4)};
   }
   /* Sizes */
   ${(props) => {
