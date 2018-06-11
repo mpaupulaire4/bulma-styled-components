@@ -3,8 +3,11 @@ import minireset from './minireset'
 import getGeneric from './generic'
 
 export default function applyBase(vars) {
-  return injectGlobal`
+  /* eslint-disable  no-unused-expressions */
+  injectGlobal`
     ${minireset}
     ${getGeneric(vars)}
   `
+  /* eslint-enable  no-unused-expressions */
+  return vars
 }
