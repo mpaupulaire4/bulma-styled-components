@@ -14,8 +14,16 @@ Vars.addDerivedDefault(vars => ({
   'box-link-active-shadow': `inset 0 1px 2px ${rgba(vars['black'], 0.2)}, 0 0 0 1px ${vars['link']}`,
 }))
 
-const classes = Object.freeze({
-  'is-a-tag': css`
+export default (bulma_classes, more = '') => css`
+  ${block}
+  background-color: ${fromTheme('box-background-color')};
+  border-radius: ${fromTheme('box-radius')};
+  box-shadow: ${fromTheme('box-shadow')};
+  color: ${fromTheme('box-color')};
+  display: block;
+  padding: ${fromTheme('box-padding')};
+  ${more}
+  a& {
     &:hover,
     &:focus {
       box-shadow: ${fromTheme('box-link-hover-shadow')};
@@ -23,20 +31,5 @@ const classes = Object.freeze({
     &:active {
       box-shadow: ${fromTheme('box-link-active-shadow')};
     }
-  `,
-})
-
-export default (bulma_classes = [], more = '') => {
-  const extra = bulma_classes.reduce((acc, clas) => css`${acc}${classes[clas] || ''}`, '')
-  return css`
-    ${block}
-    background-color: ${fromTheme('box-background-color')};
-    border-radius: ${fromTheme('box-radius')};
-    box-shadow: ${fromTheme('box-shadow')};
-    color: ${fromTheme('box-color')};
-    display: block;
-    padding: ${fromTheme('box-padding')};
-    ${more}
-    ${extra}
-  `
-}
+  }
+`
