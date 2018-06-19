@@ -1,8 +1,9 @@
-import { getLuminance } from 'polished'
+import { css } from 'styled-components'
+import { getLuminance, rgba } from 'polished'
 
 
 export function findColorInvert($color) {
-  if (getLuminance($color) > 0.55) return 'rgba(#000, 0.7)'
+  if (getLuminance($color) > 0.55) return rgba('#000', 0.7)
   return '#fff'
 }
 
@@ -48,4 +49,8 @@ export function mergeColorMaps(bulmaColors = {}, customColors = {}) {
 
 export function fromTheme(key) {
   return props => props.theme[key]
+}
+
+export function reduceToCSS(array = [], classes = {}) {
+  return array.reduce((acc, clas) => css`${acc}${classes[clas] || ''}`, '')
 }

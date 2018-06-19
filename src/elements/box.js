@@ -14,7 +14,7 @@ Vars.addDerivedDefault(vars => ({
   'box-link-active-shadow': `inset 0 1px 2px ${rgba(vars['black'], 0.2)}, 0 0 0 1px ${vars['link']}`,
 }))
 
-export default (bulma_classes, more = '') => css`
+export default (more = '') => css`
   ${block}
   background-color: ${fromTheme('box-background-color')};
   border-radius: ${fromTheme('box-radius')};

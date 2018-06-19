@@ -175,7 +175,7 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
 
-"@storybook/addon-actions@3.4.7":
+"@storybook/addon-actions@3.4.7", "@storybook/addon-actions@^3.4.7":
   version "3.4.7"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.4.7.tgz#35e1345d1377e1264f11e319fc06737244c5a23f"
   dependencies:
@@ -198,6 +198,12 @@
     babel-runtime "^6.26.0"
     global "^4.3.2"
     prop-types "^15.6.1"
+
+"@storybook/addon-options@^3.4.7":
+  version "3.4.7"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-options/-/addon-options-3.4.7.tgz#0ab917e430fc7f9edc71529a81e3c5b7c1b94871"
+  dependencies:
+    babel-runtime "^6.26.0"
 
 "@storybook/addons@3.4.7":
   version "3.4.7"

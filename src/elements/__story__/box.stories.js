@@ -5,24 +5,24 @@ import { storiesOf } from '@storybook/react'
 import styled from 'styled-components'
 import box from '../box'
 
-storiesOf('Box', module)
+storiesOf('Elements/Box', module)
   .add('Default', () => {
     const Box = styled.div`
       ${box([])}
     `
     return (
-      <Box >
-        hey hey
+      <Box>
+        Just a Box
       </Box>
     )
   })
   .add('As link', () => {
     const Box = styled.a`
-      ${box(['is-a-tag'])}
+      ${box()}
     `
     return (
       <Box href="">
-        hey hey
+        Just a Box as a Link
       </Box>
     )
   })
