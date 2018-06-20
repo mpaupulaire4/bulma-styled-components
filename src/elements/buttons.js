@@ -1,9 +1,11 @@
+/* stylelint-disable no-descending-specificity */
 import styled, { css } from 'styled-components'
 import { rgba, darken } from 'polished'
 import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
 import { unselectable, loader, center } from '../utilities/mixins'
 import { control } from '../utilities/controls'
+import Icon from './icon'
 
 Vars.addDerivedDefault(vars => ({
   'button-color': vars['grey-darker'],
@@ -151,7 +153,7 @@ export const Button = styled.button`
   strong {
     color: inherit;
   }
-  .icon {
+  ${Icon} { /* stylelint-disable-line */
     &,
     &.is-small,
     &.is-medium,
@@ -266,7 +268,7 @@ export const buttons = css`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  ${Button} { /* stylelint-disable-line */
+  ${Button} {  /* stylelint-disable-line */
     margin-bottom: 0.5rem;
     &:not(:last-child) {
       margin-right: 0.5rem;
