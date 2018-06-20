@@ -5,16 +5,10 @@ export default class VarCalculator {
   static _defaults = []
   static _derived = []
 
-  static getVariables = (overrides) => {
-    const variables = VarCalculator._defaults.reduce((vars, def) => ({
-      ...def,
-      ...vars,
-    }), getVariables(overrides))
-    return VarCalculator._derived.reduce((vars, der) => ({
-      ...(der(vars)),
-      ...vars,
-    }), variables)
-  }
+  static getVariables = overrides => VarCalculator._derived.reduce((vars, der) => ({
+    ...(der(vars)),
+    ...vars,
+  }), getVariables(overrides))
 
   static addDefault(obj) {
     VarCalculator._defaults.push(obj)

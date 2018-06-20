@@ -51,6 +51,10 @@ export function fromTheme(key) {
   return props => props.theme[key]
 }
 
+export function fromThemeToRGBA(key, opacity = 1) {
+  return props => rgba(props.theme[key], opacity)
+}
+
 export function reduceToCSS(array = [], classes = {}) {
   return array.reduce((acc, clas) => css`${acc}${classes[clas] || ''}`, '')
 }

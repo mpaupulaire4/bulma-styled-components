@@ -261,7 +261,7 @@ export const Button = styled.button`
 `
 Button.defaultProps = defaultProps
 
-export const Buttons = styled.div`
+export const buttons = css`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -318,4 +318,5 @@ export const Buttons = styled.div`
     justify-content: flex-end;
   }
 `
+export const Buttons = styled.div`${buttons}`
 Buttons.defaultProps = defaultProps
