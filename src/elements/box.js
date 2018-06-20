@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
@@ -14,7 +14,7 @@ Vars.addDerivedDefault(vars => ({
   'box-link-active-shadow': `inset 0 1px 2px ${rgba(vars['black'], 0.2)}, 0 0 0 1px ${vars['link']}`,
 }))
 
-export default (more = '') => css`
+export const box = css`
   ${block}
   background-color: ${fromTheme('box-background-color')};
   border-radius: ${fromTheme('box-radius')};
@@ -22,7 +22,6 @@ export default (more = '') => css`
   color: ${fromTheme('box-color')};
   display: block;
   padding: ${fromTheme('box-padding')};
-  ${more}
   a& {
     &:hover,
     &:focus {
@@ -33,3 +32,9 @@ export default (more = '') => css`
     }
   }
 `
+
+const Box = styled.div`${box}`
+Box.defaultProps = {
+  theme: Vars.getVariables(),
+}
+export default Box
