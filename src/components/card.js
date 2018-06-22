@@ -22,7 +22,7 @@ Vars.addDerivedDefault(vars => ({
 }))
 
 
-export const Card = styled.div`
+const Card = styled.div`
   background-color: ${fromTheme('card-background-color')};
   box-shadow: ${fromTheme('card-shadow')};
   color: ${fromTheme('card-color')};
@@ -32,6 +32,7 @@ export const Card = styled.div`
     margin-bottom: 0.75rem
   }
 `
+export default Card
 
 export const CardHeader = styled.header`
   background-color: ${fromTheme('card-header-background-color')};
@@ -39,6 +40,7 @@ export const CardHeader = styled.header`
   box-shadow: ${fromTheme('card-header-shadow')};
   display: flex;
 `
+Card.Header = CardHeader
 
 export const CardHeaderTitle = styled.p`
   align-items: center;
@@ -51,6 +53,7 @@ export const CardHeaderTitle = styled.p`
     justify-content: center;
   }
 `
+Card.Header.Title = CardHeaderTitle
 
 export const CardHeaderIcon = styled.div`
   align-items: center;
@@ -59,23 +62,29 @@ export const CardHeaderIcon = styled.div`
   justify-content: center;
   padding: 0.75rem;
 `
+Card.Header.Icon = CardHeaderIcon
 
 export const CardImage = styled.div`
   display: block;
   position: relative;
 `
+Card.Image = CardImage
 
 export const CardContent = styled.div`
   background-color: ${fromTheme('card-content-background-color')};
   padding: 1.5rem;
 `
+Card.Content = CardContent
+
 export const CardFooter = styled.footer`
   background-color: ${fromTheme('card-footer-background-color')};
   border-top: ${fromTheme('card-footer-border-top')};
   align-items: stretch;
   display: flex;
 `
-export const CardFooterItem = styled.div`
+Card.Footer = CardFooter
+
+export const CardFooterItem = styled.span`
   align-items: center;
   display: flex;
   flex-basis: 0;
@@ -87,3 +96,4 @@ export const CardFooterItem = styled.div`
     border-right: ${fromTheme('card-footer-border-top')};
   }
 `
+Card.Footer.Item = CardFooterItem
