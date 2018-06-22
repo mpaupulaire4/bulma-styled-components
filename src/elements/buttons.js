@@ -44,7 +44,7 @@ Vars.addDerivedDefault(vars => ({
 
 const defaultProps = { theme: Vars.getVariables() }
 
-const colorClass = props => Object.entries(props.theme.colors).reduce((acc, [name, [color, color_invert]]) => css`
+const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [name, [color, color_invert]]) => css`
   ${acc}
   &.is-${name} {
     /* Colors */
@@ -216,7 +216,7 @@ export const Button = styled.button`
       box-shadow: ${fromTheme('button-focus-box-shadow-size')} ${fromTheme('button-focus-box-shadow-color')};
     }
   }
-  ${colorClass}
+  ${colorClasses}
   /* Sizes */
   &.is-small {
     border-radius: ${fromTheme('radius-small')};
