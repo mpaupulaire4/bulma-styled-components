@@ -72,6 +72,5 @@ export const MenuLabel = styled.p`
     margin-bottom: 1em;
   }
 `
-
 Menu.Label = MenuLabel
 
