@@ -3,7 +3,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Delete from '../delete'
 
-storiesOf('Elements/', module)
+storiesOf('Elements', module)
   .add('Delete', () => (
     <div>
       Just a little delete button

@@ -3,7 +3,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Progress from '../progress'
 
-storiesOf('Elements/', module)
+storiesOf('Elements', module)
   .add('Progress', () => (
     <div>
       Sizes

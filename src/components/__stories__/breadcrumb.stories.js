@@ -3,7 +3,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Breadcrumb from '../breadcrumb'
 
-storiesOf('Elements/', module)
+storiesOf('Elements', module)
   .add('Breadcrumb', () => (
     <div>
       <Breadcrumb >

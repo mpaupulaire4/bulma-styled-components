@@ -19,7 +19,7 @@ const colors = [
   'danger',
 ]
 
-storiesOf('Elements/', module)
+storiesOf('Elements', module)
   .add('Tag', () => (
     <div>
       <h1>Tag</h1>

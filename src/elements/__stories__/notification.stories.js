@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react'
 import Notification from '../notification'
 import Delete from '../delete'
 
-storiesOf('Elements/', module)
+storiesOf('Elements', module)
   .add('Notification', () => (
     <div>
       <Notification >

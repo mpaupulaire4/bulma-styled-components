@@ -5,14 +5,14 @@ import Box from '../box'
 
 const Link = Box.withComponent('a')
 
-storiesOf('Elements/Box', module)
-  .add('Default', () => (
-    <Box>
-      Just a Box
-    </Box>
-  ))
-  .add('As link', () => (
-    <Link href="/">
-      Just a Box as a Link
-    </Link>
+storiesOf('Elements', module)
+  .add('Box', () => (
+    <div>
+      <Box>
+        Just a Box
+      </Box>
+      <Link href="/">
+        Just a Box as a Link
+      </Link>
+    </div>
   ))
