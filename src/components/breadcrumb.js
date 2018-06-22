@@ -48,7 +48,7 @@ const Breadcrumb = styled.nav`
     }
     & + li::before {
       color: ${fromTheme('breadcrumb-item-separator-color')};
-      content: "\0002f";
+      content: "\u002f";
     }
   }
   ul,
@@ -58,7 +58,7 @@ const Breadcrumb = styled.nav`
     flex-wrap: wrap;
     justify-content: flex-start;
   }
-  ${Icon} {
+  ${Icon} { /* stylelint-disable-line */
     &:first-child {
       margin-right: 0.5em;
     }
@@ -92,22 +92,22 @@ const Breadcrumb = styled.nav`
   /* Styles */
   &.has-arrow-separator {
     li + li::before {
-      content: "\02192";
+      content: "\u2192";
     }
   }
   &.has-bullet-separator {
     li + li::before {
-      content: "\02022";
+      content: "\u2022";
     }
   }
   &.has-dot-separator {
     li + li::before {
-      content: "\000b7";
+      content: "\u00b7";
     }
   }
   &.has-succeeds-separator {
     li + li::before {
-      content: "\0227B";
+      content: "\u227B";
     }
   }
 `

@@ -10,7 +10,7 @@ setOptions({
   name: 'Bulma Styled',
   hierarchySeparator: /\//
 })
-const elements = require.context('../src/elements', true, /\.stories\.js$/)
+const elements = require.context('../src', true, /\.stories\.js$/)
 
 const Container = styled.div`
   padding: 15px;
