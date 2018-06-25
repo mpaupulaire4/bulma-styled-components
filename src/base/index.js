@@ -1,13 +1,41 @@
-import { injectGlobal } from 'styled-components'
+import React from 'react'
+import styled, { injectGlobal, ThemeProvider } from 'styled-components'
+import Vars from '../utilities/vars'
 import minireset from './minireset'
 import getGeneric from './generic'
+import Helpers from './helper'
 
-export default function applyBase(vars) {
-  /* eslint-disable  no-unused-expressions */
-  injectGlobal`
-    ${minireset}
-    ${getGeneric(vars)}
-  `
-  /* eslint-enable  no-unused-expressions */
-  return vars
+const BulmaStyledContainer = styled.div`
+  ${Helpers}
+`
+
+class BulmaStyledTheme extends React.PureComponent {
+  static propTypes = {
+    overrides: () => {},
+  }
+
+  static defaultProps = {
+    overrides: {},
+  }
+
+  componentWillMount() {
+    this.vars = Vars.getVariables(this.props.overrides)
+    return injectGlobal`
+      ${minireset}
+      ${getGeneric(this.vars)}
+    `
+  }
+
+  vars = Vars.getVariables();
+
+  render() {
+    const { overrides, ...props } = this.props
+    return (
+      <ThemeProvider theme={this.vars}>
+        <BulmaStyledContainer {...props} />
+      </ThemeProvider>
+    )
+  }
 }
+
+export default BulmaStyledTheme

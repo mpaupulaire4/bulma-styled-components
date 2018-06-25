@@ -1,6 +1,10 @@
 /*! minireset.css v0.0.3 | MIT License | github.com/jgthms/minireset.css */
 /* eslint-disable no-unused-expressions */
+
 export default `
+  html {
+    box-sizing: border-box;
+  }
   /* Blocks */
   html,
   body,
@@ -54,9 +58,6 @@ export default `
   }
 
   /* Box sizing */
-  html {
-    box-sizing: border-box;
-  }
 
   * {
     &,
