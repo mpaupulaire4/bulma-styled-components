@@ -89,7 +89,7 @@ const Level = styled.div`
     ${LevelLeft} + ${LevelRight} { /* stylelint-disable-line */
       margin-top: 0;
     }
-    .level-item {
+    ${LevelItem} { /* stylelint-disable-line */
       &:not(:last-child) {
         margin-bottom: 0;
       }
