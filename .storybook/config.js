@@ -2,7 +2,7 @@ import React from 'react'
 import { configure, addDecorator } from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
 import styled, { ThemeProvider } from 'styled-components'
-import BulmaStyled from '../src/base'
+import BulmaStyledTheme from '../src/base'
 
 setOptions({
   name: 'Bulma Styled',
@@ -15,11 +15,11 @@ const Container = styled.div`
 `
 const ThemeDecorator = (story) => {
   return (
-    <BulmaStyled >
+    <BulmaStyledTheme >
       <Container>
         {story()}
       </Container>
-    </BulmaStyled>
+    </BulmaStyledTheme>
   )
 }
 addDecorator(ThemeDecorator);

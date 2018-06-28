@@ -1,12 +1,17 @@
-var path = require('path');
+const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bulma-styled-components.js',
+    filename: 'index.js',
     library: 'BulmaStyled',
   },
+  mode: 'production',
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+  ],
   externals: {
     react: {
       commonjs: 'react',

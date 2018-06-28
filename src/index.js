@@ -1,3 +1,5 @@
+import BulmaStyledTheme from './base'
+
 export {
-  default as BulmaStyledTheme,
-} from './base'
+  BulmaStyledTheme,
+}
