@@ -8,6 +8,7 @@ module.exports = {
     filename: 'index.js',
     library: 'BulmaStyled',
   },
+  devtool: 'source-map',
   mode: 'production',
   plugins: [
     new CleanWebpackPlugin(['dist']),
