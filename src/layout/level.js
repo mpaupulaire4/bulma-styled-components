@@ -5,6 +5,7 @@ import {
   mobile,
 } from '../utilities/mixins'
 import { fromTheme } from '../utilities/functions'
+import { Title, Subtitle } from '../elements/title'
 
 export const LevelItem = styled.div`
   align-items: center;
@@ -13,10 +14,10 @@ export const LevelItem = styled.div`
   flex-grow: 0;
   flex-shrink: 0;
   justify-content: center;
-  .title,
-  .subtitle {
+  ${Title}, ${Subtitle} { /* stylelint-disable-line */
     margin-bottom: 0;
   }
+
   /* Responsiveness */
   ${mobile`
     &:not(:last-child) {
