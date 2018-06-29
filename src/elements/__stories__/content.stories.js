@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Content from '../content'
+import { Content } from '../'
 
 storiesOf('Elements', module)
   .add('Content', () => (

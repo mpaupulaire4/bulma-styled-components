@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Progress from '../progress'
+import { Progress } from '../'
 
 storiesOf('Elements', module)
   .add('Progress', () => (

@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Notification from '../notification'
-import Delete from '../delete'
+import { Notification, Delete } from '../'
 
 storiesOf('Elements', module)
   .add('Notification', () => (

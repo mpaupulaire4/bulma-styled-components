@@ -2,7 +2,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import { Button, Buttons } from '../buttons'
+import { Button, Buttons } from '../'
 
 const events = {
   onClick: action('clicked'),

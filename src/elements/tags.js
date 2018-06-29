@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { darken } from 'polished'
 import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
-import Delete from './delete'
+import { Delete, Icon } from './'
 
 
 Vars.addDerivedDefault(vars => ({
@@ -49,7 +49,7 @@ export const Tag = styled.span`
   &.is-large {
     font-size: ${fromTheme('size-medium')};
   }
-  .icon {
+  ${Icon} { /* stylelint-disable-line */
     &:first-child:not(:last-child) {
       margin-left: -0.375em;
       margin-right: 0.1875em;

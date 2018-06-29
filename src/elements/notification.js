@@ -3,8 +3,7 @@ import styled, { css } from 'styled-components'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
 import { fromTheme } from '../utilities/functions'
-import { Button } from './buttons'
-import Delete from './delete'
+import { Button, Delete, Title, Subtitle, Content } from './'
 
 Vars.addDerivedDefault(vars => ({
   'notification-background-color': vars['background'],
@@ -20,7 +19,7 @@ const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [n
   }
 `, '')
 
-const Notification = styled.div`
+export const Notification = styled.div`
   ${block}
   background-color: ${fromTheme('notification-background-color')};
   border-radius: ${fromTheme('notification-radius')};
@@ -45,12 +44,10 @@ const Notification = styled.div`
     right: 0.5rem;
     top: 0.5rem;
   }
-  .title,
-  .subtitle,
-  .content {
+  ${Title},
+  ${Subtitle},
+  ${Content} {
     color: currentColor;
   }
   ${colorClasses}
 `
-
-export default Notification

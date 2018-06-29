@@ -27,7 +27,7 @@ Vars.addDerivedDefault(vars => ({
 
 const defaultProps = { theme: Vars.getVariables() }
 
-export const content = css`
+export const ContentStyle = css`
   ${block}
   /* Inline */
   li + li {
@@ -190,7 +190,5 @@ export const content = css`
   }
 `
 
-const Content = styled.div`${content}`
+export const Content = styled.div`${ContentStyle}`
 Content.defaultProps = defaultProps
-
-export default Content

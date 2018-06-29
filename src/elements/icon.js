@@ -9,7 +9,7 @@ Vars.addDerivedDefault(() => ({
   'icon-dimensions-large': '3rem',
 }))
 
-const Icon = styled.span`
+export const Icon = styled.span`
   align-items: center;
   display: inline-flex;
   justify-content: center;
@@ -29,4 +29,3 @@ const Icon = styled.span`
     width: ${fromTheme('icon-dimensions-large')};
   }
 `
-export default Icon

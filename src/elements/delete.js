@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { fromTheme, fromThemeToRGBA } from '../utilities/functions'
 import { unselectable } from '../utilities/mixins'
 
-export const _delete = css`
+export const DeleteStyle = css`
   ${unselectable}
   appearance: none;
   background-color: ${fromThemeToRGBA('black', 0.2)};
@@ -75,5 +75,4 @@ export const _delete = css`
     width: 32px;
   }
 `
-const Delete = styled.button`${_delete}`
-export default Delete
+export const Delete = styled.button`${DeleteStyle}`

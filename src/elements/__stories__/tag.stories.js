@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { Tag, Tags } from '../tags'
-import Delete from '../delete'
+import { Tag, Tags, Delete } from '../'
 
 const Link = Tag.withComponent('a')
 
@@ -42,7 +41,7 @@ storiesOf('Elements', module)
       <h1>colors</h1>
       <Tags>
         {colors.map(color => (
-          <Tag className={`is-${color}`} >
+          <Tag key={`${color}-color`} className={`is-${color}`} >
             {color}
           </Tag>
         ))}
@@ -50,7 +49,7 @@ storiesOf('Elements', module)
       <h1>With Delete</h1>
       <Tags>
         {colors.map(color => (
-          <Tag className={`is-${color}`} >
+          <Tag key={`${color}-delete`} className={`is-${color}`} >
             {color}
             <Delete className="is-small" />
           </Tag>

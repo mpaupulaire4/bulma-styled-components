@@ -5,7 +5,7 @@ import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
 import { unselectable, loader, center } from '../utilities/mixins'
 import { control } from '../utilities/controls'
-import Icon from './icon'
+import { Icon } from './'
 
 Vars.addDerivedDefault(vars => ({
   'button-color': vars['grey-darker'],
@@ -263,7 +263,7 @@ export const Button = styled.button`
 `
 Button.defaultProps = defaultProps
 
-export const buttons = css`
+export const ButtonsStyle = css`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -320,5 +320,5 @@ export const buttons = css`
     justify-content: flex-end;
   }
 `
-export const Buttons = styled.div`${buttons}`
+export const Buttons = styled.div`${ButtonsStyle}`
 Buttons.defaultProps = defaultProps

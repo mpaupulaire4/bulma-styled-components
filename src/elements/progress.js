@@ -24,7 +24,7 @@ const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [n
   }
 `, '')
 
-const Progress = styled.progress`
+export const Progress = styled.progress`
   ${block}
   appearance: none;
   border: none;
@@ -60,5 +60,3 @@ const Progress = styled.progress`
     height: ${fromTheme('size-large')};
   }
 `
-
-export default Progress
