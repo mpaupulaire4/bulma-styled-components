@@ -1,7 +1,7 @@
 import BulmaStyledTheme from './base'
-import Box from './elements'
 
-export {
-  BulmaStyledTheme,
-  Box,
-}
+export * from './elements'
+export * from './components'
+export * from './layout'
+
+export { BulmaStyledTheme }
