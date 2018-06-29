@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Breadcrumb from '../breadcrumb'
+import { Breadcrumb } from '../'
 
 storiesOf('Components', module)
   .add('Breadcrumb', () => (

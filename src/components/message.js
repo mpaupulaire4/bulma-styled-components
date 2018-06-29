@@ -4,7 +4,7 @@ import { getLuminance, parseToHsl, lighten, desaturate, darken } from 'polished'
 import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
 import { block } from '../utilities/mixins'
-import Delete from '../elements/delete'
+import { Delete } from '../elements'
 
 
 Vars.addDerivedDefault(vars => ({
@@ -52,7 +52,7 @@ const colorClasses = props => Object.entries(props.theme.colors)
     `
   }, '')
 
-const Message = styled.div`
+export const Message = styled.div`
   ${block}
   background-color: ${fromTheme('message-background-color')};
   border-radius: ${fromTheme('message-radius')};
@@ -77,8 +77,6 @@ const Message = styled.div`
   /* Colors */
   ${colorClasses}
 `
-
-export default Message
 
 const MessageHeader = styled.div`
   align-items: center;

@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Delete from '../../elements/delete'
-import Message from '../message'
+import { Delete } from '../../elements'
+import { Message } from '../'
 
 
 storiesOf('Components', module)

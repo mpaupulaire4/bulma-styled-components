@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
 import { block, unselectable } from '../utilities/mixins'
-import Icon from '../elements/icon'
+import { Icon } from '../elements'
 
 
 Vars.addDerivedDefault(vars => ({
@@ -18,7 +18,7 @@ Vars.addDerivedDefault(vars => ({
 }))
 
 
-const Breadcrumb = styled.nav`
+export const Breadcrumb = styled.nav`
   ${block}
   ${unselectable}
   font-size: ${fromTheme('size-normal')};
@@ -111,5 +111,3 @@ const Breadcrumb = styled.nav`
     }
   }
 `
-
-export default Breadcrumb

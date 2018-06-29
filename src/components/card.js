@@ -22,7 +22,7 @@ Vars.addDerivedDefault(vars => ({
 }))
 
 
-const Card = styled.div`
+export const Card = styled.div`
   background-color: ${fromTheme('card-background-color')};
   box-shadow: ${fromTheme('card-shadow')};
   color: ${fromTheme('card-color')};
@@ -32,7 +32,6 @@ const Card = styled.div`
     margin-bottom: 0.75rem
   }
 `
-export default Card
 
 export const CardHeader = styled.header`
   background-color: ${fromTheme('card-header-background-color')};

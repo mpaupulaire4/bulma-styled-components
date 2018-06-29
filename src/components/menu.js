@@ -18,7 +18,7 @@ Vars.addDerivedDefault(vars => ({
 }))
 
 
-const Menu = styled.aside`
+export const Menu = styled.aside`
   font-size: ${fromTheme('size-normal')};
   /* Sizes */
   &.is-small {
@@ -31,7 +31,6 @@ const Menu = styled.aside`
     font-size: ${fromTheme('size-large')};
   }
 `
-export default Menu
 
 export const MenuList = styled.ul`
   line-height: 1.25;
