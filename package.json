@@ -1,16 +1,23 @@
 {
   "name": "bulma-styled-components",
-  "version": "1.0.0",
-  "description": "A Styled Components implementation of bulma.",
+  "version": "0.0.1",
+  "description": "A Styled Components implementation of Bulma Css for React.",
   "main": "/dist/bulma-styled-components.js",
   "scripts": {
     "build": "babel src -d dist --ignore stories.js",
-    "lint:css": "stylelint './src/**/*.js'",
+    "lint:style": "stylelint './src/**/*.js'",
     "lint:js": "eslint 'src'",
-    "lint": "npm run lint:css && npm run lint:js",
+    "lint": "npm run lint:js && npm run lint:style",
     "story": "start-storybook -p 9001 -c .storybook",
-    "test": "echo \"No Tests\" && exit 1"
+    "test": "npm run lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mpaupulaire4/bulma-styled-components.git"
+  },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "bulma",
     "styled-components",

@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Box from '../box'
+import { Box } from '../box'
 
 const Link = Box.withComponent('a')
 
