@@ -1,6 +1,6 @@
 {
   "name": "bulma-styled-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Styled Components implementation of Bulma Css for React.",
   "main": "/dist/bulma-styled-components.js",
   "scripts": {
