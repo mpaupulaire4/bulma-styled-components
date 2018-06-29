@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
-import Content from '../elements/content'
+import { Content } from '../elements'
 
 const MediaPartial = styled.article`
   align-items: flex-start;

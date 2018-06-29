@@ -1,11 +1,14 @@
 {
   "presets": [
     "react",
-    "env",
+    ["env", {
+      "modules": false
+    }],
     "stage-0"
   ],
   "plugins": [
     [
+      "external-helpers",
       "babel-plugin-styled-components",
       "transform-runtime"
     ]

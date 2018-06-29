@@ -5,7 +5,7 @@ import {
   mobile,
 } from '../utilities/mixins'
 import { fromTheme } from '../utilities/functions'
-import { Title, Subtitle } from '../elements/title'
+import { Title, Subtitle } from '../elements'
 
 export const LevelItem = styled.div`
   align-items: center;
