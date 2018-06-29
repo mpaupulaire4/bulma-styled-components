@@ -5,7 +5,7 @@ import sourcemaps from 'rollup-plugin-sourcemaps'
 export default {
   input: 'src/index.js',
   output: {
-    file: 'dist/bundle.js',
+    file: 'dist/index.js',
     format: 'cjs',
   },
   sourceMap: true,
