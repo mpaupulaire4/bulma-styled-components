@@ -1,11 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Media from '../media'
-import Image from '../../elements/image'
-import Content from '../../elements/content'
-import Box from '../../elements/box'
-import Delete from '../../elements/delete'
+import { Media } from '../'
+import { Image, Content, Box, Delete } from '../../elements'
 
 storiesOf('Layout', module)
   .add('Media', () => (

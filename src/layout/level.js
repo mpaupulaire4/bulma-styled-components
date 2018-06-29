@@ -69,7 +69,7 @@ export const LevelLeft = styled.div`
   `}
   `
 
-const Level = styled.div`
+export const Level = styled.div`
   ${block}
   align-items: center;
   justify-content: space-between;
@@ -113,5 +113,3 @@ const Level = styled.div`
 Level.Right = LevelRight
 Level.Left = LevelLeft
 Level.Item = LevelItem
-
-export default Level

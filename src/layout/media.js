@@ -10,7 +10,7 @@ const MediaPartial = styled.article`
     margin-bottom: 0.75rem;
   }
 `
-const Media = MediaPartial.extend`
+export const Media = styled(MediaPartial)`
   ${MediaPartial} {
     border-top: 1px solid ${({ theme }) => rgba(theme['border'], 0.5)};
     display: flex;
@@ -64,5 +64,3 @@ export const MediaContent = styled.div`
 Media.Left = MediaLeft
 Media.Right = MediaRight
 Media.Content = MediaContent
-
-export default Media

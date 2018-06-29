@@ -7,7 +7,7 @@ import {
   fullhd,
 } from '../utilities/mixins'
 
-const Container = styled.div`
+export const Container = styled.div`
   margin: 0 auto;
   position: relative;
   ${({ theme }) => desktop`
@@ -41,4 +41,3 @@ const Container = styled.div`
     width: ${theme['fullhd']} - (2 * ${theme['gap']});
   `}
 `
-export default Container
