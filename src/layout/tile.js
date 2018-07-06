@@ -40,9 +40,9 @@ export const Tile = styled.div`
     }
     ${[...Array(12).keys()].reduce((acc, i) => css`
       ${acc}
-      &.is-${i} {
+      &.is-${i + 1} {
         flex: none;
-        width: ${(i / 12) * 100}%;
+        width: ${((i + 1) / 12) * 100}%;
       }
     `, '')}
   `}
