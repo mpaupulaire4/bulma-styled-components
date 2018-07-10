@@ -1,6 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 import styled, { css } from 'styled-components'
-import { Button } from './button'
+import { Button } from './Button'
 
 export const ButtonsStyle = css`
   align-items: center;
