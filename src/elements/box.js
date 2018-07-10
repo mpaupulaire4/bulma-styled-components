@@ -34,6 +34,7 @@ const BoxStyle = css`
 `
 
 const Box = styled.div`${BoxStyle}`
+
 Box.defaultProps = {
   theme: Vars.getVariables(),
 }

@@ -1,4 +1,5 @@
 export * from './box'
+export * from './button'
 export * from './buttons'
 export * from './content'
 export * from './delete'
