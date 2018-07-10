@@ -14,7 +14,23 @@ module.exports = {
     },
   },
   title: 'Bulma Styled Components',
-  components: 'src/{components,layout,elements}/**/*.js',
+  sections: [
+    {
+      name: 'Introduction',
+    },
+    {
+      name: 'Elements',
+      components: 'src/elements/**/*.js',
+    },
+    {
+      name: 'Components',
+      components: 'src/components/**/*.js',
+    },
+    {
+      name: 'Layout',
+      components: 'src/layout/**/*.js',
+    },
+  ],
   getComponentPathLine: (componentPath) => {
     const name = path.basename(componentPath, '.js')
     return `import { ${name} } from '${packageInfo.name}'`
