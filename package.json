@@ -8,7 +8,7 @@
     "lint:style": "stylelint './src/**/*.js'",
     "lint:js": "eslint 'src'",
     "lint": "npm run lint:js && npm run lint:style",
-    "story": "start-storybook -p 9001 -c .storybook",
+    "docs": "styleguidist server",
     "test": "npm run lint"
   },
   "repository": {
