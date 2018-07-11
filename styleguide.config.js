@@ -17,6 +17,7 @@ module.exports = {
   sections: [
     {
       name: 'Introduction',
+      description: 'A Styled Components implementation of Bulma CSS',
     },
     {
       name: 'Elements',
@@ -35,4 +36,5 @@ module.exports = {
     const name = path.basename(componentPath, '.js')
     return `import { ${name} } from '${packageInfo.name}'`
   },
+  styleguideDir: 'docs/',
 }

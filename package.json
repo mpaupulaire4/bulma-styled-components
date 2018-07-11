@@ -9,6 +9,9 @@
     "lint:js": "eslint 'src'",
     "lint": "npm run lint:js && npm run lint:style",
     "docs": "styleguidist server",
+    "predeploy": "npm run build:docs",
+    "deploy": "gh-pages -d docs",
+    "build:docs": "styleguidist build",
     "test": "npm run lint"
   },
   "repository": {
@@ -55,6 +58,7 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
+    "gh-pages": "^1.2.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.0",
     "react-styleguidist": "^7.0.20",
