@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import Vars from '../utilities/vars'
 import { fromTheme, fromThemeToRGBA } from '../utilities/functions'
 import { unselectable } from '../utilities/mixins'
 
@@ -76,3 +77,4 @@ export const DeleteStyle = css`
   }
 `
 export const Delete = styled.button`${DeleteStyle}`
+Delete.defaultProps = { theme: Vars.getVariables() }

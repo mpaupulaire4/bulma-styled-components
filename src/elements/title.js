@@ -2,7 +2,7 @@
 import styled, { css } from 'styled-components'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
-import { Tag } from './tags'
+import { Tag } from './'
 import { fromTheme } from '../utilities/functions'
 
 Vars.addDerivedDefault(vars => ({
