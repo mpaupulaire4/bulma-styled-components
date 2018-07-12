@@ -21,15 +21,22 @@ module.exports = {
     },
     {
       name: 'Elements',
-      components: 'src/elements/**/*.js',
+      components: 'src/elements/*.js',
+      ignore: [
+        'src/elements/index.js',
+      ],
     },
     {
       name: 'Components',
-      components: 'src/components/**/*.js',
+      components: 'src/components/*.js',
+      ignore: [
+        'src/components/index.js',
+      ],
     },
     {
       name: 'Layout',
-      components: 'src/layout/**/*.js',
+      components: 'src/layout/*.js',
+      ignore: 'src/layout/index.js',
     },
   ],
   getComponentPathLine: (componentPath) => {
@@ -37,4 +44,8 @@ module.exports = {
     return `import { ${name} } from '${packageInfo.name}'`
   },
   styleguideDir: 'docs/',
+  styleguideComponents: {
+    Wrapper: path.join(__dirname, 'src/base/index'),
+  },
+  skipComponentsWithoutExample: true,
 }

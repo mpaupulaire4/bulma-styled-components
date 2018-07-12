@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
-import { Content } from '../elements'
+import Vars from '../utilities/vars'
+import { Content } from '../'
+
+const defaultProps = { theme: Vars.getVariables() }
 
 const MediaPartial = styled.article`
   align-items: flex-start;
@@ -39,6 +42,7 @@ export const Media = styled(MediaPartial)`
     }
   }
 `
+Media.defaultProps = defaultProps
 
 const mediaShared = css`
   flex-basis: auto;

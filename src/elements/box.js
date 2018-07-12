@@ -14,7 +14,7 @@ Vars.addDerivedDefault(vars => ({
   'box-link-active-shadow': `inset 0 1px 2px ${rgba(vars['black'], 0.2)}, 0 0 0 1px ${vars['link']}`,
 }))
 
-const BoxStyle = css`
+export const BoxStyle = css`
   ${block}
   background-color: ${fromTheme('box-background-color')};
   border-radius: ${fromTheme('box-radius')};
@@ -32,14 +32,8 @@ const BoxStyle = css`
     }
   }
 `
-
-const Box = styled.div`${BoxStyle}`
+export const Box = styled.div`${BoxStyle}`
 
 Box.defaultProps = {
   theme: Vars.getVariables(),
-}
-
-export {
-  Box,
-  BoxStyle,
 }
