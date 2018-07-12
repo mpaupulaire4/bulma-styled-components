@@ -51,3 +51,4 @@ export const Notification = styled.div`
   }
   ${colorClasses}
 `
+Notification.defaultProps = { theme: Vars.getVariables() }

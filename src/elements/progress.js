@@ -60,3 +60,4 @@ export const Progress = styled.progress`
     height: ${fromTheme('size-large')};
   }
 `
+Progress.defaultProps = { theme: Vars.getVariables() }

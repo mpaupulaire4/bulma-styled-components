@@ -157,6 +157,8 @@ export const Table = styled.table`
     }
   }
 `
+Table.defaultProps = { theme: Vars.getVariables() }
+
 export const TableContainer = styled.div`
   ${block}
   ${overflow_touch}
