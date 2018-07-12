@@ -17,6 +17,7 @@ Vars.addDerivedDefault(vars => ({
   'menu-label-color': vars['text-light'],
 }))
 
+const defaultProps = { theme: Vars.getVariables() }
 
 export const Menu = styled.aside`
   font-size: ${fromTheme('size-normal')};
@@ -31,6 +32,7 @@ export const Menu = styled.aside`
     font-size: ${fromTheme('size-large')};
   }
 `
+Menu.defaultProps = defaultProps
 
 export const MenuList = styled.ul`
   line-height: 1.25;
@@ -57,6 +59,7 @@ export const MenuList = styled.ul`
     }
   }
 `
+MenuList.defaultProps = defaultProps
 Menu.List = MenuList
 
 export const MenuLabel = styled.p`
@@ -71,5 +74,6 @@ export const MenuLabel = styled.p`
     margin-bottom: 1em;
   }
 `
+MenuLabel.defaultProps = defaultProps
 Menu.Label = MenuLabel
 

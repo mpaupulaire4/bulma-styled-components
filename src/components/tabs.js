@@ -199,4 +199,5 @@ export const Tabs = styled.div`
     font-size: ${fromTheme('size-large')};
   }
 `
+Tabs.defaultProps = { theme: Vars.getVariables() }
 

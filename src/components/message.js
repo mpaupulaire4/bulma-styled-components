@@ -29,6 +29,8 @@ Vars.addDerivedDefault(vars => ({
   'message-header-body-border-width': 0,
 }))
 
+const defaultProps = { theme: Vars.getVariables() }
+
 const colorClasses = props => Object.entries(props.theme.colors)
   .reduce((acc, [name, [color, color_invert]]) => {
     const { lightness } = parseToHsl(color)
@@ -77,6 +79,7 @@ export const Message = styled.div`
   /* Colors */
   ${colorClasses}
 `
+Message.defaultProps = defaultProps
 
 const MessageHeader = styled.div`
   align-items: center;
@@ -100,6 +103,8 @@ const MessageHeader = styled.div`
     border-top-right-radius: 0;
   }
 `
+MessageHeader.defaultProps = defaultProps
+Message.Header = MessageHeader
 
 const MessageBody = styled.div`
   border-color: ${fromTheme('message-body-border-color')};
@@ -116,5 +121,5 @@ const MessageBody = styled.div`
     background-color: ${fromTheme('message-body-pre-code-background-color')};
   }
 `
-Message.Header = MessageHeader
+MessageBody.defaultProps = defaultProps
 Message.Body = MessageBody

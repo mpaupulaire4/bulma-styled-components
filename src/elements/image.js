@@ -98,3 +98,4 @@ export const Image = styled.figure`
     }
   `, '')}
 `
+Image.defaultProps = { theme: Vars.getVariables() }

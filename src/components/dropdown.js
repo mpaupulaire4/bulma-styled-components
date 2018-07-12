@@ -21,6 +21,7 @@ Vars.addDerivedDefault(vars => ({
 
   'dropdown-divider-background-color': vars['border'],
 }))
+const defaultProps = { theme: Vars.getVariables() }
 
 export const DropdownMenu = styled.div`
   display: none;
@@ -31,6 +32,7 @@ export const DropdownMenu = styled.div`
   top: 100%;
   z-index: ${fromTheme('dropdown-content-z')};
 `
+DropdownMenu.defaultProps = defaultProps
 
 export const Dropdown = styled.div`
   display: inline;
@@ -57,6 +59,7 @@ export const Dropdown = styled.div`
     }
   }
 `
+Dropdown.defaultProps = defaultProps
 Dropdown.Menu = DropdownMenu
 
 export const DropdownContent = styled.div`
@@ -66,6 +69,7 @@ export const DropdownContent = styled.div`
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
 `
+DropdownContent.defaultProps = defaultProps
 Dropdown.Content = DropdownContent
 
 export const DropdownItem = styled.a`
@@ -88,6 +92,7 @@ export const DropdownItem = styled.a`
     }
   }
 `
+DropdownItem.defaultProps = defaultProps
 Dropdown.Item = DropdownItem
 
 export const DropdownDivider = styled.hr`
@@ -97,4 +102,5 @@ export const DropdownDivider = styled.hr`
   height: 1px;
   margin: 0.5rem 0;
 `
+DropdownDivider.defaultProps = defaultProps
 Dropdown.Divider = DropdownDivider

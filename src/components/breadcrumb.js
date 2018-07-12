@@ -111,3 +111,4 @@ export const Breadcrumb = styled.nav`
     }
   }
 `
+Breadcrumb.defaultProps = { theme: Vars.getVariables() }

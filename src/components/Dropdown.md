@@ -1,0 +1,34 @@
+``` js
+const toggleDropdown = () => setState({menu: !state.menu});
+<Dropdown className={state.menu ? 'is-active' : ''}>
+  <div>
+    <Button
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+      onClick={toggleDropdown}
+    >
+      Dropdown button
+    </Button>
+  </div>
+  <Dropdown.Menu>
+    <Dropdown.Content>
+      <Dropdown.Item>
+        Dropdown item
+      </Dropdown.Item>
+      <Dropdown.Item>
+        Other dropdown item
+      </Dropdown.Item>
+      <Dropdown.Item>
+        Active dropdown item
+      </Dropdown.Item>
+      <Dropdown.Item>
+        Other dropdown item
+      </Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item>
+        With a divider
+      </Dropdown.Item>
+    </Dropdown.Content>
+  </Dropdown.Menu>
+</Dropdown>
+```

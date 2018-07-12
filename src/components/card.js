@@ -4,7 +4,6 @@ import { rgba } from 'polished'
 import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
 
-
 Vars.addDerivedDefault(vars => ({
   'card-color': vars['text'],
   'card-background-color': vars['white'],
@@ -21,6 +20,7 @@ Vars.addDerivedDefault(vars => ({
   'card-footer-border-top': `1px solid ${vars['border']}`,
 }))
 
+const defaultProps = { theme: Vars.getVariables() }
 
 export const Card = styled.div`
   background-color: ${fromTheme('card-background-color')};
@@ -32,6 +32,7 @@ export const Card = styled.div`
     margin-bottom: 0.75rem
   }
 `
+Card.defaultProps = defaultProps
 
 export const CardHeader = styled.header`
   background-color: ${fromTheme('card-header-background-color')};
@@ -39,6 +40,7 @@ export const CardHeader = styled.header`
   box-shadow: ${fromTheme('card-header-shadow')};
   display: flex;
 `
+CardHeader.defaultProps = defaultProps
 Card.Header = CardHeader
 
 export const CardHeaderTitle = styled.p`
@@ -52,6 +54,7 @@ export const CardHeaderTitle = styled.p`
     justify-content: center;
   }
 `
+CardHeaderTitle.defaultProps = defaultProps
 Card.Header.Title = CardHeaderTitle
 
 export const CardHeaderIcon = styled.div`
@@ -61,18 +64,21 @@ export const CardHeaderIcon = styled.div`
   justify-content: center;
   padding: 0.75rem;
 `
+CardHeaderIcon.defaultProps = defaultProps
 Card.Header.Icon = CardHeaderIcon
 
 export const CardImage = styled.div`
   display: block;
   position: relative;
 `
+CardImage.defaultProps = defaultProps
 Card.Image = CardImage
 
 export const CardContent = styled.div`
   background-color: ${fromTheme('card-content-background-color')};
   padding: 1.5rem;
 `
+CardContent.defaultProps = defaultProps
 Card.Content = CardContent
 
 export const CardFooter = styled.footer`
@@ -81,6 +87,7 @@ export const CardFooter = styled.footer`
   align-items: stretch;
   display: flex;
 `
+CardFooter.defaultProps = defaultProps
 Card.Footer = CardFooter
 
 export const CardFooterItem = styled.span`
@@ -95,4 +102,5 @@ export const CardFooterItem = styled.span`
     border-right: ${fromTheme('card-footer-border-top')};
   }
 `
+CardFooterItem.defaultProps = defaultProps
 Card.Footer.Item = CardFooterItem
