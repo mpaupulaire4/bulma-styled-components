@@ -1,5 +1,9 @@
 import { css } from 'styled-components'
-import { overflow_touch } from '../utilities/mixins'
+import {
+  overflow_touch,
+  touch,
+  desktop,
+} from '../utilities/mixins'
 
 export default vars => css`
   html {
@@ -19,6 +23,40 @@ export default vars => css`
     font-size: 1rem;
     font-weight: ${vars['body-weight']};
     line-height: ${vars['body-line-height']};
+  }
+
+  html,
+  body {
+    &.has-navbar-fixed-top {
+      padding-top: ${vars['navbar-height']};
+    }
+    &.has-navbar-fixed-bottom {
+      padding-bottom: ${vars['navbar-height']};
+    }
+    /* touch */
+    @media screen and (max-width: ${vars['desktop']} - 1px) {
+      &.has-navbar-fixed-top-touch {
+        padding-top: ${vars['navbar-height']};
+      }
+      &.has-navbar-fixed-bottom-touch {
+        padding-bottom: ${vars['navbar-height']};
+      }
+    }
+    /* desktop */
+    @media screen and (min-width: ${vars['desktop']}) {
+      &.has-navbar-fixed-top-desktop {
+        padding-top: ${vars['navbar-height']};
+      }
+      &.has-navbar-fixed-bottom-desktop {
+        padding-bottom: ${vars['navbar-height']};
+      }
+      &.has-spaced-navbar-fixed-top {
+        padding-top: ${vars['navbar-height']} + (${vars['navbar-padding-vertical']} * 2);
+      }
+      &.has-spaced-navbar-fixed-bottom {
+        padding-bottom: ${vars['navbar-height']} + (${vars['navbar-padding-vertical']} * 2);
+      }
+    }
   }
   article,
   aside,

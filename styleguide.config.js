@@ -22,21 +22,14 @@ module.exports = {
     {
       name: 'Elements',
       components: 'src/elements/*.js',
-      ignore: [
-        'src/elements/index.js',
-      ],
     },
     {
       name: 'Components',
       components: 'src/components/*.js',
-      ignore: [
-        'src/components/index.js',
-      ],
     },
     {
       name: 'Layout',
       components: 'src/layout/*.js',
-      ignore: 'src/layout/index.js',
     },
   ],
   getComponentPathLine: (componentPath) => {

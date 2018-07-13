@@ -1,7 +1,15 @@
 import styled, { css } from 'styled-components'
 import { rgba, darken, saturate, adjustHue, lighten } from 'polished'
 import { touch, overlay, tablet, mobile } from '../utilities/mixins'
-import { Button, Tag, Title, Subtitle } from '../elements'
+import {
+  Button,
+  Tag,
+  Title,
+  Subtitle,
+  Tabs,
+  Dropdown,
+  Container,
+} from '../'
 
 const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((acc, [name, [color, color_invert]]) => {
   const gradient_top_left = darken(0.1, saturate(0.1, adjustHue(350, color)))
@@ -11,7 +19,7 @@ const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((
     &.is-${name} {
       background-color: ${color};
       color: ${color_invert};
-      a:not(${Button}):not(.dropdown-item):not(${Tag}),
+      a:not(${Button}):not(${Dropdown.Item}):not(${Tag}),
       strong {
         color: inherit;
       }
@@ -42,7 +50,7 @@ const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((
           color: ${color_invert};
         }
       }
-      .tabs {
+      ${Tabs} {
         a {
           color: ${color_invert};
           opacity: 0.9;
@@ -99,6 +107,12 @@ const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((
   `
 }, '')
 
+const HeroBody = styled.div`
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 3rem 1.5rem;
+`
+
 // Main container
 export const Hero = styled.section`
   align-items: stretch;
@@ -108,7 +122,7 @@ export const Hero = styled.section`
   .navbar {
     background: none;
   }
-  .tabs {
+  ${Tabs} {
     ul {
       border-bottom: none;
     }
@@ -118,14 +132,14 @@ export const Hero = styled.section`
 
   /* Sizes */
   &.is-small {
-    .hero-body {
+    ${HeroBody} {
       padding-bottom: 1.5rem;
       padding-top: 1.5rem;
     }
   }
   &.is-medium {
     ${tablet`
-      .hero-body {
+      ${HeroBody} {
         padding-bottom: 9rem;
         padding-top: 9rem;
       }
@@ -133,7 +147,7 @@ export const Hero = styled.section`
   }
   &.is-large {
     ${tablet`
-      .hero-body {
+      ${HeroBody} {
         padding-bottom: 18rem;
         padding-top: 18rem;
       }
@@ -141,10 +155,10 @@ export const Hero = styled.section`
   }
   &.is-halfheight,
   &.is-fullheight {
-    .hero-body {
+    ${HeroBody} {
       align-items: center;
       display: flex;
-      & > .container {
+      & > ${Container} {
         flex-grow: 1;
         flex-shrink: 1;
       }
@@ -214,10 +228,5 @@ const HeroFoot = styled.div`
   flex-shrink: 0;
 `
 Hero.Foot = HeroFoot
-
-const HeroBody = styled.div`
-  flex-grow: 1;
-  flex-shrink: 0;
-  padding: 3rem 1.5rem;
-`
 Hero.Body = HeroBody
+
