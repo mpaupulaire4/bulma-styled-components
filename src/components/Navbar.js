@@ -10,7 +10,7 @@ import {
   arrow,
   touch,
 } from '../utilities/mixins'
-import { Icon } from '../'
+import { Icon, Container } from '../'
 
 Vars.addDerivedDefault(vars => ({
   'navbar-background-color': vars['white'],
@@ -375,7 +375,7 @@ export const Navbar = styled.nav`
   z-index: ${fromTheme('navbar-z')};
   ${colorClasses}
 
-  & > .container {
+  & > ${/* sc-custom '.container' */Container} {
     align-items: stretch;
     display: flex;
     min-height: ${fromTheme('navbar-height')};
@@ -398,7 +398,7 @@ export const Navbar = styled.nav`
     top: 0;
   }
   ${touch`
-    & > .container {
+    & > ${/* sc-custom '.container' */Container} {
       display: block;
     }
     &.is-fixed-bottom-touch,
@@ -466,8 +466,8 @@ export const Navbar = styled.nav`
         }
       }
     }
-    & > .container,
-    .container > & {
+    & > ${/* sc-custom '.container' */Container},
+    ${/* sc-custom '.container' */Container} > & {
       ${NavbarBrand} {
         margin-left: -.75rem;
       }
