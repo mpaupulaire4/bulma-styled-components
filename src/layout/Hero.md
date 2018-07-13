@@ -2,7 +2,7 @@
 <Hero className="is-primary is-medium">
   {/* Hero head: will stick at the top */}
   <Hero.Head>
-    <nav class="navbar">
+    <Navbar>
       <Container>
         <div class="navbar-brand">
           <a class="navbar-item">
@@ -36,7 +36,7 @@
           </div>
         </div>
       </Container>
-    </nav>
+    </Navbar>
   </Hero.Head>
 
   {/* Hero content: will be in the middle */}

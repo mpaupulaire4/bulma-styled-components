@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 import styled, { css } from 'styled-components'
 import { rgba, darken, saturate, adjustHue, lighten } from 'polished'
 import { touch, overlay, tablet, mobile } from '../utilities/mixins'
@@ -9,6 +10,7 @@ import {
   Tabs,
   Dropdown,
   Container,
+  Navbar,
 } from '../'
 
 const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((acc, [name, [color, color_invert]]) => {
@@ -16,41 +18,41 @@ const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((
   const gradient_bottom_right = lighten(0.05, saturate(0.05, adjustHue(10, color)))
   return css`
     ${acc}
-    &.is-${name} {
+    &.is-${/* sc-custom 'blue' */name} {
       background-color: ${color};
       color: ${color_invert};
-      a:not(${Button}):not(${Dropdown.Item}):not(${Tag}),
+      a:not(${/* sc-custom '.button' */Button}):not(${/* sc-custom '.dropdown-item' */Dropdown.Item}):not(${/* sc-custom '.tag' */Tag}),
       strong {
         color: inherit;
       }
-      ${Title} {
+      ${/* sc-custom '.title' */Title} {
         color: ${color_invert};
       }
-      ${Subtitle} {
+      ${/* sc-custom '.subtitle' */Subtitle} {
         color: ${rgba(color_invert, 0.9)};
-        a:not(${Button}),
+        a:not(${/* sc-selector */Button}),
         strong {
           color: ${color_invert};
         }
       }
-      .navbar-menu {
+      ${/* sc-custom '.navbar-menu' */Navbar.Menu} {
         ${touch`
           background-color: ${color};
         `}
       }
-      .navbar-item,
-      .navbar-link {
+      ${/* sc-custom '.navbar-item' */Navbar.Item},
+      ${/* sc-custom '.navbar-link' */Navbar.Link} {
         color: ${rgba(color_invert, 0.7)};
       }
-      a.navbar-item,
-      .navbar-link {
+      a${/* sc-custom '.navbar-link' */Navbar.Item},
+      ${/* sc-selector */Navbar.Link} {
         &:hover,
         &.is-active {
           background-color: ${darken(0.05, color)};
           color: ${color_invert};
         }
       }
-      ${Tabs} {
+      ${/* sc-custom '.tabs' */Tabs} {
         a {
           color: ${color_invert};
           opacity: 0.9;
@@ -85,7 +87,7 @@ const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((
       &.is-bold {
         background-image: linear-gradient(141deg, ${gradient_top_left} 0%, ${color} 71%, ${gradient_bottom_right} 100%);
         ${mobile`
-          .navbar-menu {
+          ${Navbar.Menu} {
             background-image: linear-gradient(141deg, ${gradient_top_left} 0%, ${color} 71%, ${gradient_bottom_right} 100%);
           }
         `}
@@ -119,10 +121,10 @@ export const Hero = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  .navbar {
+  ${/* sc-custom '.navbar' */Navbar} {
     background: none;
   }
-  ${Tabs} {
+  ${/* sc-custom '.tabs' */Tabs} {
     ul {
       border-bottom: none;
     }
@@ -132,7 +134,7 @@ export const Hero = styled.section`
 
   /* Sizes */
   &.is-small {
-    ${HeroBody} {
+    ${/* sc-selector */HeroBody} {
       padding-bottom: 1.5rem;
       padding-top: 1.5rem;
     }
@@ -155,10 +157,10 @@ export const Hero = styled.section`
   }
   &.is-halfheight,
   &.is-fullheight {
-    ${HeroBody} {
+    ${/* sc-selector */HeroBody} {
       align-items: center;
       display: flex;
-      & > ${Container} {
+      & > ${/* sc-selector */Container} {
         flex-grow: 1;
         flex-shrink: 1;
       }

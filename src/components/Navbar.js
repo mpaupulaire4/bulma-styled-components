@@ -24,7 +24,7 @@ Vars.addDerivedDefault(vars => ({
 
   'navbar-item-color': vars['grey-dark'],
   'navbar-item-hover-color': vars['link'],
-  'navbar-item-hover-background-color': vars['white-bis'],
+  'navbar-item-hover-background-color': vars['white'],
   'navbar-item-active-color': vars['black'],
   'navbar-item-active-background-color': 'transparent',
   'navbar-item-img-max-height': '1.75rem',
@@ -50,9 +50,9 @@ Vars.addDerivedDefault(vars => ({
   'navbar-dropdown-boxed-shadow': `0 8px 8px ${rgba(vars['black'], 0.1)}, 0 0 0 1px ${rgba(vars['black'], 0.1)}`,
 
   'navbar-dropdown-item-hover-color': vars['black'],
-  'navbar-dropdown-item-hover-background-color': vars['background'],
+  'navbar-dropdown-item-hover-background-color': vars['white'],
   'navbar-dropdown-item-active-color': vars['link'],
-  'navbar-dropdown-item-active-background-color': vars['background'],
+  'navbar-dropdown-item-active-background-color': vars['white'],
 
   'navbar-divider-background-color': vars['background'],
   'navbar-divider-height': '2px',
@@ -104,13 +104,15 @@ const NavbarLinkPartialStyles = css`
 `
 
 const NavbarLink = styled.a`
-  padding-right: 2.5em;
   ${itemLinkShared}
   ${NavbarLinkPartialStyles}
-  &::after {
-    ${({ theme }) => arrow(theme['navbar-dropdown-arrow'])};
-    margin-top: -0.375em;
-    right: 1.125em;
+  &:not(.is-arrowless) {
+    padding-right: 2.5em;
+    &::after {
+      ${({ theme }) => arrow(theme['navbar-dropdown-arrow'])};
+      margin-top: -0.375em;
+      right: 1.125em;
+    }
   }
   ${touch`
     &::after {
@@ -119,6 +121,31 @@ const NavbarLink = styled.a`
   `}
 `
 NavbarLink.defaultProps = defaultProps
+
+const NavbarDropdown = styled.div`
+  font-size: 0.875rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  ${desktop`
+    background-color: ${fromTheme('navbar-dropdown-background-color')};
+    border-bottom-left-radius: ${fromTheme('navbar-dropdown-radius')};
+    border-bottom-right-radius: ${fromTheme('navbar-dropdown-radius')};
+    border-top: ${fromTheme('navbar-dropdown-border-top')};
+    box-shadow: 0 8px 8px ${({ theme }) => rgba(theme['black'], 0.1)};
+    display: none;
+    font-size: 0.875rem;
+    left: 0;
+    min-width: 100%;
+    position: absolute;
+    top: 100%;
+    z-index: ${fromTheme('navbar-dropdown-z')};
+    &.is-right {
+      left: auto;
+      right: 0;
+    }
+  `}
+`
+NavbarDropdown.defaultProps = defaultProps
 
 const NavbarItem = styled.div`
   display: block;
@@ -155,6 +182,10 @@ const NavbarItem = styled.div`
       padding-bottom: calc(0.5rem - ${fromTheme('navbar-tab-active-border-bottom-width')});
     }
   }
+  ${NavbarDropdown} & {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
   ${desktop`
     display: flex;
     &.has-dropdown {
@@ -183,7 +214,7 @@ const NavbarItem = styled.div`
     &.is-hoverable:hover {
       ${NavbarDropdown} {
         display: block;
-        ${Navbar}.is-spaced &,
+        ${/* ${Navbar}.is-spaced &, */''}
         &.is-boxed {
           opacity: 1;
           pointer-events: auto;
@@ -191,36 +222,11 @@ const NavbarItem = styled.div`
         }
       }
     }
-  `}
-`
-NavbarItem.defaultProps = defaultProps
-
-const NavbarDropdown = styled.div`
-  font-size: 0.875rem;
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
-  ${NavbarItem} {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-  ${desktop`
-    background-color: ${fromTheme('navbar-dropdown-background-color')};
-    border-bottom-left-radius: ${fromTheme('navbar-dropdown-radius')};
-    border-bottom-right-radius: ${fromTheme('navbar-dropdown-radius')};
-    border-top: ${fromTheme('navbar-dropdown-border-top')};
-    box-shadow: 0 8px 8px ${({ theme }) => rgba(theme['black'], 0.1)};
-    display: none;
-    font-size: 0.875rem;
-    left: 0;
-    min-width: 100%;
-    position: absolute;
-    top: 100%;
-    z-index: ${fromTheme('navbar-dropdown-z')};
-    ${NavbarItem} {
+    ${NavbarDropdown} & {
       padding: 0.375rem 1rem;
       white-space: nowrap;
     }
-    a${NavbarItem} {
+    ${NavbarDropdown} a& {
       padding-right: 3rem;
       &:hover {
         background-color: ${fromTheme('navbar-dropdown-item-hover-background-color')};
@@ -231,13 +237,9 @@ const NavbarDropdown = styled.div`
         color: ${fromTheme('navbar-dropdown-item-active-color')};
       }
     }
-    &.is-right {
-      left: auto;
-      right: 0;
-    }
   `}
 `
-NavbarDropdown.defaultProps = defaultProps
+NavbarItem.defaultProps = defaultProps
 
 const brandTabsShared = css`
   align-items: stretch;
