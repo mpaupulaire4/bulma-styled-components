@@ -11,6 +11,9 @@ import {
   Dropdown,
   Container,
   Navbar,
+  NavbarItem,
+  NavbarLink,
+  NavbarMenu,
 } from '../'
 
 const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((acc, [name, [color, color_invert]]) => {
@@ -35,17 +38,17 @@ const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((
           color: ${color_invert};
         }
       }
-      ${/* sc-custom '.navbar-menu' */Navbar.Menu} {
+      ${/* sc-custom '.navbar-menu' */NavbarMenu} {
         ${touch`
           background-color: ${color};
         `}
       }
-      ${/* sc-custom '.navbar-item' */Navbar.Item},
-      ${/* sc-custom '.navbar-link' */Navbar.Link} {
+      ${/* sc-custom '.navbar-item' */NavbarItem},
+      ${/* sc-custom '.navbar-link' */NavbarLink} {
         color: ${rgba(color_invert, 0.7)};
       }
-      a${/* sc-custom '.navbar-link' */Navbar.Item},
-      ${/* sc-selector */Navbar.Link} {
+      a${/* sc-custom '.navbar-link' */NavbarItem},
+      ${/* sc-selector */NavbarLink} {
         &:hover,
         &.is-active {
           background-color: ${darken(0.05, color)};
@@ -87,7 +90,7 @@ const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((
       &.is-bold {
         background-image: linear-gradient(141deg, ${gradient_top_left} 0%, ${color} 71%, ${gradient_bottom_right} 100%);
         ${mobile`
-          ${Navbar.Menu} {
+          ${NavbarMenu} {
             background-image: linear-gradient(141deg, ${gradient_top_left} 0%, ${color} 71%, ${gradient_bottom_right} 100%);
           }
         `}

@@ -103,7 +103,7 @@ const NavbarLinkPartialStyles = css`
   `}
 `
 
-const NavbarLink = styled.a`
+export const NavbarLink = styled.a`
   ${itemLinkShared}
   ${NavbarLinkPartialStyles}
   &:not(.is-arrowless) {
@@ -122,7 +122,7 @@ const NavbarLink = styled.a`
 `
 NavbarLink.defaultProps = defaultProps
 
-const NavbarDropdown = styled.div`
+export const NavbarDropdown = styled.div`
   font-size: 0.875rem;
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
@@ -147,7 +147,7 @@ const NavbarDropdown = styled.div`
 `
 NavbarDropdown.defaultProps = defaultProps
 
-const NavbarItem = styled.div`
+export const NavbarItem = styled.div`
   display: block;
   flex-grow: 0;
   flex-shrink: 0;
@@ -253,7 +253,7 @@ const brandTabsShared = css`
     }
   `}
 `
-const NavbarBrand = styled.div`
+export const NavbarBrand = styled.div`
   ${brandTabsShared}
   a${/* sc-custom '.navbar-item' */NavbarItem} {
     &:hover {
@@ -270,7 +270,7 @@ const navStartEndMenuShared = css`
   `}
 `
 
-const NavbarStart = styled.div`
+export const NavbarStart = styled.div`
   ${navStartEndMenuShared}
   ${desktop`
     justify-content: flex-start;
@@ -279,7 +279,7 @@ const NavbarStart = styled.div`
 `
 NavbarStart.defaultProps = defaultProps
 
-const NavbarEnd = styled.div`
+export const NavbarEnd = styled.div`
   ${navStartEndMenuShared}
   ${desktop`
     justify-content: flex-end;
@@ -288,7 +288,7 @@ const NavbarEnd = styled.div`
 `
 NavbarEnd.defaultProps = defaultProps
 
-const NavbarMenu = styled.nav`
+export const NavbarMenu = styled.nav`
   display: none;
   ${touch`
     background-color: ${fromTheme('navbar-background-color')};
@@ -505,7 +505,7 @@ export const Navbar = styled.nav`
 `
 Navbar.defaultProps = defaultProps
 
-const NavbarTabs = styled.div`
+export const NavbarTabs = styled.div`
   max-width: 100vw;
   overflow-x: auto;
   overflow-y: hidden;
@@ -514,7 +514,7 @@ const NavbarTabs = styled.div`
 `
 NavbarTabs.defaultProps = defaultProps
 
-const NavbarBurger = styled.a`
+export const NavbarBurger = styled.a`
   color: ${fromTheme('navbar-burger-color')};
   ${({ theme }) => hamburger(theme['navbar-height'])};
   margin-left: auto;
@@ -524,13 +524,13 @@ const NavbarBurger = styled.a`
 `
 NavbarBurger.defaultProps = defaultProps
 
-const NavbarContent = styled.div`
+export const NavbarContent = styled.div`
   flex-grow: 1;
   flex-shrink: 1;
 `
 NavbarContent.defaultProps = defaultProps
 
-const NavbarDivider = styled.div`
+export const NavbarDivider = styled.div`
   background-color: ${fromTheme('navbar-divider-background-color')};
   border: none;
   display: none;
