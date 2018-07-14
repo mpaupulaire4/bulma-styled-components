@@ -24,6 +24,10 @@ module.exports = {
       components: 'src/elements/*.js',
     },
     {
+      name: 'Form',
+      components: 'src/form/*.js',
+    },
+    {
       name: 'Components',
       components: 'src/components/*.js',
     },
