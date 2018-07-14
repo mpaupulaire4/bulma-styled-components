@@ -1,40 +1,41 @@
 ``` js
+const NavbarItemLink = Navbar.Item.withComponent('a');
 <Hero className="is-primary is-medium">
   {/* Hero head: will stick at the top */}
   <Hero.Head>
     <Navbar>
       <Container>
-        <div class="navbar-brand">
-          <a class="navbar-item">
+        <Navbar.Brand>
+          <NavbarItemLink>
             <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo" />
-          </a>
-          <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+          </NavbarItemLink>
+          <Navbar.Burger className="burger">
             <span></span>
             <span></span>
             <span></span>
-          </span>
-        </div>
-        <div id="navbarMenuHeroA" class="navbar-menu">
-          <div class="navbar-end">
-            <a class="navbar-item is-active">
+          </Navbar.Burger>
+        </Navbar.Brand>
+        <Navbar.Menu>
+          <Navbar.End>
+            <NavbarItemLink className="is-active">
               Home
-            </a>
-            <a class="navbar-item">
+            </NavbarItemLink>
+            <NavbarItemLink>
               Examples
-            </a>
-            <a class="navbar-item">
+            </NavbarItemLink>
+            <NavbarItemLink>
               Documentation
-            </a>
-            <span class="navbar-item">
-              <a class="button is-primary is-inverted">
+            </NavbarItemLink>
+            <Navbar.Item>
+              <Button className="is-primary is-inverted">
                 <span class="icon">
                   <i class="fab fa-github"></i>
                 </span>
                 <span>Download</span>
-              </a>
-            </span>
-          </div>
-        </div>
+              </Button>
+            </Navbar.Item>
+          </Navbar.End>
+        </Navbar.Menu>
       </Container>
     </Navbar>
   </Hero.Head>

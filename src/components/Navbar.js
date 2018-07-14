@@ -24,7 +24,7 @@ Vars.addDerivedDefault(vars => ({
 
   'navbar-item-color': vars['grey-dark'],
   'navbar-item-hover-color': vars['link'],
-  'navbar-item-hover-background-color': vars['white'],
+  'navbar-item-hover-background-color': vars['white-bis'],
   'navbar-item-active-color': vars['black'],
   'navbar-item-active-background-color': 'transparent',
   'navbar-item-img-max-height': '1.75rem',
@@ -50,9 +50,9 @@ Vars.addDerivedDefault(vars => ({
   'navbar-dropdown-boxed-shadow': `0 8px 8px ${rgba(vars['black'], 0.1)}, 0 0 0 1px ${rgba(vars['black'], 0.1)}`,
 
   'navbar-dropdown-item-hover-color': vars['black'],
-  'navbar-dropdown-item-hover-background-color': vars['white'],
+  'navbar-dropdown-item-hover-background-color': vars['background'],
   'navbar-dropdown-item-active-color': vars['link'],
-  'navbar-dropdown-item-active-background-color': vars['white'],
+  'navbar-dropdown-item-active-background-color': vars['background'],
 
   'navbar-divider-background-color': vars['background'],
   'navbar-divider-height': '2px',
