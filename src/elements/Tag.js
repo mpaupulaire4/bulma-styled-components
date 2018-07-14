@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { darken } from 'polished'
 import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
-import { Delete, Icon } from './'
+import { Delete, Icon, Tags } from './'
 
 
 Vars.addDerivedDefault(vars => ({
@@ -103,6 +103,35 @@ export const Tag = styled.span`
   a& {
     &:hover {
       text-decoration: underline;
+    }
+  }
+  ${/* sc-selector */Tags} & {
+    margin-bottom: 0.5rem;
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+  ${Tags}.has-addons & {
+    margin-right: 0;
+    &:not(:first-child) {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+    &:not(:last-child) {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+  ${Tags}.is-centered &{
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
+  }
+  ${Tags}.is-right & {
+    &:not(:first-child) {
+      margin-left: 0.5rem;
+    }
+    &:not(:last-child) {
+      margin-right: 0;
     }
   }
 `
