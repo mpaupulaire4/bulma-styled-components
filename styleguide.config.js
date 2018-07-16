@@ -10,9 +10,29 @@ module.exports = {
           exclude: /node_modules/,
           loader: 'babel-loader',
         },
+        {
+          test: /\.css$/,
+          exclude: /node_modules/,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: 'fonts/',
+              },
+            },
+          ],
+        },
       ],
     },
   },
+  require: [
+    path.join(__dirname, 'styleguide/fontawesome/css/font-awesome.min.css'),
+  ],
   title: 'Bulma Styled Components',
   sections: [
     {
