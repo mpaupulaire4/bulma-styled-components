@@ -7,30 +7,6 @@ import { control } from '../utilities/controls'
 import { fromTheme } from '../utilities/functions'
 
 Vars.addDerivedDefault(vars => ({
-  'input-color': vars['grey-darker'],
-  'input-background-color': vars['white'],
-  'input-border-color': vars['grey-lighter'],
-  'input-shadow': `inset 0 1px 2px ${rgba(vars['black'], 0.1)}`,
-
-  'input-hover-color': vars['grey-darker'],
-  'input-hover-border-color': vars['grey-light'],
-
-  'input-focus-color': vars['grey-darker'],
-  'input-focus-border-color': vars['link'],
-  'input-focus-box-shadow-size': '0 0 0 0.125em',
-  'input-focus-box-shadow-color': rgba(vars['link'], 0.25),
-
-  'input-disabled-color': vars['text-light'],
-  'input-disabled-background-color': vars['background'],
-  'input-disabled-border-color': vars['background'],
-
-  'input-arrow': vars['link'],
-
-  'input-icon-color': vars['grey-lighter'],
-  'input-icon-active-color': vars['grey'],
-
-  'input-radius': vars['radius'],
-
   'file-border-color': vars['border'],
   'file-radius': vars['radius'],
 
@@ -43,11 +19,6 @@ Vars.addDerivedDefault(vars => ({
   'file-name-border-style': 'solid',
   'file-name-border-width': '1px 1px 1px 0',
   'file-name-max-width': '16em',
-
-  'label-color': vars['grey-darker'],
-  'label-weight': vars['weight-bold'],
-
-  'help-size': vars['size-small'],
 }))
 
 const defaultProps = { theme: Vars.getVariables() }
