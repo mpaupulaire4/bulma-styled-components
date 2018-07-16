@@ -1,6 +1,7 @@
 /* stylelint-disable no-descending-specificity */
 import styled from 'styled-components'
 import Vars from '../utilities/vars'
+import { Icon } from '../'
 import { block, overflow_touch, unselectable } from '../utilities/mixins'
 import { fromTheme } from '../utilities/functions'
 
@@ -93,7 +94,7 @@ export const Tabs = styled.div`
       padding-left: 0.75em;
     }
   }
-  .icon {
+  ${/* sc-selector */Icon} {
     &:first-child {
       margin-right: 0.5em;
     }
