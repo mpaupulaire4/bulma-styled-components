@@ -6,57 +6,57 @@
 #### Colors
 ``` js
 <div>
-  <div class="field">
-    <div class="control">
+  <Field>
+    <Control>
       <Textarea className="is-primary" type="text" placeholder="Primary input" />
-    </div>
-  </div>
-  <div class="field">
-    <div class="control">
+    </Control>
+  </Field>
+  <Field>
+    <Control>
       <Textarea className="is-info" type="text" placeholder="Info Textarea" />
-    </div>
-  </div>
-  <div class="field">
-    <div class="control">
+    </Control>
+  </Field>
+  <Field>
+    <Control>
       <Textarea className="is-success" type="text" placeholder="Success Textarea" />
-    </div>
-  </div>
-  <div class="field">
-    <div class="control">
+    </Control>
+  </Field>
+  <Field>
+    <Control>
       <Textarea className="is-warning" type="text" placeholder="Warning Textarea" />
-    </div>
-  </div>
-  <div class="field">
-    <div class="control">
+    </Control>
+  </Field>
+  <Field>
+    <Control>
       <Textarea className="is-danger" type="text" placeholder="Danger Textarea" />
-    </div>
-  </div>
+    </Control>
+  </Field>
 </div>
 ```
 
 #### Sizes
 ``` js
 <div>
-  <div class="field">
-    <div class="control">
+  <Field>
+    <Control>
       <Textarea className="is-small" type="text" placeholder="small input" />
-    </div>
-  </div>
-  <div class="field">
-    <div class="control">
+    </Control>
+  </Field>
+  <Field>
+    <Control>
       <Textarea type="text" placeholder="Normal Textarea" />
-    </div>
-  </div>
-  <div class="field">
-    <div class="control">
+    </Control>
+  </Field>
+  <Field>
+    <Control>
       <Textarea className="is-mediem" type="text" placeholder="medium Textarea" />
-    </div>
-  </div>
-  <div class="field">
-    <div class="control">
+    </Control>
+  </Field>
+  <Field>
+    <Control>
       <Textarea className="is-large" type="text" placeholder="Large Textarea" />
-    </div>
-  </div>
+    </Control>
+  </Field>
 </div>
 ```
 
