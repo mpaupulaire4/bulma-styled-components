@@ -1,12 +1,12 @@
 /* stylelint-disable no-descending-specificity */
 import styled from 'styled-components'
-import { rgba } from 'polished'
 import Vars from '../utilities/vars'
 import {
   Button,
   Control,
   Input,
   Select,
+  Label,
 } from '../'
 import {
   tablet,
@@ -14,36 +14,7 @@ import {
 } from '../utilities/mixins'
 import { fromTheme } from '../utilities/functions'
 
-Vars.addDerivedDefault(vars => ({
-  'input-color': vars['grey-darker'],
-  'input-background-color': vars['white'],
-  'input-border-color': vars['grey-lighter'],
-  'input-shadow': `inset 0 1px 2px ${rgba(vars['black'], 0.1)}`,
-
-  'input-hover-color': vars['grey-darker'],
-  'input-hover-border-color': vars['grey-light'],
-
-  'input-focus-color': vars['grey-darker'],
-  'input-focus-border-color': vars['link'],
-  'input-focus-box-shadow-size': '0 0 0 0.125em',
-  'input-focus-box-shadow-color': rgba(vars['link'], 0.25),
-
-  'input-disabled-color': vars['text-light'],
-  'input-disabled-background-color': vars['background'],
-  'input-disabled-border-color': vars['background'],
-
-  'input-arrow': vars['link'],
-
-  'input-icon-color': vars['grey-lighter'],
-  'input-icon-active-color': vars['grey'],
-
-  'input-radius': vars['radius'],
-
-  'label-color': vars['grey-darker'],
-  'label-weight': vars['weight-bold'],
-
-  'help-size': vars['size-small'],
-}))
+const defaultProps = { theme: Vars.getVariables() }
 
 export const Field = styled.div`
   &:not(:last-child) {
@@ -157,9 +128,10 @@ export const Field = styled.div`
     `}
   }
 `
+Field.defaultProps = defaultProps
 
 export const FieldLabel = styled.div`
-  .label {
+  ${/* sc-custom '.label' */Label} {
     font-size: inherit;
   }
   ${mobile`
@@ -188,9 +160,10 @@ export const FieldLabel = styled.div`
     }
   `}
 `
+FieldLabel.defaultProps = defaultProps
 
 export const FieldBody = styled.div`
-  .field .field {
+  ${/* sc-custom '.field' */Field} ${/* sc-custom '.field' */Field} {
     margin-bottom: 0;
   }
   ${tablet`
@@ -198,10 +171,10 @@ export const FieldBody = styled.div`
     flex-basis: 0;
     flex-grow: 5;
     flex-shrink: 1;
-    .field {
+    ${/* sc-custom '.field' */Field} {
       margin-bottom: 0;
     }
-    & > .field {
+    & > ${/* sc-custom '.field' */Field} {
       flex-shrink: 1;
       &:not(.is-narrow) {
         flex-grow: 1;
@@ -212,3 +185,7 @@ export const FieldBody = styled.div`
     }
   `}
 `
+FieldBody.defaultProps = defaultProps
+
+Field.Label = FieldLabel
+Field.Body = FieldBody
