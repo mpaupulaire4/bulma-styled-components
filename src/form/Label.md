@@ -1,0 +1,4 @@
+Simple label
+``` js
+
+```
