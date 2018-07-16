@@ -28,9 +28,9 @@ const NavbarItemLink = Navbar.Item.withComponent('a');
             </NavbarItemLink>
             <Navbar.Item>
               <Button className="is-primary is-inverted">
-                <span class="icon">
-                  <i class="fab fa-github"></i>
-                </span>
+                <Icon>
+                  <i className="fa fa-github"></i>
+                </Icon>
                 <span>Download</span>
               </Button>
             </Navbar.Item>
@@ -57,7 +57,7 @@ const NavbarItemLink = Navbar.Item.withComponent('a');
     <Tabs className="is-boxed">
       <Container>
         <ul>
-          <li class="is-active"><a>Overview</a></li>
+          <li className="is-active"><a>Overview</a></li>
           <li><a>Modifiers</a></li>
           <li><a>Grid</a></li>
           <li><a>Elements</a></li>

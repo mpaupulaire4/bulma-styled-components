@@ -50,26 +50,26 @@ const NavbarItemLink = Navbar.Item.withComponent('a');
 
     <Navbar.End>
       <Navbar.Item>
-        <div class="field is-grouped">
-          <p class="control">
+        <Field className="is-grouped">
+          <Control>
             <Button>
-              <span class="icon">
-                <i class="fab fa-twitter"></i>
-              </span>
+              <Icon>
+                <i className="fa fa-twitter"></i>
+              </Icon>
               <span>
                 Tweet
               </span>
             </Button>
-          </p>
-          <p class="control">
+          </Control>
+          <Control>
             <Button className="is-primary">
-              <span class="icon">
-                <i class="fas fa-download"></i>
-              </span>
+              <Icon>
+                <i className="fa fa-download"></i>
+              </Icon>
               <span>Download</span>
             </Button>
-          </p>
-        </div>
+          </Control>
+        </Field>
       </Navbar.Item>
     </Navbar.End>
   </Navbar.Menu>
