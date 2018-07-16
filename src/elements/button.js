@@ -1,10 +1,11 @@
+/* stylelint-disable no-descending-specificity */
 import styled, { css } from 'styled-components'
 import { rgba, darken } from 'polished'
 import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
 import { unselectable, loader, center } from '../utilities/mixins'
 import { control } from '../utilities/controls'
-import { Icon } from './'
+import { Icon, Buttons } from './'
 
 Vars.addDerivedDefault(vars => ({
   'button-color': vars['grey-darker'],
@@ -112,7 +113,7 @@ const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [n
         background-color: transparent;
         border-color: ${color};
         box-shadow: none;
-        color: $color;
+        color: ${color};
       }
     }
     &.is-inverted.is-outlined {
@@ -258,6 +259,43 @@ export const Button = styled.button`
     border-radius: ${fromTheme('radius-rounded')};
     padding-left: 1em;
     padding-right: 1em;
+  }
+  ${Buttons} & {
+    margin-bottom: 0.5rem;
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+  ${Buttons}.has-addons & {
+    &:not(:first-child) {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+    &:not(:last-child) {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+      margin-right: -1px;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    &:hover,
+    &.is-hovered {
+      z-index: 2;
+    }
+    &:focus,
+    &.is-focused,
+    &:active,
+    &.is-active,
+    &.is-selected {
+      z-index: 3;
+      &:hover {
+        z-index: 4;
+      }
+    }
+    &.is-expanded {
+      flex-grow: 1;
+    }
   }
 `
 Button.defaultProps = defaultProps

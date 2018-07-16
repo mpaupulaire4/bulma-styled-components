@@ -44,16 +44,16 @@ module.exports = {
       components: 'src/elements/*.js',
     },
     {
+      name: 'Layout',
+      components: 'src/layout/*.js',
+    },
+    {
       name: 'Form',
       components: 'src/form/*.js',
     },
     {
       name: 'Components',
       components: 'src/components/*.js',
-    },
-    {
-      name: 'Layout',
-      components: 'src/layout/*.js',
     },
   ],
   getComponentPathLine: (componentPath) => {
