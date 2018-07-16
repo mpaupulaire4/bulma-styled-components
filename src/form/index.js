@@ -53,139 +53,192 @@ Vars.addDerivedDefault(vars => ({
 
   'help-size': vars['size-small'],
 }))
-
-.file
-  +unselectable
+const FileColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((acc, [name, [color,]]) => css`
+  ${acc}
+  &.is-${name} {
+    .file-cta {
+      background-color: ${color};
+      border-color: transparent;
+      color: ${color_invert};
+    }
+    &:hover,
+    &.is-hovered {
+      .file-cta {
+        background-color: ${darken(0.025, color)};
+        border-color: transparent;
+        color: ${color_invert};
+      }
+    }
+    &:focus,
+    &.is-focused {
+      .file-cta {
+        border-color: transparent;
+        box-shadow: 0 0 0.5em ${rgba(color, 0.25)};
+        color: ${color_invert};
+      }
+    }
+    &:active,
+    &.is-active {
+      .file-cta {
+        background-color: ${darken(0.05, color)};
+        border-color: transparent;
+        color: ${color_invert};
+      }
+    }
+  }
+`,'')
+export const File = styled.div`
+  ${unselectable}
   align-items: stretch;
   display: flex;
   justify-content: flex-start;
   position: relative;
   /* Colors */
-  @each $name, $pair in $colors
-    $color: nth($pair, 1);
-    $color-invert: nth($pair, 2);
-    &.is-#{$name}
-      .file-cta
-        background-color: $color;
-        border-color: transparent;
-        color: $color-invert;
-      &:hover,
-      &.is-hovered
-        .file-cta
-          background-color: darken($color, 2.5%);
-          border-color: transparent;
-          color: $color-invert;
-      &:focus,
-      &.is-focused
-        .file-cta
-          border-color: transparent;
-          box-shadow: 0 0 0.5em rgba($color, 0.25);
-          color: $color-invert;
-      &:active,
-      &.is-active
-        .file-cta
-          background-color: darken($color, 5%);
-          border-color: transparent;
-          color: $color-invert;
+  ${FileColorClasses}
   /* Sizes */
-  &.is-small
-    font-size: $size-small;
-  &.is-medium
-    font-size: $size-medium;
-    .file-icon
-      .fa
+  &.is-small {
+    font-size: ${fromTheme('size-small')};
+  }
+  &.is-medium {
+    font-size: ${fromTheme('size-medium')};
+    .file-icon {
+      .fa {
         font-size: 21px;
-  &.is-large
-    font-size: $size-large;
-    .file-icon
-      .fa
+      }
+    }
+  }
+  &.is-large {
+    font-size: ${fromTheme('size-large')};
+    .file-icon {
+      .fa {
         font-size: 28px;
+      }
+    }
+  }
   /* Modifiers */
-  &.has-name
-    .file-cta
+  &.has-name {
+    .file-cta {
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
-    .file-name
+    }
+    .file-name {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
-    &.is-empty
-      .file-cta
-        border-radius: $file-radius;
-      .file-name
+    }
+    &.is-empty {
+      .file-cta {
+        border-radius: ${fromTheme('file-radius')};
+      }
+      .file-name {
         display: none;
-  &.is-boxed
-    .file-label
+      }
+    }
+  }
+  &.is-boxed {
+    .file-label {
       flex-direction: column;
-    .file-cta
+    }
+    .file-cta {
       flex-direction: column;
       height: auto;
       padding: 1em 3em;
-    .file-name
+    }
+    .file-name {
       border-width: 0 1px 1px;
-    .file-icon
+    }
+    .file-icon {
       height: 1.5em;
       width: 1.5em;
-      .fa
+      .fa {
         font-size: 21px;
-    &.is-small
-      .file-icon .fa
+      }
+    }
+    &.is-small {
+      .file-icon .fa {
         font-size: 14px;
-    &.is-medium
-      .file-icon .fa
+      }
+    }
+    &.is-medium {
+      .file-icon .fa {
         font-size: 28px;
-    &.is-large
-      .file-icon .fa
+      }
+    }
+    &.is-large {
+      .file-icon .fa {
         font-size: 35px;
-    &.has-name
-      .file-cta
-        border-radius: $file-radius $file-radius 0 0;
-      .file-name
-        border-radius: 0 0 $file-radius $file-radius;
+      }
+    }
+    &.has-name {
+      .file-cta {
+        border-radius: ${fromTheme('file-radius')} ${fromTheme('file-radius')} 0 0;
+      }
+      .file-name {
+        border-radius: 0 0 ${fromTheme('file-radius')} ${fromTheme('file-radius')};
         border-width: 0 1px 1px;
-  &.is-centered
+      }
+    }
+  }
+  &.is-centered {
     justify-content: center;
-  &.is-fullwidth
-    .file-label
+  }
+  &.is-fullwidth {
+    .file-label {
       width: 100%;
-    .file-name
+    }
+    .file-name {
       flex-grow: 1;
       max-width: none;
-  &.is-right
+    }
+  }
+  &.is-right {
     justify-content: flex-end;
-    .file-cta
-      border-radius: 0 $file-radius $file-radius 0;
-    .file-name
-      border-radius: $file-radius 0 0 $file-radius;
+    .file-cta {
+      border-radius: 0 ${fromTheme('file-radius')} ${fromTheme('file-radius')} 0;
+    }
+    .file-name {
+      border-radius: ${fromTheme('file-radius')} 0 0 ${fromTheme('file-radius')};
       border-width: 1px 0 1px 1px;
       order: -1;
+    }
+  }
+`
 
-.file-label
+export const FileLabel = styled.label`
   align-items: stretch;
   display: flex;
   cursor: pointer;
   justify-content: flex-start;
   overflow: hidden;
   position: relative;
-  &:hover
-    .file-cta
+  &:hover {
+    .file-cta {
       background-color: darken($file-cta-background-color, 2.5%);
       color: $file-cta-hover-color;
-    .file-name
+    }
+    .file-name {
       border-color: darken($file-name-border-color, 2.5%);
-  &:active
-    .file-cta
+    }
+  }
+  &:active {
+    .file-cta {
       background-color: darken($file-cta-background-color, 5%);
       color: $file-cta-active-color;
-    .file-name
+    }
+    .file-name {
       border-color: darken($file-name-border-color, 5%);
-
-.file-input
+    }
+  }
+`
+export const FileInput = styled.input.attrs({
+  type: 'file'
+})`
   height: 0.01em;
   left: 0;
   outline: none;
   position: absolute;
   top: 0;
   width: 0.01em;
+`
 
 .file-cta,
 .file-name
