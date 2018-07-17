@@ -36,8 +36,9 @@ module.exports = {
   title: 'Bulma Styled Components',
   sections: [
     {
-      name: 'Introduction',
-      description: 'A Styled Components implementation of Bulma CSS',
+      name: '',
+      // description: 'A Styled Components implementation of Bulma CSS',
+      content: 'README.md',
     },
     {
       name: 'Elements',
