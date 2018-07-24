@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
 import { fromTheme } from '../utilities/functions'
-import { Button, Delete, Title, Subtitle, Content, Dropdown } from '../'
+import { Button, Delete, Title, Subtitle, Content, DropdownItem } from '../'
 
 Vars.addDerivedDefault(vars => ({
   'notification-background-color': vars['background'],
@@ -25,7 +25,7 @@ export const Notification = styled.div`
   border-radius: ${fromTheme('notification-radius')};
   padding: ${fromTheme('notification-padding')};
   position: relative;
-  a:not(${Button}):not(${Dropdown.Item}) { /* stylelint-disable-line */
+  a:not(${Button}):not(${DropdownItem}) { /* stylelint-disable-line */
     color: currentColor;
     text-decoration: underline;
   }
