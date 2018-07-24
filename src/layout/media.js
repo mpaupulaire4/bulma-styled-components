@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 import Vars from '../utilities/vars'
-import { Content } from '../'
+import { Content, Control } from '../'
 
 const defaultProps = { theme: Vars.getVariables() }
 
@@ -19,7 +19,7 @@ export const Media = styled(MediaPartial)`
     display: flex;
     padding-top: 0.75rem;
     ${Content}:not(:last-child),
-    .control:not(:last-child) {
+    ${Control}:not(:last-child) {
       margin-bottom: 0.5rem;
     }
     ${MediaPartial} {
