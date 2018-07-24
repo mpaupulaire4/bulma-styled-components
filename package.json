@@ -12,6 +12,7 @@
     "predeploy": "npm run build:docs",
     "deploy": "gh-pages -d docs",
     "build:docs": "styleguidist build",
+    "prepublish": "npm run build",
     "test": "npm run lint"
   },
   "repository": {
