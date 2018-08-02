@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { rgba } from 'polished'
 import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
+import { Media } from '../'
 
 Vars.addDerivedDefault(vars => ({
   'card-color': vars['text'],
@@ -28,7 +29,7 @@ export const Card = styled.div`
   color: ${fromTheme('card-color')};
   max-width: 100%;
   position: relative;
-  .media:not(:last-child) {
+  ${/* sc-custom '.media' */Media}:not(:last-child) {
     margin-bottom: 0.75rem
   }
 `
