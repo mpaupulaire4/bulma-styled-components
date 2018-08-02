@@ -260,13 +260,13 @@ export const Button = styled.button`
     padding-left: 1em;
     padding-right: 1em;
   }
-  ${Buttons} & {
+  ${/* sc-custom '.buttons' */Buttons} & {
     margin-bottom: 0.5rem;
     &:not(:last-child) {
       margin-right: 0.5rem;
     }
   }
-  ${Buttons}.has-addons & {
+  ${/* sc-custom '.buttons' */Buttons}.has-addons & {
     &:not(:first-child) {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
