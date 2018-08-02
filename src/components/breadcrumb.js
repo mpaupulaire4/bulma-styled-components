@@ -58,13 +58,11 @@ export const Breadcrumb = styled.nav`
     flex-wrap: wrap;
     justify-content: flex-start;
   }
-  ${Icon} { /* stylelint-disable-line */
-    &:first-child {
-      margin-right: 0.5em;
-    }
-    &:last-child {
-      margin-left: 0.5em;
-    }
+  ${/* sc-custom '.icon' */Icon}:first-child { /* stylelint-disable-line */
+    margin-right: 0.5em;
+  }
+  ${/* sc-custom '.icon' */Icon}:last-child { /* stylelint-disable-line */
+    margin-left: 0.5em;
   }
   /* Alignment */
   &.is-centered {
