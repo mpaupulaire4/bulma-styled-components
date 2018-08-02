@@ -31,6 +31,47 @@ Vars.addDerivedDefault(vars => ({
 
 const defaultProps = { theme: Vars.getVariables() }
 
+const MessageBody = styled.div`
+  border-color: ${fromTheme('message-body-border-color')};
+  border-radius: ${fromTheme('message-body-radius')};
+  border-style: solid;
+  border-width: ${fromTheme('message-body-border-width')};
+  color: ${fromTheme('message-body-color')};
+  padding: ${fromTheme('message-body-padding')};
+  code,
+  pre {
+    background-color: ${fromTheme('message-body-pre-background-color')};
+  }
+  pre code {
+    background-color: ${fromTheme('message-body-pre-code-background-color')};
+  }
+`
+MessageBody.defaultProps = defaultProps
+
+const MessageHeader = styled.div`
+  align-items: center;
+  background-color: ${fromTheme('message-header-background-color')};
+  border-radius: ${fromTheme('message-header-radius')} ${fromTheme('message-header-radius')} 0 0;
+  color: ${fromTheme('message-header-color')};
+  display: flex;
+  font-weight: ${fromTheme('message-header-weight')};
+  justify-content: space-between;
+  line-height: 1.25;
+  padding: ${fromTheme('message-header-padding')};
+  position: relative;
+  ${Delete} { /* stylelint-disable-line */
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-left: 0.75em;
+  }
+  & + ${/* sc-custom ".body" */MessageBody} {
+    border-width: ${fromTheme('message-header-body-border-width')};
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+`
+MessageHeader.defaultProps = defaultProps
+
 const colorClasses = props => Object.entries(props.theme.colors)
   .reduce((acc, [name, [color, color_invert]]) => {
     const { lightness } = parseToHsl(color)
@@ -42,11 +83,11 @@ const colorClasses = props => Object.entries(props.theme.colors)
       ${acc}
       &.is-${name} {
         background-color: ${lighten(color_lightning, color)};
-        .message-header {
+        ${/* sc-custom ".header" */MessageHeader} {
           background-color: ${color};
           color: ${color_invert}
         }
-        .message-body {
+        ${/* sc-custom ".body" */MessageBody} {
           border-color: ${color};
           color: ${desaturate(desaturate_percentage, darken(darken_percentage, color))}
         }
@@ -81,45 +122,5 @@ export const Message = styled.div`
 `
 Message.defaultProps = defaultProps
 
-const MessageHeader = styled.div`
-  align-items: center;
-  background-color: ${fromTheme('message-header-background-color')};
-  border-radius: ${fromTheme('message-header-radius')} ${fromTheme('message-header-radius')} 0 0;
-  color: ${fromTheme('message-header-color')};
-  display: flex;
-  font-weight: ${fromTheme('message-header-weight')};
-  justify-content: space-between;
-  line-height: 1.25;
-  padding: ${fromTheme('message-header-padding')};
-  position: relative;
-  ${Delete} { /* stylelint-disable-line */
-    flex-grow: 0;
-    flex-shrink: 0;
-    margin-left: 0.75em;
-  }
-  & + .message-body {
-    border-width: ${fromTheme('message-header-body-border-width')};
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-`
-MessageHeader.defaultProps = defaultProps
 Message.Header = MessageHeader
-
-const MessageBody = styled.div`
-  border-color: ${fromTheme('message-body-border-color')};
-  border-radius: ${fromTheme('message-body-radius')};
-  border-style: solid;
-  border-width: ${fromTheme('message-body-border-width')};
-  color: ${fromTheme('message-body-color')};
-  padding: ${fromTheme('message-body-padding')};
-  code,
-  pre {
-    background-color: ${fromTheme('message-body-pre-background-color')};
-  }
-  pre code {
-    background-color: ${fromTheme('message-body-pre-code-background-color')};
-  }
-`
-MessageBody.defaultProps = defaultProps
 Message.Body = MessageBody

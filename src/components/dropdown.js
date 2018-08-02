@@ -40,18 +40,18 @@ export const Dropdown = styled.div`
   vertical-align: top;
   &.is-active,
   &.is-hoverable:hover {
-    ${DropdownMenu} {
+    ${/* sc-custom ".dropdown-menu" */DropdownMenu} {
       display: block;
     }
   }
   &.is-right {
-    ${DropdownMenu} {
+    ${/* sc-custom ".dropdown-menu" */DropdownMenu} {
       left: auto;
       right: 0;
     }
   }
   &.is-up {
-    ${DropdownMenu} {
+    ${/* sc-custom ".dropdown-menu" */DropdownMenu} {
       bottom: 100%;
       padding-bottom: ${fromTheme('dropdown-content-offset')};
       padding-top: initial;

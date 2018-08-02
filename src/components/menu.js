@@ -41,15 +41,15 @@ export const MenuList = styled.ul`
     color: ${fromTheme('menu-item-color')};
     display: block;
     padding: 0.5em 0.75em;
-    &:hover {
-      background-color: ${fromTheme('menu-item-hover-background-color')};
-      color: ${fromTheme('menu-item-hover-color')};
-    }
-    /* Modifiers */
-    &.is-active {
-      background-color: ${fromTheme('menu-item-active-background-color')};
-      color: ${fromTheme('menu-item-active-color')};
-    }
+  }
+  a:hover {
+    background-color: ${fromTheme('menu-item-hover-background-color')};
+    color: ${fromTheme('menu-item-hover-color')};
+  }
+  /* Modifiers */
+  a.is-active {
+    background-color: ${fromTheme('menu-item-active-background-color')};
+    color: ${fromTheme('menu-item-active-color')};
   }
   li {
     ul {
