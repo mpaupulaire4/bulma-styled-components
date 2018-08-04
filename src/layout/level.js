@@ -91,13 +91,13 @@ export const Level = styled.div`
       margin-top: 0;
     }
     ${LevelItem} { /* stylelint-disable-line */
-      &:not(:last-child) {
-        margin-bottom: 0;
-      }
-      &:not(.is-narrow) {
-        flex-grow: 1;
-      }
       margin-right: 0.75rem;
+    }
+    ${LevelItem}:not(:last-child) {
+      margin-bottom: 0;
+    }
+    ${LevelItem}:not(.is-narrow) {
+      flex-grow: 1;
     }
   }
   /* Responsiveness */

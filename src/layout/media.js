@@ -14,29 +14,30 @@ const MediaPartial = styled.article`
   }
 `
 export const Media = styled(MediaPartial)`
-  ${MediaPartial} {
-    border-top: 1px solid ${({ theme }) => rgba(theme['border'], 0.5)};
-    display: flex;
-    padding-top: 0.75rem;
-    ${Content}:not(:last-child),
-    ${Control}:not(:last-child) {
-      margin-bottom: 0.5rem;
-    }
-    ${MediaPartial} {
-      padding-top: 0.5rem;
-      & + ${MediaPartial} {
-        margin-top: 0.5rem;
-      }
-    }
-  }
-  & + ${MediaPartial} {
+  & + ${/* sc-custom ".media" */MediaPartial} {
     border-top: 1px solid ${({ theme }) => rgba(theme['border'], 0.5)};
     margin-top: 1rem;
     padding-top: 1rem;
   }
+  ${/* sc-custom ".media" */MediaPartial} {
+    border-top: 1px solid ${({ theme }) => rgba(theme['border'], 0.5)};
+    display: flex;
+    padding-top: 0.75rem;
+    ${/* sc-custom ".content" */Content}:not(:last-child),
+    ${/* sc-custom ".constrol" */Control}:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+    ${/* sc-custom ".media" */MediaPartial} {
+      padding-top: 0.5rem;
+    }
+    ${/* sc-custom ".media" */MediaPartial} + ${/* sc-custom ".media" */MediaPartial} {
+      margin-top: 0.5rem;
+    }
+  }
+
   /* Sizes */
   &.is-large {
-    & + ${MediaPartial} {
+    & + ${/* sc-custom ".media" */MediaPartial} {
       margin-top: 1.5rem;
       padding-top: 1.5rem;
     }
