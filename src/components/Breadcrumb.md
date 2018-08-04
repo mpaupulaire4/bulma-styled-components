@@ -50,25 +50,25 @@
   <ul>
     <li>
       <a href="/">
-        <Icon className="is-small"><i class="fa fa-home" aria-hidden="true"/></Icon>
+        <Icon className="is-small"><i className="fa fa-home" aria-hidden="true"/></Icon>
         Bulma
       </a>
     </li>
     <li>
       <a href="/">
-        <Icon className="is-small"><i class="fa fa-book" aria-hidden="true"/></Icon>
+        <Icon className="is-small"><i className="fa fa-book" aria-hidden="true"/></Icon>
         Documentation
       </a>
     </li>
     <li>
       <a href="/">
-        <Icon className="is-small"><i class="fa fa-puzzle-piece" aria-hidden="true"/></Icon>
+        <Icon className="is-small"><i className="fa fa-puzzle-piece" aria-hidden="true"/></Icon>
         Components
       </a>
     </li>
     <li className="is-active">
       <a href="/">
-        <Icon className="is-small"><i class="fa fa-thumbs-up" aria-hidden="true"/></Icon>
+        <Icon className="is-small"><i className="fa fa-thumbs-up" aria-hidden="true"/></Icon>
         Breadcrumb
       </a>
     </li>

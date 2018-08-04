@@ -75,11 +75,11 @@ export const PanelTabs = styled.p`
     border-bottom: ${fromTheme('panel-tab-border-bottom')};
     margin-bottom: -1px;
     padding: 0.5em;
-    /* Modifiers */
-    &.is-active {
-      border-bottom-color: ${fromTheme('panel-tab-active-border-bottom-color')};
-      color: ${fromTheme('panel-tab-active-color')};
-    }
+  }
+  /* Modifiers */
+  a.is-active {
+    border-bottom-color: ${fromTheme('panel-tab-active-border-bottom-color')};
+    color: ${fromTheme('panel-tab-active-color')};
   }
 `
 PanelTabs.defaultProps = defaultProps

@@ -43,12 +43,12 @@ const NavbarItemLink = Navbar.Item.withComponent('a');
   {/* Hero content: will be in the middle */}
   <Hero.Body>
     <Container className="has-text-centered">
-      <h1 class="title">
+      <Title>
         Title
-      </h1>
-      <h2 class="subtitle">
+      </Title>
+      <Subtitle>
         Subtitle
-      </h2>
+      </Subtitle>
     </Container>
   </Hero.Body>
 
