@@ -34,7 +34,7 @@ Vars.addDerivedDefault(vars => ({
 
   'pagination-ellipsis-color': vars['grey-light'],
 
-  'pagination-shadow-inset': `inset 0 1px 2px ${rgba(vars['black'], 0.2)}`
+  'pagination-shadow-inset': `inset 0 1px 2px ${rgba(vars['black'], 0.2)}`,
 }))
 
 const defaultProps = { theme: Vars.getVariables() }
