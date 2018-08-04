@@ -138,10 +138,8 @@ export const ModalCardFoot = styled.footer`
   border-bottom-left-radius: ${fromTheme('modal-card-foot-radius')};
   border-bottom-right-radius: ${fromTheme('modal-card-foot-radius')};
   border-top: ${fromTheme('modal-card-foot-border-top')};
-  ${/* sc-selector */Button} {
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
+  ${/* sc-selector */Button}:not(:last-child) {
+    margin-right: 10px;
   }
 `
 ModalCardFoot.defaultProps = defaultProps
