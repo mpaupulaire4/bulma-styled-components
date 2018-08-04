@@ -48,42 +48,36 @@ const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((
         color: ${rgba(color_invert, 0.7)};
       }
       a${/* sc-custom '.navbar-link' */NavbarItem},
-      ${/* sc-selector */NavbarLink} {
-        &:hover,
-        &.is-active {
-          background-color: ${darken(0.05, color)};
-          color: ${color_invert};
-        }
+      ${/* sc-selector */NavbarLink}:hover,
+      ${/* sc-selector */NavbarLink}.is-active {
+        background-color: ${darken(0.05, color)};
+        color: ${color_invert};
       }
       ${/* sc-custom '.tabs' */Tabs} {
         a {
           color: ${color_invert};
           opacity: 0.9;
-          &:hover {
-            opacity: 1;
-          }
         }
-        li {
-          &.is-active a {
-            opacity: 1;
-          }
+        a:hover {
+          opacity: 1;
         }
-        &.is-boxed,
-        &.is-toggle {
-          a {
-            color: ${color_invert};
-            &:hover {
-              background-color: ${rgba(theme['black'], 0.1)};
-            }
-          }
-          li.is-active a {
-            &,
-            &:hover {
-              background-color: ${color_invert};
-              border-color: ${color_invert};
-              color: ${color};
-            }
-          }
+        li.is-active a {
+          opacity: 1;
+        }
+      }
+      ${/* sc-custom '.tabs' */Tabs}.is-boxed,
+      ${/* sc-custom '.tabs' */Tabs}.is-toggle {
+        a {
+          color: ${color_invert};
+        }
+        a:hover {
+          background-color: ${rgba(theme['black'], 0.1)};
+        }
+        li.is-active a,
+        li.is-active a:hover {
+          background-color: ${color_invert};
+          border-color: ${color_invert};
+          color: ${color};
         }
       }
       /* Modifiers */
@@ -163,10 +157,10 @@ export const Hero = styled.section`
     ${/* sc-selector */HeroBody} {
       align-items: center;
       display: flex;
-      & > ${/* sc-selector */Container} {
-        flex-grow: 1;
-        flex-shrink: 1;
-      }
+    }
+    ${/* sc-selector */HeroBody} > ${/* sc-selector */Container} {
+      flex-grow: 1;
+      flex-shrink: 1;
     }
   }
   &.is-halfheight {
@@ -205,9 +199,9 @@ const HeroButtons = styled.div`
   ${mobile`
     ${Button} {
       display: flex;
-      &:not(:last-child) {
-        margin-bottom: 0.75rem;
-      }
+    }
+    ${Button}:not(:last-child) {
+      margin-bottom: 0.75rem;
     }
   `}
   ${tablet`
