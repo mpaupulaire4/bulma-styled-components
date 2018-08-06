@@ -22,23 +22,6 @@ export const Control = styled.div`
   /* Modifiers */
   &.has-icons-left,
   &.has-icons-right {
-    ${/* sc-custom '.input' */Input},
-    ${/* sc-custom '.select' */Select} {
-      &:focus {
-        & ~ ${/* sc-custom '.icon' */Icon} {
-          color: ${fromTheme('input-icon-active-color')};
-        }
-      }
-      &.is-small ~ ${/* sc-custom '.icon' */Icon} {
-        font-size: ${fromTheme('size-small')};
-      }
-      &.is-medium ~ ${/* sc-custom '.icon' */Icon} {
-        font-size: ${fromTheme('size-medium')};
-      }
-      &.is-large ~ ${/* sc-custom '.icon' */Icon} {
-        font-size: ${fromTheme('size-large')};
-      }
-    }
     ${/* sc-custom '.icon' */Icon} {
       color: ${fromTheme('input-icon-color')};
       height: 2.25em;
@@ -47,6 +30,22 @@ export const Control = styled.div`
       top: 0;
       width: 2.25em;
       z-index: 4;
+    }
+    ${/* sc-custom '.input' */Input}:focus ~ ${/* sc-custom '.icon' */Icon},
+    ${/* sc-custom '.select' */Select}:focus ~ ${/* sc-custom '.icon' */Icon} {
+      color: ${fromTheme('input-icon-active-color')};
+    }
+    ${/* sc-custom '.input' */Input}:focus.is-mall ~ ${/* sc-custom '.icon' */Icon},
+    ${/* sc-custom '.select' */Select}:focus.is-small ~ ${/* sc-custom '.icon' */Icon} {
+      font-size: ${fromTheme('size-small')};
+    }
+    ${/* sc-custom '.input' */Input}:focus.is-medium ~ ${/* sc-custom '.icon' */Icon},
+    ${/* sc-custom '.select' */Select}:focus.is-smedium ~ ${/* sc-custom '.icon' */Icon} {
+      font-size: ${fromTheme('size-medium')};
+    }
+    ${/* sc-custom '.input' */Input}:focus.is-large ~ ${/* sc-custom '.icon' */Icon},
+    ${/* sc-custom '.select' */Select}:focus.is-large ~ ${/* sc-custom '.icon' */Icon} {
+      font-size: ${fromTheme('size-large')};
     }
   }
   &.has-icons-left {
