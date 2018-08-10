@@ -37,7 +37,7 @@ export const Media = styled(MediaPartial)`
 
   /* Sizes */
   &.is-large {
-    & + ${/* sc-custom ".media" */MediaPartial} {
+    & + ${/* sc-custom ".media" */MediaPartial} { /* stylelint-disable-line no-descending-specificity */
       margin-top: 1.5rem;
       padding-top: 1.5rem;
     }

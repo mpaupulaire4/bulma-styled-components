@@ -44,9 +44,9 @@ export const Notification = styled.div`
     right: 0.5rem;
     top: 0.5rem;
   }
-  ${Title},
-  ${Subtitle},
-  ${Content} {
+  ${/* sc-custom '.title' */Title},
+  ${/* sc-custom '.subtitle' */Subtitle},
+  ${/* sc-custom '.content' */Content} {
     color: currentColor;
   }
   ${colorClasses}

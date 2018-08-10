@@ -1,9 +1,5 @@
 import { css } from 'styled-components'
-import {
-  overflow_touch,
-  touch,
-  desktop,
-} from '../utilities/mixins'
+import { overflow_touch } from '../utilities/mixins'
 
 export default vars => css`
   html {
