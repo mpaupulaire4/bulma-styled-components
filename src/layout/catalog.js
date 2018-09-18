@@ -9,18 +9,18 @@ export default {
       path: '/layout/Columns',
       content: pageLoader(() => import('./Columns.md')),
     },
-    // {
-    //   title: 'Buttons',
-    //   path: '/layout/Buttons',
-    //   frame: true,
-    //   content: pageLoader(() => import('./Buttons.md')),
-    // },
-    // {
-    //   title: 'Content',
-    //   path: '/layout/Content',
-    //   frame: true,
-    //   content: pageLoader(() => import('./Content.md')),
-    // },
+    {
+      title: 'Footer',
+      path: '/layout/Footer',
+      frame: true,
+      content: pageLoader(() => import('./Footer.md')),
+    },
+    {
+      title: 'Hero',
+      path: '/layout/Hero',
+      frame: true,
+      content: pageLoader(() => import('./Hero.md')),
+    },
     // {
     //   title: 'Delete',
     //   path: '/layout/Delete',

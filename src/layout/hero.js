@@ -7,14 +7,16 @@ import {
   Tag,
   Title,
   Subtitle,
+} from '../elements'
+import {
   Tabs,
   Dropdown,
-  Container,
   Navbar,
   NavbarItem,
   NavbarLink,
   NavbarMenu,
-} from '../'
+} from '../components'
+import { Container } from './'
 
 const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((acc, [name, [color, color_invert]]) => {
   const gradient_top_left = darken(0.1, saturate(0.1, adjustHue(350, color)))
