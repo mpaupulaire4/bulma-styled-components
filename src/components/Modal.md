@@ -1,7 +1,10 @@
 #### Simple Modal
-``` js
+```react
+state: { show: false }
+responsive: true
+---
 const toggleModal = () => setState({show: !state.show});
-<div>
+<BulmaStyledTheme>
   <Button
     className="is-primary"
     onClick={toggleModal}>
@@ -29,19 +32,22 @@ const toggleModal = () => setState({show: !state.show});
             </Content>
           </Media.Content>
           <Media.Right>
-            <Delete />
+            <Delete></Delete>
           </Media.Right>
         </Media>
       </Box>
     </Modal.Content>
     <Modal.Close classNam="is-large" onClick={toggleModal}/>
   </Modal>
-</div>
+</BulmaStyledTheme>
 ```
 #### Image Modal
-``` js
+```react
+responsive: true
+state: { show: false }
+---
 const toggleModal = () => setState({show: !state.show});
-<div>
+<BulmaStyledTheme>
   <Button
     className="is-primary"
     onClick={toggleModal}>
@@ -55,12 +61,15 @@ const toggleModal = () => setState({show: !state.show});
       </Image>
     </Modal.Content>
   </Modal>
-</div>
+</BulmaStyledTheme>
 ```
 #### Modal Card
-``` js
+``` react
+responsive: true
+state: { show: false }
+---
 const toggleModal = () => setState({show: !state.show});
-<div>
+<BulmaStyledTheme>
   <Button
     className="is-primary"
     onClick={toggleModal}>
@@ -245,5 +254,5 @@ const toggleModal = () => setState({show: !state.show});
       </Modal.Card.Foot>
     </Modal.Card>
   </Modal>
-</div>
+</BulmaStyledTheme>
 ```

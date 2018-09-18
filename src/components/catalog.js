@@ -28,6 +28,18 @@ export default {
       frame: true,
       content: pageLoader(() => import('./Menu.md')),
     },
+    {
+      title: 'Message',
+      path: '/layout/Message',
+      frame: true,
+      content: pageLoader(() => import('./Message.md')),
+    },
+    {
+      title: 'Modal',
+      path: '/layout/Modal',
+      frame: true,
+      content: pageLoader(() => import('./Modal.md')),
+    },
     // {
     //   title: 'Hero',
     //   path: '/layout/Hero',

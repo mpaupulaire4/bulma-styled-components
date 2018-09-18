@@ -1,4 +1,4 @@
-``` js
+``` react
 <div>
   <Message>
     <Message.Header>
@@ -131,7 +131,7 @@
 </div>
 ```
 #### Just the Body
-``` js
+``` react
 <div>
   <Message>
     <Message.Body>
