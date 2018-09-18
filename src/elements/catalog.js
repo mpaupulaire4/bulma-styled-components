@@ -35,13 +35,13 @@ export default {
       content: pageLoader(() => import('./Buttons.md')),
     },
     {
-      title: 'Box',
-      path: '/elements/Box',
+      title: 'Content',
+      path: '/elements/Content',
       frame: true,
       imports: {
-        Box: require('./Box'),
+        Content: require('./Content'),
       },
-      content: pageLoader(() => import('./Box.md')),
+      content: pageLoader(() => import('./Content.md')),
     },
     {
       title: 'Box',

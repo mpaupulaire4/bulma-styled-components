@@ -1,5 +1,5 @@
-Styles it's chilren nicely
-``` js
+Styles it's children nicely
+``` react
 <Content>
   <h1>Hello World</h1>
   <p>
