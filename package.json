@@ -8,10 +8,10 @@
     "lint:style": "stylelint './src/**/*.js'",
     "lint:js": "eslint 'src'",
     "lint": "npm run lint:js && npm run lint:style",
-    "docs": "styleguidist server",
+    "docs": "catalog start",
     "predeploy": "npm run build:docs",
     "deploy": "gh-pages -d docs",
-    "build:docs": "styleguidist build",
+    "build:docs": "catalog build",
     "prepublish": "npm run build",
     "test": "npm run lint"
   },

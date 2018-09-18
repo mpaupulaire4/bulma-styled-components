@@ -5,6 +5,7 @@ import { Catalog, pageLoader } from 'catalog'
 import './static/fontawesome/css/font-awesome.min.css'
 import * as Components from '../src'
 import Elements from '../src/elements/catalog'
+import Layout from '../src/layout/catalog'
 
 const { BulmaStyledTheme } = Components
 
@@ -15,6 +16,7 @@ const pages = [
     content: pageLoader(() => import('../README.md')),
   },
   Elements,
+  Layout,
 ]
 
 ReactDOM.render(

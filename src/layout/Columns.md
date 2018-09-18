@@ -1,25 +1,27 @@
 #### Basic
-``` js
+``` react|responsive
 const TempCol = props => (
   <Column className={props.className}>
     <div {...props} className="has-background-primary has-text-white has-text-centered" />
   </Column>
 );
-<Columns>
-  <TempCol>Column</TempCol>
-  <TempCol>Column</TempCol>
-  <TempCol>Column</TempCol>
-  <TempCol>Column</TempCol>
-</Columns>
+<BulmaStyledTheme>
+  <Columns>
+    <TempCol>Column</TempCol>
+    <TempCol>Column</TempCol>
+    <TempCol>Column</TempCol>
+    <TempCol>Column</TempCol>
+  </Columns>
+</BulmaStyledTheme>
 ```
 #### Sizes
-``` js
+``` react|responsive
 const TempCol = props => (
   <Column className={props.className}>
     <div {...props} className="has-background-primary has-text-white has-text-centered" />
   </Column>
 );
-<div>
+<BulmaStyledTheme>
   <Columns>
     <TempCol className="is-four-fifths">is-four-fifths</TempCol>
     <TempCol className="">Auto</TempCol>
@@ -72,5 +74,5 @@ const TempCol = props => (
     <TempCol className="">Auto</TempCol>
     <TempCol className="">Auto</TempCol>
   </Columns>
-</div>
+</BulmaStyledTheme>
 ```

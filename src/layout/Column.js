@@ -621,3 +621,4 @@ export const Column = styled.div`
     `)}
   `}
 `
+Column.defaultProps = { theme: Vars.getVariables() }
