@@ -1,4 +1,4 @@
-``` js
+``` react
 <Card>
   <Card.Header >
     <Card.Header.Title>

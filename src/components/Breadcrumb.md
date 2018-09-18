@@ -1,6 +1,6 @@
 
 #### Seperators
-``` js
+``` react
 <div>
   <Breadcrumb >
     <ul>
@@ -45,7 +45,7 @@
 </div>
 ```
 #### With Icons
-``` js
+``` react
 <Breadcrumb >
   <ul>
     <li>

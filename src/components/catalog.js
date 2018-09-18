@@ -2,30 +2,37 @@
 import { pageLoader } from 'catalog'
 
 export default {
-  title: 'Layout',
+  title: 'Components',
   pages: [
     {
-      title: 'Columns',
-      path: '/layout/Columns',
+      title: 'Breadcrumb',
+      path: '/layout/Breadcrumb',
       frame: true,
-      content: pageLoader(() => import('./Columns.md')),
+      content: pageLoader(() => import('./Breadcrumb.md')),
     },
     {
-      title: 'Footer',
-      path: '/layout/Footer',
+      title: 'Card',
+      path: '/layout/Card',
       frame: true,
-      content: pageLoader(() => import('./Footer.md')),
+      content: pageLoader(() => import('./Card.md')),
     },
     {
-      title: 'Hero',
-      path: '/layout/Hero',
+      title: 'Dropdown',
+      path: '/layout/Dropdown',
       frame: true,
-      content: pageLoader(() => import('./Hero.md')),
+      content: pageLoader(() => import('./Dropdown.md')),
     },
     {
-      title: 'Media',
-      path: '/layout/Media',
-      content: pageLoader(() => import('./Media.md')),
+      title: 'Menu',
+      path: '/layout/Menu',
+      frame: true,
+      content: pageLoader(() => import('./Menu.md')),
     },
+    // {
+    //   title: 'Hero',
+    //   path: '/layout/Hero',
+    //   frame: true,
+    //   content: pageLoader(() => import('./Hero.md')),
+    // },
   ],
 }

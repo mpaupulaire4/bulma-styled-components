@@ -1,11 +1,13 @@
-``` js
-const toggleDropdown = () => setState({menu: !state.menu});
+``` react
+state: {menu: false}
+---
 <Dropdown className={state.menu ? 'is-active' : ''}>
   <div>
     <Button
       aria-haspopup="true"
       aria-controls="dropdown-menu"
-      onClick={toggleDropdown}
+      onClick={() => setState({menu: !state.menu})}
+      onBlur={() => setState({menu: !state.menu})}
     >
       Dropdown button
     </Button>

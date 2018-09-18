@@ -6,6 +6,7 @@ import './static/fontawesome/css/font-awesome.min.css'
 import * as Components from '../src'
 import Elements from '../src/elements/catalog'
 import Layout from '../src/layout/catalog'
+import Comps from '../src/components/catalog'
 
 const { BulmaStyledTheme } = Components
 
@@ -17,6 +18,7 @@ const pages = [
   },
   Elements,
   Layout,
+  Comps,
 ]
 
 ReactDOM.render(
@@ -26,6 +28,9 @@ ReactDOM.render(
       pages={pages}
       imports={Components}
       styles={['fontawesome/css/fontawesome.min.css']}
+      theme={{
+        checkerboardPatternLight: 'white'
+      }}
     />
   </BulmaStyledTheme>,
   document.getElementById('catalog'),

@@ -1,5 +1,5 @@
-``` js
-<Menu >
+``` react
+<Menu>
   <Menu.Label>
     General
   </Menu.Label>
