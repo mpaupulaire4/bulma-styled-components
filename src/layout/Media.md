@@ -1,4 +1,4 @@
-``` js
+``` react
 <Media>
   <Media.Left>
     <Image className="is-64x64">
