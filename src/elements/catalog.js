@@ -41,16 +41,16 @@ export default {
       content: pageLoader(() => import('./Icon.md')),
     },
     {
-      title: 'Box',
-      path: '/elements/Box',
+      title: 'Image',
+      path: '/elements/Image',
       frame: true,
-      content: pageLoader(() => import('./Box.md')),
+      content: pageLoader(() => import('./Image.md')),
     },
     {
-      title: 'Box',
-      path: '/elements/Box',
+      title: 'Notification',
+      path: '/elements/Notification',
       frame: true,
-      content: pageLoader(() => import('./Box.md')),
+      content: pageLoader(() => import('./Notification.md')),
     },
     {
       title: 'Box',

@@ -3,7 +3,14 @@ import styled, { css } from 'styled-components'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
 import { fromTheme } from '../utilities/functions'
-import { Button, Delete, Title, Subtitle, Content, DropdownItem } from '../'
+import {
+  Button,
+  Delete,
+  Title,
+  Subtitle,
+  Content,
+} from './'
+import { DropdownItem } from '../components'
 
 Vars.addDerivedDefault(vars => ({
   'notification-background-color': vars['background'],

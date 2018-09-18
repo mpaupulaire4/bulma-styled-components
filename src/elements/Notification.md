@@ -1,4 +1,4 @@
-``` js
+```react
 <div>
   <Notification >
     <Delete />
