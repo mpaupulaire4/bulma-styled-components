@@ -1,27 +1,27 @@
 ##### Simple Tag
-```js
-<Tag>
+```react
+<Tag className="is-info">
   Just a Tag
 </Tag>
 ```
 ##### As a link
-```js
+```react
 const Link = Tag.withComponent('a');
-<Link href="/">
+<Link href="/" className="is-black">
   Just a Tag
 </Link>
 ```
 ##### Modifiers
-``` js
+``` react
 <Tags>
-  <Tag className="is-rounded" >
+  <Tag className="is-rounded is-white" >
     is-rounded
   </Tag>
-  <Tag className="is-delete" />
+  <Tag className="is-delete is-white" />
 </Tags>
 ```
 ##### Colors
-``` js
+``` react
 const colors = [
   "white",
   "light",

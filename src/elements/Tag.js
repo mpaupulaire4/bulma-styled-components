@@ -21,7 +21,7 @@ const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [n
   }
 `, '')
 
-export const Tag = styled.span`
+const Tag = styled.span`
   align-items: center;
   background-color: ${fromTheme('tag-background-color')};
   border-radius: ${fromTheme('tag-radius')};
@@ -136,3 +136,4 @@ export const Tag = styled.span`
   }
 `
 Tag.defaultProps = { theme: Vars.getVariables() }
+export default Tag

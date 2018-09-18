@@ -65,10 +65,16 @@ export default {
       content: pageLoader(() => import('./Table.md')),
     },
     {
-      title: 'Box',
-      path: '/elements/Box',
+      title: 'Tag',
+      path: '/elements/Tag',
       frame: true,
-      content: pageLoader(() => import('./Box.md')),
+      content: pageLoader(() => import('./Tag.md')),
+    },
+    {
+      title: 'Tags',
+      path: '/elements/Tags',
+      frame: true,
+      content: pageLoader(() => import('./Tags.md')),
     },
   ],
 }

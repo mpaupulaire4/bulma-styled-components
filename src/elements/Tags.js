@@ -1,7 +1,7 @@
 /* stylelint-disable no-descending-specificity */
 import styled from 'styled-components'
 
-export const Tags = styled.div`
+const Tags = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -22,3 +22,4 @@ export const Tags = styled.div`
     justify-content: flex-end;
   }
 `
+export default Tags
