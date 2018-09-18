@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-extraneous-dependencies, global-require */
 import { pageLoader } from 'catalog'
 
 
@@ -23,6 +23,16 @@ export default {
         Buttons: require('./Buttons'),
       },
       content: pageLoader(() => import('./Button.md')),
+    },
+    {
+      title: 'Buttons',
+      path: '/elements/Buttons',
+      frame: true,
+      imports: {
+        Button: require('./Button'),
+        Buttons: require('./Buttons'),
+      },
+      content: pageLoader(() => import('./Buttons.md')),
     },
     {
       title: 'Box',

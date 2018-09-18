@@ -1,4 +1,4 @@
-``` js
+``` react
 const colors = [
   "is-white",
   "is-light",
