@@ -1,4 +1,4 @@
-``` js
+``` react
 <Table>
   <thead>
     <tr>

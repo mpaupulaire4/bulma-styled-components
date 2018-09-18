@@ -53,6 +53,18 @@ export default {
       content: pageLoader(() => import('./Notification.md')),
     },
     {
+      title: 'Progress',
+      path: '/elements/Progress',
+      frame: true,
+      content: pageLoader(() => import('./Progress.md')),
+    },
+    {
+      title: 'Table',
+      path: '/elements/Table',
+      frame: true,
+      content: pageLoader(() => import('./Table.md')),
+    },
+    {
       title: 'Box',
       path: '/elements/Box',
       frame: true,

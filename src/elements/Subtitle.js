@@ -18,7 +18,7 @@ Vars.addDerivedDefault(vars => ({
   'subtitle-negative-margin': '-1.25rem',
 }))
 
-export const Subtitle = styled.h2`
+const Subtitle = styled.h2`
   ${block}
   word-break: break-word;
   em,
@@ -53,3 +53,5 @@ export const Subtitle = styled.h2`
     }
   `, '')}
 `
+
+export default Subtitle

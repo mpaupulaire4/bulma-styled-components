@@ -36,7 +36,7 @@ const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [n
   }
 `, '')
 
-export const Table = styled.table`
+const Table = styled.table`
   ${block}
   background-color: ${fromTheme('table-background-color')};
   color: ${fromTheme('table-color')};
@@ -166,3 +166,5 @@ export const TableContainer = styled.div`
   overflow-y: hidden;
   max-width: 100%;
 `
+
+export default Table
