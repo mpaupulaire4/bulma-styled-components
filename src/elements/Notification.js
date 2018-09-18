@@ -19,7 +19,7 @@ const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [n
   }
 `, '')
 
-export const Notification = styled.div`
+const Notification = styled.div`
   ${block}
   background-color: ${fromTheme('notification-background-color')};
   border-radius: ${fromTheme('notification-radius')};
@@ -52,3 +52,5 @@ export const Notification = styled.div`
   ${colorClasses}
 `
 Notification.defaultProps = { theme: Vars.getVariables() }
+
+export default Notification

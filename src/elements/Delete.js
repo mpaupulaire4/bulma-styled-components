@@ -76,5 +76,7 @@ export const DeleteStyle = css`
     width: 32px;
   }
 `
-export const Delete = styled.button`${DeleteStyle}`
+const Delete = styled.button`${DeleteStyle}`
 Delete.defaultProps = { theme: Vars.getVariables() }
+
+export default Delete

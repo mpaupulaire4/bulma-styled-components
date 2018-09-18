@@ -1,5 +1,5 @@
 Colors:
-```js
+```react
 const colors = [
   "is-white",
   "is-light",
@@ -20,7 +20,7 @@ const colors = [
 </Buttons>
 ```
 Sizes:
-``` js
+``` react
   <Buttons>
     <Button className="is-small" >Small</Button>
     <Button >Normal</Button>
@@ -29,7 +29,7 @@ Sizes:
   </Buttons>
 ```
 Styles:
-``` js
+``` react
 const colors = [
   "is-white",
   "is-light",
@@ -71,7 +71,7 @@ const colors = [
 </div>
 ```
 States:
-``` js
+``` react
 const colors = [
   "is-white",
   "is-light",

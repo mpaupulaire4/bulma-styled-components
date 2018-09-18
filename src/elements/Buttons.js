@@ -19,4 +19,6 @@ export const ButtonsStyle = css`
     justify-content: flex-end;
   }
 `
-export const Buttons = styled.div`${ButtonsStyle}`
+const Buttons = styled.div`${ButtonsStyle}`
+
+export default Buttons

@@ -32,8 +32,10 @@ export const BoxStyle = css`
     }
   }
 `
-export const Box = styled.div`${BoxStyle}`
+const Box = styled.div`${BoxStyle}`
 
 Box.defaultProps = {
   theme: Vars.getVariables(),
 }
+
+export default Box

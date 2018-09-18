@@ -190,5 +190,7 @@ export const ContentStyle = css`
   }
 `
 
-export const Content = styled.div`${ContentStyle}`
+const Content = styled.div`${ContentStyle}`
 Content.defaultProps = defaultProps
+
+export default Content

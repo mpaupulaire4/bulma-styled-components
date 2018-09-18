@@ -1,5 +1,5 @@
 Simple Box:
-``` js
+``` react
 const Link = Box.withComponent('a');
 <div>
   <Box>

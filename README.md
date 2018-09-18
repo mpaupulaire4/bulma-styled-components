@@ -5,7 +5,7 @@ A [React](https://reactjs.org/) implementation of the [Bulma CSS Franework](http
 
 ### NPM
 
-``` sh
+```
 npm install bulma-styled-components
 ```
 
@@ -13,6 +13,6 @@ npm install bulma-styled-components
 
 ### Yarn
 
-``` sh
+```
 yarn add bulma-styled-components
 ```

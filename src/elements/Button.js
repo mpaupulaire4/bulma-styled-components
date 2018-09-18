@@ -135,7 +135,7 @@ const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [n
   }
 `, '')
 
-export const Button = styled.button`
+const Button = styled.button`
   ${control}
   ${unselectable}
   background-color: ${fromTheme('button-background-color')};
@@ -299,3 +299,5 @@ export const Button = styled.button`
   }
 `
 Button.defaultProps = defaultProps
+
+export default Button
