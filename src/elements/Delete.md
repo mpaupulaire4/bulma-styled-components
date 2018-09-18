@@ -1,5 +1,5 @@
 Sizes:
-``` js
+``` react
 <div>
   <Delete className="is-small" />
   <Delete />

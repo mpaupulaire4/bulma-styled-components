@@ -1,12 +1,12 @@
 ### Simply
-``` js
+``` react
 <Icon>
   <i className="fa fa-home"></i>
 </Icon>
 ```
 ### Colors
 Since icon fonts are simply text, you can use the text color modifiers to change the icon's color.
-``` js
+``` react
 <div>
   <Icon className="has-text-info">
     <i className="fa fa-info-circle"></i>

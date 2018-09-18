@@ -2,7 +2,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Catalog, pageLoader } from 'catalog'
+import './static/fontawesome/css/font-awesome.min.css'
+import * as Components from '../src'
 import Elements from '../src/elements/catalog'
+
+const { BulmaStyledTheme } = Components
 
 const pages = [
   {
@@ -14,10 +18,13 @@ const pages = [
 ]
 
 ReactDOM.render(
-  <Catalog
-    title="Bulma Styled Components"
-    pages={pages}
-    styles={['fontawesome/css/fontawesome.min.css']}
-  />,
+  <BulmaStyledTheme>
+    <Catalog
+      title="Bulma Styled Components"
+      pages={pages}
+      imports={Components}
+      styles={['fontawesome/css/fontawesome.min.css']}
+    />
+  </BulmaStyledTheme>,
   document.getElementById('catalog'),
 )

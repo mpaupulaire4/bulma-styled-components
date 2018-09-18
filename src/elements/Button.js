@@ -5,7 +5,8 @@ import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
 import { unselectable, loader, center } from '../utilities/mixins'
 import { control } from '../utilities/controls'
-import { Icon, Buttons } from './'
+import Icon from './Icon'
+import Buttons from './Buttons'
 
 Vars.addDerivedDefault(vars => ({
   'button-color': vars['grey-darker'],

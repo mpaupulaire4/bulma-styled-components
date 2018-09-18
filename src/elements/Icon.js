@@ -29,4 +29,6 @@ const Icon = styled.span`
     width: ${fromTheme('icon-dimensions-large')};
   }
 `
+
+Icon.defaultProps = { theme: Vars.getVariables() }
 export default Icon
