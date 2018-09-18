@@ -11,12 +11,6 @@ export default {
       content: pageLoader(() => import('./Box.md')),
     },
     {
-      title: 'Button',
-      path: '/elements/Button',
-      frame: true,
-      content: pageLoader(() => import('./Button.md')),
-    },
-    {
       title: 'Buttons',
       path: '/elements/Buttons',
       frame: true,
@@ -63,12 +57,6 @@ export default {
       path: '/elements/Table',
       frame: true,
       content: pageLoader(() => import('./Table.md')),
-    },
-    {
-      title: 'Tag',
-      path: '/elements/Tag',
-      frame: true,
-      content: pageLoader(() => import('./Tag.md')),
     },
     {
       title: 'Tags',
