@@ -1,4 +1,4 @@
-``` js
+``` react
 const PanelBlockLink = Panel.Block.withComponent('a');
 <Panel>
   <Panel.Heading>

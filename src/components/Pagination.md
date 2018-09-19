@@ -1,5 +1,5 @@
 #### Simple Example
-``` js
+``` react
 <Pagination role="navigation" aria-label="pagination">
   <Pagination.Previous disabled>Previous</Pagination.Previous>
   <Pagination.Next>Next page</Pagination.Next>
@@ -23,7 +23,7 @@
 </Pagination>
 ```
 #### Rounded
-``` js
+``` react
 <Pagination className="is-rounded" role="navigation" aria-label="pagination">
   <Pagination.Previous>Previous</Pagination.Previous>
   <Pagination.Next>Next page</Pagination.Next>
@@ -53,7 +53,7 @@
 </Pagination>
 ```
 #### Centered
-``` js
+``` react
 <Pagination className="is-centered" role="navigation" aria-label="pagination">
   <Pagination.Previous>Previous</Pagination.Previous>
   <Pagination.Next>Next page</Pagination.Next>
@@ -83,7 +83,7 @@
 </Pagination>
 ```
 #### On the Right
-``` js
+``` react
 <Pagination className="is-right" role="navigation" aria-label="pagination">
   <Pagination.Previous>Previous</Pagination.Previous>
   <Pagination.Next>Next page</Pagination.Next>

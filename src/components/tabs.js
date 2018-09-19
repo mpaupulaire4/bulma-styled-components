@@ -1,7 +1,7 @@
 /* stylelint-disable no-descending-specificity */
 import styled from 'styled-components'
 import Vars from '../utilities/vars'
-import { Icon } from '../'
+import Icon from '../elements/Icon'
 import { block, overflow_touch, unselectable } from '../utilities/mixins'
 import { fromTheme } from '../utilities/functions'
 

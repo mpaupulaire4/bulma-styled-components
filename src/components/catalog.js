@@ -40,11 +40,29 @@ export default {
       frame: true,
       content: pageLoader(() => import('./Modal.md')),
     },
-    // {
-    //   title: 'Hero',
-    //   path: '/layout/Hero',
-    //   frame: true,
-    //   content: pageLoader(() => import('./Hero.md')),
-    // },
+    {
+      title: 'Navbar',
+      path: '/layout/Navbar',
+      frame: true,
+      content: pageLoader(() => import('./Navbar.md')),
+    },
+    {
+      title: 'Pagination',
+      path: '/layout/Pagination',
+      frame: true,
+      content: pageLoader(() => import('./Pagination.md')),
+    },
+    {
+      title: 'Panel',
+      path: '/layout/Panel',
+      frame: true,
+      content: pageLoader(() => import('./Panel.md')),
+    },
+    {
+      title: 'Tabs',
+      path: '/layout/Tabs',
+      frame: true,
+      content: pageLoader(() => import('./Tabs.md')),
+    },
   ],
 }
