@@ -1,5 +1,6 @@
 node_modules
 dist
+catalog/build
 docs
 
 ## MAC Files
