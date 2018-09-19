@@ -20,8 +20,7 @@
     "url": "https://github.com/mpaupulaire4/bulma-styled-components.git"
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "keywords": [
     "bulma",
