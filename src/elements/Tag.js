@@ -5,7 +5,7 @@ import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
 import Delete from './Delete'
 import Icon from './Icon'
-import Tags from './Tag'
+import Tags from './Tags'
 
 
 Vars.addDerivedDefault(vars => ({

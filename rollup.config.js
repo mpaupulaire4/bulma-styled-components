@@ -7,9 +7,13 @@ export default {
   output: {
     file: 'dist/index.js',
     format: 'umd',
-    name: 'BulmaStyledComponents',
+    name: 'BulmaStyled',
+    globals: {
+      react: 'React',
+      'styled-components': 'styled',
+    },
+    sourceMap: true,
   },
-  sourceMap: true,
   plugins: [
     resolve(),
     babel({

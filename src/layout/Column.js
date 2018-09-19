@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import Vars from '../utilities/vars'
-import { Columns } from './'
+import { Columns } from './Columns'
 import { fromTheme } from '../utilities/functions'
 import {
   mobile,
