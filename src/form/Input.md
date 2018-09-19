@@ -1,10 +1,10 @@
 #### Basic
-``` js
+``` react
 <Input type="text" placeholder="Text Input"/>
 ```
 
 #### Colors
-``` js
+``` react
 <div>
   <Field>
     <Control>
@@ -35,7 +35,7 @@
 ```
 
 #### Sizes
-``` js
+``` react
 <div>
   <Field>
     <Control>
@@ -61,7 +61,7 @@
 ```
 
 #### Styles
-``` js
+``` react
 <div>
   <Input className="is-rounded" type="text" placeholder="Rounded Input"/>
   <Input

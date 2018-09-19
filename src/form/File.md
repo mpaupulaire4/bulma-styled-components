@@ -1,5 +1,5 @@
 ### Simple
-``` js
+``` react
 const SpanLabel = File.Label.withComponent('span');
 <File>
   <File.Label>
@@ -17,7 +17,7 @@ const SpanLabel = File.Label.withComponent('span');
 ```
 ### Modifiers
 #### Has Name and File Name
-``` js
+``` react
 const SpanLabel = File.Label.withComponent('span');
 <File className="has-name">
   <File.Label>
@@ -37,7 +37,7 @@ const SpanLabel = File.Label.withComponent('span');
 </File>
 ```
 #### CTA on right
-``` js
+``` react
 const SpanLabel = File.Label.withComponent('span');
 <File className="has-name is-right">
   <File.Label>
@@ -57,7 +57,7 @@ const SpanLabel = File.Label.withComponent('span');
 </File>
 ```
 #### Expanded Name
-``` js
+``` react
 const SpanLabel = File.Label.withComponent('span');
 <File className="has-name is-fullwidth">
   <File.Label>
@@ -77,7 +77,7 @@ const SpanLabel = File.Label.withComponent('span');
 </File>
 ```
 #### Boxed
-``` js
+``` react
 const SpanLabel = File.Label.withComponent('span');
 <File className="is-boxed">
   <File.Label>
@@ -94,7 +94,7 @@ const SpanLabel = File.Label.withComponent('span');
 </File>
 ```
 #### Boxed With Name
-``` js
+``` react
 const SpanLabel = File.Label.withComponent('span');
 <File className="has-name is-boxed">
   <File.Label>
@@ -114,7 +114,7 @@ const SpanLabel = File.Label.withComponent('span');
 </File>
 ```
 ### Supports Colors
-``` js
+``` react
 const SpanLabel = File.Label.withComponent('span');
 <File className="has-name is-primary">
   <File.Label>

@@ -7,6 +7,7 @@ import * as Components from '../src'
 import Elements from '../src/elements/catalog'
 import Layout from '../src/layout/catalog'
 import Comps from '../src/components/catalog'
+import Form from '../src/form/catalog'
 
 const { BulmaStyledTheme } = Components
 
@@ -18,6 +19,7 @@ const pages = [
   },
   Elements,
   Layout,
+  Form,
   Comps,
 ]
 

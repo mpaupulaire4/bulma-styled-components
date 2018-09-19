@@ -1,10 +1,10 @@
 #### Basic
-``` js
+``` react
 <Textarea type="text" placeholder="Text Textarea"/>
 ```
 
 #### Colors
-``` js
+``` react
 <div>
   <Field>
     <Control>
@@ -35,7 +35,7 @@
 ```
 
 #### Sizes
-``` js
+``` react
 <div>
   <Field>
     <Control>
@@ -61,7 +61,7 @@
 ```
 
 #### Styles
-``` js
+``` react
 <Textarea
   type="text"
   readonly
