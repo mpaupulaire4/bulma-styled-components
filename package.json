@@ -10,7 +10,7 @@
     "lint": "npm run lint:js && npm run lint:style",
     "docs": "catalog start",
     "predeploy": "npm run build:docs",
-    "deploy": "gh-pages -d docs",
+    "deploy": "gh-pages -d catalog/build",
     "build:docs": "catalog build",
     "prepublish": "npm run build",
     "test": "npm run lint"
