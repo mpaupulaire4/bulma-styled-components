@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
 import { block, unselectable } from '../utilities/mixins'
-import { Icon } from '../elements'
+import Icon from '../elements/Icon'
 
 
 Vars.addDerivedDefault(vars => ({

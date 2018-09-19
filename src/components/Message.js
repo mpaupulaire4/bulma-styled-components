@@ -4,7 +4,7 @@ import { getLuminance, parseToHsl, lighten, desaturate, darken } from 'polished'
 import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
 import { block } from '../utilities/mixins'
-import { Delete } from '../elements'
+import Delete from '../elements/Delete'
 
 
 Vars.addDerivedDefault(vars => ({

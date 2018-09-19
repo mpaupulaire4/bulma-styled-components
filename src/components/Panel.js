@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import Vars from '../utilities/vars'
 import { fa } from '../utilities/mixins'
 import { fromTheme } from '../utilities/functions'
-import { Control } from '../'
+import { Control } from '../form/Control'
 
 Vars.addDerivedDefault(vars => ({
   'panel-item-border': `1px solid ${vars['border']}`,

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { rgba } from 'polished'
 import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
-import { Media } from '../'
+import { Media } from '../layout/Media'
 
 Vars.addDerivedDefault(vars => ({
   'card-color': vars['text'],
