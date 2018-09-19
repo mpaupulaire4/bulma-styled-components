@@ -1,13 +1,11 @@
 /* stylelint-disable no-descending-specificity */
 import styled from 'styled-components'
 import Vars from '../utilities/vars'
-import {
-  Button,
-  Control,
-  Input,
-  Select,
-  Label,
-} from '../'
+import { Label } from './Label'
+import { Select } from './Select'
+import { Input } from './Input'
+import { Control } from './Control'
+import Button from '../elements/Button'
 import {
   tablet,
   mobile,

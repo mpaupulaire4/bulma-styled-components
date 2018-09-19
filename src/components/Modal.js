@@ -4,7 +4,7 @@ import { rgba } from 'polished'
 import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
 import { tablet, overlay, overflow_touch } from '../utilities/mixins'
-import { Button } from '../'
+import Button from '../elements/Button'
 import { DeleteStyle } from '../elements/Delete'
 
 

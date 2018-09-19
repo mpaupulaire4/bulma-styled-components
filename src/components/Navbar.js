@@ -10,7 +10,8 @@ import {
   arrow,
   touch,
 } from '../utilities/mixins'
-import { Icon, Container } from '../'
+import { Container } from '../layout/Container'
+import Icon from '../elements/Icon'
 
 Vars.addDerivedDefault(vars => ({
   'navbar-background-color': vars['white'],

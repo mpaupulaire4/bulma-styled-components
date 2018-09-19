@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
 import { fromTheme } from '../utilities/functions'
-import { Tag, Title } from './'
+import Title from './Title'
+import Tag from './Tag'
 
 Vars.addDerivedDefault(vars => ({
   'title-sub-size': '0.75em',

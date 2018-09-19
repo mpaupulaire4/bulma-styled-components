@@ -1,10 +1,8 @@
 /* stylelint-disable no-descending-specificity */
 import styled from 'styled-components'
-import {
-  Input,
-  Select,
-  Icon,
-} from '../'
+import Icon from '../elements/Icon'
+import { Select } from './Select'
+import { Input } from './Input'
 import Vars from '../utilities/vars'
 import { loader } from '../utilities/mixins'
 import { fromTheme } from '../utilities/functions'

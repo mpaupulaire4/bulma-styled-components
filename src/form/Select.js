@@ -8,7 +8,7 @@ import {
   control_medium,
   control_large,
 } from '../utilities/controls'
-import { input } from './Input'
+import { InputStyle } from './Input'
 import { fromTheme } from '../utilities/functions'
 
 Vars.addDerivedDefault(vars => ({
@@ -75,7 +75,7 @@ export const Select = styled.div`
     }
   }
   select {
-    ${input}
+    ${InputStyle}
     cursor: pointer;
     display: block;
     font-size: 1em;

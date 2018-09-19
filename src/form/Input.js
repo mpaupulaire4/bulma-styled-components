@@ -29,7 +29,7 @@ Vars.addDerivedDefault(vars => ({
   'input-disabled-border-color': vars['background'],
 }))
 
-export const input = css`
+export const InputStyle = css`
   ${control}
   background-color: ${fromTheme('input-background-color')};
   border-color: ${fromTheme('input-border-color')};
@@ -71,7 +71,7 @@ const ITSharedColorClasses = ({ theme }) => Object.entries(theme['colors']).redu
   }
 `, '')
 export const InputTextareaShared = css`
-  ${input}
+  ${InputStyle}
   box-shadow: ${fromTheme('input-shadow')};
   max-width: 100%;
   width: 100%;

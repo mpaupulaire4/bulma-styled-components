@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 import Vars from '../utilities/vars'
-import { Content, Control } from '../'
+import Content from '../elements/Content'
+import { Control } from '../form/Control'
 
 const defaultProps = { theme: Vars.getVariables() }
 

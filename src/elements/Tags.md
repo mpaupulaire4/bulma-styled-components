@@ -1,23 +1,23 @@
 ##### Simple Tag
 ```react
-<Tag className="is-info">
+<Tag>
   Just a Tag
 </Tag>
 ```
 ##### As a link
 ```react
 const Link = Tag.withComponent('a');
-<Link href="/" className="is-black">
+<Link href="/">
   Just a Tag
 </Link>
 ```
 ##### Modifiers
 ``` react
 <Tags>
-  <Tag className="is-rounded is-white" >
+  <Tag className="is-rounded" >
     is-rounded
   </Tag>
-  <Tag className="is-delete is-white" />
+  <Tag className="is-delete" />
 </Tags>
 ```
 ##### Colors

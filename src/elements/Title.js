@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
 import { fromTheme } from '../utilities/functions'
-import { Tag, Subtitle } from './'
+import Tag from './Tag'
+import Subtitle from './Subtitle'
 
 Vars.addDerivedDefault(vars => ({
   'title-color': vars['grey-darker'],

@@ -3,7 +3,9 @@ import styled, { css } from 'styled-components'
 import { darken } from 'polished'
 import Vars from '../utilities/vars'
 import { fromTheme } from '../utilities/functions'
-import { Delete, Icon, Tags } from './'
+import Delete from './Delete'
+import Icon from './Icon'
+import Tags from './Tag'
 
 
 Vars.addDerivedDefault(vars => ({
