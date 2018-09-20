@@ -1,2 +1,0 @@
-webpackJsonp([11],{856:function(e,n,t){var a=t(18),r=t(50),o=t(84).PageRenderer;o.__esModule&&(o=o.default);var s=r({displayName:"WrappedPageRenderer",getInitialState:function(){return{content:t(884)}},componentWillMount:function(){},render:function(){return a.createElement(o,Object.assign({},this.props,{content:this.state.content}))}});s.__catalog_loader__=!0,e.exports=s},884:function(e,n){e.exports='```react\n<Image className="is-128x128">\n  <img src="https://bulma.io/images/placeholders/128x128.png" />\n</Image>\n```'}});
-//# sourceMappingURL=11.251a328c.chunk.js.map
