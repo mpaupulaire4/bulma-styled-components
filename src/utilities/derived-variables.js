@@ -3,94 +3,93 @@ import { findColorInvert } from './functions'
 
 /* eslint-disable dot-notation, quote-props */
 
-function setDefault(obj, key, deflt) {
-  obj[key] = obj[key] || deflt // eslint-disable-line no-param-reassign
-}
-
-
 export default function getVariables(overrides = {}) {
   const derived = {
     ...initialVars,
     ...overrides,
   }
 
-  setDefault(derived, 'primary', derived['turquoise'])
-  setDefault(derived, 'info', derived['cyan'])
-  setDefault(derived, 'success', derived['green'])
-  setDefault(derived, 'warning', derived['yellow'])
-  setDefault(derived, 'danger', derived['red'])
+  function setDefault(key, deflt) {
+    derived[key] = derived[key] || deflt // eslint-disable-line no-param-reassign
+  }
 
-  setDefault(derived, 'light', derived['white-ter'])
-  setDefault(derived, 'dark', derived['grey-darker'])
+  setDefault('primary', derived['turquoise'])
+  setDefault('info', derived['cyan'])
+  setDefault('success', derived['green'])
+  setDefault('warning', derived['yellow'])
+  setDefault('danger', derived['red'])
+
+  setDefault('light', derived['white-ter'])
+  setDefault('dark', derived['grey-darker'])
 
   // Invert colors
 
-  setDefault(derived, 'orange-invert', findColorInvert(derived['orange']))
-  setDefault(derived, 'yellow-invert', findColorInvert(derived['yellow']))
-  setDefault(derived, 'green-invert', findColorInvert(derived['green']))
-  setDefault(derived, 'turquoise-invert', findColorInvert(derived['turquoise']))
-  setDefault(derived, 'cyan-invert', findColorInvert(derived['cyan']))
-  setDefault(derived, 'blue-invert', findColorInvert(derived['blue']))
-  setDefault(derived, 'purple-invert', findColorInvert(derived['purple']))
-  setDefault(derived, 'red-invert', findColorInvert(derived['red']))
+  setDefault('orange-invert', findColorInvert(derived['orange']))
+  setDefault('yellow-invert', findColorInvert(derived['yellow']))
+  setDefault('green-invert', findColorInvert(derived['green']))
+  setDefault('turquoise-invert', findColorInvert(derived['turquoise']))
+  setDefault('cyan-invert', findColorInvert(derived['cyan']))
+  setDefault('blue-invert', findColorInvert(derived['blue']))
+  setDefault('purple-invert', findColorInvert(derived['purple']))
+  setDefault('red-invert', findColorInvert(derived['red']))
 
-  setDefault(derived, 'primary-invert', derived['turquoise-invert'])
-  setDefault(derived, 'info-invert', derived['cyan-invert'])
-  setDefault(derived, 'success-invert', derived['green-invert'])
-  setDefault(derived, 'warning-invert', derived['yellow-invert'])
-  setDefault(derived, 'danger-invert', derived['red-invert'])
-  setDefault(derived, 'light-invert', derived['dark'])
-  setDefault(derived, 'dark-invert', derived['light'])
+  setDefault('primary-invert', derived['turquoise-invert'])
+  setDefault('info-invert', derived['cyan-invert'])
+  setDefault('success-invert', derived['green-invert'])
+  setDefault('warning-invert', derived['yellow-invert'])
+  setDefault('danger-invert', derived['red-invert'])
+  setDefault('light-invert', derived['dark'])
+  setDefault('dark-invert', derived['light'])
 
   // General colors
 
-  setDefault(derived, 'background', derived['white-ter'])
+  setDefault('background', derived['white-ter'])
 
-  setDefault(derived, 'border', derived['grey-lighter'])
-  setDefault(derived, 'border-hover', derived['grey-light'])
+  setDefault('border', derived['grey-lighter'])
+  setDefault('border-hover', derived['grey-light'])
 
   // Text colors
 
-  setDefault(derived, 'text', derived['grey-dark'])
-  setDefault(derived, 'text-invert', findColorInvert(derived['text']))
-  setDefault(derived, 'text-light', derived['grey'])
-  setDefault(derived, 'text-strong', derived['grey-darker'])
+  setDefault('text', derived['grey-dark'])
+  setDefault('text-invert', findColorInvert(derived['text']))
+  setDefault('text-light', derived['grey'])
+  setDefault('text-strong', derived['grey-darker'])
 
   // Code colors
 
-  setDefault(derived, 'code', derived['red'])
-  setDefault(derived, 'code-background', derived['background'])
+  setDefault('code', derived['red'])
+  setDefault('code-background', derived['background'])
 
-  setDefault(derived, 'pre', derived['text'])
-  setDefault(derived, 'pre-background', derived['background'])
+  setDefault('pre', derived['text'])
+  setDefault('pre-background', derived['background'])
 
   // Link colors
 
-  setDefault(derived, 'link', derived['blue'])
-  setDefault(derived, 'link-invert', derived['blue-invert'])
-  setDefault(derived, 'link-visited', derived['purple'])
+  setDefault('link', derived['blue'])
+  setDefault('link-invert', derived['blue-invert'])
+  setDefault('link-visited', derived['purple'])
 
-  setDefault(derived, 'link-hover', derived['grey-darker'])
-  setDefault(derived, 'link-hover-border', derived['grey-light'])
+  setDefault('link-hover', derived['grey-darker'])
+  setDefault('link-hover-border', derived['grey-light'])
 
-  setDefault(derived, 'link-focus', derived['grey-darker'])
-  setDefault(derived, 'link-focus-border', derived['blue'])
+  setDefault('link-focus', derived['grey-darker'])
+  setDefault('link-focus-border', derived['blue'])
 
-  setDefault(derived, 'link-active', derived['grey-darker'])
-  setDefault(derived, 'link-active-border', derived['grey-dark'])
+  setDefault('link-active', derived['grey-darker'])
+  setDefault('link-active-border', derived['grey-dark'])
 
   // Typography
 
-  setDefault(derived, 'family-primary', derived['family-sans-serif'])
-  setDefault(derived, 'family-code', derived['family-monospace'])
+  setDefault('family-primary', derived['family-sans-serif'])
+  setDefault('family-code', derived['family-monospace'])
 
-  setDefault(derived, 'size-small', derived['size-7'])
-  setDefault(derived, 'size-normal', derived['size-6'])
-  setDefault(derived, 'size-medium', derived['size-5'])
-  setDefault(derived, 'size-large', derived['size-4'])
+  setDefault('size-small', derived['size-7'])
+  setDefault('size-normal', derived['size-6'])
+  setDefault('size-medium', derived['size-5'])
+  setDefault('size-large', derived['size-4'])
 
   // Lists and maps
-  setDefault(derived, 'colors', {
+  setDefault('colors', {
     'white': [derived['white'], derived['black']],
     'black': [derived['black'], derived['white']],
     'light': [derived['light'], derived['light-invert']],
@@ -104,7 +103,7 @@ export default function getVariables(overrides = {}) {
     ...derived['custom-colors'],
   })
 
-  setDefault(derived, 'shades', {
+  setDefault('shades', {
     'black-bis': derived['black-bis'],
     'black-ter': derived['black-ter'],
     'grey-darker': derived['grey-darker'],
@@ -117,7 +116,7 @@ export default function getVariables(overrides = {}) {
     ...derived['custom-shades'],
   })
 
-  setDefault(derived, 'sizes', [
+  setDefault('sizes', [
     derived['size-1'],
     derived['size-2'],
     derived['size-3'],
@@ -128,28 +127,28 @@ export default function getVariables(overrides = {}) {
   ])
 
   // 960px container + 4rem
-  setDefault(derived, 'desktop', `calc(960px + (2 * ${derived['gap']}))`)
+  setDefault('desktop', `calc(960px + (2 * ${derived['gap']}))`)
   // 1152px container + 4rem
-  setDefault(derived, 'widescreen', `calc(1152px + (2 * ${derived['gap']}))`)
+  setDefault('widescreen', `calc(1152px + (2 * ${derived['gap']}))`)
   // 1344px container + 4rem
-  setDefault(derived, 'fullhd', `calc(1344px + (2 * ${derived['gap']}))`)
+  setDefault('fullhd', `calc(1344px + (2 * ${derived['gap']}))`)
 
-  setDefault(derived, 'control-radius', derived['radius'])
+  setDefault('control-radius', derived['radius'])
 
-  setDefault(derived, 'control-radius-small', derived['radius-small'])
+  setDefault('control-radius-small', derived['radius-small'])
 
-  setDefault(derived, 'control-padding-vertical', `calc(0.375em - ${derived['control-border-width']})`)
+  setDefault('control-padding-vertical', `calc(0.375em - ${derived['control-border-width']})`)
 
-  setDefault(derived, 'control-padding-horizontal', `calc(0.625em - ${derived['control-border-width']})`)
+  setDefault('control-padding-horizontal', `calc(0.625em - ${derived['control-border-width']})`)
 
-  setDefault(derived, 'body-background-color', derived['white'])
-  setDefault(derived, 'body-family', derived['family-primary'])
-  setDefault(derived, 'body-color', derived['text'])
-  setDefault(derived, 'body-weight', derived['weight-normal'])
-  setDefault(derived, 'code-family', derived['family-code'])
-  setDefault(derived, 'hr-background-color', derived['background'])
-  setDefault(derived, 'strong-color', derived['text-strong'])
-  setDefault(derived, 'strong-weight', derived['weight-bold'])
+  setDefault('body-background-color', derived['white'])
+  setDefault('body-family', derived['family-primary'])
+  setDefault('body-color', derived['text'])
+  setDefault('body-weight', derived['weight-normal'])
+  setDefault('code-family', derived['family-code'])
+  setDefault('hr-background-color', derived['background'])
+  setDefault('strong-color', derived['text-strong'])
+  setDefault('strong-weight', derived['weight-bold'])
 
   return Object.freeze(derived)
 }

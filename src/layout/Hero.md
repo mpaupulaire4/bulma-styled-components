@@ -1,5 +1,4 @@
 ``` react|responsive
-const NavbarItemLink = Navbar.Item.withComponent('a');
 <BulmaStyledTheme>
   <Hero className="is-primary is-medium">
     {/* Hero head: will stick at the top */}
@@ -7,9 +6,9 @@ const NavbarItemLink = Navbar.Item.withComponent('a');
       <Navbar>
         <Container>
           <Navbar.Brand>
-            <NavbarItemLink>
+            <Navbar.Link className="is-arrowless">
               <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo" />
-            </NavbarItemLink>
+            </Navbar.Link>
             <Navbar.Burger className="burger">
               <span></span>
               <span></span>
@@ -18,15 +17,15 @@ const NavbarItemLink = Navbar.Item.withComponent('a');
           </Navbar.Brand>
           <Navbar.Menu>
             <Navbar.End>
-              <NavbarItemLink className="is-active">
+              <Navbar.Link className="is-arrowless is-active">
                 Home
-              </NavbarItemLink>
-              <NavbarItemLink>
+              </Navbar.Link>
+              <Navbar.Link className="is-arrowless">
                 Examples
-              </NavbarItemLink>
-              <NavbarItemLink>
+              </Navbar.Link>
+              <Navbar.Link className="is-arrowless">
                 Documentation
-              </NavbarItemLink>
+              </Navbar.Link>
               <Navbar.Item>
                 <Button className="is-primary is-inverted">
                   <Icon>
