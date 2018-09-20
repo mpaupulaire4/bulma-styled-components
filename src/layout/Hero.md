@@ -1,6 +1,6 @@
 ``` react|responsive
 <BulmaStyledTheme>
-  <Hero className="is-primary is-medium">
+  <Hero className="is-primary is-large is-bold">
     {/* Hero head: will stick at the top */}
     <Hero.Head>
       <Navbar>
