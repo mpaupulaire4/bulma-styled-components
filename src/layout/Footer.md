@@ -1,4 +1,4 @@
-``` react|responsive
+``` react
 <BulmaStyledTheme>
   <Footer>
     <Content className="has-text-centered">

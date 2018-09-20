@@ -1,5 +1,5 @@
 #### Basic
-``` react|responsive
+``` react
 const TempCol = props => (
   <Column className={props.className}>
     <div {...props} className="has-background-primary has-text-white has-text-centered" />
@@ -15,7 +15,7 @@ const TempCol = props => (
 </BulmaStyledTheme>
 ```
 #### Sizes
-``` react|responsive
+``` react
 const TempCol = props => (
   <Column className={props.className}>
     <div {...props} className="has-background-primary has-text-white has-text-centered" />

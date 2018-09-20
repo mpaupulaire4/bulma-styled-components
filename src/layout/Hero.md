@@ -1,14 +1,13 @@
-``` react|responsive
+``` react
 <BulmaStyledTheme>
   <Hero className="is-primary is-large is-bold">
-    {/* Hero head: will stick at the top */}
     <Hero.Head>
       <Navbar>
         <Container>
           <Navbar.Brand>
-            <Navbar.Link className="is-arrowless">
-              <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo" />
-            </Navbar.Link>
+            <Navbar.Item>
+              <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo" style={{height: 20}} />
+            </Navbar.Item>
             <Navbar.Burger className="burger">
               <span></span>
               <span></span>

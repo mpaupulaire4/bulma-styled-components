@@ -11,7 +11,7 @@
     "docs": "catalog start",
     "predeploy": "npm run build:docs",
     "deploy": "gh-pages -d catalog/build",
-    "build:docs": "catalog build",
+    "build:docs": "catalog build -u './'",
     "prepublish": "npm run build",
     "test": "npm run lint"
   },
