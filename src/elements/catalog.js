@@ -1,5 +1,13 @@
-/* eslint-disable import/no-extraneous-dependencies, global-require */
-import { pageLoader } from 'catalog'
+import Box from './Box.md'
+import Buttons from './Buttons.md'
+import Content from './Content.md'
+import Delete from './Delete.md'
+import Icon from './Icon.md'
+import Image from './Image.md'
+import Notification from './Notification.md'
+import Progress from './Progress.md'
+import Table from './Table.md'
+import Tags from './Tags.md'
 
 export default {
   title: 'Elements',
@@ -8,61 +16,61 @@ export default {
       title: 'Box',
       path: '/elements/Box',
       frame: true,
-      content: pageLoader(() => import('./Box.md')),
+      content: Box,
     },
     {
       title: 'Buttons',
       path: '/elements/Buttons',
       frame: true,
-      content: pageLoader(() => import('./Buttons.md')),
+      content: Buttons,
     },
     {
       title: 'Content',
       path: '/elements/Content',
       frame: true,
-      content: pageLoader(() => import('./Content.md')),
+      content: Content,
     },
     {
       title: 'Delete',
       path: '/elements/Delete',
       frame: true,
-      content: pageLoader(() => import('./Delete.md')),
+      content: Delete,
     },
     {
       title: 'Icon',
       path: '/elements/Icon',
       frame: true,
-      content: pageLoader(() => import('./Icon.md')),
+      content: Icon,
     },
     {
       title: 'Image',
       path: '/elements/Image',
       frame: true,
-      content: pageLoader(() => import('./Image.md')),
+      content: Image,
     },
     {
       title: 'Notification',
       path: '/elements/Notification',
       frame: true,
-      content: pageLoader(() => import('./Notification.md')),
+      content: Notification,
     },
     {
       title: 'Progress',
       path: '/elements/Progress',
       frame: true,
-      content: pageLoader(() => import('./Progress.md')),
+      content: Progress,
     },
     {
       title: 'Table',
       path: '/elements/Table',
       frame: true,
-      content: pageLoader(() => import('./Table.md')),
+      content: Table,
     },
     {
       title: 'Tags',
       path: '/elements/Tags',
       frame: true,
-      content: pageLoader(() => import('./Tags.md')),
+      content: Tags,
     },
   ],
 }

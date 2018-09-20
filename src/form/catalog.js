@@ -1,5 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies, global-require */
-import { pageLoader } from 'catalog'
+import File from './File.md'
+import Input from './Input.md'
+import Textarea from './Textarea.md'
 
 export default {
   title: 'Form',
@@ -7,19 +8,19 @@ export default {
     {
       title: 'File',
       path: '/form/File',
-      content: pageLoader(() => import('./File.md')),
+      content: File,
     },
     {
       title: 'Input',
       path: '/form/Input',
       frame: true,
-      content: pageLoader(() => import('./Input.md')),
+      content: Input,
     },
     {
       title: 'Textarea',
       path: '/form/Textarea',
       frame: true,
-      content: pageLoader(() => import('./Textarea.md')),
+      content: Textarea,
     },
   ],
 }

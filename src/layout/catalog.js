@@ -1,5 +1,7 @@
-/* eslint-disable import/no-extraneous-dependencies, global-require */
-import { pageLoader } from 'catalog'
+import Columns from './Columns.md'
+import Footer from './Footer.md'
+import Hero from './Hero.md'
+import Media from './Media.md'
 
 export default {
   title: 'Layout',
@@ -8,24 +10,24 @@ export default {
       title: 'Columns',
       path: '/layout/Columns',
       frame: true,
-      content: pageLoader(() => import('./Columns.md')),
+      content: Columns,
     },
     {
       title: 'Footer',
       path: '/layout/Footer',
       frame: true,
-      content: pageLoader(() => import('./Footer.md')),
+      content: Footer,
     },
     {
       title: 'Hero',
       path: '/layout/Hero',
       frame: true,
-      content: pageLoader(() => import('./Hero.md')),
+      content: Hero,
     },
     {
       title: 'Media',
       path: '/layout/Media',
-      content: pageLoader(() => import('./Media.md')),
+      content: Media,
     },
   ],
 }

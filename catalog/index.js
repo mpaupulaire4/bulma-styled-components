@@ -8,6 +8,7 @@ import Elements from '../src/elements/catalog'
 import Layout from '../src/layout/catalog'
 import Comps from '../src/components/catalog'
 import Form from '../src/form/catalog'
+import README from '../README.md'
 
 const { BulmaStyledTheme } = Components
 
@@ -15,7 +16,7 @@ const pages = [
   {
     path: '/',
     title: 'Introduction',
-    content: pageLoader(() => import('../README.md')),
+    content: README,
   },
   Elements,
   Layout,

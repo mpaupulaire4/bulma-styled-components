@@ -1,5 +1,13 @@
-/* eslint-disable import/no-extraneous-dependencies, global-require */
-import { pageLoader } from 'catalog'
+import Breadcrumb from './Breadcrumb.md'
+import Card from './Card.md'
+import Dropdown from './Dropdown.md'
+import Menu from './Menu.md'
+import Message from './Message.md'
+import Modal from './Modal.md'
+import Navbar from './Navbar.md'
+import Pagination from './Pagination.md'
+import Panel from './Panel.md'
+import Tabs from './Tabs.md'
 
 export default {
   title: 'Components',
@@ -8,61 +16,61 @@ export default {
       title: 'Breadcrumb',
       path: '/layout/Breadcrumb',
       frame: true,
-      content: pageLoader(() => import('./Breadcrumb.md')),
+      content: Breadcrumb,
     },
     {
       title: 'Card',
       path: '/layout/Card',
       frame: true,
-      content: pageLoader(() => import('./Card.md')),
+      content: Card,
     },
     {
       title: 'Dropdown',
       path: '/layout/Dropdown',
       frame: true,
-      content: pageLoader(() => import('./Dropdown.md')),
+      content: Dropdown,
     },
     {
       title: 'Menu',
       path: '/layout/Menu',
       frame: true,
-      content: pageLoader(() => import('./Menu.md')),
+      content: Menu,
     },
     {
       title: 'Message',
       path: '/layout/Message',
       frame: true,
-      content: pageLoader(() => import('./Message.md')),
+      content: Message,
     },
     {
       title: 'Modal',
       path: '/layout/Modal',
       frame: true,
-      content: pageLoader(() => import('./Modal.md')),
+      content: Modal,
     },
     {
       title: 'Navbar',
       path: '/layout/Navbar',
       frame: true,
-      content: pageLoader(() => import('./Navbar.md')),
+      content: Navbar,
     },
     {
       title: 'Pagination',
       path: '/layout/Pagination',
       frame: true,
-      content: pageLoader(() => import('./Pagination.md')),
+      content: Pagination,
     },
     {
       title: 'Panel',
       path: '/layout/Panel',
       frame: true,
-      content: pageLoader(() => import('./Panel.md')),
+      content: Panel,
     },
     {
       title: 'Tabs',
       path: '/layout/Tabs',
       frame: true,
-      content: pageLoader(() => import('./Tabs.md')),
+      content: Tabs,
     },
   ],
 }
