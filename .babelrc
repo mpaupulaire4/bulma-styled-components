@@ -8,6 +8,20 @@
   ],
   "plugins": [
     [
+      "emotion",
+      {
+        "hoist": true,
+        "autoLabel": true,
+        "importedNames": {
+          "styled": "emotion_styled",
+          "css": "emotion_css",
+          "keyframes": "emotion_keyframes",
+          "injectGlobal": "emotion_injectGlobal",
+          "merge": "emotion_merge"
+        }
+      }
+    ],
+    [
       "babel-plugin-styled-components",
       "transform-runtime"
     ]
