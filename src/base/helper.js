@@ -13,7 +13,6 @@ import {
   desktop_only,
   unselectable,
 } from '../utilities/mixins'
-import { fromTheme } from '../utilities/functions'
 
 const alignments = {
   centered: 'center',
@@ -29,7 +28,7 @@ const displays = [
   'inline-flex',
 ]
 
-export default css`
+export default theme => css`
   /* Float */
   .is-clearfix {
     ${clearFix()}
@@ -54,37 +53,37 @@ export default css`
   }
 
   /* Typography */
-  ${({ theme }) => theme.sizes.reduce((acc, size, i) => css`
+  ${theme.sizes.reduce((acc, size, i) => css`
     ${acc}
     .is-size-${i + 1} {
       font-size: ${size} !important;
     }
-    ${mobile`
+    ${mobile(theme)`
       .is-size-${i + 1}-mobile {
         font-size: ${size} !important;
       }
     `}
-    ${tablet`
+    ${tablet(theme)`
       .is-size-${i + 1}-tablet {
         font-size: ${size} !important;
       }
     `}
-    ${touch`
+    ${touch(theme)`
       .is-size-${i + 1}-touch {
         font-size: ${size} !important;
       }
     `}
-    ${desktop`
+    ${desktop(theme)`
       .is-size-${i + 1}-desktop {
         font-size: ${size} !important;
       }
     `}
-    ${widescreen`
+    ${widescreen(theme)`
       .is-size-${i + 1}-widescreen {
         font-size: ${size} !important;
       }
     `}
-    ${fullhd`
+    ${fullhd(theme)`
       .is-size-${i + 1}-fullhd {
         font-size: ${size} !important;
       }
@@ -96,47 +95,47 @@ export default css`
     .has-text-${alignment} {
       text-align: ${text_align} !important;
     }
-    ${mobile`
+    ${mobile(theme)`
       .has-text-${alignment}-mobile {
         text-align: ${text_align} !important;
       }
     `}
-    ${tablet`
+    ${tablet(theme)`
       .has-text-${alignment}-tablet {
         text-align: ${text_align} !important;
       }
     `}
-    ${tablet_only`
+    ${tablet_only(theme)`
       .has-text-${alignment}-tablet-only {
         text-align: ${text_align} !important;
       }
     `}
-    ${touch`
+    ${touch(theme)`
       .has-text-${alignment}-touch {
         text-align: ${text_align} !important;
       }
     `}
-    ${desktop`
+    ${desktop(theme)`
       .has-text-${alignment}-desktop {
         text-align: ${text_align} !important;
       }
     `}
-    ${desktop_only`
+    ${desktop_only(theme)`
       .has-text-${alignment}-desktop-only {
         text-align: ${text_align} !important;
       }
     `}
-    ${widescreen`
+    ${widescreen(theme)`
       .has-text-${alignment}-widescreen {
         text-align: ${text_align} !important;
       }
     `}
-    ${widescreen_only`
+    ${widescreen_only(theme)`
       .has-text-${alignment}-widescreen-only {
         text-align: ${text_align} !important;
       }
     `}
-    ${fullhd`
+    ${fullhd(theme)`
       .has-text-${alignment}-fullhd {
         text-align: ${text_align} !important;
       }
@@ -159,7 +158,7 @@ export default css`
     font-style: italic !important;
   }
 
-  ${({ theme }) => Object.entries(theme['colors']).reduce((acc, [name, [color]]) => css`
+  ${Object.entries(theme['colors']).reduce((acc, [name, [color]]) => css`
     ${acc}
     .has-text-${name} {
       color: ${color} !important;
@@ -174,7 +173,7 @@ export default css`
       background-color: ${color} !important;
     }
   `, '')}
-  ${({ theme }) => Object.entries(theme['shades']).reduce((acc, [name, shade]) => css`
+  ${Object.entries(theme['shades']).reduce((acc, [name, shade]) => css`
     ${acc}
     .has-text-${name} {
       color: ${shade} !important;
@@ -185,16 +184,16 @@ export default css`
   `, '')}
 
   .has-text-weight-light {
-    font-weight: ${fromTheme('weight-light')} !important;
+    font-weight: ${theme['weight-light']} !important;
   }
   .has-text-weight-normal {
-    font-weight: ${fromTheme('weight-normal')} !important;
+    font-weight: ${theme['weight-normal']} !important;
   }
   .has-text-weight-semibold {
-    font-weight: ${fromTheme('weight-semibold')} !important;
+    font-weight: ${theme['weight-semibold']} !important;
   }
   .has-text-weight-bold {
-    font-weight: ${fromTheme('weight-bold')} !important;
+    font-weight: ${theme['weight-bold']} !important;
   }
 
   /* Visibility */
@@ -203,47 +202,47 @@ export default css`
     .is-${display} {
       display: ${display} !important;
     }
-    ${mobile`
+    ${mobile(theme)`
       .is-${display}-mobile {
         display: ${display} !important;
       }
     `}
-    ${tablet`
+    ${tablet(theme)`
       .is-${display}-tablet {
         display: ${display} !important;
       }
     `}
-    ${tablet_only`
+    ${tablet_only(theme)`
       .is-${display}-tablet-only {
         display: ${display} !important;
       }
     `}
-    ${touch`
+    ${touch(theme)`
       .is-${display}-touch {
         display: ${display} !important;
       }
     `}
-    ${desktop`
+    ${desktop(theme)`
       .is-${display}-desktop {
         display: ${display} !important;
       }
     `}
-    ${desktop_only`
+    ${desktop_only(theme)`
       .is-${display}-desktop-only {
         display: ${display} !important;
       }
     `}
-    ${widescreen`
+    ${widescreen(theme)`
       .is-${display}-widescreen {
         display: ${display} !important;
       }
     `}
-    ${widescreen_only`
+    ${widescreen_only(theme)`
       .is-${display}-widescreen-only {
         display: ${display} !important;
       }
     `}
-    ${fullhd`
+    ${fullhd(theme)`
       .is-${display}-fullhd {
         display: ${display} !important;
       }
@@ -254,55 +253,55 @@ export default css`
     display: none !important;
   }
 
-  ${mobile`
+  ${mobile(theme)`
     .is-hidden-mobile {
       display: none !important;
     }
   `}
 
-  ${tablet`
+  ${tablet(theme)`
     .is-hidden-tablet {
       display: none !important;
     }
   `}
 
-  ${tablet_only`
+  ${tablet_only(theme)`
     .is-hidden-tablet-only {
       display: none !important;
     }
   `}
 
-  ${touch`
+  ${touch(theme)`
     .is-hidden-touch {
       display: none !important;
     }
   `}
 
-  ${desktop`
+  ${desktop(theme)`
     .is-hidden-desktop {
       display: none !important;
     }
   `}
 
-  ${desktop_only`
+  ${desktop_only(theme)`
     .is-hidden-desktop-only {
       display: none !important;
     }
   `}
 
-  ${widescreen`
+  ${widescreen(theme)`
     .is-hidden-widescreen {
       display: none !important;
     }
   `}
 
-  ${widescreen_only`
+  ${widescreen_only(theme)`
     .is-hidden-widescreen-only {
       display: none !important;
     }
   `}
 
-  ${fullhd`
+  ${fullhd(theme)`
     .is-hidden-fullhd {
       display: none !important;
     }
@@ -312,55 +311,55 @@ export default css`
     visibility: hidden !important;
   }
 
-  ${mobile`
+  ${mobile(theme)`
     .is-invisible-mobile {
       visibility: hidden !important;
     }
   `}
 
-  ${tablet`
+  ${tablet(theme)`
     .is-invisible-tablet {
       visibility: hidden !important;
     }
   `}
 
-  ${tablet_only`
+  ${tablet_only(theme)`
     .is-invisible-tablet-only {
       visibility: hidden !important;
     }
   `}
 
-  ${touch`
+  ${touch(theme)`
     .is-invisible-touch {
       visibility: hidden !important;
     }
   `}
 
-  ${desktop`
+  ${desktop(theme)`
     .is-invisible-desktop {
       visibility: hidden !important;
     }
   `}
 
-  ${desktop_only`
+  ${desktop_only(theme)`
     .is-invisible-desktop-only {
       visibility: hidden !important;
     }
   `}
 
-  ${widescreen`
+  ${widescreen(theme)`
     .is-invisible-widescreen {
       visibility: hidden !important;
     }
   `}
 
-  ${widescreen_only`
+  ${widescreen_only(theme)`
     .is-invisible-widescreen-only {
       visibility: hidden !important;
     }
   `}
 
-  ${fullhd`
+  ${fullhd(theme)`
     .is-invisible-fullhd {
       visibility: hidden !important;
     }

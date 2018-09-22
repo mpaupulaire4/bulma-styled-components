@@ -1,24 +1,18 @@
 import React from 'react'
-import styled, { ThemeProvider } from 'styled-components'
+import styled from 'styled-components'
 import { injectGlobal as emotion_injectGlobal } from 'emotion'
 import Vars from '../utilities/vars'
 import minireset from './minireset'
 import getGeneric from './generic'
 import Helpers from './helper'
 
-const BulmaStyledContainer = styled.div`
-  ${Helpers}
-`
 const { Provider, Consumer } = React.createContext({
   get theme() {
     return Vars.getVariables()
   },
 })
 
-export {
-  Provider as Theme,
-  Consumer,
-}
+export { Consumer }
 
 export class BulmaStyledTheme extends React.PureComponent {
   static defaultProps = {
@@ -26,21 +20,24 @@ export class BulmaStyledTheme extends React.PureComponent {
   }
 
   componentWillMount() {
-    this.vars = Vars.getVariables(this.props.overrides)
+    const vars = Vars.getVariables(this.props.overrides)
     return emotion_injectGlobal`
       ${minireset}
-      ${getGeneric(this.vars)}
+      ${getGeneric(vars)}
+      ${Helpers(vars)}
     `
   }
 
-  vars = Vars.getVariables();
-
   render() {
     const { overrides, ...props } = this.props
+    const theme = Vars.getVariables(overrides)
     return (
-      <ThemeProvider theme={this.vars}>
-        <BulmaStyledContainer {...props} />
-      </ThemeProvider>
+      <Provider
+        {...props}
+        value={{
+          theme,
+        }}
+      />
     )
   }
 }
