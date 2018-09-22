@@ -1,14 +1,15 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css } from 'styled-components'
+import React from 'react'
+import { css } from 'styled-components'
+import { Consumer } from '../base'
 import Vars from '../utilities/vars'
 import { overlay } from '../utilities/mixins'
-import { fromTheme } from '../utilities/functions'
 
 Vars.addDerivedDefault(() => ({
   dimensions: [16, 24, 32, 48, 64, 96, 128],
 }))
 
-const Image = styled.figure`
+const ImageStyle = theme => css`
   display: block;
   position: relative;
   img {
@@ -16,7 +17,7 @@ const Image = styled.figure`
     height: auto;
     width: 100%;
     &.is-rounded {
-      border-radius: ${fromTheme('radius-rounded')};
+      border-radius: ${theme['radius-rounded']};
     }
   }
   /* Ratio */
@@ -90,7 +91,7 @@ const Image = styled.figure`
   }
 
   /* Sizes */
-  ${props => props.theme['dimensions'].reduce((acc, dim) => css`
+  ${theme['dimensions'].reduce((acc, dim) => css`
     ${acc}
     &.is-${dim}x${dim} {
       height: ${dim}px;
@@ -98,6 +99,25 @@ const Image = styled.figure`
     }
   `, '')}
 `
-Image.defaultProps = { theme: Vars.getVariables() }
+export default class Image extends React.PureComponent {
+  static defaultProps = {
+    as: 'figure',
+    className: '',
+  }
 
-export default Image
+  render() {
+    const { as, className, ...props } = this.props
+    return (
+      <Consumer>
+        {({ theme }) => React.createElement(as, {
+          ...props,
+          className: [
+            Image.name,
+            ImageStyle(theme, as),
+            className,
+          ].join(' '),
+        })}
+      </Consumer>
+    )
+  }
+}
