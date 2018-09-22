@@ -1,8 +1,9 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css } from 'styled-components'
+import React, { PureComponent } from 'react'
+import { css as emotion_css } from 'emotion'
 import Vars from '../utilities/vars'
+import { Consumer } from '../base'
 import { block, overflow_touch } from '../utilities/mixins'
-import { fromTheme } from '../utilities/functions'
 
 Vars.addDerivedDefault(vars => ({
   'content-heading-color': vars['text-strong'],
@@ -25,9 +26,7 @@ Vars.addDerivedDefault(vars => ({
   'content-table-foot-cell-color': vars['text-strong'],
 }))
 
-const defaultProps = { theme: Vars.getVariables() }
-
-export const ContentStyle = css`
+export const ContentStyle = theme => emotion_css`
   ${block}
   /* Inline */
   li + li {
@@ -51,9 +50,9 @@ export const ContentStyle = css`
   h4,
   h5,
   h6 {
-    color: ${fromTheme('content-heading-color')};
-    font-weight: ${fromTheme('content-heading-weight')};
-    line-height: ${fromTheme('content-heading-line-height')};
+    color: ${theme['content-heading-color']};
+    font-weight: ${theme['content-heading-weight']};
+    line-height: ${theme['content-heading-line-height']};
   }
   h1 {
     font-size: 2em;
@@ -89,9 +88,9 @@ export const ContentStyle = css`
     margin-bottom: 1em;
   }
   blockquote {
-    background-color: ${fromTheme('content-blockquote-background-color')};
-    border-left: ${fromTheme('content-blockquote-border-left')};
-    padding: ${fromTheme('content-blockquote-padding')};
+    background-color: ${theme['content-blockquote-background-color']};
+    border-left: ${theme['content-blockquote-border-left']};
+    padding: ${theme['content-blockquote-padding']};
   }
   ol {
     list-style: decimal outside;
@@ -133,7 +132,7 @@ export const ContentStyle = css`
   pre {
     ${overflow_touch}
     overflow-x: auto;
-    padding: ${fromTheme('content-pre-padding')};
+    padding: ${theme['content-pre-padding']};
     white-space: pre;
     word-wrap: normal;
   }
@@ -145,27 +144,27 @@ export const ContentStyle = css`
     width: 100%;
     td,
     th {
-      border: ${fromTheme('content-table-cell-border')};
-      border-width: ${fromTheme('content-table-cell-border-width')};
-      padding: ${fromTheme('content-table-cell-padding')};
+      border: ${theme['content-table-cell-border']};
+      border-width: ${theme['content-table-cell-border-width']};
+      padding: ${theme['content-table-cell-padding']};
       vertical-align: top;
     }
     th {
-      color: ${fromTheme('content-table-cell-heading-color')};
+      color: ${theme['content-table-cell-heading-color']};
       text-align: left;
     }
     thead {
       td,
       th {
-        border-width: ${fromTheme('content-table-head-cell-border-width')};
-        color: ${fromTheme('content-table-head-cell-color')};
+        border-width: ${theme['content-table-head-cell-border-width']};
+        color: ${theme['content-table-head-cell-color']};
       }
     }
     tfoot
       td,
       th {
-        border-width: ${fromTheme('content-table-foot-cell-border-width')};
-        color: ${fromTheme('content-table-foot-cell-color')};
+        border-width: ${theme['content-table-foot-cell-border-width']};
+        color: ${theme['content-table-foot-cell-color']};
       }
     tbody {
       tr {
@@ -180,17 +179,36 @@ export const ContentStyle = css`
   }
   /* Sizes */
   &.is-small {
-    font-size: ${fromTheme('size-small')};
+    font-size: ${theme['size-small']};
   }
   &.is-medium {
-    font-size: ${fromTheme('size-medium')};
+    font-size: ${theme['size-medium']};
   }
   &.is-large {
-    font-size: ${fromTheme('size-large')};
+    font-size: ${theme['size-large']};
   }
 `
 
-const Content = styled.div`${ContentStyle}`
-Content.defaultProps = defaultProps
+export default class Content extends PureComponent {
+  static ClassName = 'CONTENT'
+  static defaultProps = {
+    as: 'div',
+    className: '',
+  }
 
-export default Content
+  render() {
+    const { as, className, ...props } = this.props
+    return (
+      <Consumer>
+        {({ theme }) => React.createElement(as, {
+          ...props,
+          className: [
+            Content.ClassName,
+            ContentStyle(theme, as),
+            className,
+          ].join(' '),
+        })}
+      </Consumer>
+    )
+  }
+}
