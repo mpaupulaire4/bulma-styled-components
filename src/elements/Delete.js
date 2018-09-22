@@ -1,14 +1,15 @@
-import styled, { css } from 'styled-components'
-import Vars from '../utilities/vars'
-import { fromTheme, fromThemeToRGBA } from '../utilities/functions'
+import React from 'react'
+import { css as emotion_css } from 'emotion'
+import { rgba } from 'polished'
+import { Consumer } from '../base'
 import { unselectable } from '../utilities/mixins'
 
-export const DeleteStyle = css`
+export const DeleteStyle = theme => emotion_css`
   ${unselectable}
   appearance: none;
-  background-color: ${fromThemeToRGBA('black', 0.2)};
+  background-color: ${rgba(theme['black'], 0.2)};
   border: none;
-  border-radius: ${fromTheme('radius-rounded')};
+  border-radius: ${theme['radius-rounded']};
   cursor: pointer;
   pointer-events: auto;
   display: inline-block;
@@ -26,7 +27,7 @@ export const DeleteStyle = css`
   width: 20px;
   &::before,
   &::after {
-    background-color: ${fromTheme('white')};
+    background-color: ${theme['white']};
     content: "";
     display: block;
     left: 50%;
@@ -45,10 +46,10 @@ export const DeleteStyle = css`
   }
   &:hover,
   &:focus {
-    background-color: ${fromThemeToRGBA('black', 0.3)};
+    background-color: ${rgba(theme['black'], 0.3)};
   }
   &:active {
-    background-color: ${fromThemeToRGBA('black', 0.4)};
+    background-color: ${rgba(theme['black'], 0.4)};
   }
   /* Sizes */
   &.is-small {
@@ -76,7 +77,25 @@ export const DeleteStyle = css`
     width: 32px;
   }
 `
-const Delete = styled.button`${DeleteStyle}`
-Delete.defaultProps = { theme: Vars.getVariables() }
+export default class Delete extends React.PureComponent {
+  static defaultProps = {
+    as: 'button',
+    className: '',
+  }
 
-export default Delete
+  render() {
+    const { as, className, ...props } = this.props
+    return (
+      <Consumer>
+        {({ theme }) => React.createElement(as, {
+          ...props,
+          className: [
+            Delete.name,
+            DeleteStyle(theme, as),
+            className,
+          ].join(' '),
+        })}
+      </Consumer>
+    )
+  }
+}

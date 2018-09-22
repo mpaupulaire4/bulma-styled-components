@@ -190,7 +190,6 @@ export const ContentStyle = theme => emotion_css`
 `
 
 export default class Content extends PureComponent {
-  static ClassName = 'CONTENT'
   static defaultProps = {
     as: 'div',
     className: '',
@@ -203,7 +202,7 @@ export default class Content extends PureComponent {
         {({ theme }) => React.createElement(as, {
           ...props,
           className: [
-            Content.ClassName,
+            Content.name,
             ContentStyle(theme, as),
             className,
           ].join(' '),

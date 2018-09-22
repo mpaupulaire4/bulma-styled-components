@@ -117,7 +117,7 @@ export const InputClass = theme => emotion_css`
   }
 `
 export class Input extends PureComponent {
-  static ClassName = 'INPUT'
+
   static defaultProps = {
     as: 'input',
     className: '',
@@ -130,7 +130,7 @@ export class Input extends PureComponent {
         {theme => React.createElement(as, {
           ...props,
           className: [
-            Box.ClassName,
+            Box.name,
             InputClass(theme, as),
             className,
           ].join(' '),

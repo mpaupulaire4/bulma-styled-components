@@ -30,7 +30,7 @@ export const IconStyle = theme => emotion_css`
     height: ${theme['icon-dimensions-large']};
     width: ${theme['icon-dimensions-large']};
   }
-  .${Button.ClassName} & { /* stylelint-disable-line */
+  .${Button.name} & { /* stylelint-disable-line */
     &,
     &.is-small,
     &.is-medium,
@@ -54,7 +54,6 @@ export const IconStyle = theme => emotion_css`
 `
 
 export default class Icon extends React.PureComponent {
-  static ClassName = 'ICON'
   static defaultProps = {
     as: 'span',
     className: '',
@@ -67,7 +66,7 @@ export default class Icon extends React.PureComponent {
         {theme => React.createElement(as, {
           ...props,
           className: [
-            Icon.ClassName,
+            Icon.name,
             IconStyle(theme, as),
             className,
           ].join(' '),
