@@ -33,7 +33,6 @@ export const BoxStyle = (theme, as) => emotion_css`
   }` : ''}
 `
 export default class Box extends PureComponent {
-  static ClassName = 'BOX'
   static defaultProps = {
     as: 'div',
     className: '',
@@ -46,7 +45,7 @@ export default class Box extends PureComponent {
         {({ theme }) => React.createElement(as, {
           ...props,
           className: [
-            Box.ClassName,
+            Box.name,
             BoxStyle(theme, as),
             className,
           ].join(' '),

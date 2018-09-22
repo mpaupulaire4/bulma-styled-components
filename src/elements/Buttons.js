@@ -22,7 +22,6 @@ const ButtonsStyle = emotion_css`
 `
 
 export default class Buttons extends React.PureComponent {
-  static ClassName = 'BUTTONS'
   static defaultProps = {
     as: 'div',
     className: '',
@@ -33,7 +32,7 @@ export default class Buttons extends React.PureComponent {
     return React.createElement(as, {
       ...props,
       className: [
-        Buttons.ClassName,
+        Buttons.name,
         ButtonsStyle,
         className,
       ].join(' '),

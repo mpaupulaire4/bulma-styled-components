@@ -236,13 +236,13 @@ const ButtonStyle = theme => emotion_css`
     padding-left: 1em;
     padding-right: 1em;
   }
-  .${/* sc-custom '.buttons' */Buttons.ClassName} & {
+  .${/* sc-custom '.buttons' */Buttons.name} & {
     margin-bottom: 0.5rem;
     &:not(:last-child) {
       margin-right: 0.5rem;
     }
   }
-  .${/* sc-custom '.buttons' */Buttons.ClassName}.has-addons & {
+  .${/* sc-custom '.buttons' */Buttons.name}.has-addons & {
     &:not(:first-child) {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
@@ -276,7 +276,6 @@ const ButtonStyle = theme => emotion_css`
 `
 
 export default class Button extends React.PureComponent {
-  static ClassName = 'BUTTON'
   static defaultProps = {
     as: 'button',
     className: '',
@@ -289,7 +288,7 @@ export default class Button extends React.PureComponent {
         {({ theme }) => React.createElement(as, {
           ...props,
           className: [
-            Button.ClassName,
+            Button.name,
             ButtonStyle(theme, as),
             ...colorClasses(theme),
             className,

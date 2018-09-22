@@ -35,6 +35,9 @@ export class BulmaStyledTheme extends React.PureComponent {
         {...props}
         value={{
           theme,
+          get helpers() {
+            return this.theme
+          },
         }}
       />
     )

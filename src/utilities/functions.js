@@ -46,7 +46,3 @@ export function mergeColorMaps(bulmaColors = {}, customColors = {}) {
 export function fromTheme(key) {
   return props => props.theme[key]
 }
-
-export function fromThemeToRGBA(key, opacity = 1) {
-  return props => rgba(props.theme[key], opacity)
-}
