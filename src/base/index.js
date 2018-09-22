@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { injectGlobal as emotion_injectGlobal } from 'emotion'
 import Vars from '../utilities/vars'
 import minireset from './minireset'
