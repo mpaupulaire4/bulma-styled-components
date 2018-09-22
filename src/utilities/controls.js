@@ -1,21 +1,20 @@
 import { css } from 'styled-components'
-import { fromTheme } from './functions'
 
-export const control = css`
+export const control = theme => css`
   appearance: none;
   align-items: center;
-  border: ${fromTheme('control-border-width')} solid transparent;
-  border-radius: ${fromTheme('control-radius')};
+  border: ${theme['control-border-width']} solid transparent;
+  border-radius: ${theme['control-radius']};
   box-shadow: none;
   display: inline-flex;
-  font-size: ${fromTheme('size-normal')};
+  font-size: ${theme['size-normal']};
   height: 2.25em;
   justify-content: flex-start;
   line-height: 1.5;
-  padding-bottom: ${fromTheme('control-padding-vertical')};
-  padding-left: ${fromTheme('control-padding-horizontal')};
-  padding-right: ${fromTheme('control-padding-horizontal')};
-  padding-top: ${fromTheme('control-padding-vertical')};
+  padding-bottom: ${theme['control-padding-vertical']};
+  padding-left: ${theme['control-padding-horizontal']};
+  padding-right: ${theme['control-padding-horizontal']};
+  padding-top: ${theme['control-padding-vertical']};
   position: relative;
   vertical-align: top;
 
@@ -33,13 +32,13 @@ export const control = css`
 `
 
 // The controls sizes use mixins so they can be used at different breakpoints
-export const control_small = css`
-  border-radius: ${fromTheme('control-radius-small')};
-  font-size: ${fromTheme('size-small')};
+export const control_small = theme => css`
+  border-radius: ${theme['control-radius-small']};
+  font-size: ${theme['size-small']};
 `
-export const control_medium = css`
-  font-size: ${fromTheme('size-medium')};
+export const control_medium = theme => css`
+  font-size: ${theme['size-medium']};
 `
-export const control_large = css`
-  font-size: ${fromTheme('size-large')};
+export const control_large = theme => css`
+  font-size: ${theme['size-large']};
 `

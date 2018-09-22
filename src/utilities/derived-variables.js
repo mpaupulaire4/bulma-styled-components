@@ -1,5 +1,5 @@
 import initialVars from './initial-variables'
-import { findColorInvert } from './functions'
+import { findColorInvert, mergeColorMaps } from './functions'
 
 /* eslint-disable dot-notation, quote-props */
 
@@ -89,7 +89,7 @@ export default function getVariables(overrides = {}) {
   setDefault('size-large', derived['size-4'])
 
   // Lists and maps
-  setDefault('colors', {
+  setDefault('colors', mergeColorMaps({
     'white': [derived['white'], derived['black']],
     'black': [derived['black'], derived['white']],
     'light': [derived['light'], derived['light-invert']],
@@ -100,8 +100,7 @@ export default function getVariables(overrides = {}) {
     'success': [derived['success'], derived['success-invert']],
     'warning': [derived['warning'], derived['warning-invert']],
     'danger': [derived['danger'], derived['danger-invert']],
-    ...derived['custom-colors'],
-  })
+  }, derived['custom-colors']))
 
   setDefault('shades', {
     'black-bis': derived['black-bis'],
