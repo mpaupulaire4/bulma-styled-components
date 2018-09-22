@@ -1,13 +1,12 @@
 Simple Box:
 ``` react
-const Link = Box.withComponent('a');
 
 <div>
   <Box>
     Just a Box
   </Box>
-  <Link>
+  <Box as="a">
     Just a Box as a Link
-  </Link>
+  </Box>
 </div>
 ```

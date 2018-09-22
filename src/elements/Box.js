@@ -1,8 +1,9 @@
-import styled, { css } from 'styled-components'
+import React, { PureComponent } from 'react'
+import { css as emotion_css } from 'emotion'
 import { rgba } from 'polished'
+import { Consumer } from '../'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
-import { fromTheme } from '../utilities/functions'
 
 Vars.addDerivedDefault(vars => ({
   'box-color': vars['text'],
@@ -14,28 +15,44 @@ Vars.addDerivedDefault(vars => ({
   'box-link-active-shadow': `inset 0 1px 2px ${rgba(vars['black'], 0.2)}, 0 0 0 1px ${vars['link']}`,
 }))
 
-export const BoxStyle = css`
+export const BoxStyle = (theme, as) => emotion_css`
   ${block}
-  background-color: ${fromTheme('box-background-color')};
-  border-radius: ${fromTheme('box-radius')};
-  box-shadow: ${fromTheme('box-shadow')};
-  color: ${fromTheme('box-color')};
+  background-color: ${theme['box-background-color']};
+  border-radius: ${theme['box-radius']};
+  box-shadow: ${theme['box-shadow']};
+  color: ${theme['box-color']};
   display: block;
-  padding: ${fromTheme('box-padding')};
-  a& {
-    &:hover,
-    &:focus {
-      box-shadow: ${fromTheme('box-link-hover-shadow')};
-    }
-    &:active {
-      box-shadow: ${fromTheme('box-link-active-shadow')};
-    }
+  padding: ${theme['box-padding']};
+  ${as === 'a' ? `
+  &:hover,
+  &:focus {
+    box-shadow: ${theme['box-link-hover-shadow']};
   }
+  &:active {
+    box-shadow: ${theme['box-link-active-shadow']};
+  }` : ''}
 `
-const Box = styled.div`${BoxStyle}`
+export default class Box extends PureComponent {
+  static ClassName = 'BOX'
+  static defaultProps = {
+    as: 'div',
+    className: '',
+  }
 
-Box.defaultProps = {
-  theme: Vars.getVariables(),
+  render() {
+    const { as, className, ...props } = this.props
+    return (
+      <Consumer>
+        {theme => React.createElement(as, {
+          ...props,
+          className: [
+            Box.ClassName,
+            BoxStyle(theme, as),
+            className,
+          ].join(' '),
+        })}
+      </Consumer>
+    )
+  }
 }
 
-export default Box

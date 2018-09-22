@@ -1,11 +1,11 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css } from 'styled-components'
+import React from 'react'
+import { css as emotion_css } from 'emotion'
 import { rgba, darken } from 'polished'
+import { Consumer } from '../'
 import Vars from '../utilities/vars'
-import { fromTheme } from '../utilities/functions'
 import { unselectable, loader, center } from '../utilities/mixins'
 import { control } from '../utilities/controls'
-import Icon from './Icon'
 import Buttons from './Buttons'
 
 Vars.addDerivedDefault(vars => ({
@@ -43,10 +43,7 @@ Vars.addDerivedDefault(vars => ({
   'button-static-border-color': vars['grey-lighter'],
 }))
 
-const defaultProps = { theme: Vars.getVariables() }
-
-const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [name, [color, color_invert]]) => css`
-  ${acc}
+const colorClasses = theme => Object.entries(theme.colors).map(([name, [color, color_invert]]) => emotion_css`
   &.is-${name} {
     /* Colors */
     background-color: ${color};
@@ -69,7 +66,7 @@ const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [n
       border-color: transparent;
       color: ${color_invert};
       &:not(:active) {
-        box-shadow: ${props.theme['button-focus-box-shadow-size']} ${rgba(color, 0.25)};
+        box-shadow: ${theme['button-focus-box-shadow-size']} ${rgba(color, 0.25)};
       }
     }
     &[disabled] {
@@ -136,61 +133,40 @@ const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [n
   }
 `, '')
 
-const Button = styled.button`
+const ButtonStyle = theme => emotion_css`
   ${control}
   ${unselectable}
-  background-color: ${fromTheme('button-background-color')};
-  border-color: ${fromTheme('button-border-color')};
-  border-width: ${fromTheme('button-border-width')};
-  color: ${fromTheme('button-color')};
+  background-color: ${theme['button-background-color']};
+  border-color: ${theme['button-border-color']};
+  border-width: ${theme['button-border-width']};
+  color: ${theme['button-color']};
   cursor: pointer;
   justify-content: center;
-  padding-bottom: ${fromTheme('button-padding-vertical')};
-  padding-left: ${fromTheme('button-padding-horizontal')};
-  padding-right: ${fromTheme('button-padding-horizontal')};
-  padding-top: ${fromTheme('button-padding-vertical')};
+  padding-bottom: ${theme['button-padding-vertical']};
+  padding-left: ${theme['button-padding-horizontal']};
+  padding-right: ${theme['button-padding-horizontal']};
+  padding-top: ${theme['button-padding-vertical']};
   text-align: center;
   white-space: nowrap;
   strong {
     color: inherit;
   }
-  ${Icon} { /* stylelint-disable-line */
-    &,
-    &.is-small,
-    &.is-medium,
-    &.is-large {
-      height: 1.5em;
-      width: 1.5em;
-    }
-    &:first-child:not(:last-child) {
-      margin-left: calc(-0.375em - ${fromTheme('button-border-width')});
-      margin-right: 0.1875em;
-    }
-    &:last-child:not(:first-child) {
-      margin-left: 0.1875em;
-      margin-right: calc(-0.375em - ${fromTheme('button-border-width')});
-    }
-    &:first-child:last-child {
-      margin-left: calc(-0.375em - ${fromTheme('button-border-width')});
-      margin-right: calc(-0.375em - ${fromTheme('button-border-width')});
-    }
-  }
   &.is-text {
     background-color: transparent;
     border-color: transparent;
-    color: ${fromTheme('button-text-color')};
+    color: ${theme['button-text-color']};
     text-decoration: underline;
     &:hover,
     &.is-hovered,
     &:focus,
     &.is-focused {
-      background-color: ${fromTheme('button-text-hover-background-color')};
-      color: ${fromTheme('button-text-hover-color')};
+      background-color: ${theme['button-text-hover-background-color']};
+      color: ${theme['button-text-hover-color']};
     }
     &:active,
     &.is-active {
-      background-color: ${props => darken(0.05, props.theme['button-text-hover-background-color'])};
-      color: ${fromTheme('button-text-hover-color')};
+      background-color: ${darken(0.05, theme['button-text-hover-background-color'])};
+      color: ${theme['button-text-hover-color']};
     }
     &[disabled] {
       background-color: transparent;
@@ -201,40 +177,39 @@ const Button = styled.button`
   /* States */
   &:hover,
   &.is-hovered {
-    border-color: ${fromTheme('button-hover-border-color')};
-    color: ${fromTheme('button-hover-color')};
+    border-color: ${theme['button-hover-border-color']};
+    color: ${theme['button-hover-color']};
   }
   &:active,
   &.is-active {
-    border-color: ${fromTheme('button-active-border-color')};
-    color: ${fromTheme('button-active-color')};
+    border-color: ${theme['button-active-border-color']};
+    color: ${theme['button-active-color']};
   }
   &:focus,
   &.is-focused {
-    border-color: ${fromTheme('button-focus-border-color')};
-    color: ${fromTheme('button-focus-color')};
+    border-color: ${theme['button-focus-border-color']};
+    color: ${theme['button-focus-color']};
     &:not(:active) {
-      box-shadow: ${fromTheme('button-focus-box-shadow-size')} ${fromTheme('button-focus-box-shadow-color')};
+      box-shadow: ${theme['button-focus-box-shadow-size']} ${theme['button-focus-box-shadow-color']};
     }
   }
-  ${colorClasses}
   /* Sizes */
   &.is-small {
-    border-radius: ${fromTheme('radius-small')};
-    font-size: ${fromTheme('size-small')};
+    border-radius: ${theme['radius-small']};
+    font-size: ${theme['size-small']};
   }
   &.is-medium {
-    font-size: ${fromTheme('size-medium')};
+    font-size: ${theme['size-medium']};
   }
   &.is-large {
-    font-size: ${fromTheme('size-large')};
+    font-size: ${theme['size-large']};
   }
   /*  Modifiers */
   &[disabled] {
-    background-color: ${fromTheme('button-disabled-background-color')};
-    border-color: ${fromTheme('button-disabled-border-color')};
-    box-shadow: ${fromTheme('button-disabled-shadow')};
-    opacity: ${fromTheme('button-disabled-opacity')};
+    background-color: ${theme['button-disabled-background-color']};
+    border-color: ${theme['button-disabled-border-color']};
+    box-shadow: ${theme['button-disabled-shadow']};
+    opacity: ${theme['button-disabled-opacity']};
   }
   &.is-fullwidth {
     display: flex;
@@ -250,24 +225,24 @@ const Button = styled.button`
     }
   }
   &.is-static {
-    background-color: ${fromTheme('button-static-background-color')};
-    border-color: ${fromTheme('button-static-border-color')};
-    color: ${fromTheme('button-static-color')};
+    background-color: ${theme['button-static-background-color']};
+    border-color: ${theme['button-static-border-color']};
+    color: ${theme['button-static-color']};
     box-shadow: none;
     pointer-events: none;
   }
   &.is-rounded {
-    border-radius: ${fromTheme('radius-rounded')};
+    border-radius: ${theme['radius-rounded']};
     padding-left: 1em;
     padding-right: 1em;
   }
-  ${/* sc-custom '.buttons' */Buttons} & {
+  ${/* sc-custom '.buttons' */Buttons.ClassName} & {
     margin-bottom: 0.5rem;
     &:not(:last-child) {
       margin-right: 0.5rem;
     }
   }
-  ${/* sc-custom '.buttons' */Buttons}.has-addons & {
+  ${/* sc-custom '.buttons' */Buttons.ClassName}.has-addons & {
     &:not(:first-child) {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
@@ -299,6 +274,28 @@ const Button = styled.button`
     }
   }
 `
-Button.defaultProps = defaultProps
 
-export default Button
+export default class Button extends React.PureComponent {
+  static ClassName = 'BUTTON'
+  static defaultProps = {
+    as: 'button',
+    className: '',
+  }
+
+  render() {
+    const { as, className, ...props } = this.props
+    return (
+      <Consumer>
+        {theme => React.createElement(as, {
+          ...props,
+          className: [
+            Button.ClassName,
+            ButtonStyle(theme, as),
+            ...colorClasses(theme),
+            className,
+          ].join(' '),
+        })}
+      </Consumer>
+    )
+  }
+}
