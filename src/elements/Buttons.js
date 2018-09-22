@@ -1,7 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 import React from 'react'
 import { css as emotion_css } from 'emotion'
-import { Consumer } from '../'
 
 const ButtonsStyle = emotion_css`
   align-items: center;
@@ -31,17 +30,13 @@ export default class Buttons extends React.PureComponent {
 
   render() {
     const { as, className, ...props } = this.props
-    return (
-      <Consumer>
-        {theme => React.createElement(as, {
-          ...props,
-          className: [
-            Buttons.ClassName,
-            ButtonsStyle(theme, as),
-            className,
-          ].join(' '),
-        })}
-      </Consumer>
-    )
+    return React.createElement(as, {
+      ...props,
+      className: [
+        Buttons.ClassName,
+        ButtonsStyle,
+        className,
+      ].join(' '),
+    })
   }
 }

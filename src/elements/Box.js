@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { css as emotion_css } from 'emotion'
 import { rgba } from 'polished'
-import { Consumer } from '../'
+import { Consumer } from '../base'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
 
@@ -43,7 +43,7 @@ export default class Box extends PureComponent {
     const { as, className, ...props } = this.props
     return (
       <Consumer>
-        {theme => React.createElement(as, {
+        {({ theme }) => React.createElement(as, {
           ...props,
           className: [
             Box.ClassName,

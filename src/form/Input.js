@@ -1,5 +1,7 @@
-import styled, { css } from 'styled-components'
+import React, { PureComponent } from 'react'
+import { css as emotion_css } from 'emotion'
 import { rgba } from 'polished'
+import { Consumer } from '../base'
 import Vars from '../utilities/vars'
 import { placeholder } from '../utilities/mixins'
 import {
@@ -28,7 +30,7 @@ Vars.addDerivedDefault(vars => ({
   'input-disabled-border-color': vars['background'],
 }))
 
-export const InputStyle = theme => css`
+export const InputStyle = theme => emotion_css`
   ${control}
   background-color: ${theme['input-background-color']};
   border-color: ${theme['input-border-color']};
@@ -57,7 +59,7 @@ export const InputStyle = theme => css`
     `}
   }
 `
-const ITSharedColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((acc, [name, [color]]) => css`
+const ITSharedColorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name, [color]]) => emotion_css`
   ${acc}
   &.is-${/* sc-custom 'blue' */name} {
     border-color: ${color};
@@ -69,7 +71,7 @@ const ITSharedColorClasses = ({ theme }) => Object.entries(theme['colors']).redu
     }
   }
 `, '')
-export const InputTextareaShared = theme => css`
+export const InputTextareaShared = theme => emotion_css`
   ${InputStyle}
   box-shadow: ${theme['input-shadow']};
   max-width: 100%;
@@ -78,7 +80,7 @@ export const InputTextareaShared = theme => css`
     box-shadow: none;
   }
   /* Colors */
-  ${ITSharedColorClasses}
+  ${ITSharedColorClasses(theme)}
   /* Sizes */
   &.is-small {
     ${control_small}
@@ -99,8 +101,8 @@ export const InputTextareaShared = theme => css`
     width: auto;
   }
 `
-export const Input = styled.input`
-  ${InputTextareaShared}
+export const InputClass = theme => emotion_css`
+  ${InputTextareaShared(theme)}
   &.is-rounded {
     border-radius: ${theme['radius-rounded']};
     padding-left: 1em;
@@ -114,4 +116,26 @@ export const Input = styled.input`
     padding-right: 0;
   }
 `
-Input.defaultProps = { theme: Vars.getVariables() }
+export class Input extends PureComponent {
+  static ClassName = 'INPUT'
+  static defaultProps = {
+    as: 'input',
+    className: '',
+  }
+
+  render() {
+    const { as, className, ...props } = this.props
+    return (
+      <Consumer>
+        {theme => React.createElement(as, {
+          ...props,
+          className: [
+            Box.ClassName,
+            InputClass(theme, as),
+            className,
+          ].join(' '),
+        })}
+      </Consumer>
+    )
+  }
+}

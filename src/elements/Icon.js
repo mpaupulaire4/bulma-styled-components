@@ -1,6 +1,6 @@
 import React from 'react'
 import { css as emotion_css } from 'emotion'
-import { Consumer } from '../'
+import { Consumer } from '../base'
 import Button from './Button'
 import Vars from '../utilities/vars'
 

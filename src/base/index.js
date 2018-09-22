@@ -9,12 +9,18 @@ import Helpers from './helper'
 const BulmaStyledContainer = styled.div`
   ${Helpers}
 `
+const { Provider, Consumer } = React.createContext({
+  get theme() {
+    return Vars.getVariables()
+  },
+})
 
-class BulmaStyledTheme extends React.PureComponent {
-  static propTypes = {
-    overrides: () => {},
-  }
+export {
+  Provider as Theme,
+  Consumer,
+}
 
+export class BulmaStyledTheme extends React.PureComponent {
   static defaultProps = {
     overrides: {},
   }
@@ -38,5 +44,3 @@ class BulmaStyledTheme extends React.PureComponent {
     )
   }
 }
-
-export default BulmaStyledTheme
