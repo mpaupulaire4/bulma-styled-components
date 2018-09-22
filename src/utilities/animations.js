@@ -1,5 +1,4 @@
-import { keyframes } from 'styled-components'
-/* eslint-disable import/prefer-default-export */
+import { keyframes } from 'emotion'
 
 export const spinAround = keyframes`
   from {

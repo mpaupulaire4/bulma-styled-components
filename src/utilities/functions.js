@@ -1,4 +1,3 @@
-import { css } from 'styled-components'
 import { getLuminance, rgba } from 'polished'
 
 
@@ -29,18 +28,15 @@ export function mergeColorMaps(bulmaColors = {}, customColors = {}) {
         [colorBase, colorInvert] = components
         // if inverted color is not provided or is not a color we compute it
         if (!is_color(colorInvert)) colorInvert = findColorInvert(colorBase)
-
-        // we merge this colors elements as map with bulma colors
-        // (we can override them this way, no multiple definition for the same name)
-        map[name] = [colorBase, colorInvert] // eslint-disable-line no-param-reassign
-        return map
-      }
-      if (is_color(components)) {
+      } else if (is_color(components)) {
         colorBase = components
         colorInvert = findColorInvert(colorBase)
-        map[name] = [colorBase, colorInvert] // eslint-disable-line no-param-reassign
+      } else {
         return map
       }
+      // we merge this colors elements as map with bulma colors
+      // (we can override them this way, no multiple definition for the same name)
+      map[name] = [colorBase, colorInvert] // eslint-disable-line no-param-reassign
       return map
     }, bulmaColors)
   }
@@ -53,8 +49,4 @@ export function fromTheme(key) {
 
 export function fromThemeToRGBA(key, opacity = 1) {
   return props => rgba(props.theme[key], opacity)
-}
-
-export function reduceToCSS(array = [], classes = {}) {
-  return array.reduce((acc, clas) => css`${acc}${classes[clas] || ''}`, '')
 }
