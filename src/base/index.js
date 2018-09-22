@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { emotion_injectGlobal } from 'emotion'
+import { injectGlobal as emotion_injectGlobal } from 'emotion'
 import Vars from '../utilities/vars'
 import minireset from './minireset'
 import getGeneric from './generic'

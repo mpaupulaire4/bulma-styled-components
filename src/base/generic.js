@@ -1,4 +1,4 @@
-import { emotion_css } from 'emotion'
+import { css as emotion_css } from 'emotion'
 import { overflow_touch } from '../utilities/mixins'
 
 export default vars => emotion_css`

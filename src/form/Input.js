@@ -8,7 +8,6 @@ import {
   control_medium,
   control_large,
 } from '../utilities/controls'
-import { fromTheme } from '../utilities/functions'
 
 Vars.addDerivedDefault(vars => ({
   'input-color': vars['grey-darker'],
@@ -29,32 +28,32 @@ Vars.addDerivedDefault(vars => ({
   'input-disabled-border-color': vars['background'],
 }))
 
-export const InputStyle = css`
+export const InputStyle = theme => css`
   ${control}
-  background-color: ${fromTheme('input-background-color')};
-  border-color: ${fromTheme('input-border-color')};
-  color: ${fromTheme('input-color')};
+  background-color: ${theme['input-background-color']};
+  border-color: ${theme['input-border-color']};
+  color: ${theme['input-color']};
   ${placeholder`
-    color: ${({ theme }) => rgba(theme['input-color'], 0.3)};
+    color: ${rgba(theme['input-color'], 0.3)};
   `}
   &:hover,
   &.is-hovered {
-    border-color: ${fromTheme('input-hover-border-color')};
+    border-color: ${theme['input-hover-border-color']};
   }
   &:focus,
   &.is-focused,
   &:active,
   &.is-active {
-    border-color: ${fromTheme('input-focus-border-color')};
-    box-shadow: ${fromTheme('input-focus-box-shadow-size')} ${fromTheme('input-focus-box-shadow-color')};
+    border-color: ${theme['input-focus-border-color']};
+    box-shadow: ${theme['input-focus-box-shadow-size']} ${theme['input-focus-box-shadow-color']};
   }
   &[disabled] {
-    background-color: ${fromTheme('input-disabled-background-color')};
-    border-color: ${fromTheme('input-disabled-border-color')};
+    background-color: ${theme['input-disabled-background-color']};
+    border-color: ${theme['input-disabled-border-color']};
     box-shadow: none;
-    color: ${fromTheme('input-disabled-color')};
+    color: ${theme['input-disabled-color']};
     ${placeholder`
-      color: ${({ theme }) => rgba(theme['input-disabled-color'], 0.3)};
+      color: ${rgba(theme['input-disabled-color'], 0.3)};
     `}
   }
 `
@@ -66,13 +65,13 @@ const ITSharedColorClasses = ({ theme }) => Object.entries(theme['colors']).redu
     &.is-focused,
     &:active,
     &.is-active {
-      box-shadow: ${fromTheme('input-focus-box-shadow-size')} ${rgba(color, 0.25)};
+      box-shadow: ${theme['input-focus-box-shadow-size']} ${rgba(color, 0.25)};
     }
   }
 `, '')
-export const InputTextareaShared = css`
+export const InputTextareaShared = theme => css`
   ${InputStyle}
-  box-shadow: ${fromTheme('input-shadow')};
+  box-shadow: ${theme['input-shadow']};
   max-width: 100%;
   width: 100%;
   &[readonly] {
@@ -103,7 +102,7 @@ export const InputTextareaShared = css`
 export const Input = styled.input`
   ${InputTextareaShared}
   &.is-rounded {
-    border-radius: ${fromTheme('radius-rounded')};
+    border-radius: ${theme['radius-rounded']};
     padding-left: 1em;
     padding-right: 1em;
   }
