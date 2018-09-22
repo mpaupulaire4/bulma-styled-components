@@ -1,5 +1,6 @@
 import resolve from 'rollup-plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
+import commonjs from 'rollup-plugin-commonjs'
 import sourcemaps from 'rollup-plugin-sourcemaps'
 
 export default {
@@ -23,6 +24,11 @@ export default {
       ],
     }),
     sourcemaps(),
+    commonjs({
+      namedExports: {
+        'stylis-rule-sheet': ['stylisRuleSheet'],
+      },
+    }),
   ],
   external: ['react', 'styled-components'],
 }
