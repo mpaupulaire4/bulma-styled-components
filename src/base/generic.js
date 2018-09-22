@@ -1,7 +1,7 @@
-import { css } from 'styled-components'
+import { emotion_css } from 'emotion'
 import { overflow_touch } from '../utilities/mixins'
 
-export default vars => css`
+export default vars => emotion_css`
   html {
     background-color: ${vars['body-background-color']};
     font-size: ${vars['body-size']};
