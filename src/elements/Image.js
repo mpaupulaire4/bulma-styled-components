@@ -1,6 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 import React from 'react'
-import { css } from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import { Consumer } from '../base'
 import Vars from '../utilities/vars'
 import { overlay } from '../utilities/mixins'
@@ -9,7 +9,7 @@ Vars.addDerivedDefault(() => ({
   dimensions: [16, 24, 32, 48, 64, 96, 128],
 }))
 
-const ImageStyle = theme => css`
+const ImageStyle = theme => emotion_css`
   display: block;
   position: relative;
   img {
@@ -91,7 +91,7 @@ const ImageStyle = theme => css`
   }
 
   /* Sizes */
-  ${theme['dimensions'].reduce((acc, dim) => css`
+  ${theme['dimensions'].reduce((acc, dim) => `
     ${acc}
     &.is-${dim}x${dim} {
       height: ${dim}px;
