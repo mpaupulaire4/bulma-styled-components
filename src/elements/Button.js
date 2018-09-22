@@ -2,7 +2,7 @@
 import React from 'react'
 import { css as emotion_css } from 'emotion'
 import { rgba, darken } from 'polished'
-import { Consumer } from '../'
+import { Consumer } from '../base'
 import Vars from '../utilities/vars'
 import { unselectable, loader, center } from '../utilities/mixins'
 import { control } from '../utilities/controls'
@@ -134,7 +134,7 @@ const colorClasses = theme => Object.entries(theme.colors).map(([name, [color, c
 `, '')
 
 const ButtonStyle = theme => emotion_css`
-  ${control}
+  ${control(theme)}
   ${unselectable}
   background-color: ${theme['button-background-color']};
   border-color: ${theme['button-border-color']};
@@ -219,7 +219,7 @@ const ButtonStyle = theme => emotion_css`
     color: transparent !important;
     pointer-events: none;
     &::after {
-      ${loader}
+      ${loader(theme)}
       ${center('1em')}
       position: absolute !important;
     }
@@ -236,13 +236,13 @@ const ButtonStyle = theme => emotion_css`
     padding-left: 1em;
     padding-right: 1em;
   }
-  ${/* sc-custom '.buttons' */Buttons.ClassName} & {
+  .${/* sc-custom '.buttons' */Buttons.ClassName} & {
     margin-bottom: 0.5rem;
     &:not(:last-child) {
       margin-right: 0.5rem;
     }
   }
-  ${/* sc-custom '.buttons' */Buttons.ClassName}.has-addons & {
+  .${/* sc-custom '.buttons' */Buttons.ClassName}.has-addons & {
     &:not(:first-child) {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
@@ -286,7 +286,7 @@ export default class Button extends React.PureComponent {
     const { as, className, ...props } = this.props
     return (
       <Consumer>
-        {theme => React.createElement(as, {
+        {({ theme }) => React.createElement(as, {
           ...props,
           className: [
             Button.ClassName,
