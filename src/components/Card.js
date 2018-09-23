@@ -1,8 +1,8 @@
 /* stylelint-disable no-descending-specificity */
-import styled from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import { rgba } from 'polished'
 import Vars from '../utilities/vars'
-import { fromTheme } from '../utilities/functions'
+import { BaseWithConsumer, Base } from '../base/Class'
 import { Media } from '../layout/Media'
 
 Vars.addDerivedDefault(vars => ({
@@ -21,87 +21,132 @@ Vars.addDerivedDefault(vars => ({
   'card-footer-border-top': `1px solid ${vars['border']}`,
 }))
 
-const defaultProps = { theme: Vars.getVariables() }
-
-export const Card = styled.div`
-  background-color: ${fromTheme('card-background-color')};
-  box-shadow: ${fromTheme('card-shadow')};
-  color: ${fromTheme('card-color')};
-  max-width: 100%;
-  position: relative;
-  ${/* sc-custom '.media' */Media}:not(:last-child) {
-    margin-bottom: 0.75rem
+export default class Card extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
   }
-`
-Card.defaultProps = defaultProps
 
-export const CardHeader = styled.header`
-  background-color: ${fromTheme('card-header-background-color')};
-  align-items: stretch;
-  box-shadow: ${fromTheme('card-header-shadow')};
-  display: flex;
-`
-CardHeader.defaultProps = defaultProps
+  static Style = theme => emotion_css`
+    background-color: ${theme['card-background-color']};
+    box-shadow: ${theme['card-shadow']};
+    color: ${theme['card-color']};
+    max-width: 100%;
+    position: relative;
+   .${/* sc-custom '.media' */Media.name}:not(:last-child) {
+      margin-bottom: 0.75rem
+    }
+  `
+}
+
+
+export class CardHeader extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'header',
+  }
+
+  static Style = theme => emotion_css`
+    background-color: ${theme['card-header-background-color']};
+    align-items: stretch;
+    box-shadow: ${theme['card-header-shadow']};
+    display: flex;
+  `
+}
 Card.Header = CardHeader
 
-export const CardHeaderTitle = styled.p`
-  align-items: center;
-  color: ${fromTheme('card-header-color')};
-  display: flex;
-  flex-grow: 1;
-  font-weight: ${fromTheme('card-header-weight')};
-  padding: 0.75rem;
-  &.is-centered {
-    justify-content: center;
+
+export class CardHeaderTitle extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'p',
   }
-`
-CardHeaderTitle.defaultProps = defaultProps
+
+  static Style = theme => emotion_css`
+    align-items: center;
+    color: ${theme['card-header-color']};
+    display: flex;
+    flex-grow: 1;
+    font-weight: ${theme['card-header-weight']};
+    padding: 0.75rem;
+    &.is-centered {
+      justify-content: center;
+    }
+  `
+}
 Card.Header.Title = CardHeaderTitle
 
-export const CardHeaderIcon = styled.div`
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  padding: 0.75rem;
-`
-CardHeaderIcon.defaultProps = defaultProps
+
+export class CardHeaderIcon extends Base {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = () => emotion_css`
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 0.75rem;
+  `
+}
 Card.Header.Icon = CardHeaderIcon
 
-export const CardImage = styled.div`
-  display: block;
-  position: relative;
-`
-CardImage.defaultProps = defaultProps
+
+export class CardImage extends Base {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = () => emotion_css`
+    display: block;
+    position: relative;
+  `
+}
 Card.Image = CardImage
 
-export const CardContent = styled.div`
-  background-color: ${fromTheme('card-content-background-color')};
-  padding: 1.5rem;
-`
-CardContent.defaultProps = defaultProps
+
+export class CardContent extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = theme => emotion_css`
+    background-color: ${theme['card-content-background-color']};
+    padding: 1.5rem;
+  `
+}
 Card.Content = CardContent
 
-export const CardFooter = styled.footer`
-  background-color: ${fromTheme('card-footer-background-color')};
-  border-top: ${fromTheme('card-footer-border-top')};
-  align-items: stretch;
-  display: flex;
-`
-CardFooter.defaultProps = defaultProps
+
+export class CardFooter extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'footer',
+  }
+
+  static Style = theme => emotion_css`
+    background-color: ${theme['card-footer-background-color']};
+    border-top: ${theme['card-footer-border-top']};
+    align-items: stretch;
+    display: flex;
+  `
+}
 Card.Footer = CardFooter
 
-export const CardFooterItem = styled.span`
-  align-items: center;
-  display: flex;
-  flex-basis: 0;
-  flex-grow: 1;
-  flex-shrink: 0;
-  justify-content: center;
-  padding: 0.75rem;
-  &:not(:last-child) {
-    border-right: ${fromTheme('card-footer-border-top')};
+
+export class CardFooterItem extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'span',
   }
-`
-CardFooterItem.defaultProps = defaultProps
+
+  static Style = theme => emotion_css`
+    align-items: center;
+    display: flex;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: center;
+    padding: 0.75rem;
+    &:not(:last-child) {
+      border-right: ${theme['card-footer-border-top']};
+    }
+  `
+}
 Card.Footer.Item = CardFooterItem
