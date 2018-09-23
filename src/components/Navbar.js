@@ -1,8 +1,8 @@
 /* stylelint-disable no-descending-specificity, no-duplicate-selectors */
-import styled, { css } from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import { rgba, darken } from 'polished'
 import Vars from '../utilities/vars'
-import { fromTheme } from '../utilities/functions'
+import { BaseWithConsumer, Base } from '../base/Class'
 import {
   desktop,
   overflow_touch,
@@ -10,7 +10,7 @@ import {
   arrow,
   touch,
 } from '../utilities/mixins'
-import { Container } from '../layout/Container'
+import Container from '../layout/Container'
 import Icon from '../elements/Icon'
 
 Vars.addDerivedDefault(vars => ({
@@ -61,304 +61,343 @@ Vars.addDerivedDefault(vars => ({
   'navbar-bottom-box-shadow-size': '0 -2px 0 0',
 }))
 
-const defaultProps = { theme: Vars.getVariables() }
 
-const navbar_fixed = css`
+const navbar_fixed = theme => emotion_css`
   left: 0;
   position: fixed;
   right: 0;
-  z-index: ${fromTheme('navbar-fixed-z')};
+  z-index: ${theme['navbar-fixed-z']};
 `
 
-const itemLinkShared = css`
-  color: ${fromTheme('navbar-item-color')};
+const itemLinkShared = theme => emotion_css`
+  color: ${theme['navbar-item-color']};
   display: block;
   line-height: 1.5;
   padding: 0.5rem 0.75rem;
   position: relative;
-  ${Icon} {
+  .${Icon.name} {
     &:only-child {
       margin-left: -0.25rem;
       margin-right: -0.25rem;
     }
   }
-  ${desktop`
+  ${desktop(theme)`
     align-items: center;
     display: flex;
   `}
 `
-const NavbarLinkPartialStyles = css`
+const NavbarLinkPartialStyles = theme => emotion_css`
   cursor: pointer;
   &:hover,
   &.is-active {
-    background-color: ${fromTheme('navbar-item-hover-background-color')};
-    color: ${fromTheme('navbar-item-hover-color')};
+    background-color: ${theme['navbar-item-hover-background-color']};
+    color: ${theme['navbar-item-hover-color']};
   }
-  ${desktop`
+  ${desktop(theme)`
     &.is-active {
-      color: ${fromTheme('navbar-item-active-color')};
+      color: ${theme['navbar-item-active-color']};
     }
     &.is-active:not(:hover) {
-      background-color: ${fromTheme('navbar-item-active-background-color')};
+      background-color: ${theme['navbar-item-active-background-color']};
     }
   `}
 `
 
-export const NavbarLink = styled.a`
-  ${itemLinkShared}
-  ${NavbarLinkPartialStyles}
-  &:not(.is-arrowless) {
-    padding-right: 2.5em;
-    &::after {
-      ${({ theme }) => arrow(theme['navbar-dropdown-arrow'])};
-      margin-top: -0.375em;
-      right: 1.125em;
-    }
+export class NavbarLink extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'a',
   }
-  ${touch`
-    &::after {
-      display: none;
-    }
-  `}
-`
-NavbarLink.defaultProps = defaultProps
 
-export const NavbarDropdown = styled.div`
-  font-size: 0.875rem;
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
-  ${desktop`
-    background-color: ${fromTheme('navbar-dropdown-background-color')};
-    border-bottom-left-radius: ${fromTheme('navbar-dropdown-radius')};
-    border-bottom-right-radius: ${fromTheme('navbar-dropdown-radius')};
-    border-top: ${fromTheme('navbar-dropdown-border-top')};
-    box-shadow: 0 8px 8px ${({ theme }) => rgba(theme['black'], 0.1)};
-    display: none;
+  static Style = theme => emotion_css`
+    ${itemLinkShared(theme)}
+    ${NavbarLinkPartialStyles(theme)}
+    &:not(.is-arrowless) {
+      padding-right: 2.5em;
+      &::after {
+        ${arrow(theme['navbar-dropdown-arrow'])};
+        margin-top: -0.375em;
+        right: 1.125em;
+      }
+    }
+    ${touch(theme)`
+      &::after {
+        display: none;
+      }
+    `}
+  `
+}
+
+
+export class NavbarDropdown extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = theme => emotion_css`
     font-size: 0.875rem;
-    left: 0;
-    min-width: 100%;
-    position: absolute;
-    top: 100%;
-    z-index: ${fromTheme('navbar-dropdown-z')};
-    &.is-right {
-      left: auto;
-      right: 0;
-    }
-  `}
-`
-NavbarDropdown.defaultProps = defaultProps
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    ${desktop(theme)`
+      background-color: ${theme['navbar-dropdown-background-color']};
+      border-bottom-left-radius: ${theme['navbar-dropdown-radius']};
+      border-bottom-right-radius: ${theme['navbar-dropdown-radius']};
+      border-top: ${theme['navbar-dropdown-border-top']};
+      box-shadow: 0 8px 8px ${rgba(theme['black'], 0.1)};
+      display: none;
+      font-size: 0.875rem;
+      left: 0;
+      min-width: 100%;
+      position: absolute;
+      top: 100%;
+      z-index: ${theme['navbar-dropdown-z']};
+      &.is-right {
+        left: auto;
+        right: 0;
+      }
+    `}
+  `
+}
 
-export const NavbarItem = styled.div`
-  display: block;
-  flex-grow: 0;
-  flex-shrink: 0;
-  ${itemLinkShared}
-  a& {
-    ${NavbarLinkPartialStyles}
+
+export class NavbarItem extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
   }
-  img {
-    max-height: ${fromTheme('navbar-item-img-max-height')};
-  }
-  &.has-dropdown {
-    padding: 0;
-  }
-  &.is-expanded {
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
-  &.is-tab {
-    border-bottom: 1px solid transparent;
-    min-height: ${fromTheme('navbar-height')};
-    padding-bottom: calc(0.5rem - 1px);
-    &:hover {
-      background-color: ${fromTheme('navbar-tab-hover-background-color')};
-      border-bottom-color: ${fromTheme('navbar-tab-hover-border-bottom-color')};
+
+  static Style = (theme, { as }) => emotion_css`
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 0;
+    ${itemLinkShared(theme)}
+    ${as === 'a' ? NavbarLinkPartialStyles(theme) : ''}
+    img {
+      max-height: ${theme['navbar-item-img-max-height']};
     }
-    &.is-active {
-      background-color: ${fromTheme('navbar-tab-active-background-color')};
-      border-bottom-color: ${fromTheme('navbar-tab-active-border-bottom-color')};
-      border-bottom-style: ${fromTheme('navbar-tab-active-border-bottom-style')};
-      border-bottom-width: ${fromTheme('navbar-tab-active-border-bottom-width')};
-      color: ${fromTheme('navbar-tab-active-color')};
-      padding-bottom: calc(0.5rem - ${fromTheme('navbar-tab-active-border-bottom-width')});
-    }
-  }
-  ${NavbarDropdown} & {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-  ${desktop`
-    display: flex;
     &.has-dropdown {
-      align-items: stretch;
-      &:hover,
-      &.is-active {
-        ${NavbarLink} {
-          background-color: ${fromTheme('navbar-item-hover-background-color')};
-        }
-      }
+      padding: 0;
     }
-    &.has-dropdown-up {
-      ${NavbarLink}::after {
-        transform: rotate(135deg) translate(0.25em, -0.25em);
-      }
-      ${NavbarDropdown} {
-        border-bottom: ${fromTheme('navbar-dropdown-border-top')};
-        border-radius: ${fromTheme('navbar-dropdown-radius')} ${fromTheme('navbar-dropdown-radius')} 0 0;
-        border-top: none;
-        bottom: 100%;
-        box-shadow: 0 -8px 8px ${({ theme }) => rgba(theme['black'], 0.1)};
-        top: auto;
-      }
+    &.is-expanded {
+      flex-grow: 1;
+      flex-shrink: 1;
     }
-    &.is-active,
-    &.is-hoverable:hover {
-      ${NavbarDropdown} {
-        display: block;
-        ${/* ${Navbar}.is-spaced &, */''}
-        &.is-boxed {
-          opacity: 1;
-          pointer-events: auto;
-          transform: translateY(0);
-        }
-      }
-    }
-    ${NavbarDropdown} & {
-      padding: 0.375rem 1rem;
-      white-space: nowrap;
-    }
-    ${NavbarDropdown} a& {
-      padding-right: 3rem;
+    &.is-tab {
+      border-bottom: 1px solid transparent;
+      min-height: ${theme['navbar-height']};
+      padding-bottom: calc(0.5rem - 1px);
       &:hover {
-        background-color: ${fromTheme('navbar-dropdown-item-hover-background-color')};
-        color: ${fromTheme('navbar-dropdown-item-hover-color')};
+        background-color: ${theme['navbar-tab-hover-background-color']};
+        border-bottom-color: ${theme['navbar-tab-hover-border-bottom-color']};
       }
       &.is-active {
-        background-color: ${fromTheme('navbar-dropdown-item-active-background-color')};
-        color: ${fromTheme('navbar-dropdown-item-active-color')};
+        background-color: ${theme['navbar-tab-active-background-color']};
+        border-bottom-color: ${theme['navbar-tab-active-border-bottom-color']};
+        border-bottom-style: ${theme['navbar-tab-active-border-bottom-style']};
+        border-bottom-width: ${theme['navbar-tab-active-border-bottom-width']};
+        color: ${theme['navbar-tab-active-color']};
+        padding-bottom: calc(0.5rem - ${theme['navbar-tab-active-border-bottom-width']});
       }
     }
-  `}
-`
-NavbarItem.defaultProps = defaultProps
+    .${NavbarDropdown.name} & {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    ${desktop(theme)`
+      display: flex;
+      &.has-dropdown {
+        align-items: stretch;
+        &:hover,
+        &.is-active {
+          .${NavbarLink.name} {
+            background-color: ${theme['navbar-item-hover-background-color']};
+          }
+        }
+      }
+      &.has-dropdown-up {
+        .${NavbarLink.name}::after {
+          transform: rotate(135deg) translate(0.25em, -0.25em);
+        }
+        .${NavbarDropdown.name} {
+          border-bottom: ${theme['navbar-dropdown-border-top']};
+          border-radius: ${theme['navbar-dropdown-radius']} ${theme['navbar-dropdown-radius']} 0 0;
+          border-top: none;
+          bottom: 100%;
+          box-shadow: 0 -8px 8px ${rgba(theme['black'], 0.1)};
+          top: auto;
+        }
+      }
+      &.is-active,
+      &.is-hoverable:hover {
+        .${NavbarDropdown.name} {
+          display: block;
+          ${/* ${Navbar}.is-spaced &, */''}
+          &.is-boxed {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+          }
+        }
+      }
+      .${NavbarDropdown.name} & {
+        padding: 0.375rem 1rem;
+        white-space: nowrap;
+      }
+      .${NavbarDropdown.name} a& {
+        padding-right: 3rem;
+        &:hover {
+          background-color: ${theme['navbar-dropdown-item-hover-background-color']};
+          color: ${theme['navbar-dropdown-item-hover-color']};
+        }
+        &.is-active {
+          background-color: ${theme['navbar-dropdown-item-active-background-color']};
+          color: ${theme['navbar-dropdown-item-active-color']};
+        }
+      }
+    `}
+  `
+}
 
-const brandTabsShared = css`
+
+const brandTabsShared = theme => emotion_css`
   align-items: stretch;
   display: flex;
   flex-shrink: 0;
-  min-height: ${fromTheme('navbar-height')};
-  ${touch`
-    ${NavbarItem} {
+  min-height: ${theme['navbar-height']};
+  ${touch(theme)`
+    .${NavbarItem.name} {
       align-items: center;
       display: flex;
     }
   `}
 `
-export const NavbarBrand = styled.div`
-  ${brandTabsShared}
-  a${/* sc-custom '.navbar-item' */NavbarItem} {
-    &:hover {
-      background-color: transparent;
-    }
+export class NavbarBrand extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
   }
-`
-NavbarBrand.defaultProps = defaultProps
 
-const navStartEndMenuShared = css`
-  ${desktop`
+  static Style = theme => emotion_css`
+    ${brandTabsShared(theme)}
+    a.${/* sc-custom '.navbar-item' */NavbarItem.name} {
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  `
+}
+
+
+const navStartEndMenuShared = theme => emotion_css`
+  ${desktop(theme)`
       align-items: stretch;
       display: flex;
   `}
 `
 
-export const NavbarStart = styled.div`
-  ${navStartEndMenuShared}
-  ${desktop`
-    justify-content: flex-start;
-    margin-right: auto;
-  `}
-`
-NavbarStart.defaultProps = defaultProps
+export class NavbarStart extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
+  }
 
-export const NavbarEnd = styled.div`
-  ${navStartEndMenuShared}
-  ${desktop`
-    justify-content: flex-end;
-    margin-left: auto;
-  `}
-`
-NavbarEnd.defaultProps = defaultProps
+  static Style = theme => emotion_css`
+    ${navStartEndMenuShared(theme)}
+    ${desktop(theme)`
+      justify-content: flex-start;
+      margin-right: auto;
+    `}
+  `
+}
 
-export const NavbarMenu = styled.nav`
-  display: none;
-  ${touch`
-    background-color: ${fromTheme('navbar-background-color')};
-    box-shadow: 0 8px 16px ${({ theme }) => rgba(theme['black'], 0.1)};
-    padding: 0.5rem 0;
-    &.is-active {
-      display: block;
-    }
-  `}
-  ${navStartEndMenuShared}
-  ${desktop`
-    flex-grow: 1;
-    flex-shrink: 0;
-  `}
-`
-NavbarMenu.defaultProps = defaultProps
 
-const colorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((acc, [name, [color, color_invert]]) => css`
+export class NavbarEnd extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = theme => emotion_css`
+    ${navStartEndMenuShared(theme)}
+    ${desktop(theme)`
+      justify-content: flex-end;
+      margin-left: auto;
+    `}
+  `
+}
+
+
+export class NavbarMenu extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'nav',
+  }
+
+  static Style = theme => emotion_css`
+    display: none;
+    ${touch(theme)`
+      background-color: ${theme['navbar-background-color']};
+      box-shadow: 0 8px 16px ${rgba(theme['black'], 0.1)};
+      padding: 0.5rem 0;
+      &.is-active {
+        display: block;
+      }
+    `}
+    ${navStartEndMenuShared(theme)}
+    ${desktop(theme)`
+      flex-grow: 1;
+      flex-shrink: 0;
+    `}
+  `
+}
+
+
+const colorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name, [color, color_invert]]) => emotion_css`
   ${acc}
   &.is-${name} {
     background-color: ${color};
     color: ${color_invert};
-    ${NavbarBrand} {
-      & > ${/* sc-selector */NavbarItem},
-      ${/* sc-selector */NavbarLink} {
+    .${NavbarBrand.name} {
+      & > .${/* sc-selector */NavbarItem.name},
+      .${/* sc-selector */NavbarLink.name} {
         color: ${color_invert};
       }
-      & > a${/* sc-custom '.navbar-item' */NavbarItem},
-      ${/* sc-selector */NavbarLink} {
+      & > a.${/* sc-custom '.navbar-item' */NavbarItem.name},
+      .${/* sc-selector */NavbarLink.name} {
         &:hover,
         &.is-active {
           background-color: ${darken(0.05, color)};
           color: ${color_invert};
         }
       }
-      ${NavbarLink} {
+      .${NavbarLink.name} {
         &::after {
           border-color: ${color_invert};
         }
       }
     }
-    ${desktop`
-      ${NavbarStart},
-      ${NavbarEnd} {
-        & > ${NavbarItem},
-        ${NavbarLink} {
+    ${desktop(theme)`
+      .${NavbarStart.name},
+      .${NavbarEnd.name} {
+        & > .${NavbarItem.name},
+        .${NavbarLink.name} {
           color: ${color_invert};
         }
-        & > a${NavbarItem},
-        ${NavbarLink} {
+        & > a.${NavbarItem.name},
+        .${NavbarLink.name} {
           &:hover,
           &.is-active {
             background-color: ${darken(0.05, color)};
             color: ${color_invert};
           }
         }
-        ${NavbarLink} {
+        .${NavbarLink.name} {
           &::after {
             border-color: ${color_invert};
           }
         }
       }
-      ${NavbarItem}.has-dropdown:hover ${NavbarLink},
-      ${NavbarItem}.has-dropdown.is-active ${NavbarLink} {
+      .${NavbarItem.name}.has-dropdown:hover .${NavbarLink.name},
+      .${NavbarItem.name}.has-dropdown.is-active .${NavbarLink.name} {
         background-color: ${darken(0.05, color)};
         color: ${color_invert};
       }
-      ${NavbarDropdown} {
-        a${NavbarItem} {
+      .${NavbarDropdown.name} {
+        a.${NavbarItem.name} {
           &.is-active {
             background-color: ${color};
             color: ${color_invert};
@@ -369,179 +408,209 @@ const colorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((acc,
   }
 `, '')
 
-export const Navbar = styled.nav`
-  background-color: ${fromTheme('navbar-background-color')};
-  min-height: ${fromTheme('navbar-height')};
-  position: relative;
-  z-index: ${fromTheme('navbar-z')};
-  ${colorClasses}
+export default class Navbar extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'nav',
+  }
 
-  & > ${/* sc-custom '.container' */Container} {
-    align-items: stretch;
-    display: flex;
-    min-height: ${fromTheme('navbar-height')};
-    width: 100%;
-  }
-  &.has-shadow {
-    box-shadow: ${fromTheme('navbar-box-shadow-size')} ${fromTheme('navbar-box-shadow-color')};
-  }
-  &.is-fixed-bottom,
-  &.is-fixed-top {
-    ${navbar_fixed}
-  }
-  &.is-fixed-bottom {
-    bottom: 0;
+  static Style = theme => emotion_css`
+    background-color: ${theme['navbar-background-color']};
+    min-height: ${theme['navbar-height']};
+    position: relative;
+    z-index: ${theme['navbar-z']};
+    ${colorClasses(theme)}
+
+    & > .${/* sc-custom '.container' */Container.name} {
+      align-items: stretch;
+      display: flex;
+      min-height: ${theme['navbar-height']};
+      width: 100%;
+    }
     &.has-shadow {
-      box-shadow: ${fromTheme('navbar-bottom-box-shadow-size')} ${fromTheme('navbar-box-shadow-color')};
+      box-shadow: ${theme['navbar-box-shadow-size']} ${theme['navbar-box-shadow-color']};
     }
-  }
-  &.is-fixed-top {
-    top: 0;
-  }
-  ${touch`
-    & > ${/* sc-custom '.container' */Container} {
-      display: block;
+    &.is-fixed-bottom,
+    &.is-fixed-top {
+      ${navbar_fixed(theme)}
     }
-    &.is-fixed-bottom-touch,
-    &.is-fixed-top-touch {
-      ${navbar_fixed}
-    }
-    &.is-fixed-bottom-touch {
+    &.is-fixed-bottom {
       bottom: 0;
       &.has-shadow {
-        box-shadow: 0 -2px 3px ${({ theme }) => rgba(theme['black'], 0.1)};
+        box-shadow: ${theme['navbar-bottom-box-shadow-size']} ${theme['navbar-box-shadow-color']};
       }
     }
-    &.is-fixed-top-touch {
+    &.is-fixed-top {
       top: 0;
     }
-    &.is-fixed-top,
-    &.is-fixed-top-touch {
-      ${NavbarMenu} {
-        ${overflow_touch}
-        max-height: calc(100vh - ${fromTheme('navbar-height')});
-        overflow: auto;
+    ${touch(theme)`
+      & > .${/* sc-custom '.container' */Container.name} {
+        display: block;
       }
-    }
-  `}
-  ${navStartEndMenuShared}
-  ${desktop`
-    min-height: ${fromTheme('navbar-height')};
-    &.is-spaced {
-      padding: ${({ theme }) => `${theme['navbar-padding-vertical']} ${theme['navbar-padding-horizontal']}`};
-      ${NavbarStart},
-      ${NavbarEnd} {
-        align-items: center;
+      &.is-fixed-bottom-touch,
+      &.is-fixed-top-touch {
+        ${navbar_fixed(theme)}
       }
-      a${NavbarItem},
-      ${NavbarLink} {
-        border-radius: ${fromTheme('radius')};
-      }
-    }
-    &.is-transparent {
-      a${NavbarItem},
-      ${NavbarLink} {
-        &:hover,
-        &.is-active {
-          background-color: transparent !important;
+      &.is-fixed-bottom-touch {
+        bottom: 0;
+        &.has-shadow {
+          box-shadow: 0 -2px 3px ${rgba(theme['black'], 0.1)};
         }
       }
-      ${NavbarItem}.has-dropdown {
-        &.is-active,
-        &.is-hoverable:hover {
-          ${NavbarLink} {
+      &.is-fixed-top-touch {
+        top: 0;
+      }
+      &.is-fixed-top,
+      &.is-fixed-top-touch {
+        .${NavbarMenu.name} {
+          ${overflow_touch}
+          max-height: calc(100vh - ${theme['navbar-height']});
+          overflow: auto;
+        }
+      }
+    `}
+    ${navStartEndMenuShared(theme)}
+    ${desktop(theme)`
+      min-height: ${theme['navbar-height']};
+      &.is-spaced {
+        padding: ${theme['navbar-padding-vertical']} ${theme['navbar-padding-horizontal']};
+        .${NavbarStart.name},
+        .${NavbarEnd.name} {
+          align-items: center;
+        }
+        a.${NavbarItem.name},
+        .${NavbarLink.name} {
+          border-radius: ${theme['radius']};
+        }
+      }
+      &.is-transparent {
+        a.${NavbarItem.name},
+        .${NavbarLink.name} {
+          &:hover,
+          &.is-active {
             background-color: transparent !important;
           }
         }
-      }
-      ${NavbarDropdown} {
-        a${NavbarItem} {
-          &:hover {
-            background-color: ${fromTheme('navbar-dropdown-item-hover-background-color')};
-            color: ${fromTheme('navbar-dropdown-item-hover-color')};
+        .${NavbarItem.name}.has-dropdown {
+          &.is-active,
+          &.is-hoverable:hover {
+            .${NavbarLink.name} {
+              background-color: transparent !important;
+            }
           }
-          &.is-active {
-            background-color: ${fromTheme('navbar-dropdown-item-active-background-color')};
-            color: ${fromTheme('navbar-dropdown-item-active-color')};
+        }
+        .${NavbarDropdown.name} {
+          a.${NavbarItem.name} {
+            &:hover {
+              background-color: ${theme['navbar-dropdown-item-hover-background-color']};
+              color: ${theme['navbar-dropdown-item-hover-color']};
+            }
+            &.is-active {
+              background-color: ${theme['navbar-dropdown-item-active-background-color']};
+              color: ${theme['navbar-dropdown-item-active-color']};
+            }
           }
         }
       }
-    }
-    & > ${/* sc-custom '.container' */Container},
-    ${/* sc-custom '.container' */Container} > & {
-      ${NavbarBrand} {
-        margin-left: -.75rem;
+      & > .${/* sc-custom '.container' */Container.name},
+      .${/* sc-custom '.container' */Container.name} > & {
+        .${NavbarBrand.name} {
+          margin-left: -.75rem;
+        }
+        .${NavbarMenu.name} {
+          margin-right: -.75rem;
+        }
       }
-      ${NavbarMenu} {
-        margin-right: -.75rem;
+      &.is-fixed-bottom-desktop,
+      &.is-fixed-top-desktop {
+        ${navbar_fixed(theme)}
       }
-    }
-    &.is-fixed-bottom-desktop,
-    &.is-fixed-top-desktop {
-      ${navbar_fixed}
-    }
-    &.is-fixed-bottom-desktop {
-      bottom: 0;
-      &.has-shadow {
-        box-shadow: 0 -2px 3px ${({ theme }) => rgba(theme['black'], 0.1)};
+      &.is-fixed-bottom-desktop {
+        bottom: 0;
+        &.has-shadow {
+          box-shadow: 0 -2px 3px ${rgba(theme['black'], 0.1)};
+        }
       }
-    }
-    &.is-fixed-top-desktop {
-      top: 0;
-    }
-    &.is-spaced ${NavbarDropdown},
-    ${NavbarDropdown}.is-boxed {
-      border-radius: ${fromTheme('navbar-dropdown-boxed-radius')};
-      border-top: none;
-      box-shadow: ${fromTheme('navbar-dropdown-boxed-shadow')};
-      display: block;
-      opacity: 0;
-      pointer-events: none;
-      top: calc(100% + (${fromTheme('navbar-dropdown-offset')}));
-      transform: translateY(-5px);
-      transition-duration: ${fromTheme('speed')};
-      transition-property: opacity, transform;
-    }
-  `}
-`
-Navbar.defaultProps = defaultProps
+      &.is-fixed-top-desktop {
+        top: 0;
+      }
+      &.is-spaced .${NavbarDropdown.name},
+      .${NavbarDropdown.name}.is-boxed {
+        border-radius: ${theme['navbar-dropdown-boxed-radius']};
+        border-top: none;
+        box-shadow: ${theme['navbar-dropdown-boxed-shadow']};
+        display: block;
+        opacity: 0;
+        pointer-events: none;
+        top: calc(100% + (${theme['navbar-dropdown-offset']}));
+        transform: translateY(-5px);
+        transition-duration: ${theme['speed']};
+        transition-property: opacity, transform;
+      }
+    `}
+  `
+}
 
-export const NavbarTabs = styled.div`
-  max-width: 100vw;
-  overflow-x: auto;
-  overflow-y: hidden;
-  ${brandTabsShared}
-  ${overflow_touch}
-`
-NavbarTabs.defaultProps = defaultProps
 
-export const NavbarBurger = styled.a`
-  color: ${fromTheme('navbar-burger-color')};
-  ${({ theme }) => hamburger(theme['navbar-height'])};
-  margin-left: auto;
-  ${desktop`
+export class NavbarTabs extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = theme => emotion_css`
+    max-width: 100vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    ${brandTabsShared(theme)}
+    ${overflow_touch}
+  `
+}
+
+
+export class NavbarBurger extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'a',
+  }
+
+  static Style = (theme, props) => emotion_css`
+    color: ${theme['navbar-burger-color']};
+    ${hamburger(theme['navbar-height'], theme, props)};
+    margin-left: auto;
+    ${desktop(theme)`
+      display: none;
+    `}
+  `
+}
+
+
+export class NavbarContent extends Base {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = () => emotion_css`
+    flex-grow: 1;
+    flex-shrink: 1;
+  `
+}
+
+
+export class NavbarDivider extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = theme => emotion_css`
+    background-color: ${theme['navbar-divider-background-color']};
+    border: none;
     display: none;
-  `}
-`
-NavbarBurger.defaultProps = defaultProps
+    height: ${theme['navbar-divider-height']};
+    margin: 0.5rem 0;
+    ${desktop(theme)`
+      display: block;
+    `}
+  `
+}
 
-export const NavbarContent = styled.div`
-  flex-grow: 1;
-  flex-shrink: 1;
-`
-NavbarContent.defaultProps = defaultProps
-
-export const NavbarDivider = styled.div`
-  background-color: ${fromTheme('navbar-divider-background-color')};
-  border: none;
-  display: none;
-  height: ${fromTheme('navbar-divider-height')};
-  margin: 0.5rem 0;
-  ${desktop`
-    display: block;
-  `}
-`
-NavbarDivider.defaultProps = defaultProps
 
 Navbar.Link = NavbarLink
 Navbar.Item = NavbarItem
