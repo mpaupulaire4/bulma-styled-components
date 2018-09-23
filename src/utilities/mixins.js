@@ -29,7 +29,7 @@ export function fa(size, dimensions) {
   `
 }
 
-export function hamburger(dimensions, theme) {
+export function hamburger(dimensions, theme, { active }) {
   return emotion_css`
     cursor: pointer;
     display: block;
@@ -49,15 +49,15 @@ export function hamburger(dimensions, theme) {
       width: 16px;
       &:nth-child(1) {
         top: calc(50% - 6px);
-        ${props => props.active ? 'transform: translateY(5px) rotate(45deg);' : ''/* eslint-disable-line no-confusing-arrow */}
+        ${active ? 'transform: translateY(5px) rotate(45deg);' : ''/* eslint-disable-line no-confusing-arrow */}
       }
       &:nth-child(2) {
         top: calc(50% - 1px);
-        ${props => props.active ? 'opacity: 0;' : ''/* eslint-disable-line no-confusing-arrow */}
+        ${active ? 'opacity: 0;' : ''/* eslint-disable-line no-confusing-arrow */}
       }
       &:nth-child(3) {
         top: calc(50% + 4px);
-        ${props => props.active ? 'transform: translateY(-5px) rotate(-45deg);' : ''/* eslint-disable-line no-confusing-arrow */}
+        ${active ? 'transform: translateY(-5px) rotate(-45deg);' : ''/* eslint-disable-line no-confusing-arrow */}
       }
     }
     &:hover {
