@@ -1,6 +1,6 @@
 export { default as Breadcrumb } from './Breadcrumb'
 export { default as Card } from './Card'
-export * from './Dropdown'
+export { default as Dropdown } from './Dropdown'
 export * from './Menu'
 export * from './Message'
 export * from './Modal'
