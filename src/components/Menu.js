@@ -18,7 +18,7 @@ Vars.addDerivedDefault(vars => ({
 }))
 
 
-export class Menu extends BaseWithConsumer {
+export default class Menu extends BaseWithConsumer {
   static defaultProps = {
     as: 'aside',
   }
