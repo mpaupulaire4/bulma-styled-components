@@ -1,10 +1,11 @@
 /* stylelint-disable no-descending-specificity */
 import styled, { css } from 'styled-components'
 import Vars from '../utilities/vars'
+import { BaseWithConsumer } from '../base/Class'
 import { block } from '../utilities/mixins'
-import { fromTheme } from '../utilities/functions'
 import Tag from './Tag'
 import Subtitle from './Subtitle'
+import { Highlight } from './other'
 
 Vars.addDerivedDefault(vars => ({
   'title-color': vars['grey-darker'],
@@ -19,42 +20,47 @@ Vars.addDerivedDefault(vars => ({
   'subtitle-negative-margin': '-1.25rem',
 }))
 
-const Title = styled.h1`
-  ${block}
-  word-break: break-word;
-  em,
-  span {
-    font-weight: inherit;
+export default class Title extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'h1',
   }
-  sub {
-    font-size: ${fromTheme('title-sub-size')};
-  }
-  sup {
-    font-size: ${fromTheme('title-sup-size')};
-  }
-  ${Tag} { /* stylelint-disable-line */
-    vertical-align: middle;
-  }
-  color: ${fromTheme('title-color')};
-  font-size: ${fromTheme('title-size')};
-  font-weight: ${fromTheme('title-weight')};
-  line-height: ${fromTheme('title-line-height')};
-  strong {
-    color: ${fromTheme('title-strong-color')};
-    font-weight: ${fromTheme('title-strong-weight')};
-  }
-  & + .highlight {
-    margin-top: -0.75rem;
-  }
-  &:not(.is-spaced) + ${/* sc-selector */Subtitle} {
-    margin-top: ${fromTheme('subtitle-negative-margin')};
-  }
-  /* Sizes */
-  ${({ theme }) => theme['sizes'].reduce((acc, size, i) => css`
-    ${acc}
-    &.is-${i + 1} {
-      font-size: ${size};
+
+  static Style = theme => styled.h1`
+    ${block}
+    word-break: break-word;
+    em,
+    span {
+      font-weight: inherit;
     }
-  `, '')}
-`
-export default Title
+    sub {
+      font-size: ${theme['title-sub-size']};
+    }
+    sup {
+      font-size: ${theme['title-sup-size']};
+    }
+    .${Tag.name} { /* stylelint-disable-line */
+      vertical-align: middle;
+    }
+    color: ${theme['title-color']};
+    font-size: ${theme['title-size']};
+    font-weight: ${theme['title-weight']};
+    line-height: ${theme['title-line-height']};
+    strong {
+      color: ${theme['title-strong-color']};
+      font-weight: ${theme['title-strong-weight']};
+    }
+    & + .${Highlight.name} {
+      margin-top: -0.75rem;
+    }
+    &:not(.is-spaced) + .${/* sc-selector */Subtitle.name} {
+      margin-top: ${theme['subtitle-negative-margin']};
+    }
+    /* Sizes */
+    ${theme['sizes'].reduce((acc, size, i) => css`
+      ${acc}
+      &.is-${i + 1} {
+        font-size: ${size};
+      }
+    `, '')}
+  `
+}

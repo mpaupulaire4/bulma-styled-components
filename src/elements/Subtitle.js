@@ -1,8 +1,8 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css } from 'styled-components'
+import { css as emotion_css } from 'emotion'
+import { BaseWithConsumer } from '../base/Class'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
-import { fromTheme } from '../utilities/functions'
 import Title from './Title'
 import Tag from './Tag'
 
@@ -19,40 +19,44 @@ Vars.addDerivedDefault(vars => ({
   'subtitle-negative-margin': '-1.25rem',
 }))
 
-const Subtitle = styled.h2`
-  ${block}
-  word-break: break-word;
-  em,
-  span {
-    font-weight: inherit;
+export default class Subtitle extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'h2',
   }
-  sub {
-    font-size: ${fromTheme('title-sub-size')};
-  }
-  sup {
-    font-size: ${fromTheme('title-sup-size')};
-  }
-  ${Tag} { /* stylelint-disable-line */
-    vertical-align: middle;
-  }
-  color: ${fromTheme('subtitle-color')};
-  font-size: ${fromTheme('subtitle-size')};
-  font-weight: ${fromTheme('subtitle-weight')};
-  line-height: ${fromTheme('subtitle-line-height')};
-  strong {
-    color: ${fromTheme('subtitle-strong-color')};
-    font-weight: ${fromTheme('subtitle-strong-weight')};
-  }
-  &:not(.is-spaced) + ${/* sc-selector */Title} {
-    margin-top: ${fromTheme('subtitle-negative-margin')};
-  }
-  /* Sizes */
-  ${({ theme }) => theme['sizes'].reduce((acc, size, i) => css`
-    ${acc}
-    &.is-${i + 1} {
-      font-size: ${size};
-    }
-  `, '')}
-`
 
-export default Subtitle
+  static Style = theme => emotion_css`
+    ${block}
+    word-break: break-word;
+    em,
+    span {
+      font-weight: inherit;
+    }
+    sub {
+      font-size: ${theme['title-sub-size']};
+    }
+    sup {
+      font-size: ${theme['title-sup-size']};
+    }
+    .${Tag.name} { /* stylelint-disable-line */
+      vertical-align: middle;
+    }
+    color: ${theme['subtitle-color']};
+    font-size: ${theme['subtitle-size']};
+    font-weight: ${theme['subtitle-weight']};
+    line-height: ${theme['subtitle-line-height']};
+    strong {
+      color: ${theme['subtitle-strong-color']};
+      font-weight: ${theme['subtitle-strong-weight']};
+    }
+    &:not(.is-spaced) + .${/* sc-selector */Title.name} {
+      margin-top: ${theme['subtitle-negative-margin']};
+    }
+    /* Sizes */
+    ${theme['sizes'].reduce((acc, size, i) => emotion_css`
+      ${acc}
+      &.is-${i + 1} {
+        font-size: ${size};
+      }
+    `, '')}
+  `
+}
