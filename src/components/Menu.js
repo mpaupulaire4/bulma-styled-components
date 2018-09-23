@@ -1,7 +1,7 @@
 /* stylelint-disable no-descending-specificity */
-import styled from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import Vars from '../utilities/vars'
-import { fromTheme } from '../utilities/functions'
+import { BaseWithConsumer } from '../base/Class'
 
 
 Vars.addDerivedDefault(vars => ({
@@ -17,63 +17,77 @@ Vars.addDerivedDefault(vars => ({
   'menu-label-color': vars['text-light'],
 }))
 
-const defaultProps = { theme: Vars.getVariables() }
 
-export const Menu = styled.aside`
-  font-size: ${fromTheme('size-normal')};
-  /* Sizes */
-  &.is-small {
-    font-size: ${fromTheme('size-small')};
+export class Menu extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'aside',
   }
-  &.is-medium {
-    font-size: ${fromTheme('size-medium')};
-  }
-  &.is-large {
-    font-size: ${fromTheme('size-large')};
-  }
-`
-Menu.defaultProps = defaultProps
 
-export const MenuList = styled.ul`
-  line-height: 1.25;
-  a {
-    border-radius: ${fromTheme('menu-item-radius')};
-    color: ${fromTheme('menu-item-color')};
-    display: block;
-    padding: 0.5em 0.75em;
-  }
-  a:hover {
-    background-color: ${fromTheme('menu-item-hover-background-color')};
-    color: ${fromTheme('menu-item-hover-color')};
-  }
-  /* Modifiers */
-  a.is-active {
-    background-color: ${fromTheme('menu-item-active-background-color')};
-    color: ${fromTheme('menu-item-active-color')};
-  }
-  li {
-    ul {
-      border-left: ${fromTheme('menu-list-border-left')};
-      margin: 0.75em;
-      padding-left: 0.75em;
+  static Style = theme => emotion_css`
+    font-size: ${theme['size-normal']};
+    /* Sizes */
+    &.is-small {
+      font-size: ${theme['size-small']};
     }
+    &.is-medium {
+      font-size: ${theme['size-medium']};
+    }
+    &.is-large {
+      font-size: ${theme['size-large']};
+    }
+  `
+}
+
+export class MenuList extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'ul',
   }
-`
-MenuList.defaultProps = defaultProps
+
+  static Style = theme => emotion_css`
+    line-height: 1.25;
+    a {
+      border-radius: ${theme['menu-item-radius']};
+      color: ${theme['menu-item-color']};
+      display: block;
+      padding: 0.5em 0.75em;
+    }
+    a:hover {
+      background-color: ${theme['menu-item-hover-background-color']};
+      color: ${theme['menu-item-hover-color']};
+    }
+    /* Modifiers */
+    a.is-active {
+      background-color: ${theme['menu-item-active-background-color']};
+      color: ${theme['menu-item-active-color']};
+    }
+    li {
+      ul {
+        border-left: ${theme['menu-list-border-left']};
+        margin: 0.75em;
+        padding-left: 0.75em;
+      }
+    }
+  `
+}
 Menu.List = MenuList
 
-export const MenuLabel = styled.p`
-  color: ${fromTheme('menu-label-color')};
-  font-size: 0.75em;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  &:not(:first-child) {
-    margin-top: 1em;
+export class MenuLabel extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'p',
   }
-  &:not(:last-child) {
-    margin-bottom: 1em;
-  }
-`
-MenuLabel.defaultProps = defaultProps
+
+  static Style = theme => emotion_css`
+    color: ${theme['menu-label-color']};
+    font-size: 0.75em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    &:not(:first-child) {
+      margin-top: 1em;
+    }
+    &:not(:last-child) {
+      margin-bottom: 1em;
+    }
+  `
+}
 Menu.Label = MenuLabel
 
