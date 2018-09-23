@@ -49,12 +49,6 @@
 
     <Navbar.End>
       <Navbar.Item>
-      </Navbar.Item>
-    </Navbar.End>
-  </Navbar.Menu>
-</Navbar>
-```
-TODO: FIX FIELD THEN FIC HERE
         <Field className="is-grouped">
           <Control>
             <Button>
@@ -75,3 +69,8 @@ TODO: FIX FIELD THEN FIC HERE
             </Button>
           </Control>
         </Field>
+      </Navbar.Item>
+    </Navbar.End>
+  </Navbar.Menu>
+</Navbar>
+```
