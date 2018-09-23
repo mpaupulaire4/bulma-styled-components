@@ -1,8 +1,8 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css } from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import { getLuminance, parseToHsl, lighten, desaturate, darken } from 'polished'
 import Vars from '../utilities/vars'
-import { fromTheme } from '../utilities/functions'
+import { BaseWithConsumer } from '../base/Class'
 import { block } from '../utilities/mixins'
 import Delete from '../elements/Delete'
 
@@ -29,65 +29,76 @@ Vars.addDerivedDefault(vars => ({
   'message-header-body-border-width': 0,
 }))
 
-const defaultProps = { theme: Vars.getVariables() }
 
-const MessageBody = styled.div`
-  border-color: ${fromTheme('message-body-border-color')};
-  border-radius: ${fromTheme('message-body-radius')};
-  border-style: solid;
-  border-width: ${fromTheme('message-body-border-width')};
-  color: ${fromTheme('message-body-color')};
-  padding: ${fromTheme('message-body-padding')};
-  code,
-  pre {
-    background-color: ${fromTheme('message-body-pre-background-color')};
+export class MessageBody extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
   }
-  pre code {
-    background-color: ${fromTheme('message-body-pre-code-background-color')};
-  }
-`
-MessageBody.defaultProps = defaultProps
 
-const MessageHeader = styled.div`
-  align-items: center;
-  background-color: ${fromTheme('message-header-background-color')};
-  border-radius: ${fromTheme('message-header-radius')} ${fromTheme('message-header-radius')} 0 0;
-  color: ${fromTheme('message-header-color')};
-  display: flex;
-  font-weight: ${fromTheme('message-header-weight')};
-  justify-content: space-between;
-  line-height: 1.25;
-  padding: ${fromTheme('message-header-padding')};
-  position: relative;
-  ${Delete} { /* stylelint-disable-line */
-    flex-grow: 0;
-    flex-shrink: 0;
-    margin-left: 0.75em;
-  }
-  & + ${/* sc-custom ".body" */MessageBody} {
-    border-width: ${fromTheme('message-header-body-border-width')};
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-`
-MessageHeader.defaultProps = defaultProps
+  static Style = theme => emotion_css`
+    border-color: ${theme['message-body-border-color']};
+    border-radius: ${theme['message-body-radius']};
+    border-style: solid;
+    border-width: ${theme['message-body-border-width']};
+    color: ${theme['message-body-color']};
+    padding: ${theme['message-body-padding']};
+    code,
+    pre {
+      background-color: ${theme['message-body-pre-background-color']};
+    }
+    pre code {
+      background-color: ${theme['message-body-pre-code-background-color']};
+    }
+  `
+}
 
-const colorClasses = props => Object.entries(props.theme.colors)
+
+export class MessageHeader extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = theme => emotion_css`
+    align-items: center;
+    background-color: ${theme['message-header-background-color']};
+    border-radius: ${theme['message-header-radius']} ${theme['message-header-radius']} 0 0;
+    color: ${theme['message-header-color']};
+    display: flex;
+    font-weight: ${theme['message-header-weight']};
+    justify-content: space-between;
+    line-height: 1.25;
+    padding: ${theme['message-header-padding']};
+    position: relative;
+    .${Delete.name} { /* stylelint-disable-line */
+      flex-grow: 0;
+      flex-shrink: 0;
+      margin-left: 0.75em;
+    }
+    & + .${/* sc-custom ".body" */MessageBody.name} {
+      border-width: ${theme['message-header-body-border-width']};
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  `
+}
+
+
+const colorClasses = theme => Object.entries(theme.colors)
   .reduce((acc, [name, [color, color_invert]]) => {
     const { lightness } = parseToHsl(color)
     const color_lightning = Math.max((1 - lightness) - 0.02, 0)
     const color_luminance = getLuminance(color)
     const darken_percentage = color_luminance * 0.7
     const desaturate_percentage = color_luminance * 0.3
-    return css`
+    return emotion_css`
       ${acc}
       &.is-${name} {
         background-color: ${lighten(color_lightning, color)};
-        ${/* sc-custom ".header" */MessageHeader} {
+        .${/* sc-custom ".header" */MessageHeader.name} {
           background-color: ${color};
           color: ${color_invert}
         }
-        ${/* sc-custom ".body" */MessageBody} {
+        .${/* sc-custom ".body" */MessageBody.name} {
           border-color: ${color};
           color: ${desaturate(desaturate_percentage, darken(darken_percentage, color))}
         }
@@ -95,32 +106,38 @@ const colorClasses = props => Object.entries(props.theme.colors)
     `
   }, '')
 
-export const Message = styled.div`
-  ${block}
-  background-color: ${fromTheme('message-background-color')};
-  border-radius: ${fromTheme('message-radius')};
-  font-size: ${fromTheme('size-normal')};
-  strong {
-    color: currentColor;
+export default class Message extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
   }
-  a:not(.button):not(.tag) {
-    color: currentColor;
-    text-decoration: underline;
-  }
-  /* Sizes */
-  &.is-small {
-    font-size: ${fromTheme('size-small')};
-  }
-  &.is-medium {
-    font-size: ${fromTheme('size-medium')};
-  }
-  &.is-large {
-    font-size: ${fromTheme('size-large')};
-  }
-  /* Colors */
-  ${colorClasses}
-`
-Message.defaultProps = defaultProps
+
+  static Style = theme => emotion_css`
+    ${block}
+    background-color: ${theme['message-background-color']};
+    border-radius: ${theme['message-radius']};
+    font-size: ${theme['size-normal']};
+    strong {
+      color: currentColor;
+    }
+    a:not(.button):not(.tag) {
+      color: currentColor;
+      text-decoration: underline;
+    }
+    /* Sizes */
+    &.is-small {
+      font-size: ${theme['size-small']};
+    }
+    &.is-medium {
+      font-size: ${theme['size-medium']};
+    }
+    &.is-large {
+      font-size: ${theme['size-large']};
+    }
+    /* Colors */
+    ${colorClasses(theme)}
+  `
+}
+
 
 Message.Header = MessageHeader
 Message.Body = MessageBody
