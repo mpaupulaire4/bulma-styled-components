@@ -2,7 +2,7 @@
 #### Seperators
 ``` react
 <div>
-  <Breadcrumb >
+  <Breadcrumb>
     <ul>
       <li><a href="/">Bulma</a></li>
       <li><a href="/">Documentation</a></li>
