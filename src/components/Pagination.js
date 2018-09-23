@@ -1,8 +1,8 @@
 /* stylelint-disable no-descending-specificity, no-duplicate-selectors */
-import styled, { css } from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import { rgba } from 'polished'
 import Vars from '../utilities/vars'
-import { fromTheme } from '../utilities/functions'
+import { BaseWithConsumer } from '../base/Class'
 import {
   unselectable,
   mobile,
@@ -37,10 +37,8 @@ Vars.addDerivedDefault(vars => ({
   'pagination-shadow-inset': `inset 0 1px 2px ${rgba(vars['black'], 0.2)}`,
 }))
 
-const defaultProps = { theme: Vars.getVariables() }
-
-const PaginationPreviousNextLinkEllipsisShared = css`
-  ${control}
+const PaginationPreviousNextLinkEllipsisShared = theme => emotion_css`
+  ${control(theme)}
   ${unselectable}
   font-size: 1em;
   padding-left: 0.5em;
@@ -50,156 +48,186 @@ const PaginationPreviousNextLinkEllipsisShared = css`
   text-align: center;
 `
 
-const PaginationPreviousNextLinkShared = css`
-  border-color: ${fromTheme('pagination-border-color')};
-  color: ${fromTheme('pagination-color')};
+const PaginationPreviousNextLinkShared = theme => emotion_css`
+  border-color: ${theme['pagination-border-color']};
+  color: ${theme['pagination-color']};
   min-width: 2.25em;
   &:hover {
-    border-color: ${fromTheme('pagination-hover-border-color')};
-    color: ${fromTheme('pagination-hover-color')};
+    border-color: ${theme['pagination-hover-border-color']};
+    color: ${theme['pagination-hover-color']};
   }
   &:focus {
-    border-color: ${fromTheme('pagination-focus-border-color')};
+    border-color: ${theme['pagination-focus-border-color']};
   }
   &:active {
-    box-shadow: ${fromTheme('pagination-shadow-inset')};
+    box-shadow: ${theme['pagination-shadow-inset']};
   }
   &[disabled] {
-    background-color: ${fromTheme('pagination-disabled-background-color')};
-    border-color: ${fromTheme('pagination-disabled-border-color')};
+    background-color: ${theme['pagination-disabled-background-color']};
+    border-color: ${theme['pagination-disabled-border-color']};
     box-shadow: none;
-    color: ${fromTheme('pagination-disabled-color')};
+    color: ${theme['pagination-disabled-color']};
     opacity: 0.5;
   }
 `
-const PreviousNextShared = css`
-  ${PaginationPreviousNextLinkEllipsisShared}
-  ${PaginationPreviousNextLinkShared}
+const PreviousNextShared = theme => emotion_css`
+  ${PaginationPreviousNextLinkEllipsisShared(theme)}
+  ${PaginationPreviousNextLinkShared(theme)}
   padding-left: 0.75em;
   padding-right: 0.75em;
   white-space: nowrap;
-  ${mobile`
+  ${mobile(theme)`
     flex-grow: 1;
     flex-shrink: 1;
   `}
 `
-export const PaginationPrevious = styled.a`
-  ${PreviousNextShared}
-  ${tablet`
-    order: 2;
-  `}
-`
-PaginationPrevious.defaultProps = defaultProps
-
-
-export const PaginationNext = styled.a`
-  ${PreviousNextShared}
-  ${tablet`
-    order: 3;
-  `}
-`
-PaginationNext.defaultProps = defaultProps
-
-export const PaginationLink = styled.a`
-  ${PaginationPreviousNextLinkEllipsisShared}
-  ${PaginationPreviousNextLinkShared}
-  &.is-current {
-    background-color: ${fromTheme('pagination-current-background-color')};
-    border-color: ${fromTheme('pagination-current-border-color')};
-    color: ${fromTheme('pagination-current-color')};
+export class PaginationPrevious extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'a',
   }
-`
-PaginationLink.defaultProps = defaultProps
 
-export const PaginationEllipsis = styled.span`
-  ${PaginationPreviousNextLinkEllipsisShared}
-  color: ${fromTheme('pagination-ellipsis-color')};
-  pointer-events: none;
-`
-PaginationEllipsis.defaultProps = defaultProps
+  static Style = theme => emotion_css`
+    ${PreviousNextShared(theme)}
+    ${tablet(theme)`
+      order: 2;
+    `}
+  `
+}
 
-const PaginationListShared = css`
+
+export class PaginationNext extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'a',
+  }
+
+  static Style = theme => emotion_css`
+    ${PreviousNextShared(theme)}
+    ${tablet(theme)`
+      order: 3;
+    `}
+  `
+}
+
+export class PaginationLink extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'a',
+  }
+
+  static Style = theme => emotion_css`
+    ${PaginationPreviousNextLinkEllipsisShared(theme)}
+    ${PaginationPreviousNextLinkShared(theme)}
+    &.is-current {
+      background-color: ${theme['pagination-current-background-color']};
+      border-color: ${theme['pagination-current-border-color']};
+      color: ${theme['pagination-current-color']};
+    }
+  `
+}
+
+export class PaginationEllipsis extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'span',
+  }
+
+  static Style = theme => emotion_css`
+    ${PaginationPreviousNextLinkEllipsisShared(theme)}
+    color: ${theme['pagination-ellipsis-color']};
+    pointer-events: none;
+  `
+}
+
+const PaginationListShared = `
   align-items: center;
   display: flex;
   justify-content: center;
   text-align: center;
 `
 
-export const PaginationList = styled.ul`
-  ${PaginationListShared}
-  flex-wrap: wrap;
-  ${mobile`
-    li {
+export class PaginationList extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'ul',
+  }
+
+  static Style = theme => emotion_css`
+    ${PaginationListShared}
+    flex-wrap: wrap;
+    ${mobile(theme)`
+      li {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    `}
+    ${tablet(theme)`
       flex-grow: 1;
       flex-shrink: 1;
-    }
-  `}
-  ${tablet`
-    flex-grow: 1;
-    flex-shrink: 1;
-    justify-content: flex-start;
-    order: 1;
-  `}
-`
-PaginationList.defaultProps = defaultProps
+      justify-content: flex-start;
+      order: 1;
+    `}
+  `
+}
 
-export const Pagination = styled.nav`
-  ${PaginationListShared}
-  font-size: ${fromTheme('size-normal')};
-  margin: ${fromTheme('pagination-margin')};
-  /* Sizes */
-  &.is-small {
-    font-size: ${fromTheme('size-small')};
+export class Pagination extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'nav',
   }
-  &.is-medium {
-    font-size: ${fromTheme('size-medium')};
-  }
-  &.is-large {
-    font-size: ${fromTheme('size-large')};
-  }
-  &.is-rounded {
-    ${/* sc-custom '.previous' */PaginationPrevious},
-    ${/* sc-custom '.next' */PaginationNext} {
-      padding-left: 1em;
-      padding-right: 1em;
-      border-radius: ${fromTheme('radius-rounded')};
+
+  static Style = theme => emotion_css`
+    ${PaginationListShared}
+    font-size: ${theme['size-normal']};
+    margin: ${theme['pagination-margin']};
+    /* Sizes */
+    &.is-small {
+      font-size: ${theme['size-small']};
     }
-    ${/* sc-custom '.link' */PaginationLink} {
-      border-radius: ${fromTheme('radius-rounded')};
+    &.is-medium {
+      font-size: ${theme['size-medium']};
     }
-  }
-  ${mobile`
-    flex-wrap: wrap;
-  `}
-  ${tablet`
-    justify-content: space-between;
-    &.is-centered {
-      ${/* sc-custom '.previous' */PaginationPrevious} {
-        order: 1;
+    &.is-large {
+      font-size: ${theme['size-large']};
+    }
+    &.is-rounded {
+      .${/* sc-custom '.previous' */PaginationPrevious.name},
+      .${/* sc-custom '.next' */PaginationNext.name} {
+        padding-left: 1em;
+        padding-right: 1em;
+        border-radius: ${theme['radius-rounded']};
       }
-      ${/* sc-custom '.list' */PaginationList} {
-        justify-content: center;
-        order: 2;
-      }
-      ${/* sc-custom '.next' */PaginationNext} {
-        order: 3;
+      .${/* sc-custom '.link' */PaginationLink.name} {
+        border-radius: ${theme['radius-rounded']};
       }
     }
-    &.is-right {
-      ${/* sc-custom '.previous' */PaginationPrevious} {
-        order: 1;
+    ${mobile(theme)`
+      flex-wrap: wrap;
+    `}
+    ${tablet(theme)`
+      justify-content: space-between;
+      &.is-centered {
+        .${/* sc-custom '.previous' */PaginationPrevious.name} {
+          order: 1;
+        }
+        .${/* sc-custom '.list' */PaginationList.name} {
+          justify-content: center;
+          order: 2;
+        }
+        .${/* sc-custom '.next' */PaginationNext.name} {
+          order: 3;
+        }
       }
-      ${/* sc-custom '.next' */PaginationNext} {
-        order: 2;
+      &.is-right {
+        .${/* sc-custom '.previous' */PaginationPrevious.name} {
+          order: 1;
+        }
+        .${/* sc-custom '.next' */PaginationNext.name} {
+          order: 2;
+        }
+        .${/* sc-custom '.list' */PaginationList.name} {
+          justify-content: flex-end;
+          order: 3;
+        }
       }
-      ${/* sc-custom '.list' */PaginationList} {
-        justify-content: flex-end;
-        order: 3;
-      }
-    }
-  `}
-`
-Pagination.defaultProps = defaultProps
+    `}
+  `
+}
 
 Pagination.Previous = PaginationPrevious
 Pagination.Next = PaginationNext
