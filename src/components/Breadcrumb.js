@@ -1,7 +1,7 @@
 /* stylelint-disable no-descending-specificity */
-import styled from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import Vars from '../utilities/vars'
-import { fromTheme } from '../utilities/functions'
+import { BaseWithConsumer } from '../base/Class'
 import { block, unselectable } from '../utilities/mixins'
 import Icon from '../elements/Icon'
 
@@ -17,96 +17,100 @@ Vars.addDerivedDefault(vars => ({
   'breadcrumb-item-separator-color': vars['grey-light'],
 }))
 
-
-export const Breadcrumb = styled.nav`
-  ${block}
-  ${unselectable}
-  font-size: ${fromTheme('size-normal')};
-  white-space: nowrap;
-  a {
-    align-items: center;
-    color: ${fromTheme('breadcrumb-item-color')};
-    display: flex;
-    justify-content: center;
-    padding: ${fromTheme('breadcrumb-item-padding-vertical')} ${fromTheme('breadcrumb-item-padding-horizontal')};
-    &:hover {
-      color: ${fromTheme('breadcrumb-item-hover-color')};
-    }
+export default class Breadcrumb extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'nav',
   }
-  li {
-    align-items: center;
-    display: flex;
-    &:first-child a {
-      padding-left: 0;
-    }
-    &.is-active {
-      a {
-        color: ${fromTheme('breadcrumb-item-active-color')};
-        cursor: default;
-        pointer-events: none;
+
+  static Style = theme => emotion_css`
+    ${block}
+    ${unselectable}
+    font-size: ${theme['size-normal']};
+    white-space: nowrap;
+    a {
+      align-items: center;
+      color: ${theme['breadcrumb-item-color']};
+      display: flex;
+      justify-content: center;
+      padding: ${theme['breadcrumb-item-padding-vertical']} ${theme['breadcrumb-item-padding-horizontal']};
+      &:hover {
+        color: ${theme['breadcrumb-item-hover-color']};
       }
     }
-    & + li::before {
-      color: ${fromTheme('breadcrumb-item-separator-color')};
-      content: "\u002f";
+    li {
+      align-items: center;
+      display: flex;
+      &:first-child a {
+        padding-left: 0;
+      }
+      &.is-active {
+        a {
+          color: ${theme['breadcrumb-item-active-color']};
+          cursor: default;
+          pointer-events: none;
+        }
+      }
+      & + li::before {
+        color: ${theme['breadcrumb-item-separator-color']};
+        content: "\u002f";
+      }
     }
-  }
-  ul,
-  ol {
-    align-items: flex-start;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-  ${/* sc-custom ".icon" */Icon}:first-child {
-    margin-right: 0.5em;
-  }
-  ${/* sc-custom ".icon" */Icon}:last-child {
-    margin-left: 0.5em;
-  }
-  /* Alignment */
-  &.is-centered {
-    ol,
-    ul {
-      justify-content: center;
+    ul,
+    ol {
+      align-items: flex-start;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
     }
-  }
-  &.is-right {
-    ol,
-    ul {
-      justify-content: flex-end;
+    .${/* sc-custom "icon" */Icon.name}:first-child {
+      margin-right: 0.5em;
     }
-  }
-  /* Sizes */
-  &.is-small {
-    font-size: ${fromTheme('size-small')};
-  }
-  &.is-medium {
-    font-size: ${fromTheme('size-medium')};
-  }
-  &.is-large {
-    font-size: ${fromTheme('size-large')};
-  }
-  /* Styles */
-  &.has-arrow-separator {
-    li + li::before {
-      content: "\u2192";
+    .${/* sc-custom "icon" */Icon.name}:last-child {
+      margin-left: 0.5em;
     }
-  }
-  &.has-bullet-separator {
-    li + li::before {
-      content: "\u2022";
+    /* Alignment */
+    &.is-centered {
+      ol,
+      ul {
+        justify-content: center;
+      }
     }
-  }
-  &.has-dot-separator {
-    li + li::before {
-      content: "\u00b7";
+    &.is-right {
+      ol,
+      ul {
+        justify-content: flex-end;
+      }
     }
-  }
-  &.has-succeeds-separator {
-    li + li::before {
-      content: "\u227B";
+    /* Sizes */
+    &.is-small {
+      font-size: ${theme['size-small']};
     }
-  }
-`
-Breadcrumb.defaultProps = { theme: Vars.getVariables() }
+    &.is-medium {
+      font-size: ${theme['size-medium']};
+    }
+    &.is-large {
+      font-size: ${theme['size-large']};
+    }
+    /* Styles */
+    &.has-arrow-separator {
+      li + li::before {
+        content: "\u2192";
+      }
+    }
+    &.has-bullet-separator {
+      li + li::before {
+        content: "\u2022";
+      }
+    }
+    &.has-dot-separator {
+      li + li::before {
+        content: "\u00b7";
+      }
+    }
+    &.has-succeeds-separator {
+      li + li::before {
+        content: "\u227B";
+      }
+    }
+  `
+}
