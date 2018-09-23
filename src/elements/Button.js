@@ -1,8 +1,7 @@
 /* stylelint-disable no-descending-specificity */
-import React from 'react'
 import { css as emotion_css } from 'emotion'
 import { rgba, darken } from 'polished'
-import { Consumer } from '../base'
+import { BaseWithConsumer } from '../base/Class'
 import Vars from '../utilities/vars'
 import { unselectable, loader, center } from '../utilities/mixins'
 import { control } from '../utilities/controls'
@@ -133,168 +132,151 @@ const colorClasses = theme => Object.entries(theme.colors).map(([name, [color, c
   }
 `, '')
 
-const ButtonStyle = theme => emotion_css`
-  ${control(theme)}
-  ${unselectable}
-  background-color: ${theme['button-background-color']};
-  border-color: ${theme['button-border-color']};
-  border-width: ${theme['button-border-width']};
-  color: ${theme['button-color']};
-  cursor: pointer;
-  justify-content: center;
-  padding-bottom: ${theme['button-padding-vertical']};
-  padding-left: ${theme['button-padding-horizontal']};
-  padding-right: ${theme['button-padding-horizontal']};
-  padding-top: ${theme['button-padding-vertical']};
-  text-align: center;
-  white-space: nowrap;
-  strong {
-    color: inherit;
+export default class Button extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'button',
   }
-  &.is-text {
-    background-color: transparent;
-    border-color: transparent;
-    color: ${theme['button-text-color']};
-    text-decoration: underline;
+
+  static Style = theme => emotion_css`
+    ${control(theme)}
+    ${unselectable}
+    background-color: ${theme['button-background-color']};
+    border-color: ${theme['button-border-color']};
+    border-width: ${theme['button-border-width']};
+    color: ${theme['button-color']};
+    cursor: pointer;
+    justify-content: center;
+    padding-bottom: ${theme['button-padding-vertical']};
+    padding-left: ${theme['button-padding-horizontal']};
+    padding-right: ${theme['button-padding-horizontal']};
+    padding-top: ${theme['button-padding-vertical']};
+    text-align: center;
+    white-space: nowrap;
+    strong {
+      color: inherit;
+    }
+    &.is-text {
+      background-color: transparent;
+      border-color: transparent;
+      color: ${theme['button-text-color']};
+      text-decoration: underline;
+      &:hover,
+      &.is-hovered,
+      &:focus,
+      &.is-focused {
+        background-color: ${theme['button-text-hover-background-color']};
+        color: ${theme['button-text-hover-color']};
+      }
+      &:active,
+      &.is-active {
+        background-color: ${darken(0.05, theme['button-text-hover-background-color'])};
+        color: ${theme['button-text-hover-color']};
+      }
+      &[disabled] {
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
+      }
+    }
+    /* States */
     &:hover,
-    &.is-hovered,
-    &:focus,
-    &.is-focused {
-      background-color: ${theme['button-text-hover-background-color']};
-      color: ${theme['button-text-hover-color']};
+    &.is-hovered {
+      border-color: ${theme['button-hover-border-color']};
+      color: ${theme['button-hover-color']};
     }
     &:active,
     &.is-active {
-      background-color: ${darken(0.05, theme['button-text-hover-background-color'])};
-      color: ${theme['button-text-hover-color']};
-    }
-    &[disabled] {
-      background-color: transparent;
-      border-color: transparent;
-      box-shadow: none;
-    }
-  }
-  /* States */
-  &:hover,
-  &.is-hovered {
-    border-color: ${theme['button-hover-border-color']};
-    color: ${theme['button-hover-color']};
-  }
-  &:active,
-  &.is-active {
-    border-color: ${theme['button-active-border-color']};
-    color: ${theme['button-active-color']};
-  }
-  &:focus,
-  &.is-focused {
-    border-color: ${theme['button-focus-border-color']};
-    color: ${theme['button-focus-color']};
-    &:not(:active) {
-      box-shadow: ${theme['button-focus-box-shadow-size']} ${theme['button-focus-box-shadow-color']};
-    }
-  }
-  /* Sizes */
-  &.is-small {
-    border-radius: ${theme['radius-small']};
-    font-size: ${theme['size-small']};
-  }
-  &.is-medium {
-    font-size: ${theme['size-medium']};
-  }
-  &.is-large {
-    font-size: ${theme['size-large']};
-  }
-  /*  Modifiers */
-  &[disabled] {
-    background-color: ${theme['button-disabled-background-color']};
-    border-color: ${theme['button-disabled-border-color']};
-    box-shadow: ${theme['button-disabled-shadow']};
-    opacity: ${theme['button-disabled-opacity']};
-  }
-  &.is-fullwidth {
-    display: flex;
-    width: 100%;
-  }
-  &.is-loading {
-    color: transparent !important;
-    pointer-events: none;
-    &::after {
-      ${loader(theme)}
-      ${center('1em')}
-      position: absolute !important;
-    }
-  }
-  &.is-static {
-    background-color: ${theme['button-static-background-color']};
-    border-color: ${theme['button-static-border-color']};
-    color: ${theme['button-static-color']};
-    box-shadow: none;
-    pointer-events: none;
-  }
-  &.is-rounded {
-    border-radius: ${theme['radius-rounded']};
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-  .${/* sc-custom '.buttons' */Buttons.name} & {
-    margin-bottom: 0.5rem;
-    &:not(:last-child) {
-      margin-right: 0.5rem;
-    }
-  }
-  .${/* sc-custom '.buttons' */Buttons.name}.has-addons & {
-    &:not(:first-child) {
-      border-bottom-left-radius: 0;
-      border-top-left-radius: 0;
-    }
-    &:not(:last-child) {
-      border-bottom-right-radius: 0;
-      border-top-right-radius: 0;
-      margin-right: -1px;
-    }
-    &:last-child {
-      margin-right: 0;
-    }
-    &:hover,
-    &.is-hovered {
-      z-index: 2;
+      border-color: ${theme['button-active-border-color']};
+      color: ${theme['button-active-color']};
     }
     &:focus,
-    &.is-focused,
-    &:active,
-    &.is-active,
-    &.is-selected {
-      z-index: 3;
-      &:hover {
-        z-index: 4;
+    &.is-focused {
+      border-color: ${theme['button-focus-border-color']};
+      color: ${theme['button-focus-color']};
+      &:not(:active) {
+        box-shadow: ${theme['button-focus-box-shadow-size']} ${theme['button-focus-box-shadow-color']};
       }
     }
-    &.is-expanded {
-      flex-grow: 1;
+    /* Sizes */
+    &.is-small {
+      border-radius: ${theme['radius-small']};
+      font-size: ${theme['size-small']};
     }
-  }
-`
-
-export default class Button extends React.PureComponent {
-  static defaultProps = {
-    as: 'button',
-    className: '',
-  }
-
-  render() {
-    const { as, className, ...props } = this.props
-    return (
-      <Consumer>
-        {({ theme }) => React.createElement(as, {
-          ...props,
-          className: [
-            Button.name,
-            ButtonStyle(theme, as),
-            ...colorClasses(theme),
-            className,
-          ].join(' '),
-        })}
-      </Consumer>
-    )
-  }
+    &.is-medium {
+      font-size: ${theme['size-medium']};
+    }
+    &.is-large {
+      font-size: ${theme['size-large']};
+    }
+    /*  Modifiers */
+    &[disabled] {
+      background-color: ${theme['button-disabled-background-color']};
+      border-color: ${theme['button-disabled-border-color']};
+      box-shadow: ${theme['button-disabled-shadow']};
+      opacity: ${theme['button-disabled-opacity']};
+    }
+    &.is-fullwidth {
+      display: flex;
+      width: 100%;
+    }
+    &.is-loading {
+      color: transparent !important;
+      pointer-events: none;
+      &::after {
+        ${loader(theme)}
+        ${center('1em')}
+        position: absolute !important;
+      }
+    }
+    &.is-static {
+      background-color: ${theme['button-static-background-color']};
+      border-color: ${theme['button-static-border-color']};
+      color: ${theme['button-static-color']};
+      box-shadow: none;
+      pointer-events: none;
+    }
+    &.is-rounded {
+      border-radius: ${theme['radius-rounded']};
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+    .${/* sc-custom '.buttons' */Buttons.name} & {
+      margin-bottom: 0.5rem;
+      &:not(:last-child) {
+        margin-right: 0.5rem;
+      }
+    }
+    .${/* sc-custom '.buttons' */Buttons.name}.has-addons & {
+      &:not(:first-child) {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+      &:not(:last-child) {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        margin-right: -1px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+      &:hover,
+      &.is-hovered {
+        z-index: 2;
+      }
+      &:focus,
+      &.is-focused,
+      &:active,
+      &.is-active,
+      &.is-selected {
+        z-index: 3;
+        &:hover {
+          z-index: 4;
+        }
+      }
+      &.is-expanded {
+        flex-grow: 1;
+      }
+    }
+    ${colorClasses(theme)}
+  `
 }

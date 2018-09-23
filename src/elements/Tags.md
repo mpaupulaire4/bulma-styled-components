@@ -6,10 +6,9 @@
 ```
 ##### As a link
 ```react
-const Link = Tag.withComponent('a');
-<Link href="/">
+<Tag as="a" href="/">
   Just a Tag
-</Link>
+</Tag>
 ```
 ##### Modifiers
 ``` react

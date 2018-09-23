@@ -1,8 +1,8 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css } from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import { darken } from 'polished'
 import Vars from '../utilities/vars'
-import { fromTheme } from '../utilities/functions'
+import { BaseWithConsumer } from '../base/Class'
 import Delete from './Delete'
 import Icon from './Icon'
 import Tags from './Tags'
@@ -15,7 +15,7 @@ Vars.addDerivedDefault(vars => ({
   'tag-delete-margin': '1px',
 }))
 
-const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [name, [color, color_invert]]) => css`
+const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [color, color_invert]]) => emotion_css`
   ${acc}
   &.is-${name} {
     background-color: ${color};
@@ -23,119 +23,123 @@ const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [n
   }
 `, '')
 
-const Tag = styled.span`
-  align-items: center;
-  background-color: ${fromTheme('tag-background-color')};
-  border-radius: ${fromTheme('tag-radius')};
-  color: ${fromTheme('tag-color')};
-  display: inline-flex;
-  font-size: ${fromTheme('size-small')};
-  height: 2em;
-  justify-content: center;
-  line-height: 1.5;
-  padding-left: 0.75em;
-  padding-right: 0.75em;
-  white-space: nowrap;
-  ${Delete} { /* stylelint-disable-line */
-    margin-left: 0.25rem;
-    margin-right: -0.375rem;
+export default class Tag extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'span',
   }
 
-  /* Colors */
-  ${colorClasses}
+  static Style = (theme, { as }) => emotion_css`
+    align-items: center;
+    background-color: ${theme['tag-background-color']};
+    border-radius: ${theme['tag-radius']};
+    color: ${theme['tag-color']};
+    display: inline-flex;
+    font-size: ${theme['size-small']};
+    height: 2em;
+    justify-content: center;
+    line-height: 1.5;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    white-space: nowrap;
+    .${Delete.name} { /* stylelint-disable-line */
+      margin-left: 0.25rem;
+      margin-right: -0.375rem;
+    }
 
-  /* Sizes */
-  &.is-medium {
-    font-size: ${fromTheme('size-normal')};
-  }
-  &.is-large {
-    font-size: ${fromTheme('size-medium')};
-  }
-  ${Icon} { /* stylelint-disable-line */
-    &:first-child:not(:last-child) {
-      margin-left: -0.375em;
-      margin-right: 0.1875em;
-    }
-    &:last-child:not(:first-child) {
-      margin-left: 0.1875em;
-      margin-right: -0.375em;
-    }
-    &:first-child:last-child {
-      margin-left: -0.375em;
-      margin-right: -0.375em;
-    }
-  }
-  /* Modifiers */
-  &.is-delete {
-    margin-left: ${fromTheme('tag-delete-margin')};
-    padding: 0;
-    position: relative;
-    width: 2em;
-    &::before,
-    &::after {
-      background-color: currentColor;
-      content: "";
-      display: block;
-      left: 50%;
-      position: absolute;
-      top: 50%;
-      transform: translateX(-50%) translateY(-50%) rotate(45deg);
-      transform-origin: center center;
-    }
-    &::before {
-      height: 1px;
-      width: 50%;
-    }
-    &::after {
-      height: 50%;
-      width: 1px;
-    }
-    &:hover,
-    &:focus {
-      background-color: ${({ theme }) => darken(0.05, theme['tag-background-color'])};
-    }
-    &:active {
-      background-color: ${({ theme }) => darken(0.1, theme['tag-background-color'])};
-    }
-  }
-  &.is-rounded {
-    border-radius: ${fromTheme('radius-rounded')};
-  }
+    /* Colors */
+    ${colorClasses(theme)}
 
-  a& {
-    &:hover {
-      text-decoration: underline;
+    /* Sizes */
+    &.is-medium {
+      font-size: ${theme['size-normal']};
     }
-  }
-  ${/* sc-selector */Tags} & {
-    margin-bottom: 0.5rem;
-    &:not(:last-child) {
-      margin-right: 0.5rem;
+    &.is-large {
+      font-size: ${theme['size-medium']};
     }
-  }
-  ${Tags}.has-addons & {
-    margin-right: 0;
-    &:not(:first-child) {
-      border-bottom-left-radius: 0;
-      border-top-left-radius: 0;
+    .${Icon.name} { /* stylelint-disable-line */
+      &:first-child:not(:last-child) {
+        margin-left: -0.375em;
+        margin-right: 0.1875em;
+      }
+      &:last-child:not(:first-child) {
+        margin-left: 0.1875em;
+        margin-right: -0.375em;
+      }
+      &:first-child:last-child {
+        margin-left: -0.375em;
+        margin-right: -0.375em;
+      }
     }
-    &:not(:last-child) {
-      border-bottom-right-radius: 0;
-      border-top-right-radius: 0;
+    /* Modifiers */
+    &.is-delete {
+      margin-left: ${theme['tag-delete-margin']};
+      padding: 0;
+      position: relative;
+      width: 2em;
+      &::before,
+      &::after {
+        background-color: currentColor;
+        content: "";
+        display: block;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        transform-origin: center center;
+      }
+      &::before {
+        height: 1px;
+        width: 50%;
+      }
+      &::after {
+        height: 50%;
+        width: 1px;
+      }
+      &:hover,
+      &:focus {
+        background-color: ${darken(0.05, theme['tag-background-color'])};
+      }
+      &:active {
+        background-color: ${darken(0.1, theme['tag-background-color'])};
+      }
     }
-  }
-  ${Tags}.is-centered &{
-    margin-right: 0.25rem;
-    margin-left: 0.25rem;
-  }
-  ${Tags}.is-right & {
-    &:not(:first-child) {
-      margin-left: 0.5rem;
+    &.is-rounded {
+      border-radius: ${theme['radius-rounded']};
     }
-    &:not(:last-child) {
+
+    ${as === 'a' ? emotion_css`
+      &:hover {
+        text-decoration: underline;
+      }
+      ` : ''}
+    .${/* sc-selector */Tags.name} & {
+      margin-bottom: 0.5rem;
+      &:not(:last-child) {
+        margin-right: 0.5rem;
+      }
+    }
+    .${Tags.name}.has-addons & {
       margin-right: 0;
+      &:not(:first-child) {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+      &:not(:last-child) {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+      }
     }
-  }
-`
-Tag.defaultProps = { theme: Vars.getVariables() }
-export default Tag
+    .${Tags.name}.is-centered &{
+      margin-right: 0.25rem;
+      margin-left: 0.25rem;
+    }
+    .${Tags.name}.is-right & {
+      &:not(:first-child) {
+        margin-left: 0.5rem;
+      }
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+    }
+  `
+}

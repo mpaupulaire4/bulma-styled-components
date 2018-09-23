@@ -1,15 +1,15 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css } from 'styled-components'
+import { css as emotion_css } from 'emotion'
+import { BaseWithConsumer } from '../base/Class'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
-import { fromTheme } from '../utilities/functions'
 
 Vars.addDerivedDefault(vars => ({
   'progress-bar-background-color': vars['border'],
   'progress-value-background-color': vars['text'],
 }))
 
-const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [name, [color]]) => css`
+const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [color]]) => emotion_css`
   ${acc}
   &.is-${name} {
     &::-webkit-progress-value {
@@ -24,42 +24,45 @@ const colorClasses = props => Object.entries(props.theme.colors).reduce((acc, [n
   }
 `, '')
 
-const Progress = styled.progress`
-  ${block}
-  appearance: none;
-  border: none;
-  border-radius: ${fromTheme('radius-rounded')};
-  display: block;
-  height: ${fromTheme('size-normal')};
-  overflow: hidden;
-  padding: 0;
-  width: 100%;
-  &::-webkit-progress-bar {
-    background-color: ${fromTheme('progress-bar-background-color')};
+export default class Progress extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'progress',
   }
-  &::-webkit-progress-value {
-    background-color: ${fromTheme('progress-value-background-color')};
-  }
-  &::-moz-progress-bar {
-    background-color: ${fromTheme('progress-value-background-color')};
-  }
-  &::-ms-fill {
-    background-color: ${fromTheme('progress-value-background-color')};
-    border: none;
-  }
-  /* Colors */
-  ${colorClasses}
-  /* Sizes */
-  &.is-small {
-    height: ${fromTheme('size-small')};
-  }
-  &.is-medium {
-    height: ${fromTheme('size-medium')};
-  }
-  &.is-large {
-    height: ${fromTheme('size-large')};
-  }
-`
-Progress.defaultProps = { theme: Vars.getVariables() }
 
-export default Progress
+  static Style = theme => emotion_css`
+    ${block}
+    appearance: none;
+    border: none;
+    border-radius: ${theme['radius-rounded']};
+    display: block;
+    height: ${theme['size-normal']};
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+    &::-webkit-progress-bar {
+      background-color: ${theme['progress-bar-background-color']};
+    }
+    &::-webkit-progress-value {
+      background-color: ${theme['progress-value-background-color']};
+    }
+    &::-moz-progress-bar {
+      background-color: ${theme['progress-value-background-color']};
+    }
+    &::-ms-fill {
+      background-color: ${theme['progress-value-background-color']};
+      border: none;
+    }
+    /* Colors */
+    ${colorClasses(theme)}
+    /* Sizes */
+    &.is-small {
+      height: ${theme['size-small']};
+    }
+    &.is-medium {
+      height: ${theme['size-medium']};
+    }
+    &.is-large {
+      height: ${theme['size-large']};
+    }
+  `
+}
