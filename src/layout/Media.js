@@ -1,71 +1,90 @@
-import styled, { css } from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import { rgba } from 'polished'
-import Vars from '../utilities/vars'
+import { BaseWithConsumer, Base } from '../base/Class'
 import Content from '../elements/Content'
 import { Control } from '../form/Control'
 
-const defaultProps = { theme: Vars.getVariables() }
+export class Media extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'article',
+  }
 
-const MediaPartial = styled.article`
-  align-items: flex-start;
-  display: flex;
-  text-align: left;
-  ${Content}:not(:last-child) {
-    margin-bottom: 0.75rem;
-  }
-`
-export const Media = styled(MediaPartial)`
-  & + ${/* sc-custom ".media" */MediaPartial} {
-    border-top: 1px solid ${({ theme }) => rgba(theme['border'], 0.5)};
-    margin-top: 1rem;
-    padding-top: 1rem;
-  }
-  ${/* sc-custom ".media" */MediaPartial} {
-    border-top: 1px solid ${({ theme }) => rgba(theme['border'], 0.5)};
+  static Style = theme => emotion_css`
+    align-items: flex-start;
     display: flex;
-    padding-top: 0.75rem;
-    ${/* sc-custom ".content" */Content}:not(:last-child),
-    ${/* sc-custom ".constrol" */Control}:not(:last-child) {
-      margin-bottom: 0.5rem;
+    text-align: left;
+    .${Content.name}:not(:last-child) {
+      margin-bottom: 0.75rem;
     }
-    ${/* sc-custom ".media" */MediaPartial} {
-      padding-top: 0.5rem;
+    & + .${/* sc-custom ".media" */Media.name} {
+      border-top: 1px solid ${rgba(theme['border'], 0.5)};
+      margin-top: 1rem;
+      padding-top: 1rem;
     }
-    ${/* sc-custom ".media" */MediaPartial} + ${/* sc-custom ".media" */MediaPartial} {
-      margin-top: 0.5rem;
+    .${/* sc-custom ".media" */Media.name} {
+      border-top: 1px solid ${rgba(theme['border'], 0.5)};
+      display: flex;
+      padding-top: 0.75rem;
+      .${/* sc-custom ".content" */Content.name}:not(:last-child),
+      .${/* sc-custom ".constrol" */Control.name}:not(:last-child) {
+        margin-bottom: 0.5rem;
+      }
+      .${/* sc-custom ".media" */Media.name} {
+        padding-top: 0.5rem;
+      }
+      .${/* sc-custom ".media" */Media.name} + .${/* sc-custom ".media" */Media.name} {
+        margin-top: 0.5rem;
+      }
     }
-  }
 
-  /* Sizes */
-  &.is-large {
-    & + ${/* sc-custom ".media" */MediaPartial} { /* stylelint-disable-line no-descending-specificity */
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
+    /* Sizes */
+    &.is-large {
+      & + .${/* sc-custom ".media" */Media.name} { /* stylelint-disable-line no-descending-specificity */
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+      }
     }
-  }
-`
-Media.defaultProps = defaultProps
+  `
+}
 
-const mediaShared = css`
+const mediaShared = `
   flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 0;
 `
 
-export const MediaLeft = styled.div`
-  ${mediaShared}
-  margin-right: 1rem;
-`
-export const MediaRight = styled.div`
-  ${mediaShared}
-  margin-left: 1rem;
-`
-export const MediaContent = styled.div`
-  flex-basis: auto;
-  flex-grow: 1;
-  flex-shrink: 1;
-  text-align: left;
-`
+export class MediaLeft extends Base {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = () => emotion_css`
+    ${mediaShared}
+    margin-right: 1rem;
+  `
+}
+export class MediaRight extends Base {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = () => emotion_css`
+    ${mediaShared}
+    margin-left: 1rem;
+  `
+}
+export class MediaContent extends Base {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = () => emotion_css`
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: left;
+  `
+}
 
 Media.Left = MediaLeft
 Media.Right = MediaRight

@@ -1,11 +1,11 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css } from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import { rgba } from 'polished'
 import Vars from '../utilities/vars'
-import { fromTheme } from '../utilities/functions'
+import { BaseWithConsumer } from '../base/Class'
 import { tablet, overlay, overflow_touch } from '../utilities/mixins'
 import Button from '../elements/Button'
-import { DeleteStyle } from '../elements/Delete'
+import Delete from '../elements/Delete'
 
 
 Vars.addDerivedDefault(vars => ({
@@ -40,121 +40,174 @@ Vars.addDerivedDefault(vars => ({
   'modal-card-body-padding': '20px',
 }))
 
-const defaultProps = { theme: Vars.getVariables() }
 
-export const Modal = styled.div`
-  ${overlay}
-  align-items: center;
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-  position: fixed;
-  z-index: ${fromTheme('modal-z')};
-  /* Modifiers */
-  &.is-active {
-    display: flex;
+export default class Modal extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
   }
-`
-Modal.defaultProps = defaultProps
 
-export const ModalBackground = styled.div`
-  ${overlay}
-  background-color: ${fromTheme('modal-background-background-color')};
-`
-ModalBackground.defaultProps = defaultProps
+  static Style = theme => emotion_css`
+    ${overlay()}
+    align-items: center;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    position: fixed;
+    z-index: ${theme['modal-z']};
+    /* Modifiers */
+    &.is-active {
+      display: flex;
+    }
+  `
+}
+
+
+export class ModalBackground extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = theme => emotion_css`
+    ${overlay()}
+    background-color: ${theme['modal-background-background-color']};
+  `
+}
+
 Modal.Background = ModalBackground
 
-const ContentCardShared = css`
-  margin: 0 ${fromTheme('modal-content-margin-mobile')};
-  max-height: calc(100vh - ${fromTheme('modal-content-spacing-mobile')});
+const ContentCardShared = theme => emotion_css`
+  margin: 0 ${theme['modal-content-margin-mobile']};
+  max-height: calc(100vh - ${theme['modal-content-spacing-mobile']});
   overflow: auto;
   position: relative;
   width: 100%;
   /* Responsiveness */
-  ${tablet`
+  ${tablet(theme)`
     margin: 0 auto;
-    max-height: calc(100vh - ${fromTheme('modal-content-spacing-tablet')});
-    width: ${fromTheme('modal-content-width')};
+    max-height: calc(100vh - ${theme['modal-content-spacing-tablet']});
+    width: ${theme['modal-content-width']};
   `}
 `
 
-export const ModalContent = styled.div`${ContentCardShared}`
-ModalContent.defaultProps = defaultProps
+export class ModalContent extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = theme => ContentCardShared(theme)
+}
+
 Modal.Content = ModalContent
 
-export const ModalClose = styled.button`
-  ${DeleteStyle}
-  background: none;
-  height: ${fromTheme('modal-close-dimensions')};
-  position: fixed;
-  right: ${fromTheme('modal-close-right')};
-  top: ${fromTheme('modal-close-top')};
-  width: ${fromTheme('modal-close-dimensions')};
-`
-ModalClose.defaultProps = defaultProps
+export class ModalClose extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'button',
+  }
+
+  static Style = theme => emotion_css`
+    ${Delete.Style(theme)}
+    background: none;
+    height: ${theme['modal-close-dimensions']};
+    position: fixed;
+    right: ${theme['modal-close-right']};
+    top: ${theme['modal-close-top']};
+    width: ${theme['modal-close-dimensions']};
+  `
+}
+
 Modal.Close = ModalClose
 
-export const ModalCard = styled.div`
-  ${ContentCardShared}
-  display: flex;
-  flex-direction: column;
-  max-height: calc(100vh - ${fromTheme('modal-card-spacing')});
-  overflow: hidden;
-`
-ModalCard.defaultProps = defaultProps
+export class ModalCard extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = theme => emotion_css`
+    ${ContentCardShared(theme)}
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - ${theme['modal-card-spacing']});
+    overflow: hidden;
+  `
+}
+
 Modal.Card = ModalCard
 
-const CardHeadFootShared = css`
+const CardHeadFootShared = theme => emotion_css`
   align-items: center;
-  background-color: ${fromTheme('modal-card-head-background-color')};
+  background-color: ${theme['modal-card-head-background-color']};
   display: flex;
   flex-shrink: 0;
   justify-content: flex-start;
-  padding: ${fromTheme('modal-card-head-padding')};
+  padding: ${theme['modal-card-head-padding']};
   position: relative;
 `
 
-export const ModalCardHead = styled.header`
-  ${CardHeadFootShared}
-  border-bottom: ${fromTheme('modal-card-head-border-bottom')};
-  border-top-left-radius: ${fromTheme('modal-card-head-radius')};
-  border-top-right-radius: ${fromTheme('modal-card-head-radius')};
-`
-ModalCardHead.defaultProps = defaultProps
+export class ModalCardHead extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'header',
+  }
+
+  static Style = theme => emotion_css`
+    ${CardHeadFootShared(theme)}
+    border-bottom: ${theme['modal-card-head-border-bottom']};
+    border-top-left-radius: ${theme['modal-card-head-radius']};
+    border-top-right-radius: ${theme['modal-card-head-radius']};
+  `
+}
+
 Modal.Card.Head = ModalCardHead
 
-export const ModalCardTitle = styled.p`
-  color: ${fromTheme('modal-card-title-color')};
-  flex-grow: 1;
-  flex-shrink: 0;
-  font-size: ${fromTheme('modal-card-title-size')};
-  line-height: ${fromTheme('modal-card-title-line-height')};
-`
-ModalCardTitle.defaultProps = defaultProps
+export class ModalCardTitle extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'p',
+  }
+
+  static Style = theme => emotion_css`
+    color: ${theme['modal-card-title-color']};
+    flex-grow: 1;
+    flex-shrink: 0;
+    font-size: ${theme['modal-card-title-size']};
+    line-height: ${theme['modal-card-title-line-height']};
+  `
+}
+
 Modal.Card.Title = ModalCardTitle
 
-export const ModalCardFoot = styled.footer`
-  ${CardHeadFootShared}
-  border-bottom-left-radius: ${fromTheme('modal-card-foot-radius')};
-  border-bottom-right-radius: ${fromTheme('modal-card-foot-radius')};
-  border-top: ${fromTheme('modal-card-foot-border-top')};
-  ${/* sc-selector */Button} {
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
+export class ModalCardFoot extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'footer',
   }
-`
-ModalCardFoot.defaultProps = defaultProps
+
+  static Style = theme => emotion_css`
+    ${CardHeadFootShared(theme)}
+    border-bottom-left-radius: ${theme['modal-card-foot-radius']};
+    border-bottom-right-radius: ${theme['modal-card-foot-radius']};
+    border-top: ${theme['modal-card-foot-border-top']};
+    .${/* sc-selector */Button.name} {
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  `
+}
+
 Modal.Card.Foot = ModalCardFoot
 
-export const ModalCardBody = styled.section`
-  ${overflow_touch}
-  background-color: ${fromTheme('modal-card-body-background-color')};
-  flex-grow: 1;
-  flex-shrink: 1;
-  overflow: auto;
-  padding: ${fromTheme('modal-card-body-padding')};
-`
-ModalCardBody.defaultProps = defaultProps
+export class ModalCardBody extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'section',
+  }
+
+  static Style = theme => emotion_css`
+    ${overflow_touch}
+    background-color: ${theme['modal-card-body-background-color']};
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: auto;
+    padding: ${theme['modal-card-body-padding']};
+  `
+}
+
 Modal.Card.Body = ModalCardBody
