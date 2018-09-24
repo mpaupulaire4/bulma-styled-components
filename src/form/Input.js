@@ -1,7 +1,6 @@
-import React, { PureComponent } from 'react'
 import { css as emotion_css } from 'emotion'
 import { rgba } from 'polished'
-import { Consumer } from '../base'
+import { BaseWithConsumer } from '../base/Class'
 import Vars from '../utilities/vars'
 import { placeholder } from '../utilities/mixins'
 import {
@@ -30,8 +29,8 @@ Vars.addDerivedDefault(vars => ({
   'input-disabled-border-color': vars['background'],
 }))
 
-export const InputStyle = theme => emotion_css`
-  ${control}
+export const InputSelectShared = theme => emotion_css`
+  ${control(theme)}
   background-color: ${theme['input-background-color']};
   border-color: ${theme['input-border-color']};
   color: ${theme['input-color']};
@@ -72,7 +71,7 @@ const ITSharedColorClasses = theme => Object.entries(theme['colors']).reduce((ac
   }
 `, '')
 export const InputTextareaShared = theme => emotion_css`
-  ${InputStyle}
+  ${InputSelectShared(theme)}
   box-shadow: ${theme['input-shadow']};
   max-width: 100%;
   width: 100%;
@@ -83,13 +82,13 @@ export const InputTextareaShared = theme => emotion_css`
   ${ITSharedColorClasses(theme)}
   /* Sizes */
   &.is-small {
-    ${control_small}
+    ${control_small(theme)}
   }
   &.is-medium {
-    ${control_medium}
+    ${control_medium(theme)}
   }
   &.is-large {
-    ${control_large}
+    ${control_large(theme)}
   }
   /* Modifiers */
   &.is-fullwidth {
@@ -101,41 +100,25 @@ export const InputTextareaShared = theme => emotion_css`
     width: auto;
   }
 `
-export const InputClass = theme => emotion_css`
-  ${InputTextareaShared(theme)}
-  &.is-rounded {
-    border-radius: ${theme['radius-rounded']};
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-  &.is-static {
-    background-color: transparent;
-    border-color: transparent;
-    box-shadow: none;
-    padding-left: 0;
-    padding-right: 0;
-  }
-`
-export class Input extends PureComponent {
 
+export default class Input extends BaseWithConsumer {
   static defaultProps = {
     as: 'input',
-    className: '',
   }
 
-  render() {
-    const { as, className, ...props } = this.props
-    return (
-      <Consumer>
-        {theme => React.createElement(as, {
-          ...props,
-          className: [
-            Box.name,
-            InputClass(theme, as),
-            className,
-          ].join(' '),
-        })}
-      </Consumer>
-    )
-  }
+  static Style = theme => emotion_css`
+    ${InputTextareaShared(theme)}
+    &.is-rounded {
+      border-radius: ${theme['radius-rounded']};
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+    &.is-static {
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  `
 }
