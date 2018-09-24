@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import Vars from '../utilities/vars'
-import { fromTheme } from '../utilities/functions'
+import { BaseWithConsumer } from '../base/Class'
 
 Vars.addDerivedDefault(vars => ({
   'input-hover-color': vars['grey-darker'],
@@ -8,9 +8,7 @@ Vars.addDerivedDefault(vars => ({
   'input-disabled-color': vars['text-light'],
 }))
 
-const defaultProps = { theme: Vars.getVariables() }
-
-export const CheckboxRadioShared = css`
+export const CheckboxRadioShared = theme => emotion_css`
   cursor: pointer;
   display: inline-block;
   line-height: 1.25;
@@ -19,13 +17,18 @@ export const CheckboxRadioShared = css`
     cursor: pointer;
   }
   &:hover {
-    color: ${fromTheme('input-hover-color')};
+    color: ${theme['input-hover-color']};
   }
   &[disabled] {
-    color: ${fromTheme('input-disabled-color')};
+    color: ${theme['input-disabled-color']};
     cursor: not-allowed;
   }
 `
 
-export const Checkbox = styled.label`${CheckboxRadioShared}`
-Checkbox.defaultProps = defaultProps
+export default class Checkbox extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'label',
+  }
+
+  static Style = theme => CheckboxRadioShared(theme)
+}
