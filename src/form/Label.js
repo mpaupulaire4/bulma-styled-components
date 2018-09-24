@@ -1,29 +1,34 @@
-import styled from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import Vars from '../utilities/vars'
-import { fromTheme } from '../utilities/functions'
+import { BaseWithConsumer } from '../base/Class'
 
 Vars.addDerivedDefault(vars => ({
   'label-color': vars['grey-darker'],
   'label-weight': vars['weight-bold'],
 }))
 
-export const Label = styled.label`
-  color: ${fromTheme('label-color')};
-  display: block;
-  font-size: ${fromTheme('size-normal')};
-  font-weight: ${fromTheme('label-weight')};
-  &:not(:last-child) {
-    margin-bottom: 0.5em;
+export default class Label extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'label',
   }
-  /* Sizes */
-  &.is-small {
-    font-size: ${fromTheme('size-small')};
-  }
-  &.is-medium {
-    font-size: ${fromTheme('size-medium')};
-  }
-  &.is-large {
-    font-size: ${fromTheme('size-large')};
-  }
-`
-Label.defaultProps = { theme: Vars.getVariables() }
+
+  static Style = theme => emotion_css`
+    color: ${theme['label-color']};
+    display: block;
+    font-size: ${theme['size-normal']};
+    font-weight: ${theme['label-weight']};
+    &:not(:last-child) {
+      margin-bottom: 0.5em;
+    }
+    /* Sizes */
+    &.is-small {
+      font-size: ${theme['size-small']};
+    }
+    &.is-medium {
+      font-size: ${theme['size-medium']};
+    }
+    &.is-large {
+      font-size: ${theme['size-large']};
+    }
+  `
+}

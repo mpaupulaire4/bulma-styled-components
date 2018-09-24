@@ -1,15 +1,16 @@
-import styled from 'styled-components'
-import Vars from '../utilities/vars'
+import { css as emotion_css } from 'emotion'
+import { Base } from '../base/Class'
 import { CheckboxRadioShared } from './Checkbox'
 
-const defaultProps = { theme: Vars.getVariables() }
-const RadioPartial = styled.label`
-  ${CheckboxRadioShared}
-`
-
-export const Radio = styled(RadioPartial)`
-  & + ${/* sc-selector */RadioPartial} {
-    margin-left: 0.5em;
+export default class Radio extends Base {
+  static defaultProps = {
+    as: 'label',
   }
-`
-Radio.defaultProps = defaultProps
+
+  static Style = theme => emotion_css`
+    ${CheckboxRadioShared(theme)}
+    & + .${/* sc-selector */Radio.name} {
+      margin-left: 0.5em;
+    }
+  `
+}
