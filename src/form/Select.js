@@ -8,7 +8,7 @@ import {
   control_medium,
   control_large,
 } from '../utilities/controls'
-import { InputStyle } from './Input'
+import { InputSelectShared } from './Input'
 import { fromTheme } from '../utilities/functions'
 
 Vars.addDerivedDefault(vars => ({
@@ -75,7 +75,7 @@ export const Select = styled.div`
     }
   }
   select {
-    ${InputStyle}
+    ${InputSelectShared}
     cursor: pointer;
     display: block;
     font-size: 1em;
