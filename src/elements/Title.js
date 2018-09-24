@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css } from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 import { block } from '../utilities/mixins'
@@ -25,7 +25,7 @@ export default class Title extends BaseWithConsumer {
     as: 'h1',
   }
 
-  static Style = theme => styled.h1`
+  static Style = theme => emotion_css`
     ${block}
     word-break: break-word;
     em,
@@ -56,7 +56,7 @@ export default class Title extends BaseWithConsumer {
       margin-top: ${theme['subtitle-negative-margin']};
     }
     /* Sizes */
-    ${theme['sizes'].reduce((acc, size, i) => css`
+    ${theme['sizes'].reduce((acc, size, i) => `
       ${acc}
       &.is-${i + 1} {
         font-size: ${size};
