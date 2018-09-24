@@ -166,7 +166,7 @@ export class PaginationList extends BaseWithConsumer {
   `
 }
 
-export class Pagination extends BaseWithConsumer {
+export default class Pagination extends BaseWithConsumer {
   static defaultProps = {
     as: 'nav',
   }

@@ -1,5 +1,4 @@
 ``` react
-const PanelBlockLink = Panel.Block.withComponent('a');
 <Panel>
   <Panel.Heading>
     repositories
@@ -19,46 +18,46 @@ const PanelBlockLink = Panel.Block.withComponent('a');
     <a>sources</a>
     <a>forks</a>
   </Panel.Tabs>
-  <PanelBlockLink className="is-active">
+  <Panel.Block as="a" className="is-active">
     <Panel.Icon>
       <i className="fa fa-book" aria-hidden="true"></i>
     </Panel.Icon>
     bulma
-  </PanelBlockLink>
-  <PanelBlockLink>
+  </Panel.Block>
+  <Panel.Block as="a">
     <Panel.Icon>
       <i className="fa fa-book" aria-hidden="true"></i>
     </Panel.Icon>
     marksheet
-  </PanelBlockLink>
-  <PanelBlockLink>
+  </Panel.Block>
+  <Panel.Block as="a">
     <Panel.Icon>
       <i className="fa fa-book" aria-hidden="true"></i>
     </Panel.Icon>
     minireset.css
-  </PanelBlockLink>
-  <PanelBlockLink>
+  </Panel.Block>
+  <Panel.Block as="a">
     <Panel.Icon>
       <i className="fa fa-book" aria-hidden="true"></i>
     </Panel.Icon>
     jgthms.github.io
-  </PanelBlockLink>
-  <PanelBlockLink>
+  </Panel.Block>
+  <Panel.Block as="a">
     <Panel.Icon>
       <i className="fa fa-code-fork" aria-hidden="true"></i>
     </Panel.Icon>
     daniellowtw/infboard
-  </PanelBlockLink>
-  <PanelBlockLink>
+  </Panel.Block>
+  <Panel.Block as="a">
     <Panel.Icon>
       <i className="fa fa-code-fork" aria-hidden="true"></i>
     </Panel.Icon>
     mojs
-  </PanelBlockLink>
-  <PanelBlockLink>
+  </Panel.Block>
+  <Panel.Block as="a">
     <Input type="checkbox" />
     remember me
-  </PanelBlockLink>
+  </Panel.Block>
   <Panel.Block>
     <Button className="is-link is-outlined is-fullwidth">
       reset all filters
