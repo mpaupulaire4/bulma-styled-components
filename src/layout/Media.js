@@ -2,7 +2,7 @@ import { css as emotion_css } from 'emotion'
 import { rgba } from 'polished'
 import { BaseWithConsumer, Base } from '../base/Class'
 import Content from '../elements/Content'
-import { Control } from '../form/Control'
+import Control from '../form/Control'
 
 export class Media extends BaseWithConsumer {
   static defaultProps = {
