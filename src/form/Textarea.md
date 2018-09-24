@@ -64,6 +64,6 @@
 ``` react
 <Textarea
   type="text"
-  readonly
+  readOnly
   value="This text is readonly"/>
 ```
