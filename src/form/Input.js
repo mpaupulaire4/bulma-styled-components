@@ -75,7 +75,7 @@ export const InputTextareaShared = theme => emotion_css`
   box-shadow: ${theme['input-shadow']};
   max-width: 100%;
   width: 100%;
-  &[readonly] {
+  &[readOnly] {
     box-shadow: none;
   }
   /* Colors */

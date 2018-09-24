@@ -70,7 +70,7 @@
     value="Some Text Here"/>
   <Input
     type="text"
-    readonly
+    readOnly
     value="This text is readonly"/>
 </div>
 ```
