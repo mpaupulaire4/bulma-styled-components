@@ -1,9 +1,9 @@
 /* stylelint-disable no-descending-specificity */
-import styled from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import Vars from '../utilities/vars'
+import { BaseWithConsumer } from '../base/Class'
 import Icon from '../elements/Icon'
 import { block, overflow_touch, unselectable } from '../utilities/mixins'
-import { fromTheme } from '../utilities/functions'
 
 Vars.addDerivedDefault(vars => ({
   'tabs-border-bottom-color': vars['border'],
@@ -35,170 +35,174 @@ Vars.addDerivedDefault(vars => ({
   'tabs-toggle-link-active-color': vars['link-invert'],
 }))
 
-export const Tabs = styled.div`
-  ${block}
-  ${overflow_touch}
-  ${unselectable}
-  align-items: stretch;
-  display: flex;
-  font-size: ${fromTheme('size-normal')};
-  justify-content: space-between;
-  overflow: hidden;
-  overflow-x: auto;
-  white-space: nowrap;
-  a {
-    align-items: center;
-    border-bottom-color: ${fromTheme('tabs-border-bottom-color')};
-    border-bottom-style: ${fromTheme('tabs-border-bottom-style')};
-    border-bottom-width: ${fromTheme('tabs-border-bottom-width')};
-    color: ${fromTheme('tabs-link-color')};
+export default class Tabs extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = theme => emotion_css`
+    ${block}
+    ${overflow_touch}
+    ${unselectable}
+    align-items: stretch;
     display: flex;
-    justify-content: center;
-    margin-bottom: -${fromTheme('tabs-border-bottom-width')};
-    padding: ${fromTheme('tabs-link-padding')};
-    vertical-align: top;
-    &:hover {
-      border-bottom-color: ${fromTheme('tabs-link-hover-border-bottom-color')};
-      color: ${fromTheme('tabs-link-hover-color')};
-    }
-  }
-  li {
-    display: block;
-    &.is-active {
-      a {
-        border-bottom-color: ${fromTheme('tabs-link-active-border-bottom-color')};
-        color: ${fromTheme('tabs-link-active-color')};
-      }
-    }
-  }
-  ul {
-    align-items: center;
-    border-bottom-color: ${fromTheme('tabs-border-bottom-color')};
-    border-bottom-style: ${fromTheme('tabs-border-bottom-style')};
-    border-bottom-width: ${fromTheme('tabs-border-bottom-width')};
-    display: flex;
-    flex-grow: 1;
-    flex-shrink: 0;
-    justify-content: flex-start;
-    &.is-left {
-      padding-right: 0.75em;
-    }
-    &.is-center {
-      flex: none;
-      justify-content: center;
-      padding-left: 0.75em;
-      padding-right: 0.75em;
-    }
-    &.is-right {
-      justify-content: flex-end;
-      padding-left: 0.75em;
-    }
-  }
-  ${/* sc-selector */Icon} {
-    &:first-child {
-      margin-right: 0.5em;
-    }
-    &:last-child {
-      margin-left: 0.5em;
-    }
-  }
-  /* Alignment */
-  &.is-centered {
-    ul {
-      justify-content: center;
-    }
-  }
-  &.is-right {
-    ul {
-      justify-content: flex-end;
-    }
-  }
-  /* Styles */
-  &.is-boxed {
+    font-size: ${theme['size-normal']};
+    justify-content: space-between;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
     a {
-      border: 1px solid transparent;
-      border-radius: ${fromTheme('tabs-boxed-link-radius')} ${fromTheme('tabs-boxed-link-radius')} 0 0;
+      align-items: center;
+      border-bottom-color: ${theme['tabs-border-bottom-color']};
+      border-bottom-style: ${theme['tabs-border-bottom-style']};
+      border-bottom-width: ${theme['tabs-border-bottom-width']};
+      color: ${theme['tabs-link-color']};
+      display: flex;
+      justify-content: center;
+      margin-bottom: -${theme['tabs-border-bottom-width']};
+      padding: ${theme['tabs-link-padding']};
+      vertical-align: top;
       &:hover {
-        background-color: ${fromTheme('tabs-boxed-link-hover-background-color')};
-        border-bottom-color: ${fromTheme('tabs-boxed-link-hover-border-bottom-color')};
+        border-bottom-color: ${theme['tabs-link-hover-border-bottom-color']};
+        color: ${theme['tabs-link-hover-color']};
       }
     }
     li {
+      display: block;
       &.is-active {
         a {
-          background-color: ${fromTheme('tabs-boxed-link-active-background-color')};
-          border-color: ${fromTheme('tabs-boxed-link-active-border-color')};
-          border-bottom-color: ${fromTheme('tabs-boxed-link-active-border-bottom-color')} !important;
+          border-bottom-color: ${theme['tabs-link-active-border-bottom-color']};
+          color: ${theme['tabs-link-active-color']};
         }
       }
     }
-  }
-  &.is-fullwidth {
-    li {
+    ul {
+      align-items: center;
+      border-bottom-color: ${theme['tabs-border-bottom-color']};
+      border-bottom-style: ${theme['tabs-border-bottom-style']};
+      border-bottom-width: ${theme['tabs-border-bottom-width']};
+      display: flex;
       flex-grow: 1;
       flex-shrink: 0;
-    }
-  }
-  &.is-toggle {
-    a {
-      border-color: ${fromTheme('tabs-toggle-link-border-color')};
-      border-style: ${fromTheme('tabs-toggle-link-border-style')};
-      border-width: ${fromTheme('tabs-toggle-link-border-width')};
-      margin-bottom: 0;
-      position: relative;
-      &:hover {
-        background-color: ${fromTheme('tabs-toggle-link-hover-background-color')};
-        border-color: ${fromTheme('tabs-toggle-link-hover-border-color')};
-        z-index: 2;
+      justify-content: flex-start;
+      &.is-left {
+        padding-right: 0.75em;
+      }
+      &.is-center {
+        flex: none;
+        justify-content: center;
+        padding-left: 0.75em;
+        padding-right: 0.75em;
+      }
+      &.is-right {
+        justify-content: flex-end;
+        padding-left: 0.75em;
       }
     }
-    li {
-      & + li {
-        margin-left: -${fromTheme('tabs-toggle-link-border-width')};
+    .${/* sc-selector */Icon.name} {
+      &:first-child {
+        margin-right: 0.5em;
       }
-      &:first-child a {
-        border-radius: ${fromTheme('tabs-toggle-link-radius')} 0 0 ${fromTheme('tabs-toggle-link-radius')};
+      &:last-child {
+        margin-left: 0.5em;
       }
-      &:last-child a {
-        border-radius: 0 ${fromTheme('tabs-toggle-link-radius')} ${fromTheme('tabs-toggle-link-radius')} 0;
+    }
+    /* Alignment */
+    &.is-centered {
+      ul {
+        justify-content: center;
       }
-      &.is-active {
-        a {
-          background-color: ${fromTheme('tabs-toggle-link-active-background-color')};
-          border-color: ${fromTheme('tabs-toggle-link-active-border-color')};
-          color: ${fromTheme('tabs-toggle-link-active-color')};
-          z-index: 1;
+    }
+    &.is-right {
+      ul {
+        justify-content: flex-end;
+      }
+    }
+    /* Styles */
+    &.is-boxed {
+      a {
+        border: 1px solid transparent;
+        border-radius: ${theme['tabs-boxed-link-radius']} ${theme['tabs-boxed-link-radius']} 0 0;
+        &:hover {
+          background-color: ${theme['tabs-boxed-link-hover-background-color']};
+          border-bottom-color: ${theme['tabs-boxed-link-hover-border-bottom-color']};
+        }
+      }
+      li {
+        &.is-active {
+          a {
+            background-color: ${theme['tabs-boxed-link-active-background-color']};
+            border-color: ${theme['tabs-boxed-link-active-border-color']};
+            border-bottom-color: ${theme['tabs-boxed-link-active-border-bottom-color']} !important;
+          }
         }
       }
     }
-    ul {
-      border-bottom: none;
-    }
-    &.is-toggle-rounded {
+    &.is-fullwidth {
       li {
+        flex-grow: 1;
+        flex-shrink: 0;
+      }
+    }
+    &.is-toggle {
+      a {
+        border-color: ${theme['tabs-toggle-link-border-color']};
+        border-style: ${theme['tabs-toggle-link-border-style']};
+        border-width: ${theme['tabs-toggle-link-border-width']};
+        margin-bottom: 0;
+        position: relative;
+        &:hover {
+          background-color: ${theme['tabs-toggle-link-hover-background-color']};
+          border-color: ${theme['tabs-toggle-link-hover-border-color']};
+          z-index: 2;
+        }
+      }
+      li {
+        & + li {
+          margin-left: -${theme['tabs-toggle-link-border-width']};
+        }
         &:first-child a {
-          border-bottom-left-radius: ${fromTheme('radius-rounded')};
-          border-top-left-radius: ${fromTheme('radius-rounded')};
-          padding-left: 1.25em;
+          border-radius: ${theme['tabs-toggle-link-radius']} 0 0 ${theme['tabs-toggle-link-radius']};
         }
         &:last-child a {
-          border-bottom-right-radius: ${fromTheme('radius-rounded')};
-          border-top-right-radius: ${fromTheme('radius-rounded')};
-          padding-right: 1.25em;
+          border-radius: 0 ${theme['tabs-toggle-link-radius']} ${theme['tabs-toggle-link-radius']} 0;
+        }
+        &.is-active {
+          a {
+            background-color: ${theme['tabs-toggle-link-active-background-color']};
+            border-color: ${theme['tabs-toggle-link-active-border-color']};
+            color: ${theme['tabs-toggle-link-active-color']};
+            z-index: 1;
+          }
+        }
+      }
+      ul {
+        border-bottom: none;
+      }
+      &.is-toggle-rounded {
+        li {
+          &:first-child a {
+            border-bottom-left-radius: ${theme['radius-rounded']};
+            border-top-left-radius: ${theme['radius-rounded']};
+            padding-left: 1.25em;
+          }
+          &:last-child a {
+            border-bottom-right-radius: ${theme['radius-rounded']};
+            border-top-right-radius: ${theme['radius-rounded']};
+            padding-right: 1.25em;
+          }
         }
       }
     }
-  }
-  /* Sizes */
-  &.is-small {
-    font-size: ${fromTheme('size-small')};
-  }
-  &.is-medium {
-    font-size: ${fromTheme('size-medium')};
-  }
-  &.is-large {
-    font-size: ${fromTheme('size-large')};
-  }
-`
-Tabs.defaultProps = { theme: Vars.getVariables() }
-
+    /* Sizes */
+    &.is-small {
+      font-size: ${theme['size-small']};
+    }
+    &.is-medium {
+      font-size: ${theme['size-medium']};
+    }
+    &.is-large {
+      font-size: ${theme['size-large']};
+    }
+  `
+}
