@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css } from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import { rgba, darken } from 'polished'
 import Vars from '../utilities/vars'
 import { arrow, loader } from '../utilities/mixins'
@@ -9,7 +9,7 @@ import {
   control_large,
 } from '../utilities/controls'
 import { InputSelectShared } from './Input'
-import { fromTheme } from '../utilities/functions'
+import { BaseWithConsumer } from '../base/Class'
 
 Vars.addDerivedDefault(vars => ({
   'input-color': vars['grey-darker'],
@@ -37,7 +37,7 @@ Vars.addDerivedDefault(vars => ({
   'input-radius': vars['radius'],
 }))
 
-const SelectColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((acc, [name, [color]]) => css`
+const SelectColorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name, [color]]) => emotion_css`
   ${acc}
   &.is-${name} {
     &:not(:hover)::after {
@@ -53,106 +53,111 @@ const SelectColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce
       &.is-focused,
       &:active,
       &.is-active {
-        box-shadow: ${fromTheme('input-focus-box-shadow-size')} ${rgba(color, 0.25)};
+        box-shadow: ${theme['input-focus-box-shadow-size']} ${rgba(color, 0.25)};
       }
     }
   }
 `, '')
 
-export const Select = styled.div`
-  display: inline-block;
-  max-width: 100%;
-  position: relative;
-  vertical-align: top;
-  &:not(.is-multiple) {
-    height: 2.25em;
+export default class Select extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
   }
-  &:not(.is-multiple):not(.is-loading) {
-    &::after {
-      ${({ theme }) => arrow(theme['input-arrow'])}
-      right: 1.125em;
-      z-index: 4;
-    }
-  }
-  select {
-    ${InputSelectShared}
-    cursor: pointer;
-    display: block;
-    font-size: 1em;
+
+  static Style = theme => emotion_css`
+    display: inline-block;
     max-width: 100%;
-    outline: none;
-    &::-ms-expand {
-      display: none;
+    position: relative;
+    vertical-align: top;
+    &:not(.is-multiple) {
+      height: 2.25em;
     }
-    &[disabled]:hover {
-      border-color: ${fromTheme('input-disabled-border-color')};
-    }
-    &:not([multiple]) {
-      padding-right: 2.5em;
-    }
-    &[multiple] {
-      height: initial;
-      padding: 0;
-      option {
-        padding: 0.5em 1em;
+    &:not(.is-multiple):not(.is-loading) {
+      &::after {
+        ${arrow(theme['input-arrow'])}
+        right: 1.125em;
+        z-index: 4;
       }
     }
-  }
-  &.is-rounded {
     select {
-      border-radius: ${fromTheme('radius-rounded')};
-      padding-left: 1em;
+      ${InputSelectShared(theme)}
+      cursor: pointer;
+      display: block;
+      font-size: 1em;
+      max-width: 100%;
+      outline: none;
+      &::-ms-expand {
+        display: none;
+      }
+      &[disabled]:hover {
+        border-color: ${theme['input-disabled-border-color']};
+      }
+      &:not([multiple]) {
+        padding-right: 2.5em;
+      }
+      &[multiple] {
+        height: initial;
+        padding: 0;
+        option {
+          padding: 0.5em 1em;
+        }
+      }
     }
-  }
-  /* States */
-  &:not(.is-multiple):not(.is-loading):hover {
-    &::after {
-      border-color: ${fromTheme('input-hover-color')};
+    &.is-rounded {
+      select {
+        border-radius: ${theme['radius-rounded']};
+        padding-left: 1em;
+      }
     }
-  }
-  /* Colors */
-  ${SelectColorClasses}
+    /* States */
+    &:not(.is-multiple):not(.is-loading):hover {
+      &::after {
+        border-color: ${theme['input-hover-color']};
+      }
+    }
+    /* Colors */
+    ${SelectColorClasses(theme)}
 
-  /* Sizes */
-  &.is-small {
-    ${control_small}
-  }
-  &.is-medium {
-    ${control_medium}
-  }
-  &.is-large {
-    ${control_large}
-  }
-  /* Modifiers */
-  &.is-disabled {
-    &::after {
-      border-color: ${fromTheme('input-disabled-color')};
+    /* Sizes */
+    &.is-small {
+      ${control_small(theme)}
     }
-  }
-  &.is-fullwidth {
-    width: 100%;
-    select {
+    &.is-medium {
+      ${control_medium(theme)}
+    }
+    &.is-large {
+      ${control_large(theme)}
+    }
+    /* Modifiers */
+    &.is-disabled {
+      &::after {
+        border-color: ${theme['input-disabled-color']};
+      }
+    }
+    &.is-fullwidth {
       width: 100%;
+      select {
+        width: 100%;
+      }
     }
-  }
-  &.is-loading {
-    &::after {
-      ${loader}
-      margin-top: 0;
-      position: absolute;
-      right: 0.625em;
-      top: 0.625em;
-      transform: none;
+    &.is-loading {
+      &::after {
+        ${loader(theme)}
+        margin-top: 0;
+        position: absolute;
+        right: 0.625em;
+        top: 0.625em;
+        transform: none;
+      }
+      &.is-small:after {
+        font-size: ${theme['size-small']};
+      }
+      &.is-medium:after {
+        font-size: ${theme['size-medium']};
+      }
+      &.is-large:after {
+        font-size: ${theme['size-large']};
+      }
     }
-    &.is-small:after {
-      font-size: ${fromTheme('size-small')};
-    }
-    &.is-medium:after {
-      font-size: ${fromTheme('size-medium')};
-    }
-    &.is-large:after {
-      font-size: ${fromTheme('size-large')};
-    }
-  }
-`
-Select.defaultProps = { theme: Vars.getVariables() }
+  `
+}
