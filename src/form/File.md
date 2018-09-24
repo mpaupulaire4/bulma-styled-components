@@ -1,6 +1,5 @@
 ### Simple
 ``` react
-const SpanLabel = File.Label.withComponent('span');
 <File>
   <File.Label>
     <File.Input name="resume"/>
@@ -8,9 +7,9 @@ const SpanLabel = File.Label.withComponent('span');
       <File.Icon>
         <i className="fa fa-upload"></i>
       </File.Icon>
-      <SpanLabel>
+      <File.Label>
         Choose a file…
-      </SpanLabel>
+      </File.Label>
     </File.CTA>
   </File.Label>
 </File>
@@ -18,7 +17,6 @@ const SpanLabel = File.Label.withComponent('span');
 ### Modifiers
 #### Has Name and File Name
 ``` react
-const SpanLabel = File.Label.withComponent('span');
 <File className="has-name">
   <File.Label>
     <File.Input name="resume"/>
@@ -26,9 +24,9 @@ const SpanLabel = File.Label.withComponent('span');
       <File.Icon>
         <i className="fa fa-upload"></i>
       </File.Icon>
-      <SpanLabel>
+      <File.Label>
         Choose a file…
-      </SpanLabel>
+      </File.Label>
     </File.CTA>
     <File.Name>
       Screen Shot 2017-07-29 at 15.54.25.png
@@ -38,7 +36,6 @@ const SpanLabel = File.Label.withComponent('span');
 ```
 #### CTA on right
 ``` react
-const SpanLabel = File.Label.withComponent('span');
 <File className="has-name is-right">
   <File.Label>
     <File.Input name="resume"/>
@@ -46,9 +43,9 @@ const SpanLabel = File.Label.withComponent('span');
       <File.Icon>
         <i className="fa fa-upload"></i>
       </File.Icon>
-      <SpanLabel>
+      <File.Label>
         Choose a file…
-      </SpanLabel>
+      </File.Label>
     </File.CTA>
     <File.Name>
       Screen Shot 2017-07-29 at 15.54.25.png
@@ -58,7 +55,6 @@ const SpanLabel = File.Label.withComponent('span');
 ```
 #### Expanded Name
 ``` react
-const SpanLabel = File.Label.withComponent('span');
 <File className="has-name is-fullwidth">
   <File.Label>
     <File.Input name="resume"/>
@@ -66,9 +62,9 @@ const SpanLabel = File.Label.withComponent('span');
       <File.Icon>
         <i className="fa fa-upload"></i>
       </File.Icon>
-      <SpanLabel>
+      <File.Label>
         Choose a file…
-      </SpanLabel>
+      </File.Label>
     </File.CTA>
     <File.Name>
       Screen Shot 2017-07-29 at 15.54.25.png
@@ -78,7 +74,6 @@ const SpanLabel = File.Label.withComponent('span');
 ```
 #### Boxed
 ``` react
-const SpanLabel = File.Label.withComponent('span');
 <File className="is-boxed">
   <File.Label>
     <File.Input name="resume"/>
@@ -86,16 +81,15 @@ const SpanLabel = File.Label.withComponent('span');
       <File.Icon>
         <i className="fa fa-upload"></i>
       </File.Icon>
-      <SpanLabel>
+      <File.Label>
         Choose a file…
-      </SpanLabel>
+      </File.Label>
     </File.CTA>
   </File.Label>
 </File>
 ```
 #### Boxed With Name
 ``` react
-const SpanLabel = File.Label.withComponent('span');
 <File className="has-name is-boxed">
   <File.Label>
     <File.Input name="resume"/>
@@ -103,9 +97,9 @@ const SpanLabel = File.Label.withComponent('span');
       <File.Icon>
         <i className="fa fa-upload"></i>
       </File.Icon>
-      <SpanLabel>
+      <File.Label>
         Choose a file…
-      </SpanLabel>
+      </File.Label>
     </File.CTA>
     <File.Name>
       Screen Shot 2017-07-29 at 15.54.25.png
@@ -115,7 +109,6 @@ const SpanLabel = File.Label.withComponent('span');
 ```
 ### Supports Colors
 ``` react
-const SpanLabel = File.Label.withComponent('span');
 <File className="has-name is-primary">
   <File.Label>
     <File.Input name="resume"/>
@@ -123,9 +116,9 @@ const SpanLabel = File.Label.withComponent('span');
       <File.Icon>
         <i className="fa fa-upload"></i>
       </File.Icon>
-      <SpanLabel>
+      <File.Label>
         Choose a file…
-      </SpanLabel>
+      </File.Label>
     </File.CTA>
     <File.Name>
       Screen Shot 2017-07-29 at 15.54.25.png

@@ -47,7 +47,7 @@ export default class Control extends BaseWithConsumer {
         font-size: ${theme['size-medium']};
       }
       .${/* sc-custom '.input' */Input.name}:focus.is-large ~ .${/* sc-custom '.icon' */Icon.name},
-      .${/* sc-custom '.select' */Select.name}:focus.is-large ~ ${/* sc-custom '.icon' */Icon.name} {
+      .${/* sc-custom '.select' */Select.name}:focus.is-large ~ .${/* sc-custom '.icon' */Icon.name} {
         font-size: ${theme['size-large']};
       }
     }
