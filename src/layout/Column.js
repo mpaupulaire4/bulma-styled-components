@@ -33,6 +33,10 @@ export const Column = styled.div`
   flex-grow: 1;
   flex-shrink: 1;
   padding: ${fromTheme('column-gap')};
+  ${Columns}.is-gapless > & {
+    margin: 0;
+    padding: 0;
+  }
   ${Columns}.is-mobile > &.is-narrow {
     flex: none;
   }
