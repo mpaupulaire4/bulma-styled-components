@@ -28,10 +28,6 @@ export const Columns = styled.div`
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
-    & > .column {
-      margin: 0;
-      padding: 0 !important;
-    }
     &:not(:last-child) {
       margin-bottom: 1.5rem;
     }
