@@ -4,7 +4,7 @@ import { BaseWithConsumer, Base } from '../base/Class'
 import Content from '../elements/Content'
 import Control from '../form/Control'
 
-export class Media extends BaseWithConsumer {
+export default class Media extends BaseWithConsumer {
   static defaultProps = {
     as: 'article',
   }

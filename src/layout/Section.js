@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import Vars from '../utilities/vars'
 import { desktop } from '../utilities/mixins'
-import { fromTheme } from '../utilities/functions'
+import { BaseWithConsumer } from '../base/Class'
 
 Vars.addDerivedDefault(() => ({
   'section-padding': '3rem 1.5rem',
@@ -9,16 +9,22 @@ Vars.addDerivedDefault(() => ({
   'section-padding-large': '18rem 1.5rem',
 }))
 
-export const Section = styled.section`
-  padding: ${fromTheme('section-padding')};
-  /* Responsiveness */
-  ${desktop`
-    /* Sizes */
-    &.is-medium {
-      padding: ${fromTheme('section-padding-medium')};
-    }
-    &.is-large {
-      padding: ${fromTheme('section-padding-large')};
-    }
-  `}
-`
+export class Section extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'section',
+  }
+
+  static Style = theme => emotion_css`
+    padding: ${theme['section-padding']};
+    /* Responsiveness */
+    ${desktop(theme)`
+      /* Sizes */
+      &.is-medium {
+        padding: ${theme['section-padding-medium']};
+      }
+      &.is-large {
+        padding: ${theme['section-padding-large']};
+      }
+    `}
+  `
+}

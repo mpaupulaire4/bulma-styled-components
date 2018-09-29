@@ -1,43 +1,50 @@
-import styled, { css } from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import {
   block,
   tablet,
   mobile,
 } from '../utilities/mixins'
-import { fromTheme } from '../utilities/functions'
+import { BaseWithConsumer } from '../base/Class'
 import Title from '../elements/Title'
 import Subtitle from '../elements/Subtitle'
 
-export const LevelItem = styled.div`
-  align-items: center;
-  display: flex;
-  flex-basis: auto;
-  flex-grow: 0;
-  flex-shrink: 0;
-  justify-content: center;
-  ${Title}, ${Subtitle} { /* stylelint-disable-line */
-    margin-bottom: 0;
+export class LevelItem extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
   }
 
-  /* Responsiveness */
-  ${mobile`
-    &:not(:last-child) {
-      margin-bottom: 0.75rem;
+  static Style = theme => emotion_css`
+    align-items: center;
+    display: flex;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: center;
+    .${Title.name},
+    .${Subtitle.name} {
+      margin-bottom: 0;
     }
-  `}
-`
 
-const levelShared = css`
+    /* Responsiveness */
+    ${mobile(theme)`
+      &:not(:last-child) {
+        margin-bottom: 0.75rem;
+      }
+    `}
+  `
+}
+
+const levelShared = theme => emotion_css`
   flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 0;
-  ${LevelItem} { /* stylelint-disable-line */
+  .${LevelItem.name} {
     /* Modifiers */
     &.is-flexible {
       flex-grow: 1;
     }
     /* Responsiveness */
-    ${tablet`
+    ${tablet(theme)`
       &:not(:last-child) {
         margin-right: 0.75rem;
       }
@@ -45,72 +52,90 @@ const levelShared = css`
   }
 `
 
-export const LevelRight = styled.div`
-  ${levelShared}
-  align-items: center;
-  justify-content: flex-end;
-  /* Responsiveness */
-  ${tablet`
-    display: flex;
-  `}
-`
-
-export const LevelLeft = styled.div`
-  ${levelShared}
-  align-items: center;
-  justify-content: flex-start;
-  /* Responsiveness */
-  ${mobile`
-    & + ${LevelRight} {
-      margin-top: 1.5rem;
-    }
-  `}
-  ${tablet`
-    display: flex;
-  `}
-  `
-
-export const Level = styled.div`
-  ${block}
-  align-items: center;
-  justify-content: space-between;
-  code {
-    border-radius: ${fromTheme('radius')}
+export class LevelRight extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
   }
-  img {
-    display: inline-block;
-    vertical-align: top;
-  }
-  /* Modifiers */
-  &.is-mobile {
-    display: flex;
-    ${LevelLeft},
-    ${LevelRight} { /* stylelint-disable-line */
+
+  static Style = theme => emotion_css`
+    ${levelShared(theme)}
+    align-items: center;
+    justify-content: flex-end;
+    /* Responsiveness */
+    ${tablet(theme)`
       display: flex;
-    }
-    ${LevelLeft} + ${LevelRight} { /* stylelint-disable-line */
-      margin-top: 0;
-    }
-    ${LevelItem} { /* stylelint-disable-line */
-      margin-right: 0.75rem;
-    }
-    ${LevelItem}:not(:last-child) {
-      margin-bottom: 0;
-    }
-    ${LevelItem}:not(.is-narrow) {
-      flex-grow: 1;
-    }
+    `}
+  `
+}
+
+export class LevelLeft extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
   }
-  /* Responsiveness */
-  ${tablet`
-    display: flex;
-    & > .level-item {
-      &:not(.is-narrow) {
+
+  static Style = theme => emotion_css`
+    ${levelShared(theme)}
+    align-items: center;
+    justify-content: flex-start;
+    /* Responsiveness */
+    ${mobile(theme)`
+      & + .${LevelRight.name} {
+        margin-top: 1.5rem;
+      }
+    `}
+    ${tablet(theme)`
+      display: flex;
+    `}
+  `
+}
+
+export default class Level extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'div',
+  }
+
+  static Style = theme => emotion_css`
+    ${block}
+    align-items: center;
+    justify-content: space-between;
+    code {
+      border-radius: ${theme['radius']}
+    }
+    img {
+      display: inline-block;
+      vertical-align: top;
+    }
+    /* Modifiers */
+    &.is-mobile {
+      display: flex;
+      .${LevelLeft.name},
+      .${LevelRight.name} { /* stylelint-disable-line */
+        display: flex;
+      }
+      .${LevelLeft.name} + .${LevelRight.name} { /* stylelint-disable-line */
+        margin-top: 0;
+      }
+      .${LevelItem.name} { /* stylelint-disable-line */
+        margin-right: 0.75rem;
+      }
+      .${LevelItem.name}:not(:last-child) {
+        margin-bottom: 0;
+      }
+      .${LevelItem.name}:not(.is-narrow) {
         flex-grow: 1;
       }
     }
-  `}
-`
+    /* Responsiveness */
+    ${tablet(theme)`
+      display: flex;
+      & > .level-item {
+        &:not(.is-narrow) {
+          flex-grow: 1;
+        }
+      }
+    `}
+  `
+}
 Level.Right = LevelRight
 Level.Left = LevelLeft
 Level.Item = LevelItem
