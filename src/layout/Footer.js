@@ -1,12 +1,18 @@
-import styled from 'styled-components'
+import { css as emotion_css } from 'emotion'
 import Vars from '../utilities/vars'
-import { fromTheme } from '../utilities/functions'
+import { BaseWithConsumer } from '../base/Class'
 
 Vars.addDerivedDefault(vars => ({
   'footer-background-color': vars['white-bis'],
 }))
 
-export const Footer = styled.footer`
-  background-color: ${fromTheme('footer-background-color')};
-  padding: 3rem 1.5rem 6rem;
-`
+export default class Footer extends BaseWithConsumer {
+  static defaultProps = {
+    as: 'footer',
+  }
+
+  static Style = theme => emotion_css`
+    background-color: ${theme['footer-background-color']};
+    padding: 3rem 1.5rem 6rem;
+  `
+}

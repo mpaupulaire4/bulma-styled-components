@@ -55,7 +55,7 @@
     mojs
   </Panel.Block>
   <Panel.Block as="a">
-    <Input type="checkbox" />
+    <input type="checkbox" />
     remember me
   </Panel.Block>
   <Panel.Block>
