@@ -37,7 +37,7 @@
   </Tabs>
 </BulmaStyledTheme>
 ```
-# Rouned Toggle
+# Rounded Toggle
 ``` react
 <BulmaStyledTheme>
   <Tabs className="is-toggle is-toggle-rounded">
