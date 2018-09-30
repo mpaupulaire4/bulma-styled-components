@@ -1,4 +1,4 @@
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { BaseWithConsumer } from '../base/Class'
 import Button from './Button'
 import Vars from '../utilities/vars'
@@ -15,7 +15,7 @@ export default class Icon extends BaseWithConsumer {
     as: 'span',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     align-items: center;
     display: inline-flex;
     justify-content: center;

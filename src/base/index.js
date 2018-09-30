@@ -1,5 +1,5 @@
 import React from 'react'
-import { injectGlobal as emotion_injectGlobal } from 'emotion'
+import { injectGlobal } from 'emotion'
 import Vars from '../utilities/vars'
 import minireset from './minireset'
 import getGeneric from './generic'
@@ -20,7 +20,7 @@ export class BulmaStyledTheme extends React.PureComponent {
 
   componentWillMount() {
     const vars = Vars.getVariables(this.props.overrides)
-    return emotion_injectGlobal`
+    return injectGlobal`
       ${minireset}
       ${getGeneric(vars)}
       ${Helpers(vars)}

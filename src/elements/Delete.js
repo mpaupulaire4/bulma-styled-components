@@ -1,4 +1,4 @@
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { rgba } from 'polished'
 import { BaseWithConsumer } from '../base/Class'
 import { unselectable } from '../utilities/mixins'
@@ -8,7 +8,7 @@ export default class Delete extends BaseWithConsumer {
     as: 'button',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${unselectable}
     appearance: none;
     background-color: ${rgba(theme['black'], 0.2)};

@@ -1,6 +1,6 @@
-import { keyframes as emotion_keyframes } from 'emotion'
+import { keyframes } from 'emotion'
 
-export const spinAround = emotion_keyframes`
+export const spinAround = keyframes`
   from {
     transform: rotate(0deg);
   }

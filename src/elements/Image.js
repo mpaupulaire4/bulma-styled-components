@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { BaseWithConsumer } from '../base/Class'
 import Vars from '../utilities/vars'
 import { overlay } from '../utilities/mixins'
@@ -13,7 +13,7 @@ export default class Image extends BaseWithConsumer {
     as: 'figure',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     display: block;
     position: relative;
     img {

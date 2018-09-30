@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 import { block, unselectable } from '../utilities/mixins'
@@ -22,7 +22,7 @@ export default class Breadcrumb extends BaseWithConsumer {
     as: 'nav',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${block}
     ${unselectable}
     font-size: ${theme['size-normal']};

@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { BaseWithConsumer } from '../base/Class'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
@@ -9,7 +9,7 @@ Vars.addDerivedDefault(vars => ({
   'progress-value-background-color': vars['text'],
 }))
 
-const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [color]]) => emotion_css`
+const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [color]]) => css`
   ${acc}
   &.is-${name} {
     &::-webkit-progress-value {
@@ -29,7 +29,7 @@ export default class Progress extends BaseWithConsumer {
     as: 'progress',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${block}
     appearance: none;
     border: none;

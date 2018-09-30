@@ -1,4 +1,4 @@
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import Vars from '../utilities/vars'
 import { desktop } from '../utilities/mixins'
 import { BaseWithConsumer } from '../base/Class'
@@ -9,12 +9,12 @@ Vars.addDerivedDefault(() => ({
   'section-padding-large': '18rem 1.5rem',
 }))
 
-export class Section extends BaseWithConsumer {
+export default class Section extends BaseWithConsumer {
   static defaultProps = {
     as: 'section',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     padding: ${theme['section-padding']};
     /* Responsiveness */
     ${desktop(theme)`

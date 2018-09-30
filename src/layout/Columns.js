@@ -1,4 +1,4 @@
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 import {
@@ -15,7 +15,7 @@ export default class Columns extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     margin-left: (-${theme['column-gap']});
     margin-right: (-${theme['column-gap']});
     margin-top: (-${theme['column-gap']});

@@ -1,14 +1,14 @@
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { tablet } from '../utilities/mixins'
 import { BaseWithConsumer } from '../base/Class'
 
 
-export class Tile extends BaseWithConsumer {
+export default class Tile extends BaseWithConsumer {
   static defaultProps = {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     align-items: stretch;
     display: block;
     flex-basis: 0;

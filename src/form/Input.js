@@ -1,4 +1,4 @@
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { rgba } from 'polished'
 import { BaseWithConsumer } from '../base/Class'
 import Vars from '../utilities/vars'
@@ -29,7 +29,7 @@ Vars.addDerivedDefault(vars => ({
   'input-disabled-border-color': vars['background'],
 }))
 
-export const InputSelectShared = theme => emotion_css`
+export const InputSelectShared = theme => css`
   ${control(theme)}
   background-color: ${theme['input-background-color']};
   border-color: ${theme['input-border-color']};
@@ -58,7 +58,7 @@ export const InputSelectShared = theme => emotion_css`
     `}
   }
 `
-const ITSharedColorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name, [color]]) => emotion_css`
+const ITSharedColorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name, [color]]) => css`
   ${acc}
   &.is-${/* sc-custom 'blue' */name} {
     border-color: ${color};
@@ -70,7 +70,7 @@ const ITSharedColorClasses = theme => Object.entries(theme['colors']).reduce((ac
     }
   }
 `, '')
-export const InputTextareaShared = theme => emotion_css`
+export const InputTextareaShared = theme => css`
   ${InputSelectShared(theme)}
   box-shadow: ${theme['input-shadow']};
   max-width: 100%;
@@ -106,7 +106,7 @@ export default class Input extends BaseWithConsumer {
     as: 'input',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${InputTextareaShared(theme)}
     &.is-rounded {
       border-radius: ${theme['radius-rounded']};

@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity, no-duplicate-selectors */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { rgba } from 'polished'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
@@ -37,7 +37,7 @@ Vars.addDerivedDefault(vars => ({
   'pagination-shadow-inset': `inset 0 1px 2px ${rgba(vars['black'], 0.2)}`,
 }))
 
-const PaginationPreviousNextLinkEllipsisShared = theme => emotion_css`
+const PaginationPreviousNextLinkEllipsisShared = theme => css`
   ${control(theme)}
   ${unselectable}
   font-size: 1em;
@@ -48,7 +48,7 @@ const PaginationPreviousNextLinkEllipsisShared = theme => emotion_css`
   text-align: center;
 `
 
-const PaginationPreviousNextLinkShared = theme => emotion_css`
+const PaginationPreviousNextLinkShared = theme => css`
   border-color: ${theme['pagination-border-color']};
   color: ${theme['pagination-color']};
   min-width: 2.25em;
@@ -70,7 +70,7 @@ const PaginationPreviousNextLinkShared = theme => emotion_css`
     opacity: 0.5;
   }
 `
-const PreviousNextShared = theme => emotion_css`
+const PreviousNextShared = theme => css`
   ${PaginationPreviousNextLinkEllipsisShared(theme)}
   ${PaginationPreviousNextLinkShared(theme)}
   padding-left: 0.75em;
@@ -86,7 +86,7 @@ export class PaginationPrevious extends BaseWithConsumer {
     as: 'a',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${PreviousNextShared(theme)}
     ${tablet(theme)`
       order: 2;
@@ -100,7 +100,7 @@ export class PaginationNext extends BaseWithConsumer {
     as: 'a',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${PreviousNextShared(theme)}
     ${tablet(theme)`
       order: 3;
@@ -113,7 +113,7 @@ export class PaginationLink extends BaseWithConsumer {
     as: 'a',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${PaginationPreviousNextLinkEllipsisShared(theme)}
     ${PaginationPreviousNextLinkShared(theme)}
     &.is-current {
@@ -129,7 +129,7 @@ export class PaginationEllipsis extends BaseWithConsumer {
     as: 'span',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${PaginationPreviousNextLinkEllipsisShared(theme)}
     color: ${theme['pagination-ellipsis-color']};
     pointer-events: none;
@@ -148,7 +148,7 @@ export class PaginationList extends BaseWithConsumer {
     as: 'ul',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${PaginationListShared}
     flex-wrap: wrap;
     ${mobile(theme)`
@@ -171,7 +171,7 @@ export default class Pagination extends BaseWithConsumer {
     as: 'nav',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${PaginationListShared}
     font-size: ${theme['size-normal']};
     margin: ${theme['pagination-margin']};

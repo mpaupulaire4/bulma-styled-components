@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { Base } from '../base/Class'
 
 export default class Tags extends Base {
@@ -7,7 +7,7 @@ export default class Tags extends Base {
     as: 'div',
   }
 
-  static Style = () => emotion_css`
+  static Style = () => css`
     align-items: center;
     display: flex;
     flex-wrap: wrap;

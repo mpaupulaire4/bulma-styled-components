@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { BaseWithConsumer } from '../base/Class'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
@@ -16,7 +16,7 @@ Vars.addDerivedDefault(vars => ({
   'notification-padding': '1.25rem 2.5rem 1.25rem 1.5rem',
 }))
 
-const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [color, color_invert]]) => emotion_css`
+const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [color, color_invert]]) => css`
   ${acc}
   &.is-${name} {
     background-color: ${color};
@@ -29,7 +29,7 @@ export default class Notification extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${block}
     background-color: ${theme['notification-background-color']};
     border-radius: ${theme['notification-radius']};

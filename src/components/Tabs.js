@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 import Icon from '../elements/Icon'
@@ -40,7 +40,7 @@ export default class Tabs extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${block}
     ${overflow_touch}
     ${unselectable}

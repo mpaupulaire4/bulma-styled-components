@@ -1,5 +1,5 @@
 /* eslint-disable react/no-multi-comp */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { block, loader } from '../utilities/mixins'
 import { Base, BaseWithConsumer } from '../base/Class'
 
@@ -8,7 +8,7 @@ export class Block extends Base {
     as: 'div',
   }
 
-  static Style = () => emotion_css`${block}`
+  static Style = () => css`${block}`
 }
 
 export class Heading extends Base {
@@ -16,7 +16,7 @@ export class Heading extends Base {
     as: 'h6',
   }
 
-  static Style = () => emotion_css`
+  static Style = () => css`
     display: block;
     font-size: 11px;
     letter-spacing: 1px;
@@ -30,7 +30,7 @@ export class Highlight extends BaseWithConsumer {
     as: 'strong',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${block}
     font-weight: ${theme['weight-normal']};
     max-width: 100%;
@@ -48,7 +48,7 @@ export class Loader extends Base {
     as: 'div',
   }
 
-  static Style = () => emotion_css`${loader}`
+  static Style = () => css`${loader}`
 }
 
 export class Num extends BaseWithConsumer {
@@ -56,7 +56,7 @@ export class Num extends BaseWithConsumer {
     as: 'span',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     align-items: center;
     background-color: ${theme['background']};
     border-radius: ${theme['radius-rounded']};

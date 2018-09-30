@@ -1,4 +1,4 @@
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 
@@ -11,7 +11,7 @@ export default class Footer extends BaseWithConsumer {
     as: 'footer',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     background-color: ${theme['footer-background-color']};
     padding: 3rem 1.5rem 6rem;
   `

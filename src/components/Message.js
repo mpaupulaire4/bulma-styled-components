@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { getLuminance, parseToHsl, lighten, desaturate, darken } from 'polished'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
@@ -35,7 +35,7 @@ export class MessageBody extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     border-color: ${theme['message-body-border-color']};
     border-radius: ${theme['message-body-radius']};
     border-style: solid;
@@ -58,7 +58,7 @@ export class MessageHeader extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     align-items: center;
     background-color: ${theme['message-header-background-color']};
     border-radius: ${theme['message-header-radius']} ${theme['message-header-radius']} 0 0;
@@ -90,7 +90,7 @@ const colorClasses = theme => Object.entries(theme.colors)
     const color_luminance = getLuminance(color)
     const darken_percentage = color_luminance * 0.7
     const desaturate_percentage = color_luminance * 0.3
-    return emotion_css`
+    return css`
       ${acc}
       &.is-${name} {
         background-color: ${lighten(color_lightning, color)};
@@ -111,7 +111,7 @@ export default class Message extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${block}
     background-color: ${theme['message-background-color']};
     border-radius: ${theme['message-radius']};

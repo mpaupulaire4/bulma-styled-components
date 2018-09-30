@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { rgba, darken, saturate, adjustHue, lighten } from 'polished'
 import { touch, overlay, tablet, mobile } from '../utilities/mixins'
 import Button from '../elements/Button'
@@ -15,7 +15,7 @@ import { Base, BaseWithConsumer } from '../base/Class'
 const heroColorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name, [color, color_invert]]) => {
   const gradient_top_left = darken(0.1, saturate(0.1, adjustHue(350, color)))
   const gradient_bottom_right = lighten(0.05, saturate(0.05, adjustHue(10, color)))
-  return emotion_css`
+  return css`
     ${acc}
     &.is-${/* sc-custom 'blue' */name} {
       background-color: ${color};
@@ -107,7 +107,7 @@ class HeroBody extends Base {
     as: 'div',
   }
 
-  static Style = () => emotion_css`
+  static Style = () => css`
     flex-grow: 1;
     flex-shrink: 0;
     padding: 3rem 1.5rem;
@@ -120,7 +120,7 @@ export default class Hero extends BaseWithConsumer {
     as: 'section',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     align-items: stretch;
     display: flex;
     flex-direction: column;
@@ -184,7 +184,7 @@ class HeroVideo extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${overlay()}
     overflow: hidden;
     video {
@@ -212,7 +212,7 @@ class HeroButtons extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     margin-top: 1.5rem;
     /* Responsiveness */
     ${mobile(theme)`
@@ -241,7 +241,7 @@ class HeroHead extends Base {
     as: 'div',
   }
 
-  static Style = () => emotion_css`
+  static Style = () => css`
     flex-grow: 0;
     flex-shrink: 0;
   `
@@ -253,7 +253,7 @@ class HeroFoot extends Base {
     as: 'div',
   }
 
-  static Style = () => emotion_css`
+  static Style = () => css`
     flex-grow: 0;
     flex-shrink: 0;
   `

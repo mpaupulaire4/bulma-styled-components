@@ -1,4 +1,4 @@
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 
@@ -12,7 +12,7 @@ export default class Label extends BaseWithConsumer {
     as: 'label',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     color: ${theme['label-color']};
     display: block;
     font-size: ${theme['size-normal']};
