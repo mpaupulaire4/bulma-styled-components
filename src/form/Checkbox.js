@@ -1,4 +1,4 @@
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 
@@ -8,7 +8,7 @@ Vars.addDerivedDefault(vars => ({
   'input-disabled-color': vars['text-light'],
 }))
 
-export const CheckboxRadioShared = theme => emotion_css`
+export const CheckboxRadioShared = theme => css`
   cursor: pointer;
   display: inline-block;
   line-height: 1.25;

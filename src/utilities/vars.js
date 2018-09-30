@@ -6,7 +6,7 @@ export default class VarCalculator {
   static _derived = []
   static _recalc = false
 
-  static getVariables = (overrides) => {
+  static getVariables(overrides) {
     if (this._overrides === overrides && !this._recalc) {
       return this._variables
     }

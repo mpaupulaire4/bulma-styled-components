@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { rgba, darken } from 'polished'
 import Vars from '../utilities/vars'
 import { unselectable } from '../utilities/mixins'
@@ -21,7 +21,7 @@ Vars.addDerivedDefault(vars => ({
   'file-name-max-width': '16em',
 }))
 
-const CTANameShared = theme => emotion_css`
+const CTANameShared = theme => css`
   ${control(theme)}
   border-color: ${theme['file-border-color']};
   border-radius: ${theme['file-radius']};
@@ -36,7 +36,7 @@ export class FileCTA extends BaseWithConsumer {
     as: 'span',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${CTANameShared(theme)}
     background-color: ${theme['file-cta-background-color']};
     color: ${theme['file-cta-color']};
@@ -49,7 +49,7 @@ export class FileName extends BaseWithConsumer {
     as: 'span',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${CTANameShared(theme)}
     border-color: ${theme['file-name-border-color']};
     border-style: ${theme['file-name-border-style']};
@@ -68,7 +68,7 @@ export class FileIcon extends Base {
     as: 'span',
   }
 
-  static Style = () => emotion_css`
+  static Style = () => css`
     align-items: center;
     display: flex;
     height: 1em;
@@ -87,7 +87,7 @@ export class FileLabel extends BaseWithConsumer {
     as: 'label',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     align-items: stretch;
     display: flex;
     cursor: pointer;
@@ -121,7 +121,7 @@ export class FileInput extends Base {
     type: 'file',
   }
 
-  static Style = () => emotion_css`
+  static Style = () => css`
     height: 0.01em;
     left: 0;
     outline: none;
@@ -131,7 +131,7 @@ export class FileInput extends Base {
   `
 }
 
-const FileColorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name, [color, color_invert]]) => emotion_css`
+const FileColorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name, [color, color_invert]]) => css`
   ${acc}
   &.is-${name} {
     .${/* sc-custom '.CTA' */FileCTA.name} {
@@ -171,7 +171,7 @@ export default class File extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${unselectable}
     align-items: stretch;
     display: flex;

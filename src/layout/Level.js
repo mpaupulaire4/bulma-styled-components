@@ -1,4 +1,4 @@
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import {
   block,
   tablet,
@@ -13,7 +13,7 @@ export class LevelItem extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     align-items: center;
     display: flex;
     flex-basis: auto;
@@ -34,7 +34,7 @@ export class LevelItem extends BaseWithConsumer {
   `
 }
 
-const levelShared = theme => emotion_css`
+const levelShared = theme => css`
   flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 0;
@@ -57,7 +57,7 @@ export class LevelRight extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${levelShared(theme)}
     align-items: center;
     justify-content: flex-end;
@@ -73,7 +73,7 @@ export class LevelLeft extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${levelShared(theme)}
     align-items: center;
     justify-content: flex-start;
@@ -94,7 +94,7 @@ export default class Level extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${block}
     align-items: center;
     justify-content: space-between;

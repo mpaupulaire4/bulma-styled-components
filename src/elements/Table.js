@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { BaseWithConsumer, Base } from '../base/Class'
 import Vars from '../utilities/vars'
 import { block, overflow_touch } from '../utilities/mixins'
@@ -33,7 +33,7 @@ export class TableContainer extends Base {
     as: 'h2',
   }
 
-  static Style = () => emotion_css`
+  static Style = () => css`
     ${block}
     ${overflow_touch}
     overflow: auto;
@@ -42,7 +42,7 @@ export class TableContainer extends Base {
   `
 }
 
-const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [color, color_invert]]) => emotion_css`
+const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [color, color_invert]]) => css`
   ${acc}
   &.is-${name} {
     background-color: ${color};
@@ -56,7 +56,7 @@ export default class Table extends BaseWithConsumer {
     as: 'table',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${block}
     background-color: ${theme['table-background-color']};
     color: ${theme['table-color']};

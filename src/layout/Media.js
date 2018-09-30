@@ -1,4 +1,4 @@
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { rgba } from 'polished'
 import { BaseWithConsumer, Base } from '../base/Class'
 import Content from '../elements/Content'
@@ -9,7 +9,7 @@ export default class Media extends BaseWithConsumer {
     as: 'article',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     align-items: flex-start;
     display: flex;
     text-align: left;
@@ -58,7 +58,7 @@ export class MediaLeft extends Base {
     as: 'div',
   }
 
-  static Style = () => emotion_css`
+  static Style = () => css`
     ${mediaShared}
     margin-right: 1rem;
   `
@@ -68,7 +68,7 @@ export class MediaRight extends Base {
     as: 'div',
   }
 
-  static Style = () => emotion_css`
+  static Style = () => css`
     ${mediaShared}
     margin-left: 1rem;
   `
@@ -78,7 +78,7 @@ export class MediaContent extends Base {
     as: 'div',
   }
 
-  static Style = () => emotion_css`
+  static Style = () => css`
     flex-basis: auto;
     flex-grow: 1;
     flex-shrink: 1;

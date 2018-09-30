@@ -1,9 +1,9 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { rgba } from 'polished'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer, Base } from '../base/Class'
-import { Media } from '../layout/Media'
+import Media from '../layout/Media'
 
 Vars.addDerivedDefault(vars => ({
   'card-color': vars['text'],
@@ -26,7 +26,7 @@ export default class Card extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     background-color: ${theme['card-background-color']};
     box-shadow: ${theme['card-shadow']};
     color: ${theme['card-color']};
@@ -44,7 +44,7 @@ export class CardHeader extends BaseWithConsumer {
     as: 'header',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     background-color: ${theme['card-header-background-color']};
     align-items: stretch;
     box-shadow: ${theme['card-header-shadow']};
@@ -59,7 +59,7 @@ export class CardHeaderTitle extends BaseWithConsumer {
     as: 'p',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     align-items: center;
     color: ${theme['card-header-color']};
     display: flex;
@@ -79,7 +79,7 @@ export class CardHeaderIcon extends Base {
     as: 'div',
   }
 
-  static Style = () => emotion_css`
+  static Style = () => css`
     align-items: center;
     cursor: pointer;
     display: flex;
@@ -95,7 +95,7 @@ export class CardImage extends Base {
     as: 'div',
   }
 
-  static Style = () => emotion_css`
+  static Style = () => css`
     display: block;
     position: relative;
   `
@@ -108,7 +108,7 @@ export class CardContent extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     background-color: ${theme['card-content-background-color']};
     padding: 1.5rem;
   `
@@ -121,7 +121,7 @@ export class CardFooter extends BaseWithConsumer {
     as: 'footer',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     background-color: ${theme['card-footer-background-color']};
     border-top: ${theme['card-footer-border-top']};
     align-items: stretch;
@@ -136,7 +136,7 @@ export class CardFooterItem extends BaseWithConsumer {
     as: 'span',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     align-items: center;
     display: flex;
     flex-basis: 0;

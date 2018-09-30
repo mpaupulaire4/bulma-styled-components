@@ -1,4 +1,4 @@
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { rgba } from 'polished'
 import { BaseWithConsumer } from '../base/Class'
 import Vars from '../utilities/vars'
@@ -19,7 +19,7 @@ export default class Box extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = (theme, { as }) => emotion_css`
+  static Style = (theme, { as }) => css`
     ${block}
     background-color: ${theme['box-background-color']};
     border-radius: ${theme['box-radius']};

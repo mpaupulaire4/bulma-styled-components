@@ -1,9 +1,9 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import Vars from '../utilities/vars'
 import { fa } from '../utilities/mixins'
 import { BaseWithConsumer } from '../base/Class'
-import { Control } from '../form/Control'
+import Control from '../form/Control'
 
 Vars.addDerivedDefault(vars => ({
   'panel-item-border': `1px solid ${vars['border']}`,
@@ -37,7 +37,7 @@ export default class Panel extends BaseWithConsumer {
     as: 'nav',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     font-size: ${theme['size-normal']};
     &:not(:last-child) {
       margin-bottom: 1.5rem;
@@ -45,7 +45,7 @@ export default class Panel extends BaseWithConsumer {
   `
 }
 
-const HeadingTabsBlockShared = theme => emotion_css`
+const HeadingTabsBlockShared = theme => css`
   border-bottom: ${theme['panel-item-border']};
   border-left: ${theme['panel-item-border']};
   border-right: ${theme['panel-item-border']};
@@ -59,7 +59,7 @@ export class PanelHeading extends BaseWithConsumer {
     as: 'header',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${HeadingTabsBlockShared(theme)}
     background-color: ${theme['panel-heading-background-color']};
     border-radius: ${theme['panel-heading-radius']} ${theme['panel-heading-radius']} 0 0;
@@ -77,7 +77,7 @@ export class PanelTabs extends BaseWithConsumer {
     as: 'p',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${HeadingTabsBlockShared(theme)}
     align-items: flex-end;
     display: flex;
@@ -102,7 +102,7 @@ export class PanelList extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     a {
       color: ${theme['panel-list-item-color']};
     }
@@ -118,7 +118,7 @@ export class PanelIcon extends BaseWithConsumer {
     as: 'span',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${fa('14px', '1em')}
     color: ${theme['panel-icon-color']};
     margin-right: 0.75em;
@@ -135,7 +135,7 @@ export class PanelBlock extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = (theme, { as }) => emotion_css`
+  static Style = (theme, { as }) => css`
     ${HeadingTabsBlockShared(theme)}
     align-items: center;
     color: ${theme['panel-block-color']};
@@ -145,7 +145,7 @@ export class PanelBlock extends BaseWithConsumer {
     input[type="checkbox"] {
       margin-right: 0.75em;
     }
-    & > .${/* sc-selector */'Control.name'} {
+    & > .${/* sc-selector */Control.name} {
       flex-grow: 1;
       flex-shrink: 1;
       width: 100%;

@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import Label from './Label'
 import Select from './Select'
 import Input from './Input'
@@ -16,7 +16,7 @@ export default class Field extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     &:not(:last-child) {
       margin-bottom: 0.75rem;
     }
@@ -135,7 +135,7 @@ export class FieldLabel extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     .${/* sc-custom '.label' */Label.name} {
       font-size: inherit;
     }
@@ -172,7 +172,7 @@ export class FieldBody extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     .${/* sc-custom '.field' */Field.name} .${/* sc-custom '.field' */Field.name} {
       margin-bottom: 0;
     }

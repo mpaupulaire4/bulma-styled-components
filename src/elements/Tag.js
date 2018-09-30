@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { darken } from 'polished'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
@@ -15,7 +15,7 @@ Vars.addDerivedDefault(vars => ({
   'tag-delete-margin': '1px',
 }))
 
-const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [color, color_invert]]) => emotion_css`
+const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [color, color_invert]]) => css`
   ${acc}
   &.is-${name} {
     background-color: ${color};
@@ -28,7 +28,7 @@ export default class Tag extends BaseWithConsumer {
     as: 'span',
   }
 
-  static Style = (theme, { as }) => emotion_css`
+  static Style = (theme, { as }) => css`
     align-items: center;
     background-color: ${theme['tag-background-color']};
     border-radius: ${theme['tag-radius']};
@@ -107,7 +107,7 @@ export default class Tag extends BaseWithConsumer {
       border-radius: ${theme['radius-rounded']};
     }
 
-    ${as === 'a' ? emotion_css`
+    ${as === 'a' ? css`
       &:hover {
         text-decoration: underline;
       }

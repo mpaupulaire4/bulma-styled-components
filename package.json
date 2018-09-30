@@ -4,7 +4,7 @@
   "description": "A Styled Components implementation of Bulma Css for React.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "NODE_ENV='production' rollup -c",
     "lint:style": "stylelint './src/**/*.js'",
     "lint:js": "eslint 'src'",
     "lint": "npm run lint:js && npm run lint:style",
@@ -24,7 +24,7 @@
   ],
   "keywords": [
     "bulma",
-    "styled-components",
+    "emotion",
     "styled",
     "components",
     "react",
@@ -40,8 +40,7 @@
     "polished": "^1.9.2"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
-    "styled-components": "^3.0.0"
+    "react": "^16.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -50,7 +49,6 @@
     "babel-loader": "^7.1.5",
     "babel-plugin-emotion": "^9.2.10",
     "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-styled-components": "^1.5.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
@@ -70,7 +68,7 @@
     "rollup-plugin-commonjs": "^9.1.8",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
-    "styled-components": "^3.3.3",
+    "rollup-plugin-uglify": "^6.0.0",
     "stylelint": "^9.2.1",
     "stylelint-config-recommended": "^2.1.0",
     "stylelint-config-styled-components": "^0.1.1",

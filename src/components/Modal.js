@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { rgba } from 'polished'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
@@ -46,7 +46,7 @@ export default class Modal extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${overlay()}
     align-items: center;
     display: none;
@@ -68,7 +68,7 @@ export class ModalBackground extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${overlay()}
     background-color: ${theme['modal-background-background-color']};
   `
@@ -76,7 +76,7 @@ export class ModalBackground extends BaseWithConsumer {
 
 Modal.Background = ModalBackground
 
-const ContentCardShared = theme => emotion_css`
+const ContentCardShared = theme => css`
   margin: 0 ${theme['modal-content-margin-mobile']};
   max-height: calc(100vh - ${theme['modal-content-spacing-mobile']});
   overflow: auto;
@@ -105,7 +105,7 @@ export class ModalClose extends BaseWithConsumer {
     as: 'button',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${Delete.Style(theme)}
     background: none;
     height: ${theme['modal-close-dimensions']};
@@ -123,7 +123,7 @@ export class ModalCard extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${ContentCardShared(theme)}
     display: flex;
     flex-direction: column;
@@ -134,7 +134,7 @@ export class ModalCard extends BaseWithConsumer {
 
 Modal.Card = ModalCard
 
-const CardHeadFootShared = theme => emotion_css`
+const CardHeadFootShared = theme => css`
   align-items: center;
   background-color: ${theme['modal-card-head-background-color']};
   display: flex;
@@ -149,7 +149,7 @@ export class ModalCardHead extends BaseWithConsumer {
     as: 'header',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${CardHeadFootShared(theme)}
     border-bottom: ${theme['modal-card-head-border-bottom']};
     border-top-left-radius: ${theme['modal-card-head-radius']};
@@ -164,7 +164,7 @@ export class ModalCardTitle extends BaseWithConsumer {
     as: 'p',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     color: ${theme['modal-card-title-color']};
     flex-grow: 1;
     flex-shrink: 0;
@@ -180,7 +180,7 @@ export class ModalCardFoot extends BaseWithConsumer {
     as: 'footer',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${CardHeadFootShared(theme)}
     border-bottom-left-radius: ${theme['modal-card-foot-radius']};
     border-bottom-right-radius: ${theme['modal-card-foot-radius']};
@@ -200,7 +200,7 @@ export class ModalCardBody extends BaseWithConsumer {
     as: 'section',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${overflow_touch}
     background-color: ${theme['modal-card-body-background-color']};
     flex-grow: 1;

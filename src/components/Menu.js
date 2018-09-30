@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 
@@ -23,7 +23,7 @@ export default class Menu extends BaseWithConsumer {
     as: 'aside',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     font-size: ${theme['size-normal']};
     /* Sizes */
     &.is-small {
@@ -43,7 +43,7 @@ export class MenuList extends BaseWithConsumer {
     as: 'ul',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     line-height: 1.25;
     a {
       border-radius: ${theme['menu-item-radius']};
@@ -76,7 +76,7 @@ export class MenuLabel extends BaseWithConsumer {
     as: 'p',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     color: ${theme['menu-label-color']};
     font-size: 0.75em;
     letter-spacing: 0.1em;

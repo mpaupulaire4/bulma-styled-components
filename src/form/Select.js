@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { rgba, darken } from 'polished'
 import Vars from '../utilities/vars'
 import { arrow, loader } from '../utilities/mixins'
@@ -37,7 +37,7 @@ Vars.addDerivedDefault(vars => ({
   'input-radius': vars['radius'],
 }))
 
-const SelectColorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name, [color]]) => emotion_css`
+const SelectColorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name, [color]]) => css`
   ${acc}
   &.is-${name} {
     &:not(:hover)::after {
@@ -64,7 +64,7 @@ export default class Select extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     display: inline-block;
     max-width: 100%;
     position: relative;

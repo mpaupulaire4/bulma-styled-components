@@ -1,10 +1,9 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 import { block } from '../utilities/mixins'
 import Tag from './Tag'
-import Subtitle from './Subtitle'
 import { Highlight } from './other'
 
 Vars.addDerivedDefault(vars => ({
@@ -25,7 +24,7 @@ export default class Title extends BaseWithConsumer {
     as: 'h1',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${block}
     word-break: break-word;
     em,
@@ -52,7 +51,7 @@ export default class Title extends BaseWithConsumer {
     & + .${Highlight.name} {
       margin-top: -0.75rem;
     }
-    &:not(.is-spaced) + .${/* sc-selector */Subtitle.name} {
+    &:not(.is-spaced) + .Subtitle {
       margin-top: ${theme['subtitle-negative-margin']};
     }
     /* Sizes */

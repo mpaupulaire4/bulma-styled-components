@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity, no-duplicate-selectors */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { rgba, darken } from 'polished'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer, Base } from '../base/Class'
@@ -62,14 +62,14 @@ Vars.addDerivedDefault(vars => ({
 }))
 
 
-const navbar_fixed = theme => emotion_css`
+const navbar_fixed = theme => css`
   left: 0;
   position: fixed;
   right: 0;
   z-index: ${theme['navbar-fixed-z']};
 `
 
-const itemLinkShared = theme => emotion_css`
+const itemLinkShared = theme => css`
   color: ${theme['navbar-item-color']};
   display: block;
   line-height: 1.5;
@@ -86,7 +86,7 @@ const itemLinkShared = theme => emotion_css`
     display: flex;
   `}
 `
-const NavbarLinkPartialStyles = theme => emotion_css`
+const NavbarLinkPartialStyles = theme => css`
   cursor: pointer;
   &:hover,
   &.is-active {
@@ -108,7 +108,7 @@ export class NavbarLink extends BaseWithConsumer {
     as: 'a',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${itemLinkShared(theme)}
     ${NavbarLinkPartialStyles(theme)}
     &:not(.is-arrowless) {
@@ -133,7 +133,7 @@ export class NavbarDropdown extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     font-size: 0.875rem;
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
@@ -164,7 +164,7 @@ export class NavbarItem extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = (theme, { as }) => emotion_css`
+  static Style = (theme, { as }) => css`
     display: block;
     flex-grow: 0;
     flex-shrink: 0;
@@ -257,7 +257,7 @@ export class NavbarItem extends BaseWithConsumer {
 }
 
 
-const brandTabsShared = theme => emotion_css`
+const brandTabsShared = theme => css`
   align-items: stretch;
   display: flex;
   flex-shrink: 0;
@@ -274,7 +274,7 @@ export class NavbarBrand extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${brandTabsShared(theme)}
     a.${/* sc-custom '.navbar-item' */NavbarItem.name} {
       &:hover {
@@ -285,7 +285,7 @@ export class NavbarBrand extends BaseWithConsumer {
 }
 
 
-const navStartEndMenuShared = theme => emotion_css`
+const navStartEndMenuShared = theme => css`
   ${desktop(theme)`
       align-items: stretch;
       display: flex;
@@ -297,7 +297,7 @@ export class NavbarStart extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${navStartEndMenuShared(theme)}
     ${desktop(theme)`
       justify-content: flex-start;
@@ -312,7 +312,7 @@ export class NavbarEnd extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${navStartEndMenuShared(theme)}
     ${desktop(theme)`
       justify-content: flex-end;
@@ -327,7 +327,7 @@ export class NavbarMenu extends BaseWithConsumer {
     as: 'nav',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     display: none;
     ${touch(theme)`
       background-color: ${theme['navbar-background-color']};
@@ -346,7 +346,7 @@ export class NavbarMenu extends BaseWithConsumer {
 }
 
 
-const colorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name, [color, color_invert]]) => emotion_css`
+const colorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name, [color, color_invert]]) => css`
   ${acc}
   &.is-${name} {
     background-color: ${color};
@@ -413,7 +413,7 @@ export default class Navbar extends BaseWithConsumer {
     as: 'nav',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     background-color: ${theme['navbar-background-color']};
     min-height: ${theme['navbar-height']};
     position: relative;
@@ -556,7 +556,7 @@ export class NavbarTabs extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     max-width: 100vw;
     overflow-x: auto;
     overflow-y: hidden;
@@ -571,7 +571,7 @@ export class NavbarBurger extends BaseWithConsumer {
     as: 'a',
   }
 
-  static Style = (theme, props) => emotion_css`
+  static Style = (theme, props) => css`
     color: ${theme['navbar-burger-color']};
     ${hamburger(theme['navbar-height'], theme, props)};
     margin-left: auto;
@@ -587,7 +587,7 @@ export class NavbarContent extends Base {
     as: 'div',
   }
 
-  static Style = () => emotion_css`
+  static Style = () => css`
     flex-grow: 1;
     flex-shrink: 1;
   `
@@ -599,7 +599,7 @@ export class NavbarDivider extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     background-color: ${theme['navbar-divider-background-color']};
     border: none;
     display: none;

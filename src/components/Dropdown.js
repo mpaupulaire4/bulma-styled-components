@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { rgba } from 'polished'
 import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
@@ -27,7 +27,7 @@ export class DropdownMenu extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     display: none;
     left: 0;
     min-width: 12rem;
@@ -43,7 +43,7 @@ export default class Dropdown extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     display: inline;
     position: relative;
     vertical-align: top;
@@ -77,7 +77,7 @@ export class DropdownContent extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     background-color: ${theme['dropdown-content-background-color']};
     border-radius: ${theme['dropdown-content-radius']};
     box-shadow: ${theme['dropdown-content-shadow']};
@@ -92,7 +92,7 @@ export class DropdownItem extends BaseWithConsumer {
     as: 'a',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     color: ${theme['dropdown-item-color']};
     display: block;
     font-size: 0.875rem;
@@ -120,7 +120,7 @@ export class DropdownDivider extends BaseWithConsumer {
     as: 'hr',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     background-color: ${theme['dropdown-divider-background-color']};
     border: none;
     display: block;

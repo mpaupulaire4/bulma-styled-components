@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import Icon from '../elements/Icon'
 import Select from './Select'
 import Input from './Input'
@@ -17,7 +17,7 @@ export default class Control extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     clear: both; /* fixes the icon floating out of the input when help text is floated right */
     font-size: ${theme['size-normal']};
     position: relative;

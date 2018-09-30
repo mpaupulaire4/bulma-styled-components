@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css } from 'emotion'
 import { clearFix, darken } from 'polished'
 import {
   overlay,
@@ -20,6 +20,7 @@ const alignments = {
   left: 'left',
   right: 'right',
 }
+
 const displays = [
   'block',
   'flex',

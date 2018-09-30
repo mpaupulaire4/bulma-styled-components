@@ -1,16 +1,16 @@
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { rgba } from 'polished'
 import { spinAround } from './animations'
 
 export function center(width, height = false) {
   if (height) {
-    return emotion_css`
+    return css`
       position: absolute;
       left: calc(50% - (${width} / 2));
       top: calc(50% - (${height} / 2));
     `
   }
-  return emotion_css`
+  return css`
     position: absolute;
     left: calc(50% - (${width} / 2));
     top: calc(50% - (${width} / 2));
@@ -18,7 +18,7 @@ export function center(width, height = false) {
 }
 
 export function fa(size, dimensions) {
-  return emotion_css`
+  return css`
     display: inline-block;
     font-size: ${size};
     height: ${dimensions};
@@ -30,7 +30,7 @@ export function fa(size, dimensions) {
 }
 
 export function hamburger(dimensions, theme, { active }) {
-  return emotion_css`
+  return css`
     cursor: pointer;
     display: block;
     height: ${dimensions};
@@ -66,13 +66,13 @@ export function hamburger(dimensions, theme, { active }) {
   `
 }
 
-export const overflow_touch = emotion_css`
+export const overflow_touch = css`
   -webkit-overflow-scrolling: touch;
 `
 
 export const placeholder = (...args) => {
-  const content = emotion_css(...args)
-  return emotion_css`
+  const content = css(...args)
+  return css`
     &:-moz-placeholder {
       ${content}
     }
@@ -90,52 +90,52 @@ export const placeholder = (...args) => {
 
 // Responsiveness
 
-export const from = deviceType => (...args) => emotion_css`
+export const from = deviceType => (...args) => css`
   @media screen and (min-width: ${deviceType}) {
-    ${emotion_css(...args)}
+    ${css(...args)}
   }
 `
 
-export const untill = deviceType => (...args) => emotion_css`
+export const untill = deviceType => (...args) => css`
   @media screen and (max-width: ${deviceType} - 1px) {
-    ${emotion_css(...args)}
+    ${css(...args)}
   }
 `
 
-export const mobile = theme => (...args) => emotion_css`
+export const mobile = theme => (...args) => css`
   @media screen and (max-width: ${theme['tablet']} - 1px) {
-    ${emotion_css(...args)}
+    ${css(...args)}
   }
 `
-export const tablet = theme => (...args) => emotion_css`
+export const tablet = theme => (...args) => css`
   @media screen and (min-width: ${theme['tablet']}), print {
-    ${emotion_css(...args)}
+    ${css(...args)}
   }
 `
 
-export const tablet_only = theme => (...args) => emotion_css`
+export const tablet_only = theme => (...args) => css`
   @media screen and (min-width: ${theme['tablet']}) and (max-width: ${theme['desktop']} - 1px) {
-    ${emotion_css(...args)}
+    ${css(...args)}
   }
 `
 
-export const touch = theme => (...args) => emotion_css`
+export const touch = theme => (...args) => css`
   @media screen and (max-width: ${theme['desktop']} - 1px) {
-    ${emotion_css(...args)}
+    ${css(...args)}
   }
 `
 
-export const desktop = theme => (...args) => emotion_css`
+export const desktop = theme => (...args) => css`
   @media screen and (min-width: ${theme['desktop']}) {
-    ${emotion_css(...args)}
+    ${css(...args)}
   }
 `
 
 export const desktop_only = theme => (...args) => {
   if (theme['widescreen-enabled']) {
-    return emotion_css`
+    return css`
       @media screen and (min-width: ${theme['desktop']}) and (max-width: ${theme['widescreen']} - 1px) {
-        ${emotion_css(...args)}
+        ${css(...args)}
       }
     `
   }
@@ -144,9 +144,9 @@ export const desktop_only = theme => (...args) => {
 
 export const until_widescreen = theme => (...args) => {
   if (theme['widescreen-enabled']) {
-    return emotion_css`
+    return css`
       @media screen and (max-width: ${theme['widescreen']} - 1px) {
-        ${emotion_css(...args)}
+        ${css(...args)}
       }
     `
   }
@@ -155,9 +155,9 @@ export const until_widescreen = theme => (...args) => {
 
 export const widescreen = theme => (...args) => {
   if (theme['widescreen-enabled']) {
-    return emotion_css`
+    return css`
       @media screen and (min-width: ${theme['widescreen']}) {
-        ${emotion_css(...args)}
+        ${css(...args)}
       }
     `
   }
@@ -166,9 +166,9 @@ export const widescreen = theme => (...args) => {
 
 export const widescreen_only = theme => (...args) => {
   if (theme['fullhd-enabled'] && theme['widescreen-enabled']) {
-    return emotion_css`
+    return css`
       @media screen and (min-width: ${theme['widescreen']}) and (max-width: ${theme['fullhd']} - 1px) {
-        ${emotion_css(...args)}
+        ${css(...args)}
       }
     `
   }
@@ -177,9 +177,9 @@ export const widescreen_only = theme => (...args) => {
 
 export const until_fullhd = theme => (...args) => {
   if (theme['fullhd-enabled']) {
-    return emotion_css`
+    return css`
       @media screen and (max-width: ${theme['fullhd']} - 1px) {
-        ${emotion_css(...args)}
+        ${css(...args)}
       }
     `
   }
@@ -188,9 +188,9 @@ export const until_fullhd = theme => (...args) => {
 
 export const fullhd = theme => (...args) => {
   if (theme['fullhd-enabled']) {
-    return emotion_css`
+    return css`
       @media screen and (min-width: ${theme['fullhd']}) {
-        ${emotion_css(...args)}
+        ${css(...args)}
       }
     `
   }
@@ -199,12 +199,12 @@ export const fullhd = theme => (...args) => {
 
 // Placeholders
 
-export const unselectable = emotion_css`
+export const unselectable = css`
   -webkit-touch-callout: none;
   user-select: none;
 `
 
-export const arrow = color => emotion_css`
+export const arrow = color => css`
   border: 3px solid transparent;
   border-radius: 2px;
   border-right: 0;
@@ -222,13 +222,13 @@ export const arrow = color => emotion_css`
   border-color: ${color};
 `
 
-export const block = emotion_css`
+export const block = css`
   &:not(:last-child) {
     margin-bottom: 1.5rem;
   }
 `
 
-export const loader = theme => emotion_css`
+export const loader = theme => css`
   animation: ${spinAround} 500ms infinite linear;
   border: 2px solid ${theme['border']};
   border-radius: ${theme['radius-rounded']};
@@ -251,7 +251,7 @@ export function overlay(offset = 0) {
       top: ${offset};
     `
   }
-  return emotion_css`
+  return css`
     bottom: 0;
     left: 0;
     position: absolute;

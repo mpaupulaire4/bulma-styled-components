@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { rgba, darken } from 'polished'
 import { BaseWithConsumer } from '../base/Class'
 import Vars from '../utilities/vars'
@@ -42,7 +42,7 @@ Vars.addDerivedDefault(vars => ({
   'button-static-border-color': vars['grey-lighter'],
 }))
 
-const colorClasses = theme => Object.entries(theme.colors).map(([name, [color, color_invert]]) => emotion_css`
+const colorClasses = theme => Object.entries(theme.colors).map(([name, [color, color_invert]]) => css`
   &.is-${name} {
     /* Colors */
     background-color: ${color};
@@ -137,7 +137,7 @@ export default class Button extends BaseWithConsumer {
     as: 'button',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${control(theme)}
     ${unselectable}
     background-color: ${theme['button-background-color']};

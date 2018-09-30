@@ -1,4 +1,4 @@
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import Vars from '../utilities/vars'
 import Columns from './Columns'
 import { BaseWithConsumer } from '../base/Class'
@@ -17,7 +17,7 @@ Vars.addDerivedDefault(() => ({
 
 const onetotwelve = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 function map1to12(onEach) {
-  return onetotwelve.reduce((acc, num) => emotion_css`
+  return onetotwelve.reduce((acc, num) => css`
     ${acc}
     ${onEach(num)}
   `, '')
@@ -32,7 +32,7 @@ export default class Column extends BaseWithConsumer {
     as: 'div',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     display: block;
     flex-basis: 0;
     flex-grow: 1;

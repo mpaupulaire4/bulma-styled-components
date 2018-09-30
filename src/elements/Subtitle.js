@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import { css as emotion_css } from 'emotion'
+import { css } from 'emotion'
 import { BaseWithConsumer } from '../base/Class'
 import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
@@ -24,7 +24,7 @@ export default class Subtitle extends BaseWithConsumer {
     as: 'h2',
   }
 
-  static Style = theme => emotion_css`
+  static Style = theme => css`
     ${block}
     word-break: break-word;
     em,
@@ -52,7 +52,7 @@ export default class Subtitle extends BaseWithConsumer {
       margin-top: ${theme['subtitle-negative-margin']};
     }
     /* Sizes */
-    ${theme['sizes'].reduce((acc, size, i) => emotion_css`
+    ${theme['sizes'].reduce((acc, size, i) => css`
       ${acc}
       &.is-${i + 1} {
         font-size: ${size};
