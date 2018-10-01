@@ -4,7 +4,7 @@
   "description": "A Styled Components implementation of Bulma Css for React.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "NODE_ENV='production' rollup -c",
+    "build": "NODE_ENV=production rollup -c",
     "lint:style": "stylelint './src/**/*.js'",
     "lint:js": "eslint 'src'",
     "lint": "npm run lint:js && npm run lint:style",
@@ -68,7 +68,6 @@
     "rollup-plugin-commonjs": "^9.1.8",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-uglify": "^6.0.0",
     "stylelint": "^9.2.1",
     "stylelint-config-recommended": "^2.1.0",
     "stylelint-config-styled-components": "^0.1.1",
