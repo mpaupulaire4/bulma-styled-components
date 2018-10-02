@@ -1,13 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Catalog, pageLoader } from 'catalog'
+import { Catalog } from 'catalog'
 import * as Components from '../src'
 import Elements from '../src/elements/catalog'
 import Layout from '../src/layout/catalog'
 import Comps from '../src/components/catalog'
 import Form from '../src/form/catalog'
 import README from '../README.md'
+import Overrides from '../Overrides.md'
 
 const { BulmaStyledTheme } = Components
 
@@ -16,6 +17,11 @@ const pages = [
     path: '/',
     title: 'Introduction',
     content: README,
+  },
+  {
+    path: '/overrides',
+    title: 'Overriding',
+    content: Overrides,
   },
   Elements,
   Layout,
