@@ -42,7 +42,7 @@ Vars.addDerivedDefault(vars => ({
   'button-static-border-color': vars['grey-lighter'],
 }))
 
-const colorClasses = theme => Object.entries(theme.colors).map(([name, [color, color_invert]]) => css`
+const colorClasses = theme => Object.entries(theme.colors).map(([name, [color, color_invert]]) => `
   &.is-${name} {
     /* Colors */
     background-color: ${color};

@@ -4,13 +4,13 @@ import { spinAround } from './animations'
 
 export function center(width, height = false) {
   if (height) {
-    return css`
+    return `
       position: absolute;
       left: calc(50% - (${width} / 2));
       top: calc(50% - (${height} / 2));
     `
   }
-  return css`
+  return `
     position: absolute;
     left: calc(50% - (${width} / 2));
     top: calc(50% - (${width} / 2));
@@ -18,7 +18,7 @@ export function center(width, height = false) {
 }
 
 export function fa(size, dimensions) {
-  return css`
+  return `
     display: inline-block;
     font-size: ${size};
     height: ${dimensions};
@@ -30,7 +30,7 @@ export function fa(size, dimensions) {
 }
 
 export function hamburger(dimensions, theme, { active }) {
-  return css`
+  return `
     cursor: pointer;
     display: block;
     height: ${dimensions};
@@ -66,7 +66,7 @@ export function hamburger(dimensions, theme, { active }) {
   `
 }
 
-export const overflow_touch = css`
+export const overflow_touch = `
   -webkit-overflow-scrolling: touch;
 `
 
@@ -199,12 +199,12 @@ export const fullhd = theme => (...args) => {
 
 // Placeholders
 
-export const unselectable = css`
+export const unselectable = `
   -webkit-touch-callout: none;
   user-select: none;
 `
 
-export const arrow = color => css`
+export const arrow = color => `
   border: 3px solid transparent;
   border-radius: 2px;
   border-right: 0;
@@ -222,13 +222,13 @@ export const arrow = color => css`
   border-color: ${color};
 `
 
-export const block = css`
+export const block = `
   &:not(:last-child) {
     margin-bottom: 1.5rem;
   }
 `
 
-export const loader = theme => css`
+export const loader = theme => `
   animation: ${spinAround} 500ms infinite linear;
   border: 2px solid ${theme['border']};
   border-radius: ${theme['radius-rounded']};
@@ -251,7 +251,7 @@ export function overlay(offset = 0) {
       top: ${offset};
     `
   }
-  return css`
+  return `
     bottom: 0;
     left: 0;
     position: absolute;
