@@ -10,8 +10,7 @@
     [
       "emotion",
       {
-        "hoist": true,
-        "autoLabel": true
+        "hoist": true
       }
     ],
     "transform-runtime"

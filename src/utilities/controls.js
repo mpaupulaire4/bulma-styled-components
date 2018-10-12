@@ -1,6 +1,6 @@
 import { css } from 'emotion'
 
-export const control = theme => css`
+export const control = theme => `
   appearance: none;
   align-items: center;
   border: ${theme['control-border-width']} solid transparent;
@@ -32,13 +32,13 @@ export const control = theme => css`
 `
 
 // The controls sizes use mixins so they can be used at different breakpoints
-export const control_small = theme => css`
+export const control_small = theme => `
   border-radius: ${theme['control-radius-small']};
   font-size: ${theme['size-small']};
 `
-export const control_medium = theme => css`
+export const control_medium = theme => `
   font-size: ${theme['size-medium']};
 `
-export const control_large = theme => css`
+export const control_large = theme => `
   font-size: ${theme['size-large']};
 `

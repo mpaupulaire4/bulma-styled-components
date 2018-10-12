@@ -12,6 +12,7 @@ const colors = [
   "is-success",
   "is-warning",
   "is-danger",
+  "is-static",
 ];
 <BulmaStyledTheme overrides={{
   primary: 'blue',
@@ -20,6 +21,7 @@ const colors = [
   success: 'green',
   warning: 'yellow',
   danger: 'red',
+  'button-static-background-color': 'lightblue'
 }}>
   <Buttons>
     {colors.map(color => (
