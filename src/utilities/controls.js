@@ -1,4 +1,3 @@
-import { css } from 'emotion'
 
 export const control = theme => `
   appearance: none;
