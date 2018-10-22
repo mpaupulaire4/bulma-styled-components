@@ -47,10 +47,10 @@ export default vars => css`
         padding-bottom: ${vars['navbar-height']};
       }
       &.has-spaced-navbar-fixed-top {
-        padding-top: ${vars['navbar-height']} + (${vars['navbar-padding-vertical']} * 2);
+        padding-top: calc(${vars['navbar-height']} + (${vars['navbar-padding-vertical']} * 2));
       }
       &.has-spaced-navbar-fixed-bottom {
-        padding-bottom: ${vars['navbar-height']} + (${vars['navbar-padding-vertical']} * 2);
+        padding-bottom: calc(${vars['navbar-height']} + (${vars['navbar-padding-vertical']} * 2));
       }
     }
   }
