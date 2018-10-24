@@ -46,3 +46,11 @@ export function mergeColorMaps(bulmaColors = {}, customColors = {}) {
 export function fromTheme(key) {
   return props => props.theme[key]
 }
+
+export function completeAssign(target, source) {
+  Object.defineProperties(target, Object.keys(source).reduce((descriptors, key) => {
+    descriptors[key] = Object.getOwnPropertyDescriptor(source, key) // eslint-disable-line
+    return descriptors
+  }, {}))
+  return target
+}

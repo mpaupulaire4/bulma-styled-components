@@ -61,7 +61,7 @@
     "gh-pages": "^1.2.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.0",
-    "rollup": "^0.62.0",
+    "rollup": "^0.66.6",
     "rollup-plugin-babel": "^3.0.5",
     "rollup-plugin-commonjs": "^9.1.8",
     "rollup-plugin-node-resolve": "^3.3.0",

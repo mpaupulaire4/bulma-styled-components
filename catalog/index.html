@@ -10,5 +10,21 @@
 </head>
 <body>
   <div id="catalog"></div>
+  <script type="text/javascript">
+      var extended = {};
+      function completeAssign(target, source) {
+        Object.defineProperties(target, Object.keys(source).reduce((descriptors, key) => {
+          descriptors[key] = Object.getOwnPropertyDescriptor(source, key) // eslint-disable-line
+          return descriptors
+        }, {}))
+        return target
+      }
+      var BULMA_VARS_EXTEND = function(data) {
+        return completeAssign(data, extended)
+      };
+      var BULMA_VARS = function(data) {
+        completeAssign(extended, data)
+      };
+  </script>
 </body>
 </html>

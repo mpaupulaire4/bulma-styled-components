@@ -1,14 +1,13 @@
 import { css } from 'emotion'
 import { BaseWithConsumer } from '../base/Class'
 import Button from './Button'
-import Vars from '../utilities/vars'
 
-Vars.addDerivedDefault(() => ({
+BULMA_VARS({
   'icon-dimensions': '1.5rem',
   'icon-dimensions-small': '1rem',
   'icon-dimensions-medium': '2rem',
   'icon-dimensions-large': '3rem',
-}))
+})
 
 export default class Icon extends BaseWithConsumer {
   static defaultProps = {

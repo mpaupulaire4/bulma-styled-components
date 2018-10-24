@@ -7,13 +7,11 @@ import Helpers from './helper'
 
 const { Provider, Consumer } = React.createContext({
   get theme() {
-    return Vars.getVariables()
+    return Vars.getVariables({})
   },
 })
 
-export { Consumer }
-
-export class BulmaStyledTheme extends React.PureComponent {
+class BulmaStyledTheme extends React.PureComponent {
   static defaultProps = {
     overrides: {},
   }
@@ -42,4 +40,9 @@ export class BulmaStyledTheme extends React.PureComponent {
       />
     )
   }
+}
+
+export {
+  Consumer,
+  BulmaStyledTheme,
 }

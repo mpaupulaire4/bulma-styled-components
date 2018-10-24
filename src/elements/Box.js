@@ -1,18 +1,17 @@
 import { css } from 'emotion'
 import { rgba } from 'polished'
 import { BaseWithConsumer } from '../base/Class'
-import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
 
-Vars.addDerivedDefault(vars => ({
-  'box-color': vars['text'],
-  'box-background-color': vars['white'],
-  'box-radius': vars['radius-large'],
-  'box-shadow': `0 2px 3px ${rgba(vars['black'], 0.1)}, 0 0 0 1px ${rgba(vars['black'], 0.1)}`,
+BULMA_VARS({
+  get 'box-color'() { return this['text'] },
+  get 'box-background-color'() { return this['white'] },
+  get 'box-radius'() { return this['radius-large'] },
+  get 'box-shadow'() { return `0 2px 3px ${rgba(this['black'], 0.1)}, 0 0 0 1px ${rgba(this['black'], 0.1)}` },
   'box-padding': '1.25rem',
-  'box-link-hover-shadow': `0 2px 3px ${rgba(vars['black'], 0.1)}, 0 0 0 1px ${vars['link']}`,
-  'box-link-active-shadow': `inset 0 1px 2px ${rgba(vars['black'], 0.2)}, 0 0 0 1px ${vars['link']}`,
-}))
+  get 'box-link-hover-shadow'() { return `0 2px 3px ${rgba(this['black'], 0.1)}, 0 0 0 1px ${this['link']}` },
+  get 'box-link-active-shadow'() { return `inset 0 1px 2px ${rgba(this['black'], 0.2)}, 0 0 0 1px ${this['link']}` },
+})
 
 export default class Box extends BaseWithConsumer {
   static defaultProps = {

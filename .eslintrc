@@ -5,6 +5,10 @@
         "browser": true,
         "es6": true
     },
+    "globals": {
+        "BULMA_VARS_EXTEND": true,
+        "BULMA_VARS": true
+    },
     "parserOptions": {
         "ecmaVersion": 7,
         "sourceType": "module",

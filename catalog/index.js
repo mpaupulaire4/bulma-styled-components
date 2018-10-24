@@ -10,8 +10,6 @@ import Form from '../src/form/catalog'
 import README from '../README.md'
 import Overrides from '../Overrides.md'
 
-const { BulmaStyledTheme } = Components
-
 const pages = [
   {
     path: '/',
@@ -30,22 +28,20 @@ const pages = [
 ]
 
 ReactDOM.render(
-  <BulmaStyledTheme>
-    <Catalog
-      title="Bulma Styled Components"
-      pages={pages}
-      imports={Components}
-      responsiveSizes={[
-        {name: 'mobile', width: 320, height: 588},
-        {name: 'tablet', width: 769, height: 1024},
-        {name: 'desktop', width: 1024, height: 768},
-        {name: 'widescreen', width: 1280, height: 800},
-        {name: 'fullhd', width: 1440, height: 900},
-      ]}
-      theme={{
-        checkerboardPatternLight: '#fff'
-      }}
-    />
-  </BulmaStyledTheme>,
+  <Catalog
+    title="Bulma Styled Components"
+    pages={pages}
+    imports={Components}
+    responsiveSizes={[
+      {name: 'mobile', width: 320, height: 588},
+      {name: 'tablet', width: 769, height: 1024},
+      {name: 'desktop', width: 1024, height: 768},
+      {name: 'widescreen', width: 1280, height: 800},
+      {name: 'fullhd', width: 1440, height: 900},
+    ]}
+    theme={{
+      checkerboardPatternLight: '#fff'
+    }}
+  />,
   document.getElementById('catalog'),
 )

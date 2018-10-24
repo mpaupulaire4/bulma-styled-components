@@ -1,4 +1,4 @@
-import getVariables from './derived-variables'
+import getVariables from './initial-variables'
 
 export default class VarCalculator {
   static _variables = {}
