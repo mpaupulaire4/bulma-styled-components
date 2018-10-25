@@ -1,7 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
 import { rgba, darken } from 'polished'
-import Vars from '../utilities/vars'
 import { arrow, loader } from '../utilities/mixins'
 import {
   control_small,
@@ -11,31 +10,31 @@ import {
 import { InputSelectShared } from './Input'
 import { BaseWithConsumer } from '../base/Class'
 
-Vars.addDerivedDefault(vars => ({
-  'input-color': vars['grey-darker'],
-  'input-background-color': vars['white'],
-  'input-border-color': vars['grey-lighter'],
-  'input-shadow': `inset 0 1px 2px ${rgba(vars['black'], 0.1)}`,
+BULMA_VARS({
+  get 'input-color'() { return this['grey-darker'] },
+  get 'input-background-color'() { return this['white'] },
+  get 'input-border-color'() { return this['grey-lighter'] },
+  get 'input-shadow'() { return `inset 0 1px 2px ${rgba(this['black'], 0.1)}` },
 
-  'input-hover-color': vars['grey-darker'],
-  'input-hover-border-color': vars['grey-light'],
+  get 'input-hover-color'() { return this['grey-darker'] },
+  get 'input-hover-border-color'() { return this['grey-light'] },
 
-  'input-focus-color': vars['grey-darker'],
-  'input-focus-border-color': vars['link'],
+  get 'input-focus-color'() { return this['grey-darker'] },
+  get 'input-focus-border-color'() { return this['link'] },
   'input-focus-box-shadow-size': '0 0 0 0.125em',
-  'input-focus-box-shadow-color': rgba(vars['link'], 0.25),
+  get 'input-focus-box-shadow-color'() { return rgba(this['link'], 0.25) },
 
-  'input-disabled-color': vars['text-light'],
-  'input-disabled-background-color': vars['background'],
-  'input-disabled-border-color': vars['background'],
+  get 'input-disabled-color'() { return this['text-light'] },
+  get 'input-disabled-background-color'() { return this['background'] },
+  get 'input-disabled-border-color'() { return this['background'] },
 
-  'input-arrow': vars['link'],
+  get 'input-arrow'() { return this['link'] },
 
-  'input-icon-color': vars['grey-lighter'],
-  'input-icon-active-color': vars['grey'],
+  get 'input-icon-color'() { return this['grey-lighter'] },
+  get 'input-icon-active-color'() { return this['grey'] },
 
-  'input-radius': vars['radius'],
-}))
+  get 'input-radius'() { return this['radius'] },
+})
 
 const SelectColorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name, [color]]) => css`
   ${acc}

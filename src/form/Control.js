@@ -3,14 +3,13 @@ import { css } from 'emotion'
 import Icon from '../elements/Icon'
 import Select from './Select'
 import Input from './Input'
-import Vars from '../utilities/vars'
 import { loader } from '../utilities/mixins'
 import { BaseWithConsumer } from '../base/Class'
 
-Vars.addDerivedDefault(vars => ({
-  'input-icon-color': vars['grey-lighter'],
-  'input-icon-active-color': vars['grey'],
-}))
+BULMA_VARS({
+  get 'input-icon-color'() { return this['grey-lighter'] },
+  get 'input-icon-active-color'() { return this['grey'] },
+})
 
 export default class Control extends BaseWithConsumer {
   static defaultProps = {

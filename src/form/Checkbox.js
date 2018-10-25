@@ -1,12 +1,11 @@
 import { css } from 'emotion'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 
-Vars.addDerivedDefault(vars => ({
-  'input-hover-color': vars['grey-darker'],
+BULMA_VARS({
+  get 'input-hover-color'() { return this['grey-darker'] },
 
-  'input-disabled-color': vars['text-light'],
-}))
+  get 'input-disabled-color'() { return this['text-light'] },
+})
 
 export const CheckboxRadioShared = theme => css`
   cursor: pointer;

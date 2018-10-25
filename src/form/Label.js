@@ -1,11 +1,10 @@
 import { css } from 'emotion'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 
-Vars.addDerivedDefault(vars => ({
-  'label-color': vars['grey-darker'],
-  'label-weight': vars['weight-bold'],
-}))
+BULMA_VARS({
+  get 'label-color'() { return this['grey-darker'] },
+  get 'label-weight'() { return this['weight-bold'] },
+})
 
 export default class Label extends BaseWithConsumer {
   static defaultProps = {

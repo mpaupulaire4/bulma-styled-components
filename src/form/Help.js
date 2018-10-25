@@ -1,10 +1,9 @@
 import { css } from 'emotion'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 
-Vars.addDerivedDefault(vars => ({
-  'help-size': vars['size-small'],
-}))
+BULMA_VARS({
+  get 'help-size'() { return this['size-small'] },
+})
 
 const HelpColorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name, [color]]) => css`
   ${acc}

@@ -1,25 +1,24 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
 import { rgba, darken } from 'polished'
-import Vars from '../utilities/vars'
 import { unselectable } from '../utilities/mixins'
 import { control } from '../utilities/controls'
 import { BaseWithConsumer, Base } from '../base/Class'
 
-Vars.addDerivedDefault(vars => ({
-  'file-border-color': vars['border'],
-  'file-radius': vars['radius'],
+BULMA_VARS({
+  get 'file-border-color'() { return this['border'] },
+  get 'file-radius'() { return this['radius'] },
 
-  'file-cta-background-color': vars['white-ter'],
-  'file-cta-color': vars['grey-dark'],
-  'file-cta-hover-color': vars['grey-darker'],
-  'file-cta-active-color': vars['grey-darker'],
+  get 'file-cta-background-color'() { return this['white-ter'] },
+  get 'file-cta-color'() { return this['grey-dark'] },
+  get 'file-cta-hover-color'() { return this['grey-darker'] },
+  get 'file-cta-active-color'() { return this['grey-darker'] },
 
-  'file-name-border-color': vars['border'],
+  get 'file-name-border-color'() { return this['border'] },
   'file-name-border-style': 'solid',
   'file-name-border-width': '1px 1px 1px 0',
   'file-name-max-width': '16em',
-}))
+})
 
 const CTANameShared = theme => css`
   ${control(theme)}
