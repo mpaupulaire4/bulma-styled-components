@@ -1,13 +1,12 @@
 import { css } from 'emotion'
-import Vars from '../utilities/vars'
 import { desktop } from '../utilities/mixins'
 import { BaseWithConsumer } from '../base/Class'
 
-Vars.addDerivedDefault(() => ({
+BULMA_VARS({
   'section-padding': '3rem 1.5rem',
   'section-padding-medium': '9rem 1.5rem',
   'section-padding-large': '18rem 1.5rem',
-}))
+})
 
 export default class Section extends BaseWithConsumer {
   static defaultProps = {

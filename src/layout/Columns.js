@@ -1,14 +1,13 @@
 import { css } from 'emotion'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 import {
   tablet,
   desktop,
 } from '../utilities/mixins'
 
-Vars.addDerivedDefault(() => ({
+BULMA_VARS({
   'column-gap': '0.75rem',
-}))
+})
 
 export default class Columns extends BaseWithConsumer {
   static defaultProps = {

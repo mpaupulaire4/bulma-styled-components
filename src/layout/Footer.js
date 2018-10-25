@@ -1,10 +1,9 @@
 import { css } from 'emotion'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 
-Vars.addDerivedDefault(vars => ({
-  'footer-background-color': vars['white-bis'],
-}))
+BULMA_VARS({
+  get 'footer-background-color'() { return this['white-bis'] },
+})
 
 export default class Footer extends BaseWithConsumer {
   static defaultProps = {

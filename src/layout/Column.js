@@ -1,5 +1,4 @@
 import { css } from 'emotion'
-import Vars from '../utilities/vars'
 import Columns from './Columns'
 import { BaseWithConsumer } from '../base/Class'
 import {
@@ -11,9 +10,9 @@ import {
   fullhd,
 } from '../utilities/mixins'
 
-Vars.addDerivedDefault(() => ({
+BULMA_VARS({
   'column-gap': '0.75rem',
-}))
+})
 
 const onetotwelve = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 function map1to12(onEach) {
