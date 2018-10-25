@@ -1,33 +1,32 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
 import { getLuminance, parseToHsl, lighten, desaturate, darken } from 'polished'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 import { block } from '../utilities/mixins'
 import Delete from '../elements/Delete'
 
 
-Vars.addDerivedDefault(vars => ({
-  'message-background-color': vars['background'],
-  'message-radius': vars['radius'],
+BULMA_VARS({
+  get 'message-background-color'() { return this['background'] },
+  get 'message-radius'() { return this['radius'] },
 
-  'message-header-background-color': vars['text'],
-  'message-header-color': vars['text-invert'],
-  'message-header-weight': vars['weight-bold'],
+  get 'message-header-background-color'() { return this['text'] },
+  get 'message-header-color'() { return this['text-invert'] },
+  get 'message-header-weight'() { return this['weight-bold'] },
   'message-header-padding': '0.75em 1em',
-  'message-header-radius': vars['radius'],
+  get 'message-header-radius'() { return this['radius'] },
 
-  'message-body-border-color': vars['border'],
+  get 'message-body-border-color'() { return this['border'] },
   'message-body-border-width': '0 0 0 4px',
-  'message-body-color': vars['text'],
+  get 'message-body-color'() { return this['text'] },
   'message-body-padding': '1.25em 1.5em',
-  'message-body-radius': vars['radius'],
+  get 'message-body-radius'() { return this['radius'] },
 
-  'message-body-pre-background-color': vars['white'],
+  get 'message-body-pre-background-color'() { return this['white'] },
   'message-body-pre-code-background-color': 'transparent',
 
   'message-header-body-border-width': 0,
-}))
+})
 
 
 export class MessageBody extends BaseWithConsumer {

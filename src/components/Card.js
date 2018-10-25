@@ -1,25 +1,24 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
 import { rgba } from 'polished'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer, Base } from '../base/Class'
 import Media from '../layout/Media'
 
-Vars.addDerivedDefault(vars => ({
-  'card-color': vars['text'],
-  'card-background-color': vars['white'],
-  'card-shadow': `0 2px 3px ${rgba(vars['black'], 0.1)}, 0 0 0 1px ${rgba(vars['black'], 0.1)}`,
+BULMA_VARS({
+  get 'card-color'() { return this['text'] },
+  get 'card-background-color'() { return this['white'] },
+  get 'card-shadow'() { return `0 2px 3px ${rgba(this['black'], 0.1)}, 0 0 0 1px ${rgba(this['black'], 0.1)}` },
 
   'card-header-background-color': 'transparent',
-  'card-header-color': vars['text-strong'],
-  'card-header-shadow': `0 1px 2px ${rgba(vars['black'], 0.1)}`,
-  'card-header-weight': vars['weight-bold'],
+  get 'card-header-color'() { return this['text-strong'] },
+  get 'card-header-shadow'() { return `0 1px 2px ${rgba(this['black'], 0.1)}` },
+  get 'card-header-weight'() { return this['weight-bold'] },
 
   'card-content-background-color': 'transparent',
 
   'card-footer-background-color': 'transparent',
-  'card-footer-border-top': `1px solid ${vars['border']}`,
-}))
+  get 'card-footer-border-top'() { return `1px solid ${this['border']}` },
+})
 
 export default class Card extends BaseWithConsumer {
   static defaultProps = {

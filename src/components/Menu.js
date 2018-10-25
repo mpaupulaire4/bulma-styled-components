@@ -1,21 +1,20 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 
 
-Vars.addDerivedDefault(vars => ({
-  'menu-item-color': vars['text'],
-  'menu-item-radius': vars['radius-small'],
-  'menu-item-hover-color': vars['text-strong'],
-  'menu-item-hover-background-color': vars['background'],
-  'menu-item-active-color': vars['link-invert'],
-  'menu-item-active-background-color': vars['link'],
+BULMA_VARS({
+  get 'menu-item-color'() { return this['text'] },
+  get 'menu-item-radius'() { return this['radius-small'] },
+  get 'menu-item-hover-color'() { return this['text-strong'] },
+  get 'menu-item-hover-background-color'() { return this['background'] },
+  get 'menu-item-active-color'() { return this['link-invert'] },
+  get 'menu-item-active-background-color'() { return this['link'] },
 
-  'menu-list-border-left': `1px solid ${vars['border']}`,
+  get 'menu-list-border-left'() { return `1px solid ${this['border']}` },
 
-  'menu-label-color': vars['text-light'],
-}))
+  get 'menu-label-color'() { return this['text-light'] },
+})
 
 
 export default class Menu extends BaseWithConsumer {

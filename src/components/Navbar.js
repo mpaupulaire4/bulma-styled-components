@@ -1,7 +1,6 @@
 /* stylelint-disable no-descending-specificity, no-duplicate-selectors */
 import { css } from 'emotion'
 import { rgba, darken } from 'polished'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer, Base } from '../base/Class'
 import {
   desktop,
@@ -13,53 +12,53 @@ import {
 import Container from '../layout/Container'
 import Icon from '../elements/Icon'
 
-Vars.addDerivedDefault(vars => ({
-  'navbar-background-color': vars['white'],
+BULMA_VARS({
+  get 'navbar-background-color'() { return this['white'] },
   'navbar-box-shadow-size': '0 2px 0 0',
-  'navbar-box-shadow-color': vars['background'],
+  get 'navbar-box-shadow-color'() { return this['background'] },
   'navbar-height': '3.25rem',
   'navbar-padding-vertical': '1rem',
   'navbar-padding-horizontal': '2rem',
   'navbar-z': 30,
   'navbar-fixed-z': 30,
 
-  'navbar-item-color': vars['grey-dark'],
-  'navbar-item-hover-color': vars['link'],
-  'navbar-item-hover-background-color': vars['white-bis'],
-  'navbar-item-active-color': vars['black'],
+  get 'navbar-item-color'() { return this['grey-dark'] },
+  get 'navbar-item-hover-color'() { return this['link'] },
+  get 'navbar-item-hover-background-color'() { return this['white-bis'] },
+  get 'navbar-item-active-color'() { return this['black'] },
   'navbar-item-active-background-color': 'transparent',
   'navbar-item-img-max-height': '1.75rem',
 
-  'navbar-burger-color': vars['navbar-item-color'],
+  get 'navbar-burger-color'() { return this['navbar-item-color'] },
 
   'navbar-tab-hover-background-color': 'transparent',
-  'navbar-tab-hover-border-bottom-color': vars['link'],
-  'navbar-tab-active-color': vars['link'],
+  get 'navbar-tab-hover-border-bottom-color'() { return this['link'] },
+  get 'navbar-tab-active-color'() { return this['link'] },
   'navbar-tab-active-background-color': 'transparent',
-  'navbar-tab-active-border-bottom-color': vars['link'],
+  get 'navbar-tab-active-border-bottom-color'() { return this['link'] },
   'navbar-tab-active-border-bottom-style': 'solid',
   'navbar-tab-active-border-bottom-width': '3px',
 
-  'navbar-dropdown-background-color': vars['white'],
-  'navbar-dropdown-border-top': `2px solid ${vars['border']}`,
+  get 'navbar-dropdown-background-color'() { return this['white'] },
+  get 'navbar-dropdown-border-top'() { return `2px solid ${this['border']}` },
   'navbar-dropdown-offset': '-4px',
-  'navbar-dropdown-arrow': vars['link'],
-  'navbar-dropdown-radius': vars['radius-large'],
+  get 'navbar-dropdown-arrow'() { return this['link'] },
+  get 'navbar-dropdown-radius'() { return this['radius-large'] },
   'navbar-dropdown-z': 20,
 
-  'navbar-dropdown-boxed-radius': vars['radius-large'],
-  'navbar-dropdown-boxed-shadow': `0 8px 8px ${rgba(vars['black'], 0.1)}, 0 0 0 1px ${rgba(vars['black'], 0.1)}`,
+  get 'navbar-dropdown-boxed-radius'() { return this['radius-large'] },
+  get 'navbar-dropdown-boxed-shadow'() { return `0 8px 8px ${rgba(this['black'], 0.1)}, 0 0 0 1px ${rgba(this['black'], 0.1)}` },
 
-  'navbar-dropdown-item-hover-color': vars['black'],
-  'navbar-dropdown-item-hover-background-color': vars['background'],
-  'navbar-dropdown-item-active-color': vars['link'],
-  'navbar-dropdown-item-active-background-color': vars['background'],
+  get 'navbar-dropdown-item-hover-color'() { return this['black'] },
+  get 'navbar-dropdown-item-hover-background-color'() { return this['background'] },
+  get 'navbar-dropdown-item-active-color'() { return this['link'] },
+  get 'navbar-dropdown-item-active-background-color'() { return this['background'] },
 
-  'navbar-divider-background-color': vars['background'],
+  get 'navbar-divider-background-color'() { return this['background'] },
   'navbar-divider-height': '2px',
 
   'navbar-bottom-box-shadow-size': '0 -2px 0 0',
-}))
+})
 
 
 const navbar_fixed = theme => css`

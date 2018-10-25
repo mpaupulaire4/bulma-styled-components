@@ -1,7 +1,6 @@
 /* stylelint-disable no-descending-specificity, no-duplicate-selectors */
 import { css } from 'emotion'
 import { rgba } from 'polished'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 import {
   unselectable,
@@ -10,32 +9,32 @@ import {
 } from '../utilities/mixins'
 import { control } from '../utilities/controls'
 
-Vars.addDerivedDefault(vars => ({
-  'pagination-color': vars['grey-darker'],
-  'pagination-border-color': vars['grey-lighter'],
+BULMA_VARS({
+  get 'pagination-color'() { return this['grey-darker'] },
+  get 'pagination-border-color'() { return this['grey-lighter'] },
   'pagination-margin': '-0.25rem',
 
-  'pagination-hover-color': vars['link-hover'],
-  'pagination-hover-border-color': vars['link-hover-border'],
+  get 'pagination-hover-color'() { return this['link-hover'] },
+  get 'pagination-hover-border-color'() { return this['link-hover-border'] },
 
-  'pagination-focus-color': vars['link-focus'],
-  'pagination-focus-border-color': vars['link-focus-border'],
+  get 'pagination-focus-color'() { return this['link-focus'] },
+  get 'pagination-focus-border-color'() { return this['link-focus-border'] },
 
-  'pagination-active-color': vars['link-active'],
-  'pagination-active-border-color': vars['link-active-border'],
+  get 'pagination-active-color'() { return this['link-active'] },
+  get 'pagination-active-border-color'() { return this['link-active-border'] },
 
-  'pagination-disabled-color': vars['grey'],
-  'pagination-disabled-background-color': vars['grey-lighter'],
-  'pagination-disabled-border-color': vars['grey-lighter'],
+  get 'pagination-disabled-color'() { return this['grey'] },
+  get 'pagination-disabled-background-color'() { return this['grey-lighter'] },
+  get 'pagination-disabled-border-color'() { return this['grey-lighter'] },
 
-  'pagination-current-color': vars['link-invert'],
-  'pagination-current-background-color': vars['link'],
-  'pagination-current-border-color': vars['link'],
+  get 'pagination-current-color'() { return this['link-invert'] },
+  get 'pagination-current-background-color'() { return this['link'] },
+  get 'pagination-current-border-color'() { return this['link'] },
 
-  'pagination-ellipsis-color': vars['grey-light'],
+  get 'pagination-ellipsis-color'() { return this['grey-light'] },
 
-  'pagination-shadow-inset': `inset 0 1px 2px ${rgba(vars['black'], 0.2)}`,
-}))
+  get 'pagination-shadow-inset'() { return `inset 0 1px 2px ${rgba(this['black'], 0.2)}` },
+})
 
 const PaginationPreviousNextLinkEllipsisShared = theme => css`
   ${control(theme)}

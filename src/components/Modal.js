@@ -1,17 +1,16 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
 import { rgba } from 'polished'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 import { tablet, overlay, overflow_touch } from '../utilities/mixins'
 import Button from '../elements/Button'
 import Delete from '../elements/Delete'
 
 
-Vars.addDerivedDefault(vars => ({
+BULMA_VARS({
   'modal-z': 40,
 
-  'modal-background-background-color': rgba(vars['black'], 0.86),
+  get 'modal-background-background-color'() { return rgba(this['black'], 0.86) },
 
   'modal-content-width': '640px',
   'modal-content-margin-mobile': '20px',
@@ -24,21 +23,21 @@ Vars.addDerivedDefault(vars => ({
 
   'modal-card-spacing': '40px',
 
-  'modal-card-head-background-color': vars['background'],
-  'modal-card-head-border-bottom': `1px solid ${vars['border']}`,
+  get 'modal-card-head-background-color'() { return this['background'] },
+  get 'modal-card-head-border-bottom'() { return `1px solid ${this['border']}` },
   'modal-card-head-padding': '20px',
-  'modal-card-head-radius': vars['radius-large'],
+  get 'modal-card-head-radius'() { return this['radius-large'] },
 
-  'modal-card-title-color': vars['text-strong'],
+  get 'modal-card-title-color'() { return this['text-strong'] },
   'modal-card-title-line-height': 1,
-  'modal-card-title-size': vars['size-4'],
+  get 'modal-card-title-size'() { return this['size-4'] },
 
-  'modal-card-foot-radius': vars['radius-large'],
-  'modal-card-foot-border-top': `1px solid ${vars['border']}`,
+  get 'modal-card-foot-radius'() { return this['radius-large'] },
+  get 'modal-card-foot-border-top'() { return `1px solid ${this['border']}` },
 
-  'modal-card-body-background-color': vars['white'],
+  get 'modal-card-body-background-color'() { return this['white'] },
   'modal-card-body-padding': '20px',
-}))
+})
 
 
 export default class Modal extends BaseWithConsumer {

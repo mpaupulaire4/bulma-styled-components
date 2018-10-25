@@ -1,26 +1,25 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
 import { rgba } from 'polished'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 
 
-Vars.addDerivedDefault(vars => ({
-  'dropdown-content-background-color': vars['white'],
-  'dropdown-content-arrow': vars['link'],
+BULMA_VARS({
+  get 'dropdown-content-background-color'() { return this['white'] },
+  get 'dropdown-content-arrow'() { return this['link'] },
   'dropdown-content-offset': '4px',
-  'dropdown-content-radius': vars['radius'],
-  'dropdown-content-shadow': `0 2px 3px ${rgba(vars['black'], 0.1)}, 0 0 0 1px ${rgba(vars['black'], 0.1)}`,
+  get 'dropdown-content-radius'() { return this['radius'] },
+  get 'dropdown-content-shadow'() { return `0 2px 3px ${rgba(this['black'], 0.1)}, 0 0 0 1px ${rgba(this['black'], 0.1)}` },
   'dropdown-content-z': 20,
 
-  'dropdown-item-color': vars['grey-dark'],
-  'dropdown-item-hover-color': vars['black'],
-  'dropdown-item-hover-background-color': vars['background'],
-  'dropdown-item-active-color': vars['link-invert'],
-  'dropdown-item-active-background-color': vars['link'],
+  get 'dropdown-item-color'() { return this['grey-dark'] },
+  get 'dropdown-item-hover-color'() { return this['black'] },
+  get 'dropdown-item-hover-background-color'() { return this['background'] },
+  get 'dropdown-item-active-color'() { return this['link-invert'] },
+  get 'dropdown-item-active-background-color'() { return this['link'] },
 
-  'dropdown-divider-background-color': vars['border'],
-}))
+  get 'dropdown-divider-background-color'() { return this['border'] },
+})
 
 export class DropdownMenu extends BaseWithConsumer {
   static defaultProps = {

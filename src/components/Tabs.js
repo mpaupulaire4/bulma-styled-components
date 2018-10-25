@@ -1,39 +1,38 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 import Icon from '../elements/Icon'
 import { block, overflow_touch, unselectable } from '../utilities/mixins'
 
-Vars.addDerivedDefault(vars => ({
-  'tabs-border-bottom-color': vars['border'],
+BULMA_VARS({
+  get 'tabs-border-bottom-color'() { return this['border'] },
   'tabs-border-bottom-style': 'solid',
   'tabs-border-bottom-width': '1px',
-  'tabs-link-color': vars['text'],
-  'tabs-link-hover-border-bottom-color': vars['text-strong'],
-  'tabs-link-hover-color': vars['text-strong'],
-  'tabs-link-active-border-bottom-color': vars['link'],
-  'tabs-link-active-color': vars['link'],
+  get 'tabs-link-color'() { return this['text'] },
+  get 'tabs-link-hover-border-bottom-color'() { return this['text-strong'] },
+  get 'tabs-link-hover-color'() { return this['text-strong'] },
+  get 'tabs-link-active-border-bottom-color'() { return this['link'] },
+  get 'tabs-link-active-color'() { return this['link'] },
   'tabs-link-padding': '0.5em 1em',
 
-  'tabs-boxed-link-radius': vars['radius'],
-  'tabs-boxed-link-hover-background-color': vars['background'],
-  'tabs-boxed-link-hover-border-bottom-color': vars['border'],
+  get 'tabs-boxed-link-radius'() { return this['radius'] },
+  get 'tabs-boxed-link-hover-background-color'() { return this['background'] },
+  get 'tabs-boxed-link-hover-border-bottom-color'() { return this['border'] },
 
-  'tabs-boxed-link-active-background-color': vars['white'],
-  'tabs-boxed-link-active-border-color': vars['border'],
+  get 'tabs-boxed-link-active-background-color'() { return this['white'] },
+  get 'tabs-boxed-link-active-border-color'() { return this['border'] },
   'tabs-boxed-link-active-border-bottom-color': 'transparent',
 
-  'tabs-toggle-link-border-color': vars['border'],
+  get 'tabs-toggle-link-border-color'() { return this['border'] },
   'tabs-toggle-link-border-style': 'solid',
   'tabs-toggle-link-border-width': '1px',
-  'tabs-toggle-link-hover-background-color': vars['background'],
-  'tabs-toggle-link-hover-border-color': vars['border-hover'],
-  'tabs-toggle-link-radius': vars['radius'],
-  'tabs-toggle-link-active-background-color': vars['link'],
-  'tabs-toggle-link-active-border-color': vars['link'],
-  'tabs-toggle-link-active-color': vars['link-invert'],
-}))
+  get 'tabs-toggle-link-hover-background-color'() { return this['background'] },
+  get 'tabs-toggle-link-hover-border-color'() { return this['border-hover'] },
+  get 'tabs-toggle-link-radius'() { return this['radius'] },
+  get 'tabs-toggle-link-active-background-color'() { return this['link'] },
+  get 'tabs-toggle-link-active-border-color'() { return this['link'] },
+  get 'tabs-toggle-link-active-color'() { return this['link-invert'] },
+})
 
 export default class Tabs extends BaseWithConsumer {
   static defaultProps = {

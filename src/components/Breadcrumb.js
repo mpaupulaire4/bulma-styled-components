@@ -1,21 +1,20 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 import { block, unselectable } from '../utilities/mixins'
 import Icon from '../elements/Icon'
 
 
-Vars.addDerivedDefault(vars => ({
-  'breadcrumb-item-color': vars['link'],
-  'breadcrumb-item-hover-color': vars['link-hover'],
-  'breadcrumb-item-active-color': vars['text-strong'],
+BULMA_VARS({
+  get 'breadcrumb-item-color'() { return this['link'] },
+  get 'breadcrumb-item-hover-color'() { return this['link-hover'] },
+  get 'breadcrumb-item-active-color'() { return this['text-strong'] },
 
   'breadcrumb-item-padding-vertical': 0,
   'breadcrumb-item-padding-horizontal': '0.75em',
 
-  'breadcrumb-item-separator-color': vars['grey-light'],
-}))
+  get 'breadcrumb-item-separator-color'() { return this['grey-light'] },
+})
 
 export default class Breadcrumb extends BaseWithConsumer {
   static defaultProps = {

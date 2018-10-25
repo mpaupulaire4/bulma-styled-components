@@ -1,36 +1,35 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
-import Vars from '../utilities/vars'
 import { fa } from '../utilities/mixins'
 import { BaseWithConsumer } from '../base/Class'
 import Control from '../form/Control'
 
-Vars.addDerivedDefault(vars => ({
-  'panel-item-border': `1px solid ${vars['border']}`,
+BULMA_VARS({
+  get 'panel-item-border'() { return `1px solid ${this['border']}` },
 
-  'panel-heading-background-color': vars['background'],
-  'panel-heading-color': vars['text-strong'],
+  get 'panel-heading-background-color'() { return this['background'] },
+  get 'panel-heading-color'() { return this['text-strong'] },
   'panel-heading-line-height': 1.25,
   'panel-heading-padding': '0.5em 0.75em',
-  'panel-heading-radius': vars['radius'],
+  get 'panel-heading-radius'() { return this['radius'] },
   'panel-heading-size': '1.25em',
-  'panel-heading-weight': vars['weight-light'],
+  get 'panel-heading-weight'() { return this['weight-light'] },
 
-  'panel-tab-border-bottom': `1px solid ${vars['border']}`,
-  'panel-tab-active-border-bottom-color': vars['link-active-border'],
-  'panel-tab-active-color': vars['link-active'],
+  get 'panel-tab-border-bottom'() { return `1px solid ${this['border']}` },
+  get 'panel-tab-active-border-bottom-color'() { return this['link-active-border'] },
+  get 'panel-tab-active-color'() { return this['link-active'] },
 
-  'panel-list-item-color': vars['text'],
-  'panel-list-item-hover-color': vars['link'],
+  get 'panel-list-item-color'() { return this['text'] },
+  get 'panel-list-item-hover-color'() { return this['link'] },
 
-  'panel-block-color': vars['text-strong'],
-  'panel-block-hover-background-color': vars['background'],
-  'panel-block-active-border-left-color': vars['link'],
-  'panel-block-active-color': vars['link-active'],
-  'panel-block-active-icon-color': vars['link'],
+  get 'panel-block-color'() { return this['text-strong'] },
+  get 'panel-block-hover-background-color'() { return this['background'] },
+  get 'panel-block-active-border-left-color'() { return this['link'] },
+  get 'panel-block-active-color'() { return this['link-active'] },
+  get 'panel-block-active-icon-color'() { return this['link'] },
 
-  'panel-icon-color': vars['text-light'],
-}))
+  get 'panel-icon-color'() { return this['text-light'] },
+})
 
 export default class Panel extends BaseWithConsumer {
   static defaultProps = {
