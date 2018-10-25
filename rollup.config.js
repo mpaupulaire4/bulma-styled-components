@@ -1,6 +1,7 @@
 import resolve from 'rollup-plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
+import Uglify from 'uglify-js'
 
 function variableParser({
   set = 'SET_VARS',
@@ -16,6 +17,18 @@ function variableParser({
       return ''
     }),
     renderChunk: code => code.replace(regex2, (_, data) => `{${data},${vars.join(',\n')}\n}`),
+  }
+}
+
+function uglify() {
+  return {
+    name: 'uglify-js',
+    renderChunk: (code) => {
+      const result = Uglify.minify(code, {
+        toplevel: true,
+      })
+      return result.code
+    },
   }
 }
 
@@ -47,6 +60,7 @@ export default {
       set: 'BULMA_VARS',
       extend: 'BULMA_VARS_EXTEND',
     }),
+    uglify(),
   ],
   external: ['react'],
 }

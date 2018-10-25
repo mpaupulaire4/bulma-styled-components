@@ -1,6 +1,7 @@
-/*! minireset.css v0.0.3 | MIT License | github.com/jgthms/minireset.css */
+import { css } from 'emotion'
 
-export default `
+/*! minireset.css v0.0.3 | MIT License | github.com/jgthms/minireset.css */
+export default css`
   html {
     box-sizing: border-box;
   }
