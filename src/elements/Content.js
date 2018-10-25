@@ -1,29 +1,28 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 import { block, overflow_touch } from '../utilities/mixins'
 
-Vars.addDerivedDefault(vars => ({
-  'content-heading-color': vars['text-strong'],
-  'content-heading-weight': vars['weight-semibold'],
+BULMA_VARS({
+  get 'content-heading-color'() { return this['text-strong'] },
+  get 'content-heading-weight'() { return this['weight-semibold'] },
   'content-heading-line-height': 1.125,
 
-  'content-blockquote-background-color': vars['background'],
-  'content-blockquote-border-left': `5px solid ${vars['border']}`,
+  get 'content-blockquote-background-color'() { return this['background'] },
+  get 'content-blockquote-border-left'() { return `5px solid ${this['border']}` },
   'content-blockquote-padding': '1.25em 1.5em',
 
   'content-pre-padding': '1.25em 1.5em',
 
-  'content-table-cell-border': `1px solid ${vars['border']}`,
+  get 'content-table-cell-border'() { return `1px solid ${this['border']}` },
   'content-table-cell-border-width': '0 0 1px',
   'content-table-cell-padding': '0.5em 0.75em',
-  'content-table-cell-heading-color': vars['text-strong'],
+  get 'content-table-cell-heading-color'() { return this['text-strong'] },
   'content-table-head-cell-border-width': '0 0 2px',
-  'content-table-head-cell-color': vars['text-strong'],
+  get 'content-table-head-cell-color'() { return this['text-strong'] },
   'content-table-foot-cell-border-width': '2px 0 0',
-  'content-table-foot-cell-color': vars['text-strong'],
-}))
+  get 'content-table-foot-cell-color'() { return this['text-strong'] },
+})
 
 export default class Content extends BaseWithConsumer {
   static defaultProps = {

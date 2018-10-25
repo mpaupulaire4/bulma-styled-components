@@ -1,23 +1,22 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 import { block } from '../utilities/mixins'
 import Tag from './Tag'
 import { Highlight } from './other'
 
-Vars.addDerivedDefault(vars => ({
-  'title-color': vars['grey-darker'],
-  'title-size': vars['size-3'],
-  'title-weight': vars['weight-semibold'],
-  'title-line-height': 1.125,
+BULMA_VARS({
+  get 'title-color'() { return this['grey-darker'] },
+  get 'title-size'() { return this['size-3'] },
+  get 'title-weight'() { return this['weight-semibold'] },
+  'title-line-height': '1.125rem',
   'title-strong-color': 'inherit',
   'title-strong-weight': 'inherit',
   'title-sub-size': '0.75em',
   'title-sup-size': '0.75em',
 
   'subtitle-negative-margin': '-1.25rem',
-}))
+})
 
 export default class Title extends BaseWithConsumer {
   static defaultProps = {

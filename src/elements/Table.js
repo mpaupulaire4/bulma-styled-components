@@ -1,31 +1,30 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
 import { BaseWithConsumer, Base } from '../base/Class'
-import Vars from '../utilities/vars'
 import { block, overflow_touch } from '../utilities/mixins'
 
-Vars.addDerivedDefault(vars => ({
-  'table-color': vars['grey-darker'],
-  'table-background-color': vars['white'],
+BULMA_VARS({
+  get 'table-color'() { return this['grey-darker'] },
+  get 'table-background-color'() { return this['white'] },
 
-  'table-cell-border': `1px solid ${vars['grey-lighter']}`,
+  get 'table-cell-border'() { return `1px solid ${this['grey-lighter']}` },
   'table-cell-border-width': '0 0 1px',
   'table-cell-padding': '0.5em 0.75em',
-  'table-cell-heading-color': vars['text-strong'],
+  get 'table-cell-heading-color'() { return this['text-strong'] },
 
   'table-head-cell-border-width': '0 0 2px',
-  'table-head-cell-color': vars['text-strong'],
+  get 'table-head-cell-color'() { return this['text-strong'] },
   'table-foot-cell-border-width': '2px 0 0',
-  'table-foot-cell-color': vars['text-strong'],
+  get 'table-foot-cell-color'() { return this['text-strong'] },
 
-  'table-row-hover-background-color': vars['white-bis'],
+  get 'table-row-hover-background-color'() { return this['white-bis'] },
 
-  'table-row-active-background-color': vars['primary'],
-  'table-row-active-color': vars['primary-invert'],
+  get 'table-row-active-background-color'() { return this['primary'] },
+  get 'table-row-active-color'() { return this['primary-invert'] },
 
-  'table-striped-row-even-background-color': vars['white-bis'],
-  'table-striped-row-even-hover-background-color': vars['white-ter'],
-}))
+  get 'table-striped-row-even-background-color'() { return this['white-bis'] },
+  get 'table-striped-row-even-hover-background-color'() { return this['white-ter'] },
+})
 
 
 export class TableContainer extends Base {

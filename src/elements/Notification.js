@@ -1,7 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
 import { BaseWithConsumer } from '../base/Class'
-import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
 import Button from './Button'
 import Delete from './Delete'
@@ -10,11 +9,11 @@ import Subtitle from './Subtitle'
 import Content from './Content'
 import { DropdownItem } from '../components/Dropdown'
 
-Vars.addDerivedDefault(vars => ({
-  'notification-background-color': vars['background'],
-  'notification-radius': vars['radius'],
+BULMA_VARS({
+  get 'notification-background-color'() { return this['background'] },
+  get 'notification-radius'() { return this['radius'] },
   'notification-padding': '1.25rem 2.5rem 1.25rem 1.5rem',
-}))
+})
 
 const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [color, color_invert]]) => css`
   ${acc}

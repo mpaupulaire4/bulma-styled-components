@@ -1,12 +1,11 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
 import { BaseWithConsumer } from '../base/Class'
-import Vars from '../utilities/vars'
 import { overlay } from '../utilities/mixins'
 
-Vars.addDerivedDefault(() => ({
+BULMA_VARS({
   dimensions: [16, 24, 32, 48, 64, 96, 128],
-}))
+})
 
 export default class Image extends BaseWithConsumer {
   static defaultProps = {

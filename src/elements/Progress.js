@@ -1,13 +1,12 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
 import { BaseWithConsumer } from '../base/Class'
-import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
 
-Vars.addDerivedDefault(vars => ({
-  'progress-bar-background-color': vars['border'],
-  'progress-value-background-color': vars['text'],
-}))
+BULMA_VARS({
+  get 'progress-bar-background-color'() { return this['border'] },
+  get 'progress-value-background-color'() { return this['text'] },
+})
 
 const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [color]]) => css`
   ${acc}

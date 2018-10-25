@@ -1,23 +1,22 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
 import { BaseWithConsumer } from '../base/Class'
-import Vars from '../utilities/vars'
 import { block } from '../utilities/mixins'
 import Title from './Title'
 import Tag from './Tag'
 
-Vars.addDerivedDefault(vars => ({
+BULMA_VARS({
   'title-sub-size': '0.75em',
   'title-sup-size': '0.75em',
 
-  'subtitle-color': vars['grey-dark'],
-  'subtitle-size': vars['size-5'],
-  'subtitle-weight': vars['weight-normal'],
+  get 'subtitle-color'() { return this['grey-dark'] },
+  get 'subtitle-size'() { return this['size-5'] },
+  get 'subtitle-weight'() { return this['weight-normal'] },
   'subtitle-line-height': 1.25,
-  'subtitle-strong-color': vars['grey-darker'],
-  'subtitle-strong-weight': vars['weight-semibold'],
+  get 'subtitle-strong-color'() { return this['grey-darker'] },
+  get 'subtitle-strong-weight'() { return this['weight-semibold'] },
   'subtitle-negative-margin': '-1.25rem',
-}))
+})
 
 export default class Subtitle extends BaseWithConsumer {
   static defaultProps = {

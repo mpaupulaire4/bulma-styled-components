@@ -1,19 +1,18 @@
 /* stylelint-disable no-descending-specificity */
 import { css } from 'emotion'
 import { darken } from 'polished'
-import Vars from '../utilities/vars'
 import { BaseWithConsumer } from '../base/Class'
 import Delete from './Delete'
 import Icon from './Icon'
 import Tags from './Tags'
 
 
-Vars.addDerivedDefault(vars => ({
-  'tag-background-color': vars['background'],
-  'tag-color': vars['text'],
-  'tag-radius': vars['radius'],
+BULMA_VARS({
+  get 'tag-background-color'() { return this['background'] },
+  get 'tag-color'() { return this['text'] },
+  get 'tag-radius'() { return this['radius'] },
   'tag-delete-margin': '1px',
-}))
+})
 
 const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [color, color_invert]]) => css`
   ${acc}

@@ -2,47 +2,46 @@
 import { css } from 'emotion'
 import { rgba, darken } from 'polished'
 import { BaseWithConsumer } from '../base/Class'
-import Vars from '../utilities/vars'
 import { unselectable, loader, center } from '../utilities/mixins'
 import { control } from '../utilities/controls'
 import Buttons from './Buttons'
 
-Vars.addDerivedDefault(vars => ({
-  'button-color': vars['grey-darker'],
-  'button-background-color': vars['white'],
+BULMA_VARS({
+  get 'button-color'() { return this['grey-darker'] },
+  get 'button-background-color'() { return this['white'] },
 
-  'button-border-color': vars['grey-lighter'],
-  'button-border-width': vars['control-border-width'],
+  get 'button-border-color'() { return this['grey-lighter'] },
+  get 'button-border-width'() { return this['control-border-width'] },
 
-  'button-padding-vertical': `calc(0.375em - ${vars['button-border-width']})`,
-  'button-padding-horizontal': '0.75em',
+  get 'button-padding-vertical'() { return `calc(0.375em - ${this['button-border-width']})` },
+  get 'button-padding-horizontal'() { return '0.75em' },
 
-  'button-hover-color': vars['link-hover'],
-  'button-hover-border-color': vars['link-hover-border'],
+  get 'button-hover-color'() { return this['link-hover'] },
+  get 'button-hover-border-color'() { return this['link-hover-border'] },
 
-  'button-focus-color': vars['link-focus'],
-  'button-focus-border-color': vars['link-focus-border'],
-  'button-focus-box-shadow-size': '0 0 0 0.125em',
-  'button-focus-box-shadow-color': rgba(vars['link'], 0.25),
+  get 'button-focus-color'() { return this['link-focus'] },
+  get 'button-focus-border-color'() { return this['link-focus-border'] },
+  get 'button-focus-box-shadow-size'() { return '0 0 0 0.125em' },
+  get 'button-focus-box-shadow-color'() { return rgba(this['link'], 0.25) },
 
-  'button-active-color': vars['link-active'],
-  'button-active-border-color': vars['link-active-border'],
+  get 'button-active-color'() { return this['link-active'] },
+  get 'button-active-border-color'() { return this['link-active-border'] },
 
-  'button-text-color': vars['text'],
-  'button-text-hover-background-color': vars['background'],
-  'button-text-hover-color': vars['text-strong'],
+  get 'button-text-color'() { return this['text'] },
+  get 'button-text-hover-background-color'() { return this['background'] },
+  get 'button-text-hover-color'() { return this['text-strong'] },
 
-  'button-disabled-background-color': vars['white'],
-  'button-disabled-border-color': vars['grey-lighter'],
+  get 'button-disabled-background-color'() { return this['white'] },
+  get 'button-disabled-border-color'() { return this['grey-lighter'] },
   'button-disabled-shadow': 'none',
   'button-disabled-opacity': '0.5',
 
-  'button-static-color': vars['grey'],
-  'button-static-background-color': vars['white-ter'],
-  'button-static-border-color': vars['grey-lighter'],
-}))
+  get 'button-static-color'() { return this['grey'] },
+  get 'button-static-background-color'() { return this['white-ter'] },
+  get 'button-static-border-color'() { return this['grey-lighter'] },
+})
 
-const colorClasses = theme => Object.entries(theme.colors).map(([name, [color, color_invert]]) => `
+const colorClasses = theme => Object.entries(theme.colors).map(([name, [color, color_invert]]) => css`
   &.is-${name} {
     /* Colors */
     background-color: ${color};
