@@ -7,8 +7,8 @@ function variableParser({
   extend = 'VARS_EXTEND',
 } = {}) {
   const vars = []
-  const regex = new RegExp(`${set}\\(\\{((.|\\s)+?)\\n\\}\\)`)
-  const regex2 = new RegExp(`${extend}\\(\\{((.|\\s)+?)\\}\\)`)
+  const regex = new RegExp(`${set}\\(\\{((.|\\s)+?)\\n\\}\\);?`)
+  const regex2 = new RegExp(`${extend}\\(\\{((.|\\s)+?)\\}\\);?`)
   return {
     name: 'static-variable-parser',
     transform: code => code.replace(regex, (_, data) => {

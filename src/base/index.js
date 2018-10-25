@@ -1,15 +1,10 @@
 import React from 'react'
 import { injectGlobal } from 'emotion'
-import Vars from '../utilities/vars'
+import Variables from '../utilities/variables'
 import minireset from './minireset'
 import getGeneric from './generic'
 import Helpers from './helper'
-
-const { Provider, Consumer } = React.createContext({
-  get theme() {
-    return Vars.getVariables({})
-  },
-})
+import { Provider, Consumer } from './Context'
 
 class BulmaStyledTheme extends React.PureComponent {
   static defaultProps = {
@@ -17,7 +12,7 @@ class BulmaStyledTheme extends React.PureComponent {
   }
 
   componentWillMount() {
-    const vars = Vars.getVariables(this.props.overrides)
+    const vars = Variables(this.props.overrides)
     return injectGlobal`
       ${minireset}
       ${getGeneric(vars)}
@@ -27,7 +22,7 @@ class BulmaStyledTheme extends React.PureComponent {
 
   render() {
     const { overrides, ...props } = this.props
-    const theme = Vars.getVariables(overrides)
+    const theme = Variables(overrides)
     return (
       <Provider
         {...props}

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React from 'react'
-import { Consumer } from './'
+import { Consumer } from './Context'
 
 export class BaseWithConsumer extends React.PureComponent {
   render() {
