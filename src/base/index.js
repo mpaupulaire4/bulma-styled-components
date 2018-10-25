@@ -4,9 +4,9 @@ import Variables from '../utilities/variables'
 import minireset from './minireset'
 import getGeneric from './generic'
 import Helpers from './helper'
-import { Provider, Consumer } from './Context'
+import { Provider } from './Context'
 
-class BulmaStyledTheme extends React.PureComponent {
+export class BulmaStyledTheme extends React.PureComponent {
   static defaultProps = {
     overrides: {},
   }
@@ -35,9 +35,4 @@ class BulmaStyledTheme extends React.PureComponent {
       />
     )
   }
-}
-
-export {
-  Consumer,
-  BulmaStyledTheme,
 }
