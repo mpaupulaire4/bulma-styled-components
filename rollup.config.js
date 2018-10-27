@@ -26,6 +26,7 @@ function uglify() {
     renderChunk: (code) => {
       const result = Uglify.minify(code, {
         toplevel: true,
+        mangle: false,
       })
       return result.code
     },
