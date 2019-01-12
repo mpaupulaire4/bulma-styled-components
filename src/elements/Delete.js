@@ -4,6 +4,7 @@ import { BaseWithConsumer } from '../base/Class'
 import { unselectable } from '../utilities/mixins'
 
 export default class Delete extends BaseWithConsumer {
+  static displayName ='Delete'
   static defaultProps = {
     as: 'button',
   }

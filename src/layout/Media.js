@@ -5,6 +5,7 @@ import Content from '../elements/Content'
 import Control from '../form/Control'
 
 export default class Media extends BaseWithConsumer {
+  static displayName ='Media'
   static defaultProps = {
     as: 'article',
   }
@@ -54,6 +55,7 @@ const mediaShared = `
 `
 
 export class MediaLeft extends Base {
+  static displayName ='MediaLeft'
   static defaultProps = {
     as: 'div',
   }
@@ -64,6 +66,7 @@ export class MediaLeft extends Base {
   `
 }
 export class MediaRight extends Base {
+  static displayName ='MediaRight'
   static defaultProps = {
     as: 'div',
   }
@@ -74,6 +77,7 @@ export class MediaRight extends Base {
   `
 }
 export class MediaContent extends Base {
+  static displayName ='MediaContent'
   static defaultProps = {
     as: 'div',
   }

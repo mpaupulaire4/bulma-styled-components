@@ -13,6 +13,7 @@ const HelpColorClasses = theme => Object.entries(theme['colors']).reduce((acc, [
 `, '')
 
 export default class Help extends BaseWithConsumer {
+  static displayName ='Help'
   static defaultProps = {
     as: 'p',
   }

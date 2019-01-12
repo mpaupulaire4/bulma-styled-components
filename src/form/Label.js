@@ -7,6 +7,7 @@ BULMA_VARS({
 })
 
 export default class Label extends BaseWithConsumer {
+  static displayName ='Label'
   static defaultProps = {
     as: 'label',
   }

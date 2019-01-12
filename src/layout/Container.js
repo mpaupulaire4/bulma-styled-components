@@ -9,6 +9,7 @@ import {
 import { BaseWithConsumer } from '../base/Class'
 
 export default class Container extends BaseWithConsumer {
+  static displayName ='Container'
   static defaultProps = {
     as: 'div',
   }

@@ -4,6 +4,7 @@ import { BaseWithConsumer } from '../base/Class'
 
 
 export default class Tile extends BaseWithConsumer {
+  static displayName ='Tile'
   static defaultProps = {
     as: 'div',
   }

@@ -25,6 +25,7 @@ BULMA_VARS({
 })
 
 export default class Content extends BaseWithConsumer {
+  static displayName ='Content'
   static defaultProps = {
     as: 'div',
   }

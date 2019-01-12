@@ -23,6 +23,7 @@ const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [
 `, '')
 
 export default class Tag extends BaseWithConsumer {
+  static displayName ='Tag'
   static defaultProps = {
     as: 'span',
   }

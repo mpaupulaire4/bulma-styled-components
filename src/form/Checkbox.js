@@ -25,6 +25,7 @@ export const CheckboxRadioShared = theme => css`
 `
 
 export default class Checkbox extends BaseWithConsumer {
+  static displayName ='Checkbox'
   static defaultProps = {
     as: 'label',
   }

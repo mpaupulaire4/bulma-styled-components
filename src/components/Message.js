@@ -30,6 +30,7 @@ BULMA_VARS({
 
 
 export class MessageBody extends BaseWithConsumer {
+  static displayName ='MessageBody'
   static defaultProps = {
     as: 'div',
   }
@@ -53,6 +54,7 @@ export class MessageBody extends BaseWithConsumer {
 
 
 export class MessageHeader extends BaseWithConsumer {
+  static displayName ='MessageHeader'
   static defaultProps = {
     as: 'div',
   }
@@ -106,6 +108,7 @@ const colorClasses = theme => Object.entries(theme.colors)
   }, '')
 
 export default class Message extends BaseWithConsumer {
+  static displayName ='Message'
   static defaultProps = {
     as: 'div',
   }

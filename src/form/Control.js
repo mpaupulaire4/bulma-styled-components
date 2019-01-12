@@ -12,6 +12,7 @@ BULMA_VARS({
 })
 
 export default class Control extends BaseWithConsumer {
+  static displayName ='Control'
   static defaultProps = {
     as: 'div',
   }

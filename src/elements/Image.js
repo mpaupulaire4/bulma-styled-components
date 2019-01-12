@@ -8,6 +8,7 @@ BULMA_VARS({
 })
 
 export default class Image extends BaseWithConsumer {
+  static displayName ='Image'
   static defaultProps = {
     as: 'figure',
   }

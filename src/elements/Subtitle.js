@@ -19,6 +19,7 @@ BULMA_VARS({
 })
 
 export default class Subtitle extends BaseWithConsumer {
+  static displayName ='Subtitle'
   static defaultProps = {
     as: 'h2',
   }

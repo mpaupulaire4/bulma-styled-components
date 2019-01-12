@@ -132,6 +132,7 @@ const colorClasses = theme => Object.entries(theme.colors).map(([name, [color, c
 `, '')
 
 export default class Button extends BaseWithConsumer {
+  static displayName ='Button'
   static defaultProps = {
     as: 'button',
   }

@@ -3,6 +3,7 @@ import { InputTextareaShared } from './Input'
 import { BaseWithConsumer } from '../base/Class'
 
 export default class Textarea extends BaseWithConsumer {
+  static displayName ='Textarea'
   static defaultProps = {
     as: 'textarea',
   }

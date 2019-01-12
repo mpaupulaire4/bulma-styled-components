@@ -101,6 +101,7 @@ export const InputTextareaShared = theme => css`
 `
 
 export default class Input extends BaseWithConsumer {
+  static displayName ='Input'
   static defaultProps = {
     as: 'input',
   }

@@ -28,6 +28,7 @@ BULMA_VARS({
 
 
 export class TableContainer extends Base {
+  static displayName ='TableContainer'
   static defaultProps = {
     as: 'h2',
   }
@@ -51,6 +52,7 @@ const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [
 `, '')
 
 export default class Table extends BaseWithConsumer {
+  static displayName ='Table'
   static defaultProps = {
     as: 'table',
   }

@@ -103,6 +103,7 @@ const heroColorClasses = theme => Object.entries(theme['colors']).reduce((acc, [
 }, '')
 
 class HeroBody extends Base {
+  static displayName ='HeroBody'
   static defaultProps = {
     as: 'div',
   }
@@ -116,6 +117,7 @@ class HeroBody extends Base {
 
 // Main container
 export default class Hero extends BaseWithConsumer {
+  static displayName ='Hero'
   static defaultProps = {
     as: 'section',
   }
@@ -180,6 +182,7 @@ export default class Hero extends BaseWithConsumer {
 }
 // Components
 class HeroVideo extends BaseWithConsumer {
+  static displayName ='HeroVideo'
   static defaultProps = {
     as: 'div',
   }
@@ -208,6 +211,7 @@ class HeroVideo extends BaseWithConsumer {
 Hero.Video = HeroVideo
 
 class HeroButtons extends BaseWithConsumer {
+  static displayName ='HeroButtons'
   static defaultProps = {
     as: 'div',
   }
@@ -237,6 +241,7 @@ Hero.Buttons = HeroButtons
 
 // Containers
 class HeroHead extends Base {
+  static displayName ='HeroHead'
   static defaultProps = {
     as: 'div',
   }
@@ -249,6 +254,7 @@ class HeroHead extends Base {
 Hero.Head = HeroHead
 
 class HeroFoot extends Base {
+  static displayName ='HeroFoot'
   static defaultProps = {
     as: 'div',
   }

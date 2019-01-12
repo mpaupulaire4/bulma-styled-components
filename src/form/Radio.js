@@ -3,6 +3,7 @@ import { Base } from '../base/Class'
 import { CheckboxRadioShared } from './Checkbox'
 
 export default class Radio extends Base {
+  static displayName ='Radio'
   static defaultProps = {
     as: 'label',
   }

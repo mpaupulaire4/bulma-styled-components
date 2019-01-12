@@ -10,6 +10,7 @@ BULMA_VARS({
 })
 
 export default class Columns extends BaseWithConsumer {
+  static displayName ='Columns'
   static defaultProps = {
     as: 'div',
   }

@@ -17,6 +17,7 @@ BULMA_VARS({
 })
 
 export default class Breadcrumb extends BaseWithConsumer {
+  static displayName ='Breadcrumb'
   static defaultProps = {
     as: 'nav',
   }

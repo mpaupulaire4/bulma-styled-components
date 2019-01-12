@@ -4,6 +4,7 @@ import { block, loader } from '../utilities/mixins'
 import { Base, BaseWithConsumer } from '../base/Class'
 
 export class Block extends Base {
+  static displayName ='Block'
   static defaultProps = {
     as: 'div',
   }
@@ -12,6 +13,7 @@ export class Block extends Base {
 }
 
 export class Heading extends Base {
+  static displayName ='Heading'
   static defaultProps = {
     as: 'h6',
   }
@@ -26,6 +28,7 @@ export class Heading extends Base {
 }
 
 export class Highlight extends BaseWithConsumer {
+  static displayName ='Highlight'
   static defaultProps = {
     as: 'strong',
   }
@@ -44,6 +47,7 @@ export class Highlight extends BaseWithConsumer {
 }
 
 export class Loader extends Base {
+  static displayName ='Loader'
   static defaultProps = {
     as: 'div',
   }
@@ -52,6 +56,7 @@ export class Loader extends Base {
 }
 
 export class Num extends BaseWithConsumer {
+  static displayName ='Num'
   static defaultProps = {
     as: 'span',
   }

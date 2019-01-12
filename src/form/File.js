@@ -31,6 +31,7 @@ const CTANameShared = theme => css`
 `
 
 export class FileCTA extends BaseWithConsumer {
+  static displayName ='FileCTA'
   static defaultProps = {
     as: 'span',
   }
@@ -44,6 +45,7 @@ export class FileCTA extends BaseWithConsumer {
 
 
 export class FileName extends BaseWithConsumer {
+  static displayName ='FileName'
   static defaultProps = {
     as: 'span',
   }
@@ -63,6 +65,7 @@ export class FileName extends BaseWithConsumer {
 
 
 export class FileIcon extends Base {
+  static displayName ='FileIcon'
   static defaultProps = {
     as: 'span',
   }
@@ -82,6 +85,7 @@ export class FileIcon extends Base {
 
 
 export class FileLabel extends BaseWithConsumer {
+  static displayName ='FileLabel'
   static defaultProps = {
     as: 'label',
   }
@@ -115,6 +119,7 @@ export class FileLabel extends BaseWithConsumer {
 }
 
 export class FileInput extends Base {
+  static displayName ='FileInput'
   static defaultProps = {
     as: 'input',
     type: 'file',
@@ -166,6 +171,7 @@ const FileColorClasses = theme => Object.entries(theme['colors']).reduce((acc, [
 `, '')
 
 export default class File extends BaseWithConsumer {
+  static displayName ='File'
   static defaultProps = {
     as: 'div',
   }

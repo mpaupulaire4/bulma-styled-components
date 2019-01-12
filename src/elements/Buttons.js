@@ -3,6 +3,7 @@ import { css } from 'emotion'
 import { Base } from '../base/Class'
 
 export default class Buttons extends Base {
+  static displayName ='Buttons'
   static defaultProps = {
     as: 'div',
   }

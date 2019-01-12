@@ -18,6 +18,7 @@ BULMA_VARS({
 
 
 export default class Menu extends BaseWithConsumer {
+  static displayName ='Menu'
   static defaultProps = {
     as: 'aside',
   }
@@ -38,6 +39,7 @@ export default class Menu extends BaseWithConsumer {
 }
 
 export class MenuList extends BaseWithConsumer {
+  static displayName ='MenuList'
   static defaultProps = {
     as: 'ul',
   }
@@ -71,6 +73,7 @@ export class MenuList extends BaseWithConsumer {
 Menu.List = MenuList
 
 export class MenuLabel extends BaseWithConsumer {
+  static displayName ='MenuLabel'
   static defaultProps = {
     as: 'p',
   }

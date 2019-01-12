@@ -3,6 +3,7 @@ import { css } from 'emotion'
 import { Base } from '../base/Class'
 
 export default class Tags extends Base {
+  static displayName ='Tags'
   static defaultProps = {
     as: 'div',
   }

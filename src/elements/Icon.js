@@ -10,6 +10,7 @@ BULMA_VARS({
 })
 
 export default class Icon extends BaseWithConsumer {
+  static displayName ='Icon'
   static defaultProps = {
     as: 'span',
   }

@@ -24,6 +24,7 @@ const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [
 `, '')
 
 export default class Notification extends BaseWithConsumer {
+  static displayName ='Notification'
   static defaultProps = {
     as: 'div',
   }

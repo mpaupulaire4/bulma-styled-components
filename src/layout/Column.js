@@ -27,6 +27,7 @@ function percentage(num) {
 }
 
 export default class Column extends BaseWithConsumer {
+  static displayName ='Column'
   static defaultProps = {
     as: 'div',
   }

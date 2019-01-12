@@ -24,6 +24,7 @@ const colorClasses = theme => Object.entries(theme.colors).reduce((acc, [name, [
 `, '')
 
 export default class Progress extends BaseWithConsumer {
+  static displayName ='Progress'
   static defaultProps = {
     as: 'progress',
   }

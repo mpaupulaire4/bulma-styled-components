@@ -35,6 +35,7 @@ BULMA_VARS({
 })
 
 export default class Tabs extends BaseWithConsumer {
+  static displayName ='Tabs'
   static defaultProps = {
     as: 'div',
   }

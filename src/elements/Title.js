@@ -19,6 +19,7 @@ BULMA_VARS({
 })
 
 export default class Title extends BaseWithConsumer {
+  static displayName ='Title'
   static defaultProps = {
     as: 'h1',
   }

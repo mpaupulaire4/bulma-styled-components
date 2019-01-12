@@ -9,6 +9,7 @@ import Title from '../elements/Title'
 import Subtitle from '../elements/Subtitle'
 
 export class LevelItem extends BaseWithConsumer {
+  static displayName ='LevelItem'
   static defaultProps = {
     as: 'div',
   }
@@ -53,6 +54,7 @@ const levelShared = theme => css`
 `
 
 export class LevelRight extends BaseWithConsumer {
+  static displayName ='LevelRight'
   static defaultProps = {
     as: 'div',
   }
@@ -69,6 +71,7 @@ export class LevelRight extends BaseWithConsumer {
 }
 
 export class LevelLeft extends BaseWithConsumer {
+  static displayName ='LevelLeft'
   static defaultProps = {
     as: 'div',
   }
@@ -90,6 +93,7 @@ export class LevelLeft extends BaseWithConsumer {
 }
 
 export default class Level extends BaseWithConsumer {
+  static displayName ='Level'
   static defaultProps = {
     as: 'div',
   }

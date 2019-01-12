@@ -21,6 +21,7 @@ BULMA_VARS({
 })
 
 export default class Card extends BaseWithConsumer {
+  static displayName ='Card'
   static defaultProps = {
     as: 'div',
   }
@@ -39,6 +40,7 @@ export default class Card extends BaseWithConsumer {
 
 
 export class CardHeader extends BaseWithConsumer {
+  static displayName ='CardHeader'
   static defaultProps = {
     as: 'header',
   }
@@ -54,6 +56,7 @@ Card.Header = CardHeader
 
 
 export class CardHeaderTitle extends BaseWithConsumer {
+  static displayName ='CardHeaderTitle'
   static defaultProps = {
     as: 'p',
   }
@@ -74,6 +77,7 @@ Card.Header.Title = CardHeaderTitle
 
 
 export class CardHeaderIcon extends Base {
+  static displayName ='CardHeaderIcon'
   static defaultProps = {
     as: 'div',
   }
@@ -90,6 +94,7 @@ Card.Header.Icon = CardHeaderIcon
 
 
 export class CardImage extends Base {
+  static displayName ='CardImage'
   static defaultProps = {
     as: 'div',
   }
@@ -103,6 +108,7 @@ Card.Image = CardImage
 
 
 export class CardContent extends BaseWithConsumer {
+  static displayName ='CardContent'
   static defaultProps = {
     as: 'div',
   }
@@ -116,6 +122,7 @@ Card.Content = CardContent
 
 
 export class CardFooter extends BaseWithConsumer {
+  static displayName ='CardFooter'
   static defaultProps = {
     as: 'footer',
   }
@@ -131,6 +138,7 @@ Card.Footer = CardFooter
 
 
 export class CardFooterItem extends BaseWithConsumer {
+  static displayName ='CardFooterItem'
   static defaultProps = {
     as: 'span',
   }

@@ -81,6 +81,7 @@ const PreviousNextShared = theme => css`
   `}
 `
 export class PaginationPrevious extends BaseWithConsumer {
+  static displayName ='PaginationPrevious'
   static defaultProps = {
     as: 'a',
   }
@@ -95,6 +96,7 @@ export class PaginationPrevious extends BaseWithConsumer {
 
 
 export class PaginationNext extends BaseWithConsumer {
+  static displayName ='PaginationNext'
   static defaultProps = {
     as: 'a',
   }
@@ -108,6 +110,7 @@ export class PaginationNext extends BaseWithConsumer {
 }
 
 export class PaginationLink extends BaseWithConsumer {
+  static displayName ='PaginationLink'
   static defaultProps = {
     as: 'a',
   }
@@ -124,6 +127,7 @@ export class PaginationLink extends BaseWithConsumer {
 }
 
 export class PaginationEllipsis extends BaseWithConsumer {
+  static displayName ='PaginationEllipsis'
   static defaultProps = {
     as: 'span',
   }
@@ -143,6 +147,7 @@ const PaginationListShared = `
 `
 
 export class PaginationList extends BaseWithConsumer {
+  static displayName ='PaginationList'
   static defaultProps = {
     as: 'ul',
   }
@@ -166,6 +171,7 @@ export class PaginationList extends BaseWithConsumer {
 }
 
 export default class Pagination extends BaseWithConsumer {
+  static displayName ='Pagination'
   static defaultProps = {
     as: 'nav',
   }

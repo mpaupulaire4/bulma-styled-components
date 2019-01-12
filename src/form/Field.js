@@ -12,6 +12,7 @@ import {
 import { BaseWithConsumer } from '../base/Class'
 
 export default class Field extends BaseWithConsumer {
+  static displayName ='Field'
   static defaultProps = {
     as: 'div',
   }
@@ -131,6 +132,7 @@ export default class Field extends BaseWithConsumer {
 }
 
 export class FieldLabel extends BaseWithConsumer {
+  static displayName ='FieldLabel'
   static defaultProps = {
     as: 'div',
   }
@@ -168,6 +170,7 @@ export class FieldLabel extends BaseWithConsumer {
 }
 
 export class FieldBody extends BaseWithConsumer {
+  static displayName ='FieldBody'
   static defaultProps = {
     as: 'div',
   }

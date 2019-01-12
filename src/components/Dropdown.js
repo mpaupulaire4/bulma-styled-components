@@ -22,6 +22,7 @@ BULMA_VARS({
 })
 
 export class DropdownMenu extends BaseWithConsumer {
+  static displayName ='DropdownMenu'
   static defaultProps = {
     as: 'div',
   }
@@ -38,6 +39,7 @@ export class DropdownMenu extends BaseWithConsumer {
 }
 
 export default class Dropdown extends BaseWithConsumer {
+  static displayName ='Dropdown'
   static defaultProps = {
     as: 'div',
   }
@@ -72,6 +74,7 @@ export default class Dropdown extends BaseWithConsumer {
 Dropdown.Menu = DropdownMenu
 
 export class DropdownContent extends BaseWithConsumer {
+  static displayName ='DropdownContent'
   static defaultProps = {
     as: 'div',
   }
@@ -87,6 +90,7 @@ export class DropdownContent extends BaseWithConsumer {
 Dropdown.Content = DropdownContent
 
 export class DropdownItem extends BaseWithConsumer {
+  static displayName ='DropdownItem'
   static defaultProps = {
     as: 'a',
   }
@@ -115,6 +119,7 @@ export class DropdownItem extends BaseWithConsumer {
 Dropdown.Item = DropdownItem
 
 export class DropdownDivider extends BaseWithConsumer {
+  static displayName ='DropdownDivider'
   static defaultProps = {
     as: 'hr',
   }

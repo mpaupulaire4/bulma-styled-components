@@ -9,6 +9,7 @@ BULMA_VARS({
 })
 
 export default class Section extends BaseWithConsumer {
+  static displayName ='Section'
   static defaultProps = {
     as: 'section',
   }

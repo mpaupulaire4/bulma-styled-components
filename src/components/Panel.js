@@ -32,6 +32,7 @@ BULMA_VARS({
 })
 
 export default class Panel extends BaseWithConsumer {
+  static displayName ='Panel'
   static defaultProps = {
     as: 'nav',
   }
@@ -54,6 +55,7 @@ const HeadingTabsBlockShared = theme => css`
 `
 
 export class PanelHeading extends BaseWithConsumer {
+  static displayName ='PanelHeading'
   static defaultProps = {
     as: 'header',
   }
@@ -72,6 +74,7 @@ export class PanelHeading extends BaseWithConsumer {
 Panel.Heading = PanelHeading
 
 export class PanelTabs extends BaseWithConsumer {
+  static displayName ='PanelTabs'
   static defaultProps = {
     as: 'p',
   }
@@ -97,6 +100,7 @@ export class PanelTabs extends BaseWithConsumer {
 Panel.Tabs = PanelTabs
 
 export class PanelList extends BaseWithConsumer {
+  static displayName ='PanelList'
   static defaultProps = {
     as: 'div',
   }
@@ -113,6 +117,7 @@ export class PanelList extends BaseWithConsumer {
 Panel.List = PanelList
 
 export class PanelIcon extends BaseWithConsumer {
+  static displayName ='PanelIcon'
   static defaultProps = {
     as: 'span',
   }
@@ -130,6 +135,7 @@ export class PanelIcon extends BaseWithConsumer {
 Panel.Icon = PanelIcon
 
 export class PanelBlock extends BaseWithConsumer {
+  static displayName ='PanelBlock'
   static defaultProps = {
     as: 'div',
   }

@@ -103,6 +103,7 @@ const NavbarLinkPartialStyles = theme => css`
 `
 
 export class NavbarLink extends BaseWithConsumer {
+  static displayName ='NavbarLink'
   static defaultProps = {
     as: 'a',
   }
@@ -128,6 +129,7 @@ export class NavbarLink extends BaseWithConsumer {
 
 
 export class NavbarDropdown extends BaseWithConsumer {
+  static displayName ='NavbarDropdown'
   static defaultProps = {
     as: 'div',
   }
@@ -159,6 +161,7 @@ export class NavbarDropdown extends BaseWithConsumer {
 
 
 export class NavbarItem extends BaseWithConsumer {
+  static displayName ='NavbarItem'
   static defaultProps = {
     as: 'div',
   }
@@ -269,6 +272,7 @@ const brandTabsShared = theme => css`
   `}
 `
 export class NavbarBrand extends BaseWithConsumer {
+  static displayName ='NavbarBrand'
   static defaultProps = {
     as: 'div',
   }
@@ -292,6 +296,7 @@ const navStartEndMenuShared = theme => css`
 `
 
 export class NavbarStart extends BaseWithConsumer {
+  static displayName ='NavbarStart'
   static defaultProps = {
     as: 'div',
   }
@@ -307,6 +312,7 @@ export class NavbarStart extends BaseWithConsumer {
 
 
 export class NavbarEnd extends BaseWithConsumer {
+  static displayName ='NavbarEnd'
   static defaultProps = {
     as: 'div',
   }
@@ -322,6 +328,7 @@ export class NavbarEnd extends BaseWithConsumer {
 
 
 export class NavbarMenu extends BaseWithConsumer {
+  static displayName ='NavbarMenu'
   static defaultProps = {
     as: 'nav',
   }
@@ -408,6 +415,7 @@ const colorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name
 `, '')
 
 export default class Navbar extends BaseWithConsumer {
+  static displayName ='Navbar'
   static defaultProps = {
     as: 'nav',
   }
@@ -551,6 +559,7 @@ export default class Navbar extends BaseWithConsumer {
 
 
 export class NavbarTabs extends BaseWithConsumer {
+  static displayName ='NavbarTabs'
   static defaultProps = {
     as: 'div',
   }
@@ -566,6 +575,7 @@ export class NavbarTabs extends BaseWithConsumer {
 
 
 export class NavbarBurger extends BaseWithConsumer {
+  static displayName ='NavbarBurger'
   static defaultProps = {
     as: 'a',
   }
@@ -582,6 +592,7 @@ export class NavbarBurger extends BaseWithConsumer {
 
 
 export class NavbarContent extends Base {
+  static displayName ='NavbarContent'
   static defaultProps = {
     as: 'div',
   }
@@ -594,6 +605,7 @@ export class NavbarContent extends Base {
 
 
 export class NavbarDivider extends BaseWithConsumer {
+  static displayName ='NavbarDivider'
   static defaultProps = {
     as: 'div',
   }

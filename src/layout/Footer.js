@@ -6,6 +6,7 @@ BULMA_VARS({
 })
 
 export default class Footer extends BaseWithConsumer {
+  static displayName ='Footer'
   static defaultProps = {
     as: 'footer',
   }

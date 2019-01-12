@@ -41,6 +41,7 @@ BULMA_VARS({
 
 
 export default class Modal extends BaseWithConsumer {
+  static displayName ='Modal'
   static defaultProps = {
     as: 'div',
   }
@@ -63,6 +64,7 @@ export default class Modal extends BaseWithConsumer {
 
 
 export class ModalBackground extends BaseWithConsumer {
+  static displayName ='ModalBackground'
   static defaultProps = {
     as: 'div',
   }
@@ -90,6 +92,7 @@ const ContentCardShared = theme => css`
 `
 
 export class ModalContent extends BaseWithConsumer {
+  static displayName ='ModalContent'
   static defaultProps = {
     as: 'div',
   }
@@ -100,6 +103,7 @@ export class ModalContent extends BaseWithConsumer {
 Modal.Content = ModalContent
 
 export class ModalClose extends BaseWithConsumer {
+  static displayName ='ModalClose'
   static defaultProps = {
     as: 'button',
   }
@@ -118,6 +122,7 @@ export class ModalClose extends BaseWithConsumer {
 Modal.Close = ModalClose
 
 export class ModalCard extends BaseWithConsumer {
+  static displayName ='ModalCard'
   static defaultProps = {
     as: 'div',
   }
@@ -144,6 +149,7 @@ const CardHeadFootShared = theme => css`
 `
 
 export class ModalCardHead extends BaseWithConsumer {
+  static displayName ='ModalCardHead'
   static defaultProps = {
     as: 'header',
   }
@@ -159,6 +165,7 @@ export class ModalCardHead extends BaseWithConsumer {
 Modal.Card.Head = ModalCardHead
 
 export class ModalCardTitle extends BaseWithConsumer {
+  static displayName ='ModalCardTitle'
   static defaultProps = {
     as: 'p',
   }
@@ -175,6 +182,7 @@ export class ModalCardTitle extends BaseWithConsumer {
 Modal.Card.Title = ModalCardTitle
 
 export class ModalCardFoot extends BaseWithConsumer {
+  static displayName ='ModalCardFoot'
   static defaultProps = {
     as: 'footer',
   }
@@ -195,6 +203,7 @@ export class ModalCardFoot extends BaseWithConsumer {
 Modal.Card.Foot = ModalCardFoot
 
 export class ModalCardBody extends BaseWithConsumer {
+  static displayName ='ModalCardBody'
   static defaultProps = {
     as: 'section',
   }

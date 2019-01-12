@@ -59,6 +59,7 @@ const SelectColorClasses = theme => Object.entries(theme['colors']).reduce((acc,
 `, '')
 
 export default class Select extends BaseWithConsumer {
+  static displayName ='Select'
   static defaultProps = {
     as: 'div',
   }

@@ -10,7 +10,7 @@ export class BaseWithConsumer extends React.PureComponent {
         {({ theme }) => React.createElement(as, {
           ...props,
           className: [
-            this.constructor.name,
+            this.constructor.displayName,
             this.constructor.Style(theme, this.props),
             className,
           ].join(' '),
@@ -26,7 +26,7 @@ export class Base extends React.PureComponent {
     return React.createElement(as, {
       ...props,
       className: [
-        this.constructor.name,
+        this.constructor.displayName,
         this.constructor.Style(this.props),
         className,
       ].join(' '),
