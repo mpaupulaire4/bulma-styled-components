@@ -1,7 +1,18 @@
 import { PureComponent, HTMLProps, Component } from 'react'
+import { Consumer } from './base/Context';
+import { BulmaStyledTheme } from './base';
 
 declare module 'bulma-styled-components' {
   type Props<T> = HTMLProps<T> & { as?: string | Component }
+
+  // export class BulmaStyledTheme extends PureComponent<{
+  //   overrides?: any
+  // }> {}
+
+  export {
+    Consumer,
+    BulmaStyledTheme
+  }
 
   export class Box extends PureComponent<Props<HTMLElement>> {}
   export class Button extends PureComponent<Props<HTMLElement>> {}
