@@ -1,6 +1,7 @@
 import resolve from 'rollup-plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
+import copy from 'rollup-plugin-copy'
 import Uglify from 'uglify-js'
 
 function variableParser({
@@ -62,6 +63,10 @@ export default {
       extend: 'BULMA_VARS_EXTEND',
     }),
     uglify(),
+    copy({
+      'src/index.d.ts': 'dist/index.d.ts',
+      verbose: true,
+    }),
   ],
   external: ['react'],
 }
