@@ -1,7 +1,7 @@
 import { PureComponent, HTMLProps, Component } from 'react'
 
 declare module 'bulma-styled-components' {
-  type Props<T> = HTMLProps<T> & { as: string | Component }
+  type Props<T> = HTMLProps<T> & { as?: string | Component }
 
   export class Box extends PureComponent<Props<HTMLElement>> {}
   export class Button extends PureComponent<Props<HTMLElement>> {}
