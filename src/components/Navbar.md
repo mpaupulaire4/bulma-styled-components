@@ -1,17 +1,19 @@
 ```react
+state: { open: false }
+---
 <Navbar className="is-transparent">
   <Navbar.Brand>
     <Navbar.Item as="a" href="https://bulma.io">
       <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28"/>
     </Navbar.Item>
-    <Navbar.Burger>
+    <Navbar.Burger active={state.open} onClick={() => console.log('hey') || setState({ open: !state.open })}>
       <span/>
       <span/>
       <span/>
     </Navbar.Burger>
   </Navbar.Brand>
 
-  <Navbar.Menu>
+  <Navbar.Menu active={state.open}>
     <Navbar.Start>
       <Navbar.Item as="a" href="https://bulma.io/">
         Home

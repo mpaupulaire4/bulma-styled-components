@@ -74,7 +74,7 @@ const itemLinkShared = theme => css`
   line-height: 1.5;
   padding: 0.5rem 0.75rem;
   position: relative;
-  .${Icon.name} {
+  .${Icon.displayName} {
     &:only-child {
       margin-left: -0.25rem;
       margin-right: -0.25rem;
@@ -199,7 +199,7 @@ export class NavbarItem extends BaseWithConsumer {
         padding-bottom: calc(0.5rem - ${theme['navbar-tab-active-border-bottom-width']});
       }
     }
-    .${NavbarDropdown.name} & {
+    .${NavbarDropdown.displayName} & {
       padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
@@ -209,16 +209,16 @@ export class NavbarItem extends BaseWithConsumer {
         align-items: stretch;
         &:hover,
         &.is-active {
-          .${NavbarLink.name} {
+          .${NavbarLink.displayName} {
             background-color: ${theme['navbar-item-hover-background-color']};
           }
         }
       }
       &.has-dropdown-up {
-        .${NavbarLink.name}::after {
+        .${NavbarLink.displayName}::after {
           transform: rotate(135deg) translate(0.25em, -0.25em);
         }
-        .${NavbarDropdown.name} {
+        .${NavbarDropdown.displayName} {
           border-bottom: ${theme['navbar-dropdown-border-top']};
           border-radius: ${theme['navbar-dropdown-radius']} ${theme['navbar-dropdown-radius']} 0 0;
           border-top: none;
@@ -229,7 +229,7 @@ export class NavbarItem extends BaseWithConsumer {
       }
       &.is-active,
       &.is-hoverable:hover {
-        .${NavbarDropdown.name} {
+        .${NavbarDropdown.displayName} {
           display: block;
           ${/* ${Navbar}.is-spaced &, */''}
           &.is-boxed {
@@ -239,11 +239,11 @@ export class NavbarItem extends BaseWithConsumer {
           }
         }
       }
-      .${NavbarDropdown.name} & {
+      .${NavbarDropdown.displayName} & {
         padding: 0.375rem 1rem;
         white-space: nowrap;
       }
-      .${NavbarDropdown.name} a& {
+      .${NavbarDropdown.displayName} a& {
         padding-right: 3rem;
         &:hover {
           background-color: ${theme['navbar-dropdown-item-hover-background-color']};
@@ -265,7 +265,7 @@ const brandTabsShared = theme => css`
   flex-shrink: 0;
   min-height: ${theme['navbar-height']};
   ${touch(theme)`
-    .${NavbarItem.name} {
+    .${NavbarItem.displayName} {
       align-items: center;
       display: flex;
     }
@@ -279,7 +279,7 @@ export class NavbarBrand extends BaseWithConsumer {
 
   static Style = theme => css`
     ${brandTabsShared(theme)}
-    a.${/* sc-custom '.navbar-item' */NavbarItem.name} {
+    a.${/* sc-custom '.navbar-item' */NavbarItem.displayName} {
       &:hover {
         background-color: transparent;
       }
@@ -333,20 +333,18 @@ export class NavbarMenu extends BaseWithConsumer {
     as: 'nav',
   }
 
-  static Style = theme => css`
+  static Style = (theme, props) => css`
     display: none;
-    ${touch(theme)`
-      background-color: ${theme['navbar-background-color']};
-      box-shadow: 0 8px 16px ${rgba(theme['black'], 0.1)};
-      padding: 0.5rem 0;
-      &.is-active {
-        display: block;
-      }
-    `}
+    ${props.active ? 'display: block;' : ''}
     ${navStartEndMenuShared(theme)}
     ${desktop(theme)`
       flex-grow: 1;
       flex-shrink: 0;
+    `}
+    ${touch(theme)`
+      background-color: ${theme['navbar-background-color']};
+      box-shadow: 0 8px 16px ${rgba(theme['black'], 0.1)};
+      padding: 0.5rem 0;
     `}
   `
 }
@@ -357,53 +355,53 @@ const colorClasses = theme => Object.entries(theme['colors']).reduce((acc, [name
   &.is-${name} {
     background-color: ${color};
     color: ${color_invert};
-    .${NavbarBrand.name} {
-      & > .${/* sc-selector */NavbarItem.name},
-      .${/* sc-selector */NavbarLink.name} {
+    .${NavbarBrand.displayName} {
+      & > .${/* sc-selector */NavbarItem.displayName},
+      .${/* sc-selector */NavbarLink.displayName} {
         color: ${color_invert};
       }
-      & > a.${/* sc-custom '.navbar-item' */NavbarItem.name},
-      .${/* sc-selector */NavbarLink.name} {
+      & > a.${/* sc-custom '.navbar-item' */NavbarItem.displayName},
+      .${/* sc-selector */NavbarLink.displayName} {
         &:hover,
         &.is-active {
           background-color: ${darken(0.05, color)};
           color: ${color_invert};
         }
       }
-      .${NavbarLink.name} {
+      .${NavbarLink.displayName} {
         &::after {
           border-color: ${color_invert};
         }
       }
     }
     ${desktop(theme)`
-      .${NavbarStart.name},
-      .${NavbarEnd.name} {
-        & > .${NavbarItem.name},
-        .${NavbarLink.name} {
+      .${NavbarStart.displayName},
+      .${NavbarEnd.displayName} {
+        & > .${NavbarItem.displayName},
+        .${NavbarLink.displayName} {
           color: ${color_invert};
         }
-        & > a.${NavbarItem.name},
-        .${NavbarLink.name} {
+        & > a.${NavbarItem.displayName},
+        .${NavbarLink.displayName} {
           &:hover,
           &.is-active {
             background-color: ${darken(0.05, color)};
             color: ${color_invert};
           }
         }
-        .${NavbarLink.name} {
+        .${NavbarLink.displayName} {
           &::after {
             border-color: ${color_invert};
           }
         }
       }
-      .${NavbarItem.name}.has-dropdown:hover .${NavbarLink.name},
-      .${NavbarItem.name}.has-dropdown.is-active .${NavbarLink.name} {
+      .${NavbarItem.displayName}.has-dropdown:hover .${NavbarLink.displayName},
+      .${NavbarItem.displayName}.has-dropdown.is-active .${NavbarLink.displayName} {
         background-color: ${darken(0.05, color)};
         color: ${color_invert};
       }
-      .${NavbarDropdown.name} {
-        a.${NavbarItem.name} {
+      .${NavbarDropdown.displayName} {
+        a.${NavbarItem.displayName} {
           &.is-active {
             background-color: ${color};
             color: ${color_invert};
@@ -427,7 +425,7 @@ export default class Navbar extends BaseWithConsumer {
     z-index: ${theme['navbar-z']};
     ${colorClasses(theme)}
 
-    & > .${/* sc-custom '.container' */Container.name} {
+    & > .${/* sc-custom '.container' */Container.displayName} {
       align-items: stretch;
       display: flex;
       min-height: ${theme['navbar-height']};
@@ -450,7 +448,7 @@ export default class Navbar extends BaseWithConsumer {
       top: 0;
     }
     ${touch(theme)`
-      & > .${/* sc-custom '.container' */Container.name} {
+      & > .${/* sc-custom '.container' */Container.displayName} {
         display: block;
       }
       &.is-fixed-bottom-touch,
@@ -468,7 +466,7 @@ export default class Navbar extends BaseWithConsumer {
       }
       &.is-fixed-top,
       &.is-fixed-top-touch {
-        .${NavbarMenu.name} {
+        .${NavbarMenu.displayName} {
           ${overflow_touch}
           max-height: calc(100vh - ${theme['navbar-height']});
           overflow: auto;
@@ -480,33 +478,33 @@ export default class Navbar extends BaseWithConsumer {
       min-height: ${theme['navbar-height']};
       &.is-spaced {
         padding: ${theme['navbar-padding-vertical']} ${theme['navbar-padding-horizontal']};
-        .${NavbarStart.name},
-        .${NavbarEnd.name} {
+        .${NavbarStart.displayName},
+        .${NavbarEnd.displayName} {
           align-items: center;
         }
-        a.${NavbarItem.name},
-        .${NavbarLink.name} {
+        a.${NavbarItem.displayName},
+        .${NavbarLink.displayName} {
           border-radius: ${theme['radius']};
         }
       }
       &.is-transparent {
-        a.${NavbarItem.name},
-        .${NavbarLink.name} {
+        a.${NavbarItem.displayName},
+        .${NavbarLink.displayName} {
           &:hover,
           &.is-active {
             background-color: transparent !important;
           }
         }
-        .${NavbarItem.name}.has-dropdown {
+        .${NavbarItem.displayName}.has-dropdown {
           &.is-active,
           &.is-hoverable:hover {
-            .${NavbarLink.name} {
+            .${NavbarLink.displayName} {
               background-color: transparent !important;
             }
           }
         }
-        .${NavbarDropdown.name} {
-          a.${NavbarItem.name} {
+        .${NavbarDropdown.displayName} {
+          a.${NavbarItem.displayName} {
             &:hover {
               background-color: ${theme['navbar-dropdown-item-hover-background-color']};
               color: ${theme['navbar-dropdown-item-hover-color']};
@@ -518,12 +516,12 @@ export default class Navbar extends BaseWithConsumer {
           }
         }
       }
-      & > .${/* sc-custom '.container' */Container.name},
-      .${/* sc-custom '.container' */Container.name} > & {
-        .${NavbarBrand.name} {
+      & > .${/* sc-custom '.container' */Container.displayName},
+      .${/* sc-custom '.container' */Container.displayName} > & {
+        .${NavbarBrand.displayName} {
           margin-left: -.75rem;
         }
-        .${NavbarMenu.name} {
+        .${NavbarMenu.displayName} {
           margin-right: -.75rem;
         }
       }
@@ -540,8 +538,8 @@ export default class Navbar extends BaseWithConsumer {
       &.is-fixed-top-desktop {
         top: 0;
       }
-      &.is-spaced .${NavbarDropdown.name},
-      .${NavbarDropdown.name}.is-boxed {
+      &.is-spaced .${NavbarDropdown.displayName},
+      .${NavbarDropdown.displayName}.is-boxed {
         border-radius: ${theme['navbar-dropdown-boxed-radius']};
         border-top: none;
         box-shadow: ${theme['navbar-dropdown-boxed-shadow']};

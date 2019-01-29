@@ -240,13 +240,13 @@ export default class Button extends BaseWithConsumer {
       padding-left: 1em;
       padding-right: 1em;
     }
-    .${/* sc-custom '.buttons' */Buttons.name} & {
+    .${/* sc-custom '.buttons' */Buttons.displayName} & {
       margin-bottom: 0.5rem;
       &:not(:last-child) {
         margin-right: 0.5rem;
       }
     }
-    .${/* sc-custom '.buttons' */Buttons.name}.has-addons & {
+    .${/* sc-custom '.buttons' */Buttons.displayName}.has-addons & {
       &:not(:first-child) {
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
